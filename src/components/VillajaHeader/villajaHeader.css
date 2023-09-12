@@ -1,0 +1,47 @@
+.vh-header-container
+{
+    position: relative;
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    gap: 5rem;
+}
+
+.vh-menu,.vh-aux-menu,.vh-logo
+{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.vh-item
+{
+    cursor: pointer;
+}
+
+.mobile-menu
+{
+    display: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+@media screen and (max-width:1111px) {
+    .vh-header-container
+    {
+        justify-content: space-between;
+    }
+    .vh-menu,.vh-aux-menu
+    {
+        display: none;
+    }
+
+    .mobile-menu
+    {
+        display: grid;
+        place-items: center;
+        transition: all 0.2s ease;
+    }
+}
