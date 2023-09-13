@@ -9,6 +9,14 @@ const CatalogPage = () => {
         <Villaja_hero isHomepage={false}/>
         <div className="catalog-category-main">
             <ItemCatSection itemCatTitle={"Best Selling Items"} items={items}/>
+
+            <div className="catalog-page-body">
+                <div className="catalog-filter-section"></div>
+                <div className="catalog-item-display">
+                    <div className="cid-top-bar"></div>
+                    <div className="cid-main"></div>
+                </div>
+            </div>
         </div>
 
     </div>
