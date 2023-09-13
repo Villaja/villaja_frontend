@@ -14,6 +14,8 @@ const VillajaHeader = () => {
     const [dropdownHoverState,setHoverState] = useState(0)
 
   return (
+    <div className="vh-header-wrapper">
+
     <div className="vh-header-container">
         <div className="vh-item vh-logo">
            <Link to={'/'}>
@@ -22,7 +24,7 @@ const VillajaHeader = () => {
         </div>
 
         <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div>Phones</div> 
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div><Link to={'/catalog'} style={{textDecoration:"none",color:"inherit"}}>Phones</Link></div>
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
             </div>
             <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} >Tablets
@@ -52,6 +54,8 @@ const VillajaHeader = () => {
             <img src={menuBtn} alt="menu button" className='aux-img'/>
         </div>
     </div>
+    </div>
+
   )
 }
 
