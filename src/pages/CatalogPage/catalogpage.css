@@ -1,0 +1,10 @@
+.catalog-page-container {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.catalog-category-main {
+    padding: 0 6rem;
+}

@@ -85,6 +85,19 @@
     cursor: pointer;
 }
 
+.hs-container-others
+{
+    max-height: 144px;
+    overflow: hidden;
+}
+
+.hs-container-others .hero-search-section
+{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 2.5rem;
+}
 @media screen and (max-width:1286px) {
     .hero-search-section {
             padding-right: 2.3rem;
