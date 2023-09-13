@@ -1,0 +1,34 @@
+.item-cat-container
+{
+    position: relative;
+    width: 100%;
+    margin-top: 3.375rem;
+}
+
+.ic-header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f5;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 0.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.seemore-btn
+{
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.ic-body
+{
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+    grid-auto-rows: minmax(100px, auto);
+}
