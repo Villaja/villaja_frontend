@@ -12,9 +12,12 @@ const SellerHomepage = () => {
       {/* <VillajaHeader/> */}
       <VillajaHero/>
       <div className="homepage-category-body">
+        <div className="homepage-category-main">
+
         <ItemCatSection itemCatTitle={"Best Selling Items"} items={items}/>
         <ItemCatSection itemCatTitle={"Top Deals"} items={items}/>
         <ItemCatSection itemCatTitle={"Official Store Deals"} items={items}/>
+        </div>
       </div>
       {/* <VillajaFooter/> */}
     </div>

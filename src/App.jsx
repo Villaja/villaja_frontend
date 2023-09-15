@@ -5,8 +5,6 @@ import './App.css'
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import VillajaHeader from './components/VillajaHeader/VillajaHeader';
 import VillajaFooter from './components/VillajaFooter/VillajaFooter';
-import Villaja_hero from './components/VillajaHero/Villaja_hero';
-import { useEffect, useState } from 'react';
 import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
 
 function App() {

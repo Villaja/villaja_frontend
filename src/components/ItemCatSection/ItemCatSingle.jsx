@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './itemCatSingle.css'
 
 const ItemCatSingle = ({itemImg,itemName,itemPrice}) => {

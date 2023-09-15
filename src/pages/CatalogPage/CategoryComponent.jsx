@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './categorycomponent.css'
 import { catData } from '../../mock_data/Category_info'
 import { useState } from 'react';
