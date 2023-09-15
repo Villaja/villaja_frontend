@@ -17,7 +17,7 @@ function App() {
        {/* <Header changeLoggedIn = {setIsLoggedIn} hasLoggedIn = {isLoggedIn}/> */}
         <Routes>
           <Route exact path= "/" element={<CustomerHomePage/>}/>
-          <Route exact path= "/catalog" element={<CatalogPage/>}/>
+          <Route exact path= "/catalog/:id" element={<CatalogPage/>}/>
         </Routes>
         <VillajaFooter/>
        </Router>

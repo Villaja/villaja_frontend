@@ -24,7 +24,7 @@ const VillajaHeader = () => {
         </div>
 
         <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div><Link to={'/catalog'} style={{textDecoration:"none",color:"inherit"}}>Phones</Link></div>
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div><Link to={'/catalog/mobile-phones'} style={{textDecoration:"none",color:"inherit"}}>Phones</Link></div>
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
             </div>
             <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} >Tablets
