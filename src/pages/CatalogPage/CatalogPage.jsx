@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ItemCatSection from '../../components/ItemCatSection/ItemCatSection'
 import SingleItemCard from '../../components/SingleItemCard/SingleItemCard'
 import Villaja_hero from '../../components/VillajaHero/Villaja_hero'
@@ -7,8 +8,11 @@ import { items } from '../../mock_data/Sample_Items'
 import CategoryComponent from './CategoryComponent'
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
-const CatalogPage = () => {
+import MobileCategpryIcon from '../../assets/mobile_category_icon.svg'
+
+const CatalogPage = ({setSelectedCatalogCategory}) => {
 
   const [pageNumber,setPageNumber] = useState(24)
   const [catItemFiltered,setCatItemFiltered] = useState([])
@@ -29,6 +33,7 @@ const CatalogPage = () => {
   useEffect(()=> {
     var tempCat = location.pathname.split('/')[2].split('-')
     setCategory(tempCat[0].charAt(0).toUpperCase() + tempCat[0].slice(1) + " " + tempCat[1].charAt(0).toUpperCase() + tempCat[1].slice(1))
+    setSelectedCatalogCategory(tempCat[0].charAt(0).toUpperCase() + tempCat[0].slice(1) + " " + tempCat[1].charAt(0).toUpperCase() + tempCat[1].slice(1))
   },[location.pathname])
 
   return (
@@ -49,11 +54,11 @@ const CatalogPage = () => {
                          {category}
                       </div>
                       <div className="cid-top-mobile-filter">
-
+                        <Link to='/catalog/filter'><img src={MobileCategpryIcon} alt="" /></Link>
                       </div>
                     </div>
                       <div className="cid-main-header">
-                        1-24 &nbsp; / &nbsp; <span>240 products found</span>
+                        {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{cat_items.length} products found</span>
                       </div>
                     <div className="cid-main">
                       {

@@ -22,7 +22,7 @@
 
 .cc-main-body
 {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     max-width: 1628px;
     margin: 0 auto;
@@ -118,4 +118,33 @@
 {
     pointer-events: none;
     color: #bebebe;
+}
+
+.cid-top-mobile-filter {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1200px) {
+    .cid-main
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width:756px) {
+    .catalog-page-body
+    {
+        gap: 0;
+    }
+
+    .cid-top-mobile-filter
+    {
+        display: contents;
+    }
+}
+@media screen and (max-width:620px) {
+    .cid-main
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

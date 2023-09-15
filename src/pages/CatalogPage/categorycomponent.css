@@ -198,3 +198,30 @@ label
 {
  
 }
+
+.filter-container-mobile
+{
+    display: none;
+}
+
+@media screen and (max-width:1200px) {
+    .filter-container
+    {
+        width: 200px;
+    }
+}
+@media screen and (max-width:756px) {
+    .filter-container
+    {
+        display: none;
+    }
+
+    .filter-container-mobile
+    {
+        position:absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: contents !important;
+    }
+}

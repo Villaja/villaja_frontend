@@ -3,13 +3,13 @@ import './categorycomponent.css'
 import { catData } from '../../mock_data/Category_info'
 import { useState } from 'react';
 
-const CategoryComponent = ({category}) => {
+const CategoryComponent = ({category,isMobile}) => {
 
     const [priceRangeValue,setPriceRangeValue] = useState("3000000")
 
     console.log(catData[0]['subcat']);
   return (
-    <div className='filter-container'>
+    <div className={`filter-container ${isMobile?'filter-container-mobile':''}`}>
         <div className="filter-top-bar">
             Category
         </div>

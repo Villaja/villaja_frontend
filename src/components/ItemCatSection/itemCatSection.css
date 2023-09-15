@@ -3,6 +3,7 @@
     position: relative;
     width: 100%;
     margin-top: 3.375rem;
+    margin-bottom: 1rem;
 }
 
 .ic-header
@@ -31,4 +32,23 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 2rem;
     grid-auto-rows: minmax(100px, auto);
+}
+
+.ic-body::-webkit-scrollbar {
+    /* border-color: rebeccapurple; */
+    background-color: transparent;
+    height: 3px;
+}
+
+.ic-body::-webkit-scrollbar-thumb {
+    background: #d5d5de41;
+    height: 1px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width:1200px) {
+    .ic-body
+    {
+        overflow-x: auto;
+    }
 }
