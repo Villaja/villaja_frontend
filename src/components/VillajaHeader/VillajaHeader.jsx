@@ -5,7 +5,7 @@ import profileIcon from '../../assets/profile_icon.svg'
 import cartIcon from '../../assets/cart_icon.svg'
 import menuBtn from '../../assets/menu_btn.svg'
 import VillajaHeaderDropdown from './VillajaHeaderDropdown'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
 
@@ -13,8 +13,10 @@ const VillajaHeader = () => {
 
     const [dropdownHoverState,setHoverState] = useState(0)
 
+    const location = useLocation()
+
   return (
-    <div className="vh-header-wrapper">
+    <div className="vh-header-wrapper" style={location.pathname.split('/')[1]=='seller'?{display:"none"}:null}>
 
     <div className="vh-header-container">
         <div className="vh-item vh-logo">
@@ -24,7 +26,7 @@ const VillajaHeader = () => {
         </div>
 
         <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div><Link to={'/catalog'} style={{textDecoration:"none",color:"inherit"}}>Phones</Link></div>
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)}> <div><Link to={'/catalog/mobile-phones'} style={{textDecoration:"none",color:"inherit"}}>Phones</Link></div>
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
             </div>
             <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} >Tablets

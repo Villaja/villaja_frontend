@@ -1,0 +1,227 @@
+.filter-container
+{
+    background-color: #f2f2f5;
+    padding: 1rem;
+    width: 288px;
+}
+
+.filter-cat,.filter-top-bar
+{
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.filter-sub
+{
+    margin-bottom: 1rem;
+}
+
+.filter-sub-title
+{
+    margin-bottom: 0.5rem;
+}
+
+.filter-sub-row
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filter-sub-cat
+{
+    margin-bottom: 1rem;
+    margin-left: 2.3rem;
+    cursor: pointer;
+}
+
+.filter-body-brand
+{
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.filter-sub-body::-webkit-scrollbar {
+   /* border-color: rebeccapurple; */
+   background-color: transparent;
+   width: 5px;
+}
+
+.filter-body-brand::-webkit-scrollbar-thumb {
+    background: #d5d5de;
+    width: 1px;
+    border-radius: 10px;
+}
+
+label
+{
+    cursor: pointer;
+}
+
+.filter-brand
+{
+
+}
+.brand-check
+{
+    -webkit-appearance: none;
+        background-color: #fafafa;
+        border: 1px solid #cacece;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+        padding: 9px;
+        border-radius: 3px;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+}
+
+.brand-check:hover
+{
+    border: 1px solid #00b4d8;
+}
+
+.brand-check:active,
+.brand-check:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.brand-check:checked {
+    background-color: #00b4d8;
+    border: 1px solid #0162758f;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.brand-check:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #ffffff;
+}
+.discount-radio
+{
+    -webkit-appearance: none;
+        background-color: #fafafa;
+        border: 1px solid #cacece;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border-radius: 50% !important;
+    padding: 9px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.discount-radio:checked::after
+{
+    content: '\2022' !important;
+    font-size: 55px !important;
+    position: absolute;
+    top: -23px;
+    left: -0.3px;
+    color: #00b4d8;
+    padding: 0;
+}
+
+.brand-check:hover {
+    border: 1px solid #00b4d8;
+}
+
+.brand-check:active,
+.brand-check:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.discount-radio:checked {
+    border: 1.5px solid #00b4d8;;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    color: #00b4d8;
+}
+
+
+.filter-sub-body
+{
+    width: 100%;
+    position: relative;
+}
+
+#price-range
+{
+    width: 100%;
+    accent-color: #00b4d8 ;
+    background: #00b4d8;
+    outline: none;
+}
+
+#price-range::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+.filter-sub-title
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-slider
+{
+    margin: 1.5rem 0;
+}
+
+.price-ranges
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+}
+
+.price-ranges input
+{
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    width: 35%;
+    outline: none;
+    border: 1.5px solid #d5d5de;
+}
+
+.discount-sub
+{
+ 
+}
+
+.filter-container-mobile
+{
+    display: none;
+}
+
+@media screen and (max-width:1200px) {
+    .filter-container
+    {
+        width: 200px;
+    }
+}
+@media screen and (max-width:756px) {
+    .filter-container
+    {
+        display: none;
+    }
+
+    .filter-container-mobile
+    {
+        position:absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: contents !important;
+    }
+}

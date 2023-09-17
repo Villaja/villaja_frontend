@@ -8,5 +8,13 @@
 
 .homepage-category-body
 {
-    padding: 0 6rem;
+    padding: 0 1.5rem;
+}
+
+.homepage-category-main
+{
+    position: relative;
+        width: 100%;
+        max-width: 1628px;
+        margin: 0 auto;
 }
