@@ -1,0 +1,14 @@
+.seller-header-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #69696B;
+    font-weight: 500;
+}
+
+.shc-logo span
+{
+    font-weight: 900;
+}

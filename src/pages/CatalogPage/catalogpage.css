@@ -5,11 +5,146 @@
     padding: 0;
 }
 
-.catalog-category-main {
-    padding: 0 6rem;
+.cid-top-bar
+{
+    background-color: #f2f2f5;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
 }
 
-.catalog-category-body
+.catalog-category-main {
+
+    padding: 0 1.5rem;
+}
+
+.cc-main-body
 {
-    
+    /* position: relative; */
+    width: 100%;
+    max-width: 1628px;
+    margin: 0 auto;
+    /* background-color: aqua; */
+}
+
+.catalog-page-body
+{
+    width: 100%;
+    /* max-width: 1248px; */
+    position: relative;
+    display: flex;
+    gap: 2rem;
+}
+
+.catalog-item-display
+{
+    width: 100%;
+}
+
+.cid-main
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        grid-auto-rows: minmax(100px, auto);
+        margin-bottom: 1rem;
+}
+
+.cid-main-header
+{
+    padding: 1.5rem 0;
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+}
+
+.cid-main-header span
+{
+    color: #69696b;
+}
+
+.cid-undernav-wrapper
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.cid-undernav
+{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 4px 8px #34578c2c;
+}
+
+.underNav-current, .underNav-total
+{
+    width: 56px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.underNav-current input
+{
+    width: fit-content;
+        height: 40px;
+        border: none;
+        outline: none;
+        font-size: 0.9rem;
+        padding: 0;
+}
+
+.underNav-action
+{
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.underNav-action:hover
+{
+    background-color: #ededed;
+}
+
+.btn-inactive
+{
+    pointer-events: none;
+    color: #bebebe;
+}
+
+.cid-top-mobile-filter {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1200px) {
+    .cid-main
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width:756px) {
+    .catalog-page-body
+    {
+        gap: 0;
+    }
+
+    .cid-top-mobile-filter
+    {
+        display: contents;
+    }
+}
+@media screen and (max-width:620px) {
+    .cid-main
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

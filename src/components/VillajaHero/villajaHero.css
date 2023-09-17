@@ -119,6 +119,12 @@
     }
 }
 
+@media screen and (max-width:623px) {
+    .hs-text
+    {
+        display: none;
+    }
+}
 @media screen and (max-width:439px) {
     .search-input {
             

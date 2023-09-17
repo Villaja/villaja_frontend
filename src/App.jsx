@@ -5,10 +5,15 @@ import './App.css'
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import VillajaHeader from './components/VillajaHeader/VillajaHeader';
 import VillajaFooter from './components/VillajaFooter/VillajaFooter';
-import Villaja_hero from './components/VillajaHero/Villaja_hero';
-import { useEffect, useState } from 'react';
+import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
+import CategoryComponent from './pages/CatalogPage/CategoryComponent';
+import { useState } from 'react';
+import Seller from './Seller';
 
 function App() {
+
+  const [selectedCatalogCategory,setSelectedCatalogCategory] = useState('')
+  const [isSeller,setIsSeller]  = useState(false)
 
   return (
     <div className='app-wrapper'>
@@ -17,7 +22,10 @@ function App() {
        {/* <Header changeLoggedIn = {setIsLoggedIn} hasLoggedIn = {isLoggedIn}/> */}
         <Routes>
           <Route exact path= "/" element={<CustomerHomePage/>}/>
-          <Route exact path= "/catalog" element={<CatalogPage/>}/>
+          <Route exact path= "/login" element={<CustomerLogin/>}/>
+          <Route exact path= "/catalog/:id" element={<CatalogPage setSelectedCatalogCategory={setSelectedCatalogCategory}/>}/>
+          <Route exact path= "/catalog/filter" element={<CategoryComponent category={selectedCatalogCategory} isMobile={'true'}/>}/>
+          <Route  path= "/seller/*" element={<Seller setIsSeller={setIsSeller}/>}/>
         </Routes>
         <VillajaFooter/>
        </Router>
