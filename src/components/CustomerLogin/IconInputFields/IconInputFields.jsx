@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import "./IconInputFields.css";
 
@@ -58,3 +59,21 @@ export const IconInputFields = ({
     </div>
   );
 };
+
+IconInputFields.propTypes = {
+    leadingIcon: PropTypes.bool,
+    state: PropTypes.oneOf([
+      "active-info",
+      "active",
+      "entered",
+      "default",
+      "focus",
+      "valid",
+      "invalid",
+      "disabled-info",
+      "disabled",
+    ]),
+    text: PropTypes.string,
+    text1: PropTypes.string,
+  };
+  

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { useReducer } from "react";
 import "./Buttons.css";
@@ -96,3 +97,26 @@ function reducer(state, action) {
   return state;
 }
 
+Buttons.propTypes = {
+    property1: PropTypes.oneOf([
+      "smaall-outlined",
+      "large-filled",
+      "large-inactive",
+      "large-outlined",
+      "checkout-default",
+      "small-ghost",
+      "small-filled",
+      "xsmall-outlined",
+      "default-ghost",
+      "default-inactive",
+      "large-outlined-hover",
+      "xsmall-filled",
+      "default-filled-hover",
+      "default-filled",
+      "default-outlined",
+      "large-filled-hover",
+      "small-inactive",
+    ]),
+    text: PropTypes.string,
+  };
+  

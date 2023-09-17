@@ -50,3 +50,7 @@ export const BottomDirectory = ({ property1, className }) => {
   );
 };
 
+BottomDirectory.propTypes = {
+    property1: PropTypes.oneOf(["seller-pov", "default"]),
+  };
+  

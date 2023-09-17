@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import "./TopMenuComp.css";
 
@@ -11,3 +12,7 @@ export const TopMenuComp = ({ className, divClassName, text = "top menu comp" })
   );
 };
 
+TopMenuComp.propTypes = {
+    text: PropTypes.string,
+  };
+  
