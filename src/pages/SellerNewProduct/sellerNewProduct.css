@@ -1,0 +1,58 @@
+.snp-wrapper
+{
+    /* background-color: aqua; */
+    width: 100%;
+}
+
+.snp-top
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.snp-top-title
+{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.snp-top-action
+{
+    display: flex;
+    gap: 1rem;
+}
+
+.snp-action{
+    padding: 10px 0;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #00B4D8, #0077B6);
+    cursor: pointer;
+    width: 165px;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+}
+
+.snp-cancel
+{
+    background: #f2f2f5;
+    color: #0077B6;
+}
+
+.snp-main
+{
+    display: flex;
+}
+
+.snp-left
+{
+    width: 50%;
+    background-color: antiquewhite;
+}
+.snp-right
+{
+    width: 50%;
+    background-color: aquamarine;
+}

@@ -1,0 +1,19 @@
+.seller-page-body
+{
+    position: relative;
+}
+
+.seller-main-wrapper
+{
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.seller-main-container
+{
+    width: 100%;
+    max-width: 1628px;
+    display: flex;
+    
+}

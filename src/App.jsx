@@ -8,10 +8,12 @@ import VillajaFooter from './components/VillajaFooter/VillajaFooter';
 import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import { useState } from 'react';
+import Seller from './Seller';
 
 function App() {
 
   const [selectedCatalogCategory,setSelectedCatalogCategory] = useState('')
+  const [isSeller,setIsSeller]  = useState(false)
 
   return (
     <div className='app-wrapper'>
@@ -22,6 +24,7 @@ function App() {
           <Route exact path= "/" element={<CustomerHomePage/>}/>
           <Route exact path= "/catalog/:id" element={<CatalogPage setSelectedCatalogCategory={setSelectedCatalogCategory}/>}/>
           <Route exact path= "/catalog/filter" element={<CategoryComponent category={selectedCatalogCategory} isMobile={'true'}/>}/>
+          <Route  path= "/seller/*" element={<Seller setIsSeller={setIsSeller}/>}/>
         </Routes>
         <VillajaFooter/>
        </Router>
