@@ -4,12 +4,15 @@ import { sampleInventory } from '../../mock_data/Sample_Inventory_List'
 
 import SearcIcon from '../../assets/search_icon.svg'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SellerInventory = () => {
 
   const [pageNumber,setPageNumber] = useState(5)
   const [invItemFiltered,setInvItemFiltered] = useState([])
-  const [category,setCategory] = useState('')
+  const [openAddModal,setOpenAddModal] = useState(false)
+
+  
 
   useEffect(() => {
     setInvItemFiltered(sampleInventory.slice(pageNumber-5,pageNumber))
@@ -30,7 +33,7 @@ const SellerInventory = () => {
                     </div>
                 </div>
                 <div className="ih-right">
-                    <div className="inventory-add-btn">ADD &nbsp; &nbsp; + </div>
+                    <div className="inventory-add-btn" onClick={() => setOpenAddModal(true)}>ADD &nbsp; &nbsp; + </div>
                     
                     <label htmlFor="ih-table-filter">Sort by: </label>
                     <select name="" id="ih-table-filter">
@@ -79,9 +82,10 @@ const SellerInventory = () => {
         </div>
 
 
-        <div className="add-item-modal">
-                <AddItemModal/>
-        </div>
+        {openAddModal?<div className="add-item-modal">
+                <AddItemModal setOpenAddModal={setOpenAddModal}/>
+        </div>:null
+}
     </div>
   )
 }
@@ -90,6 +94,8 @@ const SellerInventory = () => {
 const InventoryItem = ({item}) => {
 
     const {productImg,productName,productPrice,dateAdded,inStock,sku} = item
+
+    
 
     return(
         <div className="inventory-item-container">
@@ -108,12 +114,28 @@ const InventoryItem = ({item}) => {
 }
 
 
-const AddItemModal = () => {
+const AddItemModal = ({setOpenAddModal}) => {
+
+    const navigate = useNavigate()
+
+    const handleModalClose = () => {
+        
+        document.getElementsByTagName('body')[0].style.width = 'auto'
+        document.getElementsByTagName('body')[0].style.height = 'auto'
+        document.getElementsByTagName('body')[0].style.overflow = 'auto'
+    }
+
+    useEffect(() => {
+        console.log(document.getElementsByTagName('body'));
+        document.getElementsByTagName('body')[0].style.width = '100vw'
+        document.getElementsByTagName('body')[0].style.height = '100vh'
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+    },[])
     return(
         <div className="add-item-modal-main">
                 <div className="aim-top">
                     <div className="aim-top-left">Add a Product - Select Category</div>
-                    <div className="aim-top-close"> x </div>
+                    <div className="aim-top-close" onClick={()=> {handleModalClose();setOpenAddModal(false)}} style={{cursor:"pointer"}}> x </div>
                 </div>
                 <div className="aim-body">
                     <div className="aim-cat-container">
@@ -121,7 +143,7 @@ const AddItemModal = () => {
                         <div className="acc-category filter-sub-body">
                                 <div className="filter-sub-row discount-sub">
                                     <input type="radio" name="discount-type" id="td-radio" className='discount-radio' value="Top Deals"/>
-                                    <label >Smart Phones</label>
+                                    <label onClick={() => {navigate('/seller/new-product/Phones - Smart Phones')}}>Smart Phones</label>
                                 </div>
                                 <div className="filter-sub-row discount-sub">
                                     <input type="radio" name="discount-type" id="dio-radio" className='discount-radio' value="Discount Items Only"/>

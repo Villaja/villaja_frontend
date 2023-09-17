@@ -1,12 +1,18 @@
 import { useLocation } from 'react-router-dom'
 import PhotoIcon from '../../assets/little_photo_icon.svg'
 import './sellerNewProduct.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const SellerNewProduct = () => {
 
     
     const [uploadedImages,setUploadedImages] = useState([])
+
+    useEffect(() => {
+        document.getElementsByTagName('body')[0].style.width = 'auto'
+        document.getElementsByTagName('body')[0].style.height = 'auto'
+        document.getElementsByTagName('body')[0].style.overflow = 'auto'
+    },[])
 
 
     const handleImageUpload = (e) => {
@@ -111,10 +117,10 @@ const SellerNewProduct = () => {
 
                     <div className="other-image-selects">
                         <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 0?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(0)}/></div>
-                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 0?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(1)}/></div>
-                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 0?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(2)}/></div>
-                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 0?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(3)}/></div>
-                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 0?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(4)}/></div>
+                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 1?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(1)}/></div>
+                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 2?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(2)}/></div>
+                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 3?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(3)}/></div>
+                        <div className="ims-select"><img src="" alt="" className='ims-select-img' style={uploadedImages.length > 4?{display:"flex"}:{display:'none'}} onClick={() => handleImageChange(4)}/></div>
                     </div>
                 </div>
             </div>

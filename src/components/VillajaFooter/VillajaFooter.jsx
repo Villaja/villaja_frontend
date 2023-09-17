@@ -4,7 +4,7 @@ import villajaLogo from '../../assets/villaja_footer_logo.svg'
 
 const VillajaFooter = () => {
   return (
-    <div className="vf-container" style={location.pathname.split('/')[1]=='seller'?{display:"none"}:null}>
+    <div className="vf-container" style={location.pathname.split('/')[1]=='seller' || location.pathname.split('/')[1]=='login' ?{display:"none"}:null}>
         <div className="vf-logo">
             <img src={villajaLogo} alt="Villaja Logo" />
         </div>

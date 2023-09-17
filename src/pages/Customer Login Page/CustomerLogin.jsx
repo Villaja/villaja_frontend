@@ -1,11 +1,10 @@
-import React from "react";
-import { BottomDirectory } from "../../components/CustomerLogin/BottomDirectory";
-import { Buttons } from "../../components/CustomerLogin/Buttons";
-import { IconInputFields } from "../../components/CustomerLogin/IconInputFields";
-import { TopBar } from "../../components/CustomerLogin/TopBar";
+import { BottomDirectory } from "../../components/CustomerLogin/BottomDirectory/BottomDirectory";
+import { Buttons } from "../../components/CustomerLogin/Buttons/Buttons";
+import { IconInputFields } from "../../components/CustomerLogin/IconInputFields/IconInputFields";
+import { TopBar } from "../../components/CustomerLogin/TopBar/TopBar";
 import "./CustomerLogin.css";
 
-export const CustomerLogIn = () => {
+const CustomerLogIn = () => {
   return (
     <div className="customer-log-in">
       <div className="div-2">
@@ -51,3 +50,5 @@ export const CustomerLogIn = () => {
     </div>
   );
 };
+
+export default CustomerLogIn

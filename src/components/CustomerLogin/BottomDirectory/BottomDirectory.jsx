@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import React from "react";
-import { Logo } from "../Logo";
-import{ TopMenuComp } from "../TopMenuComp";
+import { Logo } from "../Logo/Logo";
+import{ TopMenuComp } from "../TopMenuComp/TopMenuComp";
 import "./BottomDirectory.css";
 
 export const BottomDirectory = ({ property1, className }) => {

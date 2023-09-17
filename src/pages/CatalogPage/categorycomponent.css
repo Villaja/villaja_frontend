@@ -121,8 +121,8 @@ label
     content: '\2022' !important;
     font-size: 55px !important;
     position: absolute;
-    top: -23px;
-    left: -0.3px;
+    top: -32.3289px;
+    left: -8.4px;
     color: #00b4d8;
     padding: 0;
 }
@@ -218,10 +218,12 @@ label
 
     .filter-container-mobile
     {
-        position:absolute;
+        position:absolute; */
         top: 0;
         left: 0;
         z-index: 1000;
         display: contents !important;
+        padding: 2rem;
+        
     }
 }

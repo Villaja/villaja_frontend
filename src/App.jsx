@@ -22,6 +22,7 @@ function App() {
        {/* <Header changeLoggedIn = {setIsLoggedIn} hasLoggedIn = {isLoggedIn}/> */}
         <Routes>
           <Route exact path= "/" element={<CustomerHomePage/>}/>
+          <Route exact path= "/login" element={<CustomerLogin/>}/>
           <Route exact path= "/catalog/:id" element={<CatalogPage setSelectedCatalogCategory={setSelectedCatalogCategory}/>}/>
           <Route exact path= "/catalog/filter" element={<CategoryComponent category={selectedCatalogCategory} isMobile={'true'}/>}/>
           <Route  path= "/seller/*" element={<Seller setIsSeller={setIsSeller}/>}/>
