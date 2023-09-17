@@ -1,0 +1,33 @@
+.top-menu-comp {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+}
+
+.top-menu-comp .frame {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+}
+
+.top-menu-comp .text-wrapper-6 {
+    color: var(--colorsgreyscale-100);
+    font: var(--body-semibold-1);
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.top-menu-comp:hover .text-wrapper-6 {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(180deg, rgb(0, 180, 216) 0%, rgb(0, 119, 182) 100%);
+    background-clip: text;
+    color: transparent;
+    text-fill-color: transparent;
+}
