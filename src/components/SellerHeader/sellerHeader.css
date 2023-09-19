@@ -12,3 +12,19 @@
 {
     font-weight: 900;
 }
+
+.shc-mobile-menu
+{
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width:660px){
+
+    
+    .shc-mobile-menu
+    {
+        display: flex;
+        margin-right: auto;
+    }
+}

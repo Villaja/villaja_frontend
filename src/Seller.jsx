@@ -3,7 +3,7 @@ import SellerInventory from './pages/SellerInventory/SellerInventory';
 import SellerHome from './pages/SellerHome/SellerHome';
 import SellerFooter from './components/SellerFooter/SellerFooter';
 import SellerHeader from './components/SellerHeader/SellerHeader';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SellerNav from './components/SellerNav/SellerNav';
 
 import './seller.css'
@@ -11,13 +11,15 @@ import SellerNewProduct from './pages/SellerNewProduct/SellerNewProduct';
 
 const Seller = ({setIsSeller}) => {
 
+  const [navMobile,setNavMobile] = useState(false)
+
   return (
     <div className='seller-page-wrapper'>
-        <SellerHeader/>
+        <SellerHeader setNavMobile={setNavMobile}/>
 
         <div className="seller-main-wrapper">
             <div className="seller-main-container">
-                <SellerNav />
+                <SellerNav setIsMobile={setNavMobile} isMobile={navMobile}/>
                 <Routes>
                     <Route exact path='/' element={<SellerHome/>}/>
                     <Route exact path= "/inventory" element={<SellerInventory/>}/>
