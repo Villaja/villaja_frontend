@@ -1,12 +1,21 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation , useNavigate} from 'react-router-dom'
 import PhotoIcon from '../../assets/little_photo_icon.svg'
 import './sellerNewProduct.css'
 import { useEffect, useState } from 'react'
 
 const SellerNewProduct = () => {
 
+    const navigate = useNavigate()
     
     const [uploadedImages,setUploadedImages] = useState([])
+    const [productInformation,setProductInformation] = useState({})
+
+
+    const handleProductSave = () => {
+        // setProductInformation({})
+        console.log(productInformation);
+        navigate('/seller/inventory')
+    }
 
     useEffect(() => {
         document.getElementsByTagName('body')[0].style.width = 'auto'
@@ -20,6 +29,7 @@ const SellerNewProduct = () => {
         let uploadedfiles = e.target.files
         console.log(uploadedfiles);
         setUploadedImages(uploadedfiles)
+        setProductInformation({...productInformation,productImages:uploadedfiles})
         var image = document.getElementById('up-img-central');
         var subimages = document.getElementsByClassName('ims-select-img');
         image.src = URL.createObjectURL(uploadedfiles[0]);
@@ -45,8 +55,8 @@ const SellerNewProduct = () => {
                     </div>
 
                     <div className="snp-top-action">
-                        <div className="snp-action snp-cancel">CANCEL</div>
-                        <div className="snp-action snp-save">SAVE & ADD</div>
+                        <div className="snp-action snp-cancel" onClick={() => navigate('/seller/inventory')}>CANCEL</div>
+                        <div className="snp-action snp-save" onClick={() => handleProductSave()}>SAVE & ADD</div>
                     </div>
                 </div>
 
@@ -54,32 +64,32 @@ const SellerNewProduct = () => {
                 <div className="snp-left">
                     <div className="snp-info">
                         <p>Product Name</p>
-                        <input type="text" name="" id="snp-product-name" placeholder='Insert product name here ... '/>
+                        <input type="text" name="" id="snp-product-name" placeholder='Insert product name here ... ' value={productInformation.productName} onChange={(e) => setProductInformation({...productInformation,productName:e.target.value})}/>
                         <p>Please do not include the brand name here</p>
                     </div>
                     <div className="snp-info">
                         <p>Product Description</p>
-                        <textarea type="text" name="" id="snp-product-description" placeholder="Summarize the product's key features ... "/>
+                        <textarea type="text" name="" id="snp-product-description" placeholder="Summarize the product's key features ... " value={productInformation.productDesc} onChange={(e) => setProductInformation({...productInformation,productDesc:e.target.value})}/>
                     </div>
 
                     <div className="snp-info-flex">
                         <div className="sif-input">
                             <p>Price</p>
-                            <input type="text" name="" id="snp-price" placeholder='N100,000 '/>
+                            <input type="text" name="" id="snp-price" placeholder='N100,000 ' value={productInformation.productPrice} onChange={(e) => setProductInformation({...productInformation,productPrice:e.target.value})}/>
                         </div>
                         <div className="sif-input">
                             <p>Discount Price</p>
-                            <input type="text" name="" id="snp-discount-price" placeholder='N105,000'/>
+                            <input type="text" name="" id="snp-discount-price" placeholder='N105,000' value={productInformation.productDiscount} onChange={(e) => setProductInformation({...productInformation,productDiscount:e.target.value})}/>
                             <p>Villaja adds a 5% commission to your price</p>
 
                         </div>
                         <div className="sif-input">
                             <p>Number of item is stock</p>
-                            <input type="text" name="" id="snp-stock" placeholder='0'/>
+                            <input type="text" name="" id="snp-stock" placeholder='0' value={productInformation.productStock} onChange={(e) => setProductInformation({...productInformation,productStock:e.target.value})}/>
                         </div>
                         <div className="sif-input">
                             <p>SKU</p>
-                            <input type="text" name="" id="snp-sku" placeholder='ABCDEFG1234567890'/>
+                            <input type="text" name="" id="snp-sku" placeholder='ABCDEFG1234567890' value={productInformation.productSku} onChange={(e) => setProductInformation({...productInformation,productSku:e.target.value})}/>
                         </div>
                     </div>
 
@@ -92,7 +102,7 @@ const SellerNewProduct = () => {
                         <p>Add Tags</p>
                         <p>This would allow your products to be discovered through our Search bar. Use a maximum of 5 tags.</p>
                         <p>Product Tags</p>
-                        <input type="text" name="" id="snp-product-tags" placeholder='e.g. iphone, iphone 14, purple'/>
+                        <input type="text" name="" id="snp-product-tags" placeholder='e.g. iphone, iphone 14, purple' value={productInformation.productTags} onChange={(e) => setProductInformation({...productInformation,productTags:e.target.value})}/>
                         <p>Separate each tag with commas (,)</p>
 
                     </div>
