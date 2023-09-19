@@ -17,3 +17,10 @@
     display: flex;
     
 }
+
+@media screen and (max-width:484px) {
+    .seller-main-wrapper
+    {
+        padding: 3rem 0.5rem;
+    }
+}

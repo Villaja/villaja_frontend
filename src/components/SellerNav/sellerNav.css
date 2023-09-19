@@ -27,3 +27,16 @@
 }
 
 
+@media screen and (max-width:660px) {
+    .seller-nav-container
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 255, 255);
+        min-height: 100vh;
+        z-index: 1000;
+        display: none;
+    }
+}
+

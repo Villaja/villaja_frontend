@@ -164,11 +164,12 @@
 
 .add-item-modal-main {
     background-color: #ffffff;
-    padding: 3rem 5.5rem;
+    padding: 2rem 5.5rem;
     border-radius: 15px;
     width: 50%;
     height: 70%;
     overflow-y: auto;
+    z-index: 100;
 }
 
 .aim-top
@@ -183,7 +184,7 @@
 
 .aim-cat-container
 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .acc-title
@@ -208,8 +209,58 @@
 
 } */
 
+.aimm-close-surround
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 
+}
+
+@media screen and (max-width:1114px) {
+    .inventory-header
+    {
+        flex-direction: column;
+    }
+
+    .ih-left
+    {
+        margin-bottom: 1rem;
+    }
+
+    .ih-left,.ih-right
+    {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
 @media screen and (max-width:770px) {
+
+    .inventory-container
+    {
+        padding: 0 1rem;
+    }
+    .add-item-modal-main
+    {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width:660px) {
+    .inventory-wrapper
+    {
+        width: 100%;
+    }
+
+    .aim-top
+    {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width:614px) {
     .add-item-modal-main
     {
         padding: 1.5rem;
