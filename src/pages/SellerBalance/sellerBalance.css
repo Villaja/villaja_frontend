@@ -1,0 +1,78 @@
+.seller-balance-wrapper
+{
+    padding: 0 3rem;
+    width: 100%;
+    margin-bottom: 22rem;
+}
+
+.seller-balance-container
+{
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0 12px 24px #3456bc1c;
+    padding-bottom: 5rem;
+}
+
+.sbc-top
+{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #69696b;
+}
+
+.sbc-top img
+{
+    cursor: pointer;
+}
+
+.sbc-main
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sbc-balance
+{
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: fit-content;
+    position: relative;
+    margin-bottom: 1rem;
+}
+#sbc-balance
+{
+    font-size: 1.8rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    -webkit-text-security: asterisks;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    width: 125px;
+    max-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.sbc-payout-btn
+{
+    background: linear-gradient(180deg, #00B4D8, #0077B6);
+    color: #ffffff;
+    padding: 0.5rem 4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+
+@media screen and (max-width:660px) {
+    .seller-balance-wrapper
+    {
+        padding: 0;
+    }
+}

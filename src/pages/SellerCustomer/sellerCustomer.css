@@ -1,0 +1,9 @@
+.customer-table-top
+{
+    grid-template-columns: 275px 275px 275px 275px !important;
+}
+
+.customer-item-container
+{
+    grid-template-columns: 275px 275px 275px 275px !important;
+}

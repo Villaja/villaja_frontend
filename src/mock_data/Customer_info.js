@@ -1,0 +1,18 @@
+export const sampleCustomers = [
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+    {customerName:"Jane Smith",customerEmail:"janesmith@gmail.com",customerPhone:"08099999999",dateAdded:"08-May-2023"},
+]
