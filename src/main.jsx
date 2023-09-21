@@ -11,7 +11,7 @@ import './index.css';
 
 const app = document.getElementById("app");
 const root = ReactDOMClient.createRoot(app);
-root.render(<SellerLogIn />);
+
 
 
 root.render(
