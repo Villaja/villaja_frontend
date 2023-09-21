@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import React from "react";
 import { useReducer } from "react";
 import { Buttons } from "../Buttons/Buttons";
 import { TopMenuComp } from "../TopMenuComp/TopMenuComp";
@@ -1052,37 +1052,3 @@ function reducer(state, action) {
 
   return state;
 }
-
-TopBar.propTypes = {
-    property1: PropTypes.oneOf([
-      "phones",
-      "variant-12",
-      "variant-15",
-      "default",
-      "variant-11",
-      "frame-51",
-      "frame-55",
-      "tablets",
-      "frame-49",
-      "variant-13",
-      "variant-16",
-      "frame-52",
-      "variant-17",
-      "frame-54",
-      "frame-53",
-      "variant-14",
-      "frame-50",
-      "variant-18",
-    ]),
-    hasFrame: PropTypes.bool,
-    hasDiv: PropTypes.bool,
-    visible: PropTypes.bool,
-    hasFrame1: PropTypes.bool,
-    hasFrame2: PropTypes.bool,
-    hasImg: PropTypes.bool,
-    hasShoppingCartWrapper: PropTypes.bool,
-    hasFrame3: PropTypes.bool,
-    className: PropTypes.string,
-    topMenuBarClassName: PropTypes.string,
-  };
-  

@@ -1,1 +1,0 @@
-export { PropertyInactive } from "./PropertyInactive";

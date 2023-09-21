@@ -1,1 +1,0 @@
-export { SelectPayment } from "./SelectPayment";

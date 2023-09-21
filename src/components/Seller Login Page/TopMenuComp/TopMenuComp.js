@@ -1,1 +1,0 @@
-export { TopMenuComp } from "./TopMenuComp";
