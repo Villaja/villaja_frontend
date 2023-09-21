@@ -1,16 +1,15 @@
 import PropTypes from "prop-types";
-import React from "react";
 import { useReducer } from "react";
 import "./Buttons.css";
 
-export const Buttons = ({ property1, className, text = "ADD TO CART" }) => {
+export const Buttons = ({ property1, text = "ADD TO CART" }) => {
   const [state, dispatch] = useReducer(reducer, {
     property1: property1 || "default-filled",
   });
 
   return (
     <div
-      className={`buttons ${state.property1} ${className}`}
+      className={`buttons ${state.property1}`}
       onMouseEnter={() => {
         dispatch("mouse_enter");
       }}

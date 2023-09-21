@@ -1082,5 +1082,7 @@ TopBar.propTypes = {
     hasImg: PropTypes.bool,
     hasShoppingCartWrapper: PropTypes.bool,
     hasFrame3: PropTypes.bool,
+    className: PropTypes.string,
+    topMenuBarClassName: PropTypes.string,
   };
   

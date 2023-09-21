@@ -1,44 +1,46 @@
 import PropTypes from "prop-types";
-import React from "react";
 import { Logo } from "../Logo";
-import{ TopMenuComp } from "../TopMenuComp";
+import { TopMenuComp } from "../TopMenuComp";
 import "./BottomDirectory.css";
 
-export const BottomDirectory = ({ property1, className }) => {
+const BottomDirectory = ({ property1 }) => {
+  const isSellerPov = property1 === "seller-pov";
+  const isDefault = property1 === "default";
+
   return (
-    <div className={`bottom-directory ${property1} ${className}`}>
+    <div className={`bottom-directory ${property1}`}>
       <Logo
         className="logo-instance"
-        divClassName={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassName1={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassName2={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassName3={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassName4={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassName5={`${property1 === "seller-pov" ? "class" : "class-2"}`}
-        divClassNameOverride={`${property1 === "seller-pov" ? "class" : "class-2"}`}
+        divClassName={isSellerPov ? "class" : "class-2"}
+        divClassName1={isSellerPov ? "class" : "class-2"}
+        divClassName2={isSellerPov ? "class" : "class-2"}
+        divClassName3={isSellerPov ? "class" : "class-2"}
+        divClassName4={isSellerPov ? "class" : "class-2"}
+        divClassName5={isSellerPov ? "class" : "class-2"}
+        divClassNameOverride={isSellerPov ? "class" : "class-2"}
       />
       <div className="frame-2">
         <TopMenuComp
           className="top-menu-comp-instance"
-          divClassName={`${property1 === "default" ? "instance-node" : "class-3"}`}
-          text={property1 === "default" ? "Sell on villaja" : "Help"}
+          divClassName={isDefault ? "instance-node" : "class-3"}
+          text={isDefault ? "Sell on villaja" : "Help"}
         />
         <TopMenuComp
           className="top-menu-comp-instance"
-          divClassName={`${property1 === "seller-pov" ? "class-3" : "instance-node"}`}
-          text={property1 === "seller-pov" ? "Terms of Use" : "Help"}
+          divClassName={isSellerPov ? "class-3" : "instance-node"}
+          text={isSellerPov ? "Terms of Use" : "Help"}
         />
         <TopMenuComp
           className="top-menu-comp-instance"
-          divClassName={`${property1 === "seller-pov" ? "class-3" : "instance-node"}`}
-          text={property1 === "seller-pov" ? "Privacy Policy" : "Terms of Use"}
+          divClassName={isSellerPov ? "class-3" : "instance-node"}
+          text={isSellerPov ? "Privacy Policy" : "Terms of Use"}
         />
         <TopMenuComp
-          className={`${property1 === "seller-pov" ? "top-menu-comp-2" : "top-menu-comp-instance"}`}
-          divClassName={`${property1 === "seller-pov" ? "class-3" : "instance-node"}`}
-          text={property1 === "seller-pov" ? "Contact" : "Privacy Policy"}
+          className={isSellerPov ? "top-menu-comp-2" : "top-menu-comp-instance"}
+          divClassName={isSellerPov ? "class-3" : "instance-node"}
+          text={isSellerPov ? "Contact" : "Privacy Policy"}
         />
-        {property1 === "default" && (
+        {isDefault && (
           <>
             <TopMenuComp className="top-menu-comp-2" divClassName="instance-node" text="About" />
             <TopMenuComp className="top-menu-comp-2" divClassName="instance-node" text="Contact" />
@@ -51,6 +53,7 @@ export const BottomDirectory = ({ property1, className }) => {
 };
 
 BottomDirectory.propTypes = {
-    property1: PropTypes.oneOf(["seller-pov", "default"]),
-  };
-  
+  property1: PropTypes.oneOf(["seller-pov", "default"]),
+};
+
+

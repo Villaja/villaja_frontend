@@ -1,18 +1,20 @@
 import PropTypes from "prop-types";
-import React from "react";
 import "./IconInputFields.css";
 
-export const IconInputFields = ({
+const IconInputFields = ({
   leadingIcon = true,
   state,
-  frameClassName,
   text = "Jake Smith",
   text1 = "Full Name",
 }) => {
+  const isDefaultState = ["default", "disabled", "entered", "focus", "valid"].includes(state);
+  const isActiveState = state === "active";
+  const isInfoState = ["active-info", "disabled-info", "invalid"].includes(state);
+
   return (
     <div className={`icon-input-fields state-${state}`}>
-      {["default", "disabled", "entered", "focus", "valid"].includes(state) && (
-        <div className={`frame-9 ${frameClassName}`}>
+      {isDefaultState && (
+        <div className={`frame-9`}>
           {leadingIcon && (
             <img
               className="bx-search-2"
@@ -29,13 +31,13 @@ export const IconInputFields = ({
         </div>
       )}
 
-      {state === "active" && <img className={`frame-10 ${frameClassName}`} alt="Frame" src="/img/frame-20.svg" />}
+      {isActiveState && <img className={`frame-10 `} alt="Frame" src="/img/frame-20.svg" />}
 
       {["active", "default", "disabled", "entered", "focus", "valid"].includes(state) && (
         <div className="default-4">{text1}</div>
       )}
 
-      {["active-info", "disabled-info", "invalid"].includes(state) && (
+      {isInfoState && (
         <>
           <div className="default-5">
             {state === "invalid" && <>{text1}</>}
@@ -51,7 +53,7 @@ export const IconInputFields = ({
             {state === "invalid" && <>Invalid input</>}
 
             {["active-info", "disabled-info"].includes(state) && (
-              <p className="text-wrapper-19">information on this field’s requirements</p>
+              <p className="text-wrapper-19">Information on this field’s requirements</p>
             )}
           </div>
         </>
@@ -61,19 +63,20 @@ export const IconInputFields = ({
 };
 
 IconInputFields.propTypes = {
-    leadingIcon: PropTypes.bool,
-    state: PropTypes.oneOf([
-      "active-info",
-      "active",
-      "entered",
-      "default",
-      "focus",
-      "valid",
-      "invalid",
-      "disabled-info",
-      "disabled",
-    ]),
-    text: PropTypes.string,
-    text1: PropTypes.string,
-  };
-  
+  leadingIcon: PropTypes.bool,
+  state: PropTypes.oneOf([
+    "active-info",
+    "active",
+    "entered",
+    "default",
+    "focus",
+    "valid",
+    "invalid",
+    "disabled-info",
+    "disabled",
+  ]),
+  text: PropTypes.string,
+  text1: PropTypes.string,
+};
+
+export default IconInputFields;

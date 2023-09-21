@@ -13,5 +13,7 @@ export const TopMenuComp = ({ className, divClassName, text = "top menu comp" })
 
 TopMenuComp.propTypes = {
     text: PropTypes.string,
+    className: PropTypes.string,
+    divClassName: PropTypes.string,
   };
   
