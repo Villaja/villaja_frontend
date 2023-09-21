@@ -1,5 +1,4 @@
-import React from "react";
-import "./IconInputFields.css";
+import './IconInputFields.css'
 
 export const IconInputFields = ({
   leadingIcon = true,

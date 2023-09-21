@@ -2,6 +2,7 @@ import { BottomDirectory } from "../../components/CustomerLogin/BottomDirectory/
 import { Buttons } from "../../components/CustomerLogin/Buttons/Buttons";
 import { IconInputFields } from "../../components/CustomerLogin/IconInputFields/IconInputFields";
 import { TopBar } from "../../components/CustomerLogin/TopBar/TopBar";
+import Buton from '../../assets/Customer Login asset/buttons.svg'
 import "./CustomerLogin.css";
 
 const CustomerLogIn = () => {
@@ -44,7 +45,7 @@ const CustomerLogIn = () => {
             <img className="line" alt="Line" src="/img/line-9.svg" />
             <img className="line-2" alt="Line" src="/img/line-10.svg" />
           </div>
-          <img className="buttons-3" alt="Buttons" src="/img/buttons.svg" />
+          <img className="buttons-3" alt="Buttons" src={Buton} />
         </div>
       </div>
     </div>

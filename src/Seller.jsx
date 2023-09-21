@@ -7,6 +7,7 @@ import SellerNav from './components/SellerNav/SellerNav';
 import SellerNewProduct from './pages/SellerNewProduct/SellerNewProduct';
 import SellerBalance from './pages/SellerBalance/SellerBalance';
 import SellerCustomer from  './pages/SellerCustomer/SellerCustomer'
+import { SellerLogin } from './components';
 import {useState } from 'react';
 import './seller.css'
 
