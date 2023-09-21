@@ -5,10 +5,13 @@ import './App.css'
 import CatalogPage from './pages/CatalogPage/CatalogPage';
 import VillajaHeader from './components/VillajaHeader/VillajaHeader';
 import VillajaFooter from './components/VillajaFooter/VillajaFooter';
-import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import { useState } from 'react';
 import Seller from './Seller';
+import  { CustomerLogin } from "./components";
+import { CustomerSignUp } from "./components";
+
+
 
 function App() {
 
