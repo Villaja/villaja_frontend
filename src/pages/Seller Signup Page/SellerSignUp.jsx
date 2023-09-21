@@ -6,5 +6,3 @@ const SellerSignUp = () => {
     <div>SellerSignUp</div>
   );
 };
-
-export default SellerSignUp;

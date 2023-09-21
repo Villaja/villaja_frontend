@@ -1,4 +1,3 @@
-import React from "react";
 import { BottomDirectory } from "../../components/CustomerLogin/BottomDirectory";
 import { Buttons } from "../../components/CustomerLogin/Buttons";
 import { IconInputFields } from "../../components/CustomerLogin/IconInputFields";

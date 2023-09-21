@@ -6,5 +6,3 @@ const SellerLogin = () => {
     <div>SellerLogin</div>
   );
 };
-
-export default SellerLogin;
