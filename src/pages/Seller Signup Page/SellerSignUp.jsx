@@ -1,92 +1,254 @@
-import { TopBarSellerSide } from "../../components/Seller SignUp Page/TopBarSellerSide/TopBarSellerSide";
-import { SelectPayment } from "../../components/Seller SignUp Page/SelectPayment/SelectPayment";
-import { PropertyInactive } from "../../components/Seller SignUp Page/PropertyInactive/PropertyInactive";
-import { IconInputFields } from "../../components/Seller SignUp Page/IconInputFields/IconInputFields";
-import { Buttons } from "../../components/Seller SignUp Page/Buttons/Buttons";
-import { BottomDirectory } from "../../components/Seller SignUp Page/BottomDirectory/BottomDirectory";
-import "./SellerSignUp.css";
+import { React, useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { server } from "../../utils/server";
+import { toast } from "react-toastify";
+import { RxAvatar } from "react-icons/rx";
 
- const SellerSignUp = () => {
+const ShopCreate = () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [address, setAddress] = useState("");
+  const [zipCode, setZipCode] = useState();
+  const [avatar, setAvatar] = useState();
+  const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`${server}/shop/create-shop`, {
+        name,
+        email,
+        password,
+        avatar,
+        zipCode,
+        address,
+        phoneNumber,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        navigate("/seller/login");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setAvatar();
+        setZipCode();
+        setAddress("");
+        setPhoneNumber();
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
+  };
+
+  const handleFileInputChange = (e) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setAvatar(reader.result);
+      }
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
   return (
-    <div className="seller-sign-up">
-      <div className="div-2">
-        <BottomDirectory className="bottom-directory-instance" property1="seller-pov" />
-        <div className="text-wrapper-9">Seller Sign Up</div>
-        <IconInputFields
-          className="icon-input-fields-instance"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Shop Name"
-        />
-        <div className="text-wrapper-10">Seller Account Information</div>
-        <PropertyInactive
-          className="property-1-inactive-filter"
-          text="I have read and accepted the Terms &amp; Conditions."
-        />
-        <div className="group-4">
-          <SelectPayment
-            checkoutSelectionText="Individual"
-            checkoutSelectionText1="Registered Business"
-            className="select-payment-method"
-            property1="default"
-          />
-          <div className="text-wrapper-11">Account Type</div>
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Register as Seller
+        </h2>
+      </div>
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem]">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Shop Name
+              </label>
+              <div className="mt-1">
+                <input
+                  type="name"
+                  name="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone Number
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  name="phone-number"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email address
+              </label>
+              <div className="mt-1">
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Address
+              </label>
+              <div className="mt-1">
+                <input
+                  type="address"
+                  name="address"
+                  required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Zip Code
+              </label>
+              <div className="mt-1">
+                <input
+                  type="number"
+                  name="zipcode"
+                  required
+                  value={zipCode}
+                  onChange={(e) => setZipCode(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Password
+              </label>
+              <div className="mt-1 relative">
+                <input
+                  type={visible ? "text" : "password"}
+                  name="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+                {visible ? (
+                  <AiOutlineEye
+                    className="absolute right-2 top-2 cursor-pointer"
+                    size={25}
+                    onClick={() => setVisible(false)}
+                  />
+                ) : (
+                  <AiOutlineEyeInvisible
+                    className="absolute right-2 top-2 cursor-pointer"
+                    size={25}
+                    onClick={() => setVisible(true)}
+                  />
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="avatar"
+                className="block text-sm font-medium text-gray-700"
+              >shop logo</label>
+              <div className="mt-2 flex items-center">
+                <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
+                  {avatar ? (
+                    <img
+                      src={avatar}
+                      alt="avatar"
+                      className="h-full w-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <RxAvatar className="h-8 w-8" />
+                  )}
+                </span>
+                <label
+                  htmlFor="file-input"
+                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                >
+                  <span>Upload a file</span>
+                  <input
+                    type="file"
+                    name="avatar"
+                    id="file-input"
+                    onChange={handleFileInputChange}
+                    className="sr-only"
+                  />
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Submit
+              </button>
+            </div>
+            <div className='w-full'>
+              <h4>Already have an account?</h4>
+              <Link to="/seller/login" className="text-blue-600 pl-2">
+                Sign in
+              </Link>
+            </div>
+          </form>
         </div>
-        <IconInputFields
-          className="icon-input-fields-2"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Account Hander First and Last Name"
-          text1="Jake"
-        />
-        <IconInputFields
-          className="icon-input-fields-3"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Account Handler Phone Number"
-          text1="Jake Smith"
-        />
-        <IconInputFields
-          className="icon-input-fields-4"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="E-mail Address"
-          text1="Jake Smith"
-        />
-        <IconInputFields
-          className="icon-input-fields-5"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Password"
-          text1="Jake Smith"
-        />
-        <IconInputFields
-          className="icon-input-fields-6"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Re-type&nbsp;&nbsp;e-mail address"
-          text1="Jake Smith"
-        />
-        <IconInputFields
-          className="icon-input-fields-7"
-          frameClassName="design-component-instance-node"
-          leadingIcon={false}
-          state="default"
-          text="Re-type&nbsp;&nbsp;Password"
-          text1="Jake Smith"
-        />
-        <Buttons className="buttons-7" property1="default-filled" text="SIGN UP" />
-        <TopBarSellerSide className="top-bar-seller-side-instance" property1="seller-sign-up" />
       </div>
     </div>
   );
 };
 
-
-export default SellerSignUp
+export default ShopCreate;
