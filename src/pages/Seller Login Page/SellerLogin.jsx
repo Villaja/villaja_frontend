@@ -28,7 +28,7 @@ const ShopLogin = () => {
       );
 
       toast.success("Login Success!");
-      navigate("/seller/dashboard");
+      navigate("/dashboard");
       window.location.reload(true);
     } catch (err) {
       toast.error(err.response.data.message);
@@ -135,7 +135,7 @@ const ShopLogin = () => {
             </div>
             <div className='w-full flex'>
               <h4>Not have any account?</h4>
-              <Link to="/seller/login" className="text-blue-600 pl-2">
+              <Link to="/shop/signup" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>

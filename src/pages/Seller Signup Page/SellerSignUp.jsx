@@ -32,7 +32,7 @@ const ShopCreate = () => {
       })
       .then((res) => {
         toast.success(res.data.message);
-        navigate("/seller/login");
+        navigate("/shop/login");
         setName("");
         setEmail("");
         setPassword("");
@@ -240,7 +240,7 @@ const ShopCreate = () => {
             </div>
             <div className='w-full'>
               <h4>Already have an account?</h4>
-              <Link to="/seller/login" className="text-blue-600 pl-2">
+              <Link to="/shop/login" className="text-blue-600 pl-2">
                 Sign in
               </Link>
             </div>
