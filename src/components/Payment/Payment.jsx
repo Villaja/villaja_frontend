@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/styles";
 import { useEffect } from "react";
-import {
-  CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -21,34 +15,30 @@ const Payment = () => {
   const [open, setOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const stripe = useStripe();
-  const elements = useElements();
+  
 
   useEffect(() => {
     const orderData = JSON.parse(localStorage.getItem("latestOrder"));
     setOrderData(orderData);
   }, []);
 
-  const createOrder = (data, actions) => {
-    return actions.order
-      .create({
-        purchase_units: [
-          {
-            description: "Sunflower",
-            amount: {
-              currency_code: "USD",
-              value: orderData?.totalPrice,
-            },
-          },
-        ],
-        // not needed if a shipping address is actually needed
-        application_context: {
-          shipping_preference: "NO_SHIPPING",
-        },
-      })
-      .then((orderID) => {
-        return orderID;
-      });
+
+
+  const createOrder = async () => {
+    // Create your order data as needed for Paystack
+    const order = {
+      email: user.email, // Replace with your user's email
+      amount: Math.round(orderData?.totalPrice * 100), // Amount in kobo (100 kobo = 1 Naira)
+      reference: `order-${new Date().getTime()}`, // Generate a unique referencee
+    };
+
+    try {
+      const response = await axios.post(`${server}/payment/process`, order);
+      const payment_link = response.data.payment_link;
+      window.location.href = payment_link; // Redirect to Paystack's payment page
+    } catch (error) {
+      toast.error(error.response.data.message || "Payment failed");
+    }
   };
 
   const order = {
@@ -100,55 +90,26 @@ const Payment = () => {
   };
 
   const paymentHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+  e.preventDefault();
 
-      const { data } = await axios.post(
-        `${server}/payment/process`,
-        paymentData,
-        config
-      );
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-      const client_secret = data.client_secret;
+    // Send a request to your server to create a Paystack payment link
+    const response = await axios.post(`${server}/payment/process`, paymentData, config);
+    const payment_link = response.data.payment_link;
 
-      if (!stripe || !elements) return;
-      const result = await stripe.confirmCardPayment(client_secret, {
-        payment_method: {
-          card: elements.getElement(CardNumberElement),
-        },
-      });
+    // Redirect the user to the Paystack payment page
+    window.location.href = payment_link;
+  } catch (error) {
+    toast.error(error.response.data.message || "Payment failed");
+  }
+};
 
-      if (result.error) {
-        toast.error(result.error.message);
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
-          order.paymnentInfo = {
-            id: result.paymentIntent.id,
-            status: result.paymentIntent.status,
-            type: "Credit Card",
-          };
-
-          await axios
-            .post(`${server}/order/create-order`, order, config)
-            .then((res) => {
-              setOpen(false);
-              navigate("/order/success");
-              toast.success("Order successful!");
-              localStorage.setItem("cartItems", JSON.stringify([]));
-              localStorage.setItem("latestOrder", JSON.stringify([]));
-              window.location.reload();
-            });
-        }
-      }
-    } catch (error) {
-      toast.error(error);
-    }
-  };
 
   const cashOnDeliveryHandler = async (e) => {
     e.preventDefault();

@@ -1,3 +1,5 @@
+
+
 // navigation Data
 export const navItems = [
     {
@@ -12,13 +14,22 @@ export const navItems = [
       title: "Products",
       url: "/products",
     },
-    {
-      title: "Events",
-      url: "/events",
-    },
+    
+    // {
+    //   title: "Events",
+    //   url: "/events",
+    // },
     {
       title: "FAQ",
       url: "/faq",
+    },
+    {
+      title: "Support",
+      url: "/support",
+    },
+    {
+      title: "Shop",
+      url: "/shop/login",
     },
   ];
   
@@ -191,73 +202,40 @@ export const navItems = [
   export const categoriesData = [
     {
       id: 1,
-      title: "Computers and Laptops",
-      subTitle: "",
+      title: "Phones",
+      subTitle: "Shop for smartphones from the best brands.",
       image_Url:
-        "https://cdn.shopify.com/s/files/1/1706/9177/products/NEWAppleMacbookProwithM1ProChip14InchLaptop2021ModelMKGQ3LL_A_16GB_1TBSSD_custommacbd.jpg?v=1659592838",
+        "https://i0.wp.com/abizot.com.ng/wp-content/uploads/2022/01/iphone-12-mini-purple-select-2021.png?fit=940%2C1112&ssl=1",
     },
     {
       id: 2,
-      title: "cosmetics and body care",
-      subTitle: "",
+      title: "Tablets",
+      subTitle: "iPads, Android and Educational Tablets",
       image_Url:
-        "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",
+        "https://www.lenovo.com/medias/lenovo-tab-m10-plus-gen-3-hero.png?context=bWFzdGVyfHJvb3R8NTgzNDgwfGltYWdlL3BuZ3xoZjkvaDNjLzEzNjc0NDgwMTczMDg2LnBuZ3w3M2ZjZTJlOGJlYWQ3ZWZlYzJlZmI4NDg0ODhjMGI2ZTdjNzJmNDFlMTY5ZGQ0OTYwZGFjYmZiMmFmMzRhMDE4",
     },
     {
       id: 3,
-      title: "Accesories",
-      subTitle: "",
+      title: "Computers",
+      subTitle: "PCs, Laptops and Desktops",
       image_Url:
-        "https://img.freepik.com/free-vector/ordering-goods-online-internet-store-online-shopping-niche-e-commerce-website-mother-buying-babies-clothes-footwear-toys-infant-accessories_335657-2345.jpg?w=2000",
+        "https://istore.com.ng/cdn/shop/products/airm1sil1_5000x.png?v=1689000011",
     },
     {
       id: 4,
-      title: "Cloths",
-      subTitle: "",
+      title: "Assessories",
+      subTitle: "For phones, tablets, computers and more!",
       image_Url:
-        "https://www.shift4shop.com/2015/images/industries/clothing/clothing-apparel.png",
+        "https://latalata.ng/image/cache/catalog/Product%20images/CASPER/44mm-700x700.jpg",
     },
     {
       id: 5,
-      title: "Shoes",
-      subTitle: "",
-      image_Url:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBQPQMVNRd6TtDkGs2dCri0Y-rxKkFOiEWw&usqp=CAU",
-    },
-    {
-      id: 6,
-      title: "Gifts",
-      subTitle: "",
-      image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
-    },
-    {
-      id: 7,
-      title: "Pet Care",
-      subTitle: "",
-      image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
-    },
-    {
-      id: 8,
-      title: "Mobile and Tablets",
-      subTitle: "",
-      image_Url:
-        "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
-    },
-    {
-      id: 9,
-      title: "Music and Gaming",
-      subTitle: "",
-      image_Url:
-        "https://static.vecteezy.com/system/resources/previews/011/996/555/original/3d-black-headphone-illustration-ecommerce-icon-png.png",
-    },
-    {
-      id: 10,
       title: "Others",
-      subTitle: "",
+      subTitle: "Any Other thing you may be here for ?",
       image_Url:
-        "https://searchspring.com/wp-content/uploads/2022/10/Hero-Image-Platform-Others-2.png",
+        "https://i5.walmartimages.com/asr/70f8c4b3-553e-4cb2-9587-6c26aee8a50e.446b9e594de5c30f674adbb92cde5e90.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
     },
+    
   ];
   
   // product Data

@@ -7,7 +7,7 @@ const Categories = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className={`${styles.section} hidden sm:block`}>
+      {/* <div className={`${styles.section} hidden sm:block`}>
         <div
           className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
         >
@@ -22,31 +22,30 @@ const Categories = () => {
               </div>
             ))}
         </div>
-      </div>
+      </div> */}
 
+<p className="text-2xl text-gray-800 font-bold px-20 mb-4 pt-10 mt-8">Shop By Category</p>
       <div
-        className={`${styles.section} bg-white p-6 rounded-lg hidden sm:block  mt-8 sm:mt-2 mb-12`}
+        className={`${styles.section} bg-white p-6 rounded-lg hidden sm:block  mt-8 sm:mt-2 mb-6`}
         id="categories"
       >
-        <div className="grid grid-cols-2 gap-[5px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-5 xl:gap-[30px]">
+       
+        <div className="flex gap-2">
+          
           {categoriesData &&
             categoriesData.map((i) => {
               const handleSubmit = (i) => {
                 navigate(`/products?category=${i.title}`);
               };
               return (
-                <div
-                  className="w-full h-[100px] flex items-center border-2 rounded-md px-6 justify-between cursor-pointer overflow-hidden"
-                  key={i.id}
-                  onClick={() => handleSubmit(i)}
-                >
-                  <p className="font-bold text-sm text-gray-600">{i.title}</p>
-                  <img
-                    src={i.image_Url}
-                    className="w-[80px] object-cover hidden sm:block"
-                    alt=""
-                  />
+                <div className="w-64 h-64 mx-auto text-center bg-white border-2 rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
+                  <div className="flex justify-center">
+                    <img src={i.image_Url} className="w-32 h-32 object-cover mb-4" alt="" />
+                  </div>
+                  <p className="text-lg font-semibold text-gray-800">{i.title}</p>
+                  <p className="text-sm text-gray-600 mt-2">{i.subTitle}</p>
                 </div>
+
               );
             })}
         </div>

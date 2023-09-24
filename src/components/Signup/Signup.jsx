@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 const Singup = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("")
+  const [lastname, setLastname] = useState("")
+  const [phoneNumber, setPhonenumber] = useState("")
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
@@ -35,19 +37,18 @@ const Singup = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${server}/user/create-user`, {
-        name,
+      await axios.post(`${server}/user/register`, {
+        firstname,
+        lastname,
+        phoneNumber,
         email,
         password,
         avatar,
       });
 
       toast.success("User registered successfully!");
-      navigate("/login");
-      setName("");
-      setEmail("");
-      setPassword("");
-      setAvatar(null);
+      navigate("/user/login");
+      
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
@@ -68,7 +69,7 @@ const Singup = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Register as a new user
+          Create Account
         </h2>
       </div>
       <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
@@ -79,7 +80,7 @@ const Singup = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Full Name
+                firstname
               </label>
               <div className="mt-1">
                 <input
@@ -87,8 +88,27 @@ const Singup = () => {
                   name="text"
                   autoComplete="name"
                   required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                lastname
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="text"
+                  autoComplete="name"
+                  required
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -109,6 +129,26 @@ const Singup = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone Number
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="text"
+                  autoComplete="name"
+                  required
+                  value={phoneNumber}
+                  onChange={(e) => setPhonenumber(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
               </div>
@@ -148,7 +188,7 @@ const Singup = () => {
             </div>
 
             <div>
-              <label
+              {/* <label
                 htmlFor="avatar"
                 className="block text-sm font-medium text-gray-700"
               ></label>
@@ -164,21 +204,8 @@ const Singup = () => {
                     <RxAvatar className="h-8 w-8" />
                   )}
                 </span>
-                <label
-                  htmlFor="file-input"
-                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                >
-                  <span>Upload a profile Pictre</span>
-                  <input
-                    type="file"
-                    name="avatar"
-                    id="file-input"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleFileInputChange}
-                    className="sr-only"
-                  />
-                </label>
-              </div>
+                
+              </div> */}
             </div>
 
             <div>
@@ -194,7 +221,7 @@ const Singup = () => {
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Already have an account?</h4>
-              <Link to="/login" className="text-blue-600 pl-2">
+              <Link to="/user/login" className="text-blue-600 pl-2">
                 Sign In
               </Link>
             </div>

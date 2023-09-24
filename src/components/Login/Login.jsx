@@ -16,19 +16,19 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     setLoading(true); // Start loading
     try {
       const response = await axios.post(
-        `${server}/user/login-user`,
+        `${server}/user/login`,
         {
           email,
           password,
         },
         { withCredentials: true }
       );
-
-      if (response.status === 200) {
+  
+      if (response.status === 200 || response.status === 201) {
         toast.success("Login Success!");
         navigate("/products");
         window.location.reload(true);
@@ -36,11 +36,18 @@ const Login = () => {
         toast.error("Login Failed");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      if (error.response) {
+        // Handle known error responses with status codes
+        toast.error(error.response.data.message);
+      } else {
+        // Handle unexpected errors (e.g., network issues)
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false); // Stop loading
     }
   };
+  
 
   return (
     <div>
@@ -54,7 +61,7 @@ const Login = () => {
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Login to your personal account
+          Sign In
         </h2>
       </div>
       <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-md">
@@ -147,7 +154,7 @@ const Login = () => {
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Not have any account?</h4>
-              <Link to="/sign-up" className="text-blue-600 pl-2">
+              <Link to="/user/signup" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>

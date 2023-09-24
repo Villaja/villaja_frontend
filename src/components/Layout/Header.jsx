@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
+import logo from '../../assets/villaja.png'
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -70,11 +71,7 @@ const Header = ({ activeHeading }) => {
           
           <div>
             <Link to="/">
-              {/* <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
-                alt=""
-              /> */}
-              <p className="font-bold text-xl text-gray-800">Villaja</p>
+             <img src={logo} alt="logo"/>
             </Link>
           </div>
           {/* navitems */}
@@ -121,7 +118,7 @@ const Header = ({ activeHeading }) => {
                     />
                   </Link>
                 ) : (
-                  <Link to="/login">
+                  <Link to="/user/login">
                     <CgProfile size={30} />
                   </Link>
                 )}
@@ -143,7 +140,7 @@ const Header = ({ activeHeading }) => {
           <div>
             {/* categories */}
              <div className={`${styles.button}`}>
-            <Link to={`${isAuthenticated ? "/profile" : "/login"}`}>
+            <Link to={`${isAuthenticated ? "/profile" : "/user/login"}`}>
               <h1 className="text-[#fff] flex items-center">
                 {isAuthenticated ? "Dashboard" : "Sign In"}{" "}
                 <IoIosArrowForward className="ml-1" />
@@ -233,7 +230,7 @@ const Header = ({ activeHeading }) => {
           </div>
           <div>
             <Link to="/">
-              <p className="text-xl font-bold">Multi Shopper</p>
+              <p className="text-xl font-bold"></p>
             </Link>
           </div>
           <div>
@@ -337,13 +334,13 @@ const Header = ({ activeHeading }) => {
                 ) : (
                   <>
                     <Link
-                      to="/login"
+                      to="/user/login"
                       className="text-[18px] pr-[10px] text-[#000000b7]"
                     >
-                      Login /
+                      Login 
                     </Link>
                     <Link
-                      to="/sign-up"
+                      to="/user/signup"
                       className="text-[18px] text-[#000000b7]"
                     >
                       Sign up

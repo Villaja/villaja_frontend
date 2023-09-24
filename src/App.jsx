@@ -74,39 +74,26 @@ const App = () => {
 
   
     <BrowserRouter>
-      {/* {Apikey && (
-        <Elements stripe={loadStripe(stripeApikey)}>
-          <Routes>
-            <Route
-              path="/payment"
-              element={
-                <ProtectedRoute>
-                  <PaymentPage />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Elements>
-      )} */}
+     
       {/* <VillajaHeader/> */}
       <Routes>
-        <Route path="/" element={<CustomerHomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/user/login" element={<CustomerLogin />} />
         <Route path="/user/signup" element={<CustomerSignUp />} />
-        {/* <Route
+        <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
         <Route
           path="/seller/activation/:activation_token"
           element={<SellerActivationPage />}
-        /> */}
-        {/* <Route path="/products" element={<ProductsPage />} />
+        /> 
+        <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/faq" element={<FAQPage />} /> */}
-        {/* <Route
+        <Route path="/faq" element={<FAQPage />} />
+        <Route
           path="/checkout"
           element={
             <ProtectedRoute>
@@ -122,16 +109,24 @@ const App = () => {
               <ProfilePage />
             </ProtectedRoute>
           }
-        /> */}
-        {/* <Route
+        /> 
+        <Route
+              path="/payment"
+              element={
+                <ProtectedRoute>
+                  <PaymentPage />
+                </ProtectedRoute>
+              }
+            />
+        <Route
           path="/inbox"
           element={
             <ProtectedRoute>
               <UserInbox />
             </ProtectedRoute>
           }
-        /> */}
-        {/* <Route
+        /> 
+        <Route
           path="/user/order/:id"
           element={
             <ProtectedRoute>
@@ -147,7 +142,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/shop/preview/:id" element={<ShopPreviewPage />} /> */}
+        <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
 
 
         {/* Seller Routes */}
@@ -260,7 +255,7 @@ const App = () => {
         />
         
       </Routes>
-      <VillajaFooter/>
+      {/* <VillajaFooter/> */}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
