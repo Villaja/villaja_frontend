@@ -166,10 +166,10 @@ const ShippingInfo = ({
       <form>
         <div className="w-full flex pb-3">
           <div className="w-[50%]">
-            <label className="block pb-2">Full Name</label>
+            <label className="block pb-2">Name</label>
             <input
               type="text"
-              value={user && user.name}
+              value={user && user.firstname}
               required
               className={`${styles.input} !w-[95%]`}
             />
