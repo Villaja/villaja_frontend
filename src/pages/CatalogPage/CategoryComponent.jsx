@@ -63,7 +63,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 </div>
             </div>
         </div>
-        <div className="filter-sub filter-sub-discount">
+        {/* <div className="filter-sub filter-sub-discount">
             <div className="filter-sub-title">
                 Discount
             </div>
@@ -78,7 +78,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 </div>
                 
             </div>
-        </div>
+        </div> */}
         <div className="filter-sub filter-sub-color">
             <div className="filter-sub-title">
                 Color
