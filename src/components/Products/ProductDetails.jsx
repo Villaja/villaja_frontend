@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillHeart,
   AiOutlineHeart,
@@ -18,6 +18,7 @@ import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
+import './productDetails.css'
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -113,18 +114,18 @@ const ProductDetails = ({ data }) => {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="">
       {data ? (
         <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-5">
-            <div className="block w-full 800px:flex">
+            <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
               <div className="w-full 800px:w-[50%]">
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-[80%]"
+                  className="w-[100%] 800px:w-[70%]"
                 />
-                <div className="w-full flex">
+                <div className="w-full flex" style={{gap:"5px"}}>
                   {data &&
                     data.images.map((i, index) => (
                       <div
@@ -135,7 +136,7 @@ const ProductDetails = ({ data }) => {
                         <img
                           src={`${i?.url}`}
                           alt=""
-                          className="h-[200px] overflow-hidden mr-3 mt-3"
+                          className="h-[100px] overflow-hidden"
                           onClick={() => setSelect(index)}
                         />
                       </div>
@@ -149,12 +150,15 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
-                <p>{data.description}</p>
+                <p className="mb-10"></p>
+                <p>Sold by: <span className={`${styles.shop_name} pb-1 pt-1`}>
+                        {data.shop.name.toUpperCase()}
+                      </span></p>
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`}>
+                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"3rem"}}>
                     ₦{data.discountPrice.toLocaleString()}
                   </h4>
-                  <h3 className={`${styles.price}`}>
+                  <h3 className={`${styles.price}`} >
                     {"₦" + data.originalPrice?.toLocaleString() ? data.originalPrice?.toLocaleString()  : null}
                   </h3>
                 </div>
@@ -162,16 +166,16 @@ const ProductDetails = ({ data }) => {
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>
                     <button
-                      className="bg-gradient-to-r mr-2 from-teal-400 to-teal-500 text-white font-bold rounded-lg px-4 py-2 hover:opacity-75 transition duration-300 ease-in-out"
+                      className=" cart-action-btn  transition duration-300 ease-in-out " 
                       onClick={decrementCount}
                     >
                       -
                     </button>
-                    <span className="bg-gray-200 text-gray-800 rounded-lg font-medium px-4 py-[11px]">
+                    <span className=" text-gray-800 rounded-lg font-medium px-4 py-[11px]">
                       {count}
                     </span>
                     <button
-                      className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-lg ml-2 px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className=" cart-action-btn  ml-2"
                       onClick={incrementCount}
                     >
                       +
@@ -198,14 +202,14 @@ const ProductDetails = ({ data }) => {
                   </div>
                 </div>
                 <div
-                  className={`${styles.button} !mt-6 !rounded !h-11 flex items-center`}
+                  className={`addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
                   onClick={() => addToCartHandler(data._id)}
                 >
                   <span className="text-white flex items-center">
-                    Add to cart <AiOutlineShoppingCart className="ml-1" />
+                    ADD TO CART 
                   </span>
                 </div>
-                <div className="flex items-center pt-8">
+                {/* <div className="flex items-center pt-8">
                   <Link to={`/shop/preview/${data?.shop._id}`}>
                     <img
                       src={`${data?.shop?.avatar?.url}`}
@@ -231,7 +235,7 @@ const ProductDetails = ({ data }) => {
                       Send A DM<AiOutlineMessage className="ml-1" />
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -258,7 +262,7 @@ const ProductDetailsInfo = ({
   const [active, setActive] = useState(1);
 
   return (
-    <div className="bg-[#f5f6fb] px-3 800px:px-10 py-2 rounded">
+    <div className="bg-[#ffffff] px-3 800px:px-10 py-2 rounded">
       <div className="w-full flex justify-between border-b pt-10 pb-2">
         <div className="relative">
           <h5
@@ -267,7 +271,7 @@ const ProductDetailsInfo = ({
             }
             onClick={() => setActive(1)}
           >
-            Product Details
+            About This Product
           </h5>
           {active === 1 ? (
             <div className={`${styles.active_indicator}`} />
@@ -280,7 +284,7 @@ const ProductDetailsInfo = ({
             }
             onClick={() => setActive(2)}
           >
-            Product Reviews
+            Product Specifications
           </h5>
           {active === 2 ? (
             <div className={`${styles.active_indicator}`} />

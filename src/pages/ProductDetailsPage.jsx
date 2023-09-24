@@ -5,6 +5,7 @@ import Header from "../components/Layout/Header";
 import ProductDetails from "../components/Products/ProductDetails";
 import SuggestedProduct from "../components/Products/SuggestedProduct";
 import { useSelector } from "react-redux";
+import VillajaFooter from "../components/VillajaFooter/VillajaFooter";
 
 const ProductDetailsPage = () => {
   const { allProducts } = useSelector((state) => state.products);
@@ -35,7 +36,8 @@ const ProductDetailsPage = () => {
             </>
           )
         }
-      <Footer />
+      {/* <Footer /> */}
+      <VillajaFooter/>
     </div>
   );
 };

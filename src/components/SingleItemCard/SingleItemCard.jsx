@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SingleItemCard = ({data}) => {
 
@@ -12,6 +14,7 @@ const SingleItemCard = ({data}) => {
   const [click, setClick] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const addToCartHandler = (id) => {
     const isItemExists = cart && cart.find((i) => i._id === id);
@@ -28,7 +31,7 @@ const SingleItemCard = ({data}) => {
     }
   };
   return (
-    <div className="single-item-container">
+    <div className="single-item-container" onClick={() => navigate(`/product/${data._id}`)}>
         <div className="single-item-img">
             <img src={`${data.images && data.images[0]?.url}`} alt="asdf" />
         </div>
