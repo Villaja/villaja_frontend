@@ -79,9 +79,9 @@ const ProductCard = ({ data,isEvent }) => {
             {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
           </p>
 
-          <div className="px-3 flex">
+          {/* <div className="px-3 flex">
             <Ratings rating={data?.ratings} />
-          </div>
+          </div> */}
 
           <div className="py-2 px-3 flex items-center justify-between">
             <div className="flex">
@@ -97,14 +97,14 @@ const ProductCard = ({ data,isEvent }) => {
             </h4>
             </div>
             <span className="hidden sm:block font-semibold pl-2 text-xs text-[#68d284]">
-              {/* {data?.sold_out} in stock */}
+              
               in stock
             </span>
           </div>
         </Link>
 
         {/* side options */}
-        <div className="px-4 hidden sm:block ">
+        {/* <div className="px-4 hidden sm:block ">
           {click ? (
             <AiFillHeart
               size={22}
@@ -137,7 +137,7 @@ const ProductCard = ({ data,isEvent }) => {
             title="Add to cart"
           />
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
-        </div>
+        </div> */}
       </div>
     </>
   );

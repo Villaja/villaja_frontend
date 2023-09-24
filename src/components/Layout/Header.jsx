@@ -1,5 +1,18 @@
 
 
+
+// import HeroPic from '../../'
+import HeroPic from '../../assets/hero_iphonepic.svg'
+import villajaLogoHeader from '../../assets/villaja_logo.svg'
+import villajaLogo from '../../assets/villaja_footer_logo.svg'
+import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderDropdown'
+
+
+
+
+
+import { useNavigate } from 'react-router-dom'
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
@@ -20,7 +33,14 @@ import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
 import logo from '../../assets/villaja.png'
 
+import './Header.css'
+import '../../components/VillajaHeader/villajaHeader.css'
+
 const Header = ({ activeHeading }) => {
+
+  const navigate = useNavigate()
+    const [dropdownHoverState,setHoverState] = useState(0)
+
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { isSeller } = useSelector((state) => state.seller);
   
@@ -55,6 +75,11 @@ const Header = ({ activeHeading }) => {
     }
   });
 
+  const submitHandle = (i) => {
+    navigate(`/products?category=${i.target.innerHTML.split(" ")[0]}`);
+    window.location.reload();
+  };
+
   return (
     <>
       <div className={`${styles.section}`}>
@@ -62,24 +87,43 @@ const Header = ({ activeHeading }) => {
       </div>
       <div
         className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full text-gray-700 bg-white shadow-sm h-[60px]`}
+          active === true ? "vh-header-container" : null
+        } transition `}
       >
         <div
-          className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
+          className={`vh-header-container`}
         >
           
-          <div>
+          {/* <div>
             <Link to="/">
              <img src={logo} alt="logo"/>
             </Link>
-          </div>
+          </div> */}
           {/* navitems */}
-          <div className={`${styles.noramlFlex}`}>
+          {/* <div className={`${styles.noramlFlex}`}>
             <Navbar active={activeHeading} />
-          </div>
+          </div> */}
 
-          <div className="flex">
+          <div className="vh-item vh-logo">
+           <Link to={'/'}>
+                <img src={villajaLogoHeader} alt="" />
+            </Link>
+        </div>
+
+        <div className="vh-menu">
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}> <div>Phones &nbsp;</div>
+            {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
+            </div>
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
+            {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
+            {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
+            {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["EarHeadphones","Smart Watches","Speakers","Micropphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
+            <div className="vh-item vh-menu-item">Support</div>
+        </div>
+
+          <div className="flex" style={{gap:"2rem"}}>
             <div className={`${styles.noramlFlex}`}>
               <div
                 className="relative cursor-pointer mr-[15px]"
@@ -136,82 +180,15 @@ const Header = ({ activeHeading }) => {
         </div>
         
       </div>
-      <div className="hidden 800px:h-[30px] px-16 py-4 800px:my-[30px] 800px:flex items-center justify-between">
-          <div>
-            {/* categories */}
-             <div className={`${styles.button}`}>
-            <Link to={`${isAuthenticated ? "/profile" : "/user/login"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isAuthenticated ? "Dashboard" : "Sign In"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
-          </div>
-          </div>
-          {/* search box */}
-          <div className="w-[50%] relative">
-            <input
-              type="text"
-              placeholder="Search Products, Brands and Categories"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="h-[58px] w-full px-2  pl-6 text-lg border-gray-200 border-[2px] rounded-md"
-            />
-            <AiOutlineSearch
-              size={30}
-              className="absolute right-2 top-3 cursor-pointer"
-            />
-            {searchData && searchData.length !== 0 ? (
-              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
-                {searchData &&
-                  searchData.map((i, index) => {
-                    return (
-                      <Link to={`/product/${i._id}`}>
-                        <div className="w-full flex items-start-py-3">
-                          <img
-                            src={`${i.images[0]?.url}`}
-                            alt=""
-                            className="w-[40px] h-[40px] mr-[10px]"
-                          />
-                          <h1>{i.name}</h1>
-                        </div>
-                      </Link>
-                    );
-                  })}
-              </div>
-            ) : null}
-          </div>
 
-          {/* <div className={`${styles.button}`}>
-            <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
-              <h1 className="text-[#fff] flex items-center">
-                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
-                <IoIosArrowForward className="ml-1" />
-              </h1>
-            </Link>
-          </div> */}
-          <div onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[58px] w-[270px] hidden 1000px:block">
-              <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
-              <button
-                className={`h-[100%] w-full flex justify-between mb-4 items-center border-gray-200 border-[2px] pl-10 bg-white font-sans text-md font-[500] select-none rounded`}
-              >
-                All Categories
-              </button>
-              <IoIosArrowDown
-                size={20}
-                className="absolute right-2 top-4 cursor-pointer"
-                onClick={() => setDropDown(!dropDown)}
-              />
-              {dropDown ? (
-                <DropDown
-                  categoriesData={categoriesData}
-                  setDropDown={setDropDown}
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
+
+
+
+
+
+
+
+
 
       {/* mobile header */}
       <div
@@ -352,6 +329,102 @@ const Header = ({ activeHeading }) => {
           </div>
         )}
       </div>
+
+      {/*Hero Section */}
+
+      <div className={`hero-container`}>
+        <div className="hero-pic-container">
+            <img src={HeroPic} alt="" />
+        </div>
+        <div className="hero-search-section">
+            <div className="hs-logo">
+                <img src={villajaLogo} alt="" />
+            </div>
+            <div className="hs-text"><span>Phones</span> <span>from sellers you can trust</span></div>
+            <div className="w-[100%] relative">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="h-[58px] w-full px-2  pl-6 text-lg border-gray-200 border-[2px] rounded-md"
+              />
+              <AiOutlineSearch
+                size={30}
+                className="absolute right-2 top-3 cursor-pointer"
+              />
+              {searchData && searchData.length !== 0 ? (
+                <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                  {searchData &&
+                    searchData.map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`}>
+                          <div className="w-full flex items-start-py-3">
+                            <img
+                              src={`${i.images[0]?.url}`}
+                              alt=""
+                              className="w-[40px] h-[40px] mr-[10px]"
+                            />
+                            <h1>{i.name}</h1>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              ) : null}
+            </div>
+        </div>
+      </div>
+
+
+
+      {/* <div className="hidden 800px:h-[30px] px-16 py-4 800px:my-[30px] 800px:flex items-center justify-between">
+        
+          <div onClick={() => setDropDown(!dropDown)}>
+            <div className="relative h-[58px] w-[270px] hidden 1000px:block">
+              <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
+              <button
+                className={`h-[100%] w-full flex justify-between mb-4 items-center border-gray-200 border-[2px] pl-10 bg-white font-sans text-md font-[500] select-none rounded`}
+              >
+                All Categories
+              </button>
+              <IoIosArrowDown
+                size={20}
+                className="absolute right-2 top-4 cursor-pointer"
+                onClick={() => setDropDown(!dropDown)}
+              />
+              {dropDown ? (
+                <DropDown
+                  categoriesData={categoriesData}
+                  setDropDown={setDropDown}
+                />
+              ) : null}
+            </div>
+          </div>
+        </div> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+      
     </>
   );
 };

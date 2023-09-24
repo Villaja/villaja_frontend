@@ -38,6 +38,12 @@ const Categories = () => {
                 navigate(`/products?category=${i.title}`);
               };
               return (
+
+
+
+
+
+                
                 <div className="w-64 h-64 mx-auto text-center bg-white border-2 rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
                   <div className="flex justify-center">
                     <img src={i.image_Url} className="w-32 h-32 object-cover mb-4" alt="" />
