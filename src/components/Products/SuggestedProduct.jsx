@@ -10,7 +10,7 @@ const SuggestedProduct = ({ data }) => {
 
   useEffect(() => {
     const d =
-    allProducts && allProducts.filter((i) => i.category === data.category);
+    allProducts && allProducts.slice(0,5).filter((i) => i.category === data.category);
     setProductData(d);
   }, []);
 

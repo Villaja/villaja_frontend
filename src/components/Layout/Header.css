@@ -3,10 +3,10 @@
     top: 0;
     left: 0;
     z-index: 1;
-    width: 100%;
+    /* width: 100%;
     background-color: red;
     display: flex;
-    justify-content: center;
+    justify-content: center; */
 }
 
 Link {
@@ -17,7 +17,7 @@ Link {
     position: relative;
     /* width: 100%; */
     background-color: #ffffff;
-    background-color: #0077B6;
+    /* background-color: #0077B6; */
     display: flex;
     align-items: center;
     justify-content: center;

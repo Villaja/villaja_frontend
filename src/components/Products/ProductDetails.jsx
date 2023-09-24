@@ -334,7 +334,7 @@ const ProductDetailsInfo = ({
 
           <div className="w-full flex justify-center">
             {data && data.reviews.length === 0 && (
-              <h5>No Reviews have for this product!</h5>
+              <h5>No Specifications for this product!</h5>
             )}
           </div>
         </div>
@@ -353,7 +353,7 @@ const ProductDetailsInfo = ({
                 <div className="pl-3">
                   <h3 className={`${styles.shop_name}`}>{data.shop.name}</h3>
                   <h5 className="pb-2 text-[15px]">
-                    ({averageRating}/5) Ratings
+                    {/* ({averageRating}/5) Ratings */}
                   </h5>
                 </div>
               </div>
@@ -374,17 +374,17 @@ const ProductDetailsInfo = ({
                   {products && products.length}
                 </span>
               </h5>
-              <h5 className="font-[600] pt-3">
+              {/* <h5 className="font-[600] pt-3">
                 Total Reviews:{" "}
                 <span className="font-[500]">{totalReviewsLength}</span>
-              </h5>
-              <Link to="/">
+              </h5> */}
+              {/* <Link to="/">
                 <div
                   className={`${styles.button} !rounded-[4px] !h-[39.5px] mt-3`}
                 >
                   <h4 className="text-white">Visit Shop</h4>
                 </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
