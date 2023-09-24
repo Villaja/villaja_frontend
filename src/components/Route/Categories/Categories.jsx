@@ -25,6 +25,7 @@ const Categories = () => {
       </div> */}
 
 <p className="text-2xl text-gray-800 font-bold px-20 mb-4 pt-10 mt-8">Shop By Category</p>
+
       <div
         className={`${styles.section} bg-white p-6 rounded-lg hidden sm:block  mt-8 sm:mt-2 mb-6`}
         id="categories"
