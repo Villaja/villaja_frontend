@@ -1,4 +1,4 @@
-import './villajaheaderDropdown.css'
+import './villajaHeaderDropdown.css'
 
 const VillajaHeaderDropdown = ({categoryNames}) => {
   return (
