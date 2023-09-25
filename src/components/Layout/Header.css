@@ -3,10 +3,10 @@
     top: 0;
     left: 0;
     z-index: 1;
-    /* width: 100%;
-    background-color: red;
+    width: 100%;
+    /* background-color: red; */
     display: flex;
-    justify-content: center; */
+    justify-content: center; 
 }
 
 Link {
@@ -15,7 +15,7 @@ Link {
 
 .vh-header-container {
     position: relative;
-    /* width: 100%; */
+    width: 100%;
     background-color: #ffffff;
     /* background-color: #0077B6; */
     display: flex;
@@ -25,6 +25,7 @@ Link {
     gap: 5rem;
     transition: all 0.3s ease;
     box-shadow: 0 24px 36px #34578c12;
+    /* max-width: 1200px; */
 }
 
 
