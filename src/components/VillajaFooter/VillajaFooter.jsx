@@ -10,7 +10,7 @@ const VillajaFooter = () => {
             <img src={villajaLogo} alt="Villaja Logo" />
         </div>
         <div className="vf-menu">
-            <div className="vf-menu-item"><Link to="/shop/login">Sell of Villaja</Link></div>
+            <div className="vf-menu-item"><Link to="/shop/login">Sell on Villaja</Link></div>
             <div className="vf-menu-item">Help</div>
             <div className="vf-menu-item">Terms of Use</div>
             <div className="vf-menu-item">Privacy Policy</div>

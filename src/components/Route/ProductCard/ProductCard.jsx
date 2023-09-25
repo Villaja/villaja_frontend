@@ -76,12 +76,12 @@ const ProductCard = ({ data,isEvent }) => {
         </Link>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <p className="pb-3 text-lg text-gray-700 font-bold px-3">
-            {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
+            {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
           </p>
 
-          {/* <div className="px-3 flex">
+          <div className="px-3 flex">
             <Ratings rating={data?.ratings} />
-          </div> */}
+          </div>
 
           <div className="py-2 px-3 flex items-center justify-between">
             <div className="flex">
@@ -98,13 +98,12 @@ const ProductCard = ({ data,isEvent }) => {
             </div>
             <span className="hidden sm:block font-semibold pl-2 text-xs text-[#68d284]">
               
-              in stock
             </span>
           </div>
         </Link>
 
         {/* side options */}
-        {/* <div className="px-4 hidden sm:block ">
+        <div className="px-4 hidden sm:block ">
           {click ? (
             <AiFillHeart
               size={22}
@@ -122,7 +121,7 @@ const ProductCard = ({ data,isEvent }) => {
               title="Add to wishlist"
             />
           )}
-          <AiOutlineEye
+          {/* <AiOutlineEye
             size={22}
             className="cursor-pointer absolute right-2 top-14"
             onClick={() => setOpen(!open)}
@@ -135,9 +134,9 @@ const ProductCard = ({ data,isEvent }) => {
             onClick={() => addToCartHandler(data._id)}
             color="#444"
             title="Add to cart"
-          />
+          /> */}
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
-        </div> */}
+        </div>
       </div>
     </>
   );
