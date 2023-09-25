@@ -59,17 +59,11 @@ const Singup = () => {
 
   return (
     <div>
-    <div className="bg-white shadow-lg px-8 py-5">
-    <Link to='/' className="font-bold text-xl">
-      Villaja
-    </Link>
-  </div>
-
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Create Account
+          Welcome To Villaja
         </h2>
       </div>
       <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
@@ -211,8 +205,8 @@ const Singup = () => {
             <div>
             <button
               type="submit"
-              className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-                loading ? "bg-gray-400 cursor-not-allowed" : "bg-gray-800 hover:bg-gray-900"
+              className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-md text-white ${
+                loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
               }`}
               disabled={loading}
             >

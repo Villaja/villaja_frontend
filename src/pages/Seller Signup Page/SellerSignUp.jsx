@@ -5,6 +5,9 @@ import axios from "axios";
 import { server } from "../../utils/server";
 import { toast } from "react-toastify";
 import { RxAvatar } from "react-icons/rx";
+import VillajaFooter from '../../components/VillajaFooter/VillajaFooter.jsx'
+import VillajaHeader from '../../components/VillajaHeader/VillajaHeader.jsx'
+
 
 const ShopCreate = () => {
   const [email, setEmail] = useState("");
@@ -59,10 +62,12 @@ const ShopCreate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div>
+    <VillajaHeader/>
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Register as Seller
+          Villaja Seller Center
         </h2>
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem]">
@@ -230,6 +235,22 @@ const ShopCreate = () => {
               </div>
             </div>
 
+            <div className='flex'>
+                <input
+                  type="checkbox"
+                  name="remember-me"
+                  id="remember-me"
+                  required
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                />
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-900"
+                >
+                  Accept Our Terms and conditions
+                </label>
+              </div>
+
             <div>
               <button
                 type="submit"
@@ -238,8 +259,8 @@ const ShopCreate = () => {
                 Submit
               </button>
             </div>
-            <div className='w-full'>
-              <h4>Already have an account?</h4>
+            <div className='w-full flex'>
+              <h4>Already have have seller account?</h4>
               <Link to="/shop/login" className="text-blue-600 pl-2">
                 Sign in
               </Link>
@@ -247,6 +268,8 @@ const ShopCreate = () => {
           </form>
         </div>
       </div>
+    </div>
+    <VillajaFooter/>
     </div>
   );
 };

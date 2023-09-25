@@ -6,6 +6,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -52,16 +53,11 @@ const Login = () => {
   return (
     <div>
 
-      <div className="bg-white shadow-lg px-8 py-5">
-        <Link to='/' className="font-bold text-xl">
-          Villaja
-        </Link>
-      </div>
-
-      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      
+      <div className="min-h-screen flex flex-col justify-center py-6 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Sign In
+          Welcome Back
         </h2>
       </div>
       <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-md">
@@ -144,8 +140,8 @@ const Login = () => {
             <div>
             <button
         type="submit"
-        className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-          loading ? "bg-gray-400 cursor-not-allowed" : "bg-gray-800 hover:bg-gray-900"
+        className={`group relative w-full h-[40px] shadow-md flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
+          loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
         }`}
         disabled={loading}
       >
@@ -153,7 +149,7 @@ const Login = () => {
       </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Not have any account?</h4>
+              <h4>Don't have any account?</h4>
               <Link to="/user/signup" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
