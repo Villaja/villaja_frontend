@@ -1,5 +1,6 @@
 import './villajaFooter.css'
 import villajaLogo from '../../assets/villaja_footer_logo.svg'
+import { Link } from 'react-router-dom'
 
 
 const VillajaFooter = () => {
@@ -9,7 +10,7 @@ const VillajaFooter = () => {
             <img src={villajaLogo} alt="Villaja Logo" />
         </div>
         <div className="vf-menu">
-            <div className="vf-menu-item">Sell of Villaja</div>
+            <div className="vf-menu-item"><Link to="/shop/login">Sell of Villaja</Link></div>
             <div className="vf-menu-item">Help</div>
             <div className="vf-menu-item">Terms of Use</div>
             <div className="vf-menu-item">Privacy Policy</div>

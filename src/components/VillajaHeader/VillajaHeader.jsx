@@ -16,7 +16,7 @@ const VillajaHeader = () => {
     const location = useLocation()
 
   return (
-    <div className="vh-header-wrapper" style={location.pathname.split('/')[1]=='seller' || location.pathname.split('/')[1]=='login' ?{display:"none"}:null}>
+    <div className="vh-header-wrapper" style={location.pathname.split('/')[1]=='seller' || location.pathname.split('/')[1]=='login' || location.pathname.split('/')[1]=='signup' ?{display:"none"}:null}>
 
     <div className="vh-header-container">
         <div className="vh-item vh-logo">

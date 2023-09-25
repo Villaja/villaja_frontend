@@ -17,7 +17,7 @@ const CategoryComponent = ({category,isMobile}) => {
         <div className="filter-cat">
             {category}
         </div>
-        <div className="filter-sub filter-sub=cat">
+        {/* <div className="filter-sub filter-sub=cat">
             
 
                 {catData[0]['subcat'].map((cat,id) => {
@@ -27,7 +27,7 @@ const CategoryComponent = ({category,isMobile}) => {
                     </div>
                 </div>
             })}
-        </div>
+        </div> */}
 
         <div className="filter-sub filter-sub-brand">
             <div className="filter-sub-title">
@@ -63,7 +63,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 </div>
             </div>
         </div>
-        <div className="filter-sub filter-sub-discount">
+        {/* <div className="filter-sub filter-sub-discount">
             <div className="filter-sub-title">
                 Discount
             </div>
@@ -78,7 +78,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 </div>
                 
             </div>
-        </div>
+        </div> */}
         <div className="filter-sub filter-sub-color">
             <div className="filter-sub-title">
                 Color

@@ -7,6 +7,9 @@ import SellerNav from './components/SellerNav/SellerNav';
 import SellerNewProduct from './pages/SellerNewProduct/SellerNewProduct';
 import SellerBalance from './pages/SellerBalance/SellerBalance';
 import SellerCustomer from  './pages/SellerCustomer/SellerCustomer'
+import SellerSignUp from './pages/Seller Signup Page/SellerSignUp';
+import SellerLogin from './pages/Customer Login Page/CustomerLogin';
+import SellerDashboard from './pages/SellerDashboard/Dashboard'
 import {useState } from 'react';
 import './seller.css'
 
@@ -24,9 +27,12 @@ const Seller = ({setIsSeller}) => {
                 <Routes>
                     <Route exact path='/' element={<SellerHome/>}/>
                     <Route exact path= "/inventory" element={<SellerInventory/>}/>
+                    <Route exact path='/signup' element={<SellerSignUp/>}/>
+                    <Route exact path='/login' element={<SellerLogin/>}/>
                     <Route exact path= "/new-product/:category" element={<SellerNewProduct/>}/>
                     <Route exact path= "/balance" element={<SellerBalance/>}/>
                     <Route exact path= "/customers" element={<SellerCustomer/>}/>
+                    <Route exact path= "/dashboard" element={<SellerDashboard/>}/>
                 </Routes>
                 
             </div>
