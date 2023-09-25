@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Signup from "../../components/Signup/Signup";
+import VillajaFooter from '../../components/VillajaFooter/VillajaFooter.jsx'
+import VillajaHeader from '../../components/VillajaHeader/VillajaHeader.jsx'
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -14,7 +16,9 @@ const SignupPage = () => {
   }, [])
   return (
     <div>
+      <VillajaHeader/>
         <Signup />
+      <VillajaFooter/>
     </div>
   )
 }
