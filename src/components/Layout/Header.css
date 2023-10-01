@@ -1,12 +1,12 @@
 .vh-header-wrapper {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
+    /* position: sticky; */
+    /* top: 0; */
+    /* left: 0; */
+    /* z-index: 1; */
+    /* width: 100%; */
     /* background-color: red; */
-    display: flex;
-    justify-content: center; 
+    /* display: flex;
+    justify-content: center;  */
 }
 
 Link {
@@ -41,6 +41,12 @@ Link {
     cursor: pointer;
     padding: 0.97rem 0;
     height: 100%;
+    z-index: 1000;
+}
+
+.vh-menu-item:hover
+{
+    /* background-color: red; */
 }
 
 .vh-menu {
@@ -78,6 +84,7 @@ Link {
     color: white;
     transition: color 0.3s ease;
 }
+
 
 .vh-header-container:has(div:hover) .aux-img {
     filter: invert(1);

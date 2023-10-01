@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { brandingData, categoriesData } from "../../../static/data";
 import styles from "../../../styles/styles";
+import './Categories.css'
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -45,9 +46,9 @@ const Categories = () => {
 
 
                 
-                <div className="w-64 h-64 mx-auto text-center bg-white border-2 rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
-                  <div className="flex justify-center">
-                    <img src={i.image_Url} className="w-32 h-32 object-cover mb-4" alt="" />
+                <div className="cat-comp-card w-64 h-64 mx-auto text-center bg-white border-2 rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
+                  <div className="cat-comp-img-container flex justify-center">
+                    <img src={i.image_Url} className="cat-comp-img w-32 h-32 object-cover mb-4" alt="" />
                   </div>
                   <p className="text-lg font-semibold text-gray-800">{i.title}</p>
                   <p className="text-sm text-gray-600 mt-2">{i.subTitle}</p>

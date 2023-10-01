@@ -6,9 +6,9 @@ import HeroPic from '../../assets/hero_iphonepic.svg'
 import villajaLogoHeader from '../../assets/villaja_logo.svg'
 import villajaLogo from '../../assets/villaja_footer_logo.svg'
 import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderDropdown'
+import ReactTextTransition, { presets } from "react-text-transition";
 
-
-
+import { useEffect } from 'react'
 
 
 import { useNavigate } from 'react-router-dom'
@@ -54,6 +54,9 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
+  const [textIndex,setTextIndex] = useState(0)
+
+  const texts = ['Phones','Gadgets','Tablets']
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -80,6 +83,29 @@ const Header = ({ activeHeading }) => {
     window.location.reload();
   };
 
+  function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setTextIndex(getRandomInt(0, texts.length - 1));
+      // if(textIndex >= texts.length) {
+      //   setTextIndex(0); console.log(textIndex);}
+      // else {
+      //   setTextIndex(textIndex + 1);
+      //   console.log('settoh' + textIndex)
+      // }
+      // setParagraphIndex(getRandomNumber(0, paragraphs.length));
+      // setTextFastIndex(getRandomNumber(0, paragraphs.length));
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <>
       <div className={`${styles.section}`}>
@@ -111,7 +137,7 @@ const Header = ({ activeHeading }) => {
         </div>
 
         <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}> <div>Phones &nbsp;</div>
+            <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
             </div>
             <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
@@ -158,7 +184,7 @@ const Header = ({ activeHeading }) => {
                     <CgProfile size={30} />
                   </Link>
                 ) : (
-                  <Link className="rounded-lg px-5 py-2 bg-blue-600 text-white" to="/user/login">
+                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login">
                     Sign In
                   </Link>
                 )}
@@ -336,7 +362,21 @@ const Header = ({ activeHeading }) => {
             <div className="hs-logo">
                 <img src={villajaLogo} alt="" />
             </div>
-            <div className="hs-text"><span>Phones</span> <span>from sellers you can trust</span></div>
+            <div className="hs-text">
+              
+              <ReactTextTransition
+            springConfig={presets.gentle}
+            className="big"
+            delay={300}
+            inline
+            >
+            <span>
+            {texts[textIndex]}
+                </span> 
+          </ReactTextTransition>
+                {/* Phones */}
+              <span>from sellers you can trust</span>
+            </div>
             <div className="w-[100%] relative">
               <input
                 type="text"
@@ -352,7 +392,7 @@ const Header = ({ activeHeading }) => {
               {searchData && searchData.length !== 0 ? (
                 <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                   {searchData &&
-                    searchData.map((i, index) => {
+                    searchData.slice(0,7).map((i, index) => {
                       return (
                         <Link to={`/product/${i._id}`}>
                           <div className="w-full flex items-start-py-3">

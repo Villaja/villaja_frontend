@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
+import { toast } from "react-toastify";
+
 import { BsCartPlus } from "react-icons/bs";
 import styles from "../../styles/styles";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -18,6 +20,7 @@ const Wishlist = ({ setOpenWishlist }) => {
   const addToCartHandler = (data) => {
     const newData = {...data, qty:1};
     dispatch(addTocart(newData));
+    toast.success("Item added to cart successfully!");
     setOpenWishlist(false);
   }
 

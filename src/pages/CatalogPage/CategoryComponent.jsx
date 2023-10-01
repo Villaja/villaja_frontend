@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 import './categorycomponent.css'
 import { catData } from '../../mock_data/Category_info'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const CategoryComponent = ({category,isMobile}) => {
+const CategoryComponent = ({category,isMobile,setPriceFilter}) => {
 
     const [priceRangeValue,setPriceRangeValue] = useState("3000000")
+
+    useEffect(() => {
+        setPriceFilter({min:500,max:priceRangeValue})
+    },[priceRangeValue])
 
     console.log(catData[0]['subcat']);
   return (
@@ -29,7 +33,7 @@ const CategoryComponent = ({category,isMobile}) => {
             })}
         </div> */}
 
-        <div className="filter-sub filter-sub-brand">
+        {/* <div className="filter-sub filter-sub-brand">
             <div className="filter-sub-title">
                 Brand
             </div>
@@ -42,7 +46,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 })}
             </div>
 
-        </div>
+        </div> */}
 
         <div className="filter-sub filter-sub-price">
             <div className="filter-sub-title">
@@ -50,7 +54,7 @@ const CategoryComponent = ({category,isMobile}) => {
                     Price &#40;&#8358;&#41;
                 </div>
 
-                <div>Apply</div>
+                {/* <div>Apply</div> */}
             </div>
             <div className="filter-sub-body">
                 <div className="price-slider">
@@ -79,7 +83,7 @@ const CategoryComponent = ({category,isMobile}) => {
                 
             </div>
         </div> */}
-        <div className="filter-sub filter-sub-color">
+        {/* <div className="filter-sub filter-sub-color">
             <div className="filter-sub-title">
                 Color
             </div>
@@ -104,7 +108,7 @@ const CategoryComponent = ({category,isMobile}) => {
                     </div>
                 })}
             </div>
-        </div>
+        </div> */}
     </div>
   )
 }
