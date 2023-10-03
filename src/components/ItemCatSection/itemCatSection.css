@@ -41,6 +41,13 @@
     gap: 3rem;
 }
 
+.suggested-ic-body
+{
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: minmax(100px, auto) !important;
+    gap: 4rem;
+}
+
 .ic-body::-webkit-scrollbar {
     /* border-color: rebeccapurple; */
     background-color: transparent;

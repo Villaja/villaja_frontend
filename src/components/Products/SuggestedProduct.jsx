@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { productData } from "../../static/data";
 import styles from "../../styles/styles";
 import ProductCard from "../Route/ProductCard/ProductCard";
+import SingleItemCard from "../SingleItemCard/SingleItemCard";
 
 const SuggestedProduct = ({ data }) => {
   const {allProducts} = useSelector((state) => state.products);
@@ -10,13 +11,33 @@ const SuggestedProduct = ({ data }) => {
 
   useEffect(() => {
     const d =
-    allProducts && allProducts.slice(0,5).filter((i) => i.category === data.category);
+    allProducts && allProducts.filter((i) => i.category === data.category);
     setProductData(d);
   }, []);
 
   return (
+    
     <div>
-      {data ? (
+      <div className={`item-cat-container`}>
+        {/* <div className={`${styles.heading}`}>
+          <h1>Featured Products</h1>
+        </div> */}
+        <div className="ic-header">
+            <div className="item-cat-title">You Might Also Like</div>
+            <div className="seemore-btn">See more &#8250; </div>
+        </div>
+        <div className="ic-body suggested-ic-body">
+          {
+            <>
+              {productData &&
+                productData.slice(0,4).map((i, index) => (
+                  <SingleItemCard data={i} key={index} />
+                ))}
+            </>
+          }
+        </div>
+      </div>
+      {/* {data ? (
         <div className={`p-4 ${styles.section}`}>
           <h2
             className={`${styles.heading} text-[25px] font-[500] border-b mb-5`}
@@ -31,8 +52,9 @@ const SuggestedProduct = ({ data }) => {
              }
       </div>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
+    
   );
 };
 

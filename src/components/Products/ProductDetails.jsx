@@ -19,6 +19,8 @@ import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
 import './productDetails.css'
+import SuggestedProduct from "../../components/Products/SuggestedProduct";
+
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -116,16 +118,16 @@ const ProductDetails = ({ data }) => {
   return (
     <div className="">
       {data ? (
-        <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
-          <div className="w-full py-5">
+        <div className={`${styles.section} w-[80%] 800px:w-[80%]`}>
+          <div className="w-full py-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-              <div className="w-full 800px:w-[50%]">
+              <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end",paddingRight:"2rem"}}>
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-[100%] 800px:w-[70%]"
+                  className="w-[100%] 800px:w-[60%] mb-5"
                 />
-                <div className="w-full flex" style={{gap:"5px"}}>
+                <div className="flex" style={{gap:"30px"}}>
                   {data &&
                     data.images.map((i, index) => (
                       <div
@@ -136,7 +138,7 @@ const ProductDetails = ({ data }) => {
                         <img
                           src={`${i?.url}`}
                           alt=""
-                          className="h-[100px] overflow-hidden"
+                          className="h-[60px] overflow-hidden"
                           onClick={() => setSelect(index)}
                         />
                       </div>
@@ -149,8 +151,8 @@ const ProductDetails = ({ data }) => {
                 </div>
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle}`}>{data.name}</h1>
-                <p className="mb-10"></p>
+                <h1 className={`${styles.productTitle}`} style={{maxWidth:"45ch",fontSize:'1.7rem',fontWeight:'500'}}>{data.name}</h1>
+                <p className="mb-20"></p>
                 <p>Sold by: <span className={`${styles.shop_name} pb-1 pt-1`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
@@ -163,7 +165,7 @@ const ProductDetails = ({ data }) => {
                   </h3>
                 </div>
 
-                <div className="flex items-center mt-12 justify-between pr-3">
+                <div className="flex items-center mt-14 mb-14 justify-between pr-3">
                   <div>
                     <button
                       className=" cart-action-btn  transition duration-300 ease-in-out " 
@@ -238,6 +240,7 @@ const ProductDetails = ({ data }) => {
                 </div> */}
               </div>
             </div>
+          {data && <SuggestedProduct data={data} />}
           </div>
           <ProductDetailsInfo
             data={data}
