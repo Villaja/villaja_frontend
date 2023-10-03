@@ -362,7 +362,7 @@ const Header = ({ activeHeading }) => {
             <div className="hs-logo">
                 <img src={villajaLogo} alt="" />
             </div>
-            <div className="hs-text">
+            <div className="hs-text mb-4">
               
               <ReactTextTransition
             springConfig={presets.gentle}
@@ -377,17 +377,17 @@ const Header = ({ activeHeading }) => {
                 {/* Phones */}
               <span>from sellers you can trust</span>
             </div>
-            <div className="w-[100%] relative">
+            <div className="w-[120%] relative">
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[58px] w-full px-2  pl-6 text-lg border-gray-200 border-[2px] rounded-md"
+                className="h-[38px] w-full px-2  pl-6 text-base border-gray-200 border-[2px] rounded-md"
               />
               <AiOutlineSearch
-                size={30}
-                className="absolute right-2 top-3 cursor-pointer"
+                size={20}
+                className="absolute right-2 top-2.5 cursor-pointer"
               />
               {searchData && searchData.length !== 0 ? (
                 <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
