@@ -16,8 +16,19 @@
     transform-origin: right;
 }
 
+.cat-comp-card
+{
+    box-shadow: 0 24px 36px #34578c1e !important;
+    transition: all 0.2s ease;
+}
+
+.cat-comp-card:hover
+{
+    border: 1.5px solid #34578c77;
+}
+
 .cat-comp-card:hover .cat-comp-img
 {
-    width: 200%;
-    height: 200%;
+    width: 150%;
+    height: 150%;
 }

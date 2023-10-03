@@ -25,9 +25,41 @@ const Categories = () => {
         </div>
       </div> */}
 
-<p className="text-2xl text-gray-800 font-bold px-20 mb-4 pt-10 mt-8">Shop By Category</p>
+      <div className="item-cat-container">
+        <div className="ic-header">
+            <div className="item-cat-title">Shop By Category</div>
+            <div className="seemore-btn">See more &#8250; </div>
+        </div>
+        <div className="ic-body cat-ic-body">
+            {categoriesData &&
+            categoriesData.slice(0,4).map((i) => {
+              const handleSubmit = (i) => {
+                navigate(`/products?category=${i.title}`);
+              };
+              return (
 
-      <div
+
+
+
+
+                
+                <div className="cat-comp-card h-72 text-center bg-white  rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
+                  <div className="cat-comp-img-container flex justify-center mb-4">
+                    <img src={i.image_Url} className="cat-comp-img w-32 h-32 object-cover mb-4" alt="" />
+                  </div>
+                  <p className="text-2xl font-semibold text-gray-800 mb-2">{i.title}</p>
+                  <p className="text-sm text-gray-600 mt-2" style={{maxWidth:"20ch",margin:"0 auto"}}>{i.subTitle}</p>
+                </div>
+
+              );
+            })}
+        </div>
+        {/* </div> */}
+    </div>
+
+{/* <p className="text-2xl text-gray-800 font-bold px-20 mb-4 pt-10 mt-8">Shop By Category</p> */}
+
+      {/* <div
         className={`${styles.section} bg-white p-6 rounded-lg hidden sm:block  mt-8 sm:mt-2 mb-6`}
         id="categories"
       >
@@ -56,8 +88,8 @@ const Categories = () => {
 
               );
             })}
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </>
   );
 };
