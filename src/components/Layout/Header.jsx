@@ -137,14 +137,14 @@ const Header = ({ activeHeading }) => {
         </div>
 
         <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
+            <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
             </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
             {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
             {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
+            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
             {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["EarHeadphones","Smart Watches","Speakers","Micropphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
             <div className="vh-item vh-menu-item">Support</div>
         </div>
