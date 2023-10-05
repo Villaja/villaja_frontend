@@ -3,6 +3,7 @@ import CheckoutSteps from '../components/Checkout/CheckoutSteps'
 import Footer from '../components/Layout/Footer'
 import Header from '../components/Layout/Header'
 import Payment from "../components/Payment/Payment";
+import VillajaFooter from '../components/VillajaFooter/VillajaFooter';
 
 const PaymentPage = () => {
   return (
@@ -10,11 +11,12 @@ const PaymentPage = () => {
        <Header />
        <br />
        <br />
-       <CheckoutSteps active={2} />
+       {/* <CheckoutSteps active={2} /> */}
        <Payment />
        <br />
        <br />
-       <Footer />
+       {/* <Footer /> */}
+       <VillajaFooter/>
     </div>
   )
 }

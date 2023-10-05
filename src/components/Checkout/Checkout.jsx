@@ -104,7 +104,7 @@ const Checkout = () => {
 
   return (
     <div className="w-full flex flex-col items-center py-8">
-      <div className="w-[90%] 1000px:w-[70%] block 800px:flex">
+      <div className="w-[90%] 1000px:w-[85%] block 800px:flex">
         <div className="w-full 800px:w-[65%]">
           <ShippingInfo
             user={user}
@@ -131,15 +131,17 @@ const Checkout = () => {
             couponCode={couponCode}
             setCouponCode={setCouponCode}
             discountPercentenge={discountPercentenge}
+            paymentSubmit={paymentSubmit}
           />
         </div>
       </div>
-      <div
-        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`}
+      {/* <div
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #0077B6)'}}
         onClick={paymentSubmit}
       >
-        <h5 className="text-white">Go to Payment</h5>
-      </div>
+        <h5 className="text-white">CHECKOUT</h5>
+      </div> */}
+      
     </div>
   );
 };
@@ -161,7 +163,7 @@ const ShippingInfo = ({
 }) => {
   return (
     <div className="w-full 800px:w-[95%] bg-white rounded-md p-5 pb-8">
-      <h5 className="text-[18px] font-[500]">Delivery Address</h5>
+      <h5 className="text-[18px] font-[500]">Contact Information</h5>
       <br />
       <form>
         <div className="w-full flex pb-3">
@@ -171,7 +173,7 @@ const ShippingInfo = ({
               type="text"
               value={user && user.firstname}
               required
-              className={`${styles.input} !w-[95%]`}
+              className={`${styles.input}`}
             />
           </div>
           <div className="w-[50%]">
@@ -207,11 +209,14 @@ const ShippingInfo = ({
           </div>
         </div>
 
+      <br />
+      <h5 className="text-[18px] font-[500]">Shipping Information</h5>
+      <br />
         <div className="w-full flex pb-3">
           <div className="w-[50%]">
             <label className="block pb-2">Country</label>
             <select
-              className="w-[95%] border h-[40px] rounded-[5px]"
+              className="w-[80%] border h-[50px] rounded-[8px]"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
@@ -229,7 +234,7 @@ const ShippingInfo = ({
           <div className="w-[50%]">
             <label className="block pb-2">City</label>
             <select
-              className="w-[95%] border h-[40px] rounded-[5px]"
+              className="w-[80%] border h-[50px] rounded-[8px]"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -271,12 +276,12 @@ const ShippingInfo = ({
 
         <div></div>
       </form>
-      <h5
+      {/* <h5
         className="text-[18px] cursor-pointer inline-block"
         onClick={() => setUserInfo(!userInfo)}
       >
         Choose From saved address
-      </h5>
+      </h5> */}
       {userInfo && (
         <div>
           {user &&
@@ -311,10 +316,27 @@ const CartData = ({
   couponCode,
   setCouponCode,
   discountPercentenge,
+  paymentSubmit
 }) => {
   return (
-    <div className="w-full bg-[#fff] rounded-md p-5 pb-8">
-      <div className="flex justify-between">
+    <div className="w-full 1000px:w-[85%] bg-[#fff] rounded-md p-5 pb-8" style={{boxShadow:"0 4px 8px #34578c12"}}>
+      <h1 style={{fontSize:"1.5rem",fontWeight:"600",marginBottom:"0.5rem"}}>
+        Cart Summary
+      </h1>
+      <p>Total:</p>
+      <br />
+      <br />
+      <div style={{fontSize:"2rem",textAlign:"center",fontWeight:"600"}}>₦{totalPrice}</div>
+      <br />
+      {/* <br /> */}
+      <div
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #0077B6)',margin:"0 auto",height:"40px"}}
+        onClick={paymentSubmit}
+      >
+        <h5 className="text-white">CHECKOUT</h5>
+      </div>
+      <br />
+      {/* <div className="flex justify-between">
         <h3 className="text-[16px] font-[400] text-gray-600">subtotal:</h3>
         <h5 className="text-[18px] font-[600]">₦{subTotalPrice}</h5>
       </div>
@@ -328,13 +350,13 @@ const CartData = ({
       </div>
       <br />
       <div className="flex justify-between border-b pb-3">
-        <h3 className="text-[16px] font-[400] text-gray-600">Discount:</h3>
+        <h3 className="text-[16px] font-[400] text-gray-600">Discount:</h3> */}
         {/* <h5 className="text-[18px] font-[600]">
           - {discountPercentenge ? "₦" + discountPercentenge.toString() : null}
         </h5> */}
-      </div>
+      {/* </div>
       <h5 className="text-[18px] font-[600] text-end pt-3">₦{totalPrice}</h5>
-      <br />
+      <br /> */}
       {/* <form onSubmit={handleSubmit}>
         <input
           type="text"

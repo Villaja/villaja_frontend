@@ -229,7 +229,7 @@ const PaymentInfo = ({
               <input
                 type="submit"
                 value="Confirm"
-                className={`${styles.button} bg-green-500 text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
+                className={`${styles.button} bg-green-500 text-[#fff] h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`} style={{background:'linear-gradient(180deg, #00B4D8, #0077B6)'}}
               />
             </form>
           </div>
