@@ -20,6 +20,7 @@ import Ratings from "./Ratings";
 import axios from "axios";
 import './productDetails.css'
 import SuggestedProduct from "../../components/Products/SuggestedProduct";
+import Reviews from "../Reviews/Reviews";
 
 
 const ProductDetails = ({ data }) => {
@@ -249,6 +250,7 @@ const ProductDetails = ({ data }) => {
             averageRating={averageRating}
           />
           <br />
+          <Reviews/>
           <br />
         </div>
       ) : null}
