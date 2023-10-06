@@ -62,7 +62,7 @@ const ProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-full h-[350px] bg-white rounded-lg shadow-sm pt-3 relative cursor-pointer">
+      <div className="pc-container w-full h-[350px] bg-white rounded-lg shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]">
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img
