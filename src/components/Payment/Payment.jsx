@@ -76,7 +76,15 @@ const Payment = () => {
         setOpen(false);
         navigate("/order/success");
         toast.success("Order successful!");
-        localStorage.setItem("cartItems", JSON.stringify([]));
+        if(localStorage.getItem('buy-now'))
+        {
+          console.log('success');
+        }
+        else
+        {
+          localStorage.setItem("cartItems", JSON.stringify([]));
+        }
+        // localStorage.setItem("cartItems", JSON.stringify([]));
         localStorage.setItem("latestOrder", JSON.stringify([]));
         window.location.reload();
       });
@@ -135,7 +143,16 @@ const Payment = () => {
         setOpen(false);
         navigate("/order/success");
         toast.success("Order successful!");
-        localStorage.setItem("cartItems", JSON.stringify([]));
+        if(localStorage.getItem('buy-now'))
+        {
+          console.log('success');
+        }
+        else
+        {
+          localStorage.setItem("cartItems", JSON.stringify([]));
+        }
+        // localStorage.setItem("cartItems", JSON.stringify([]));
+        // localStorage.setItem("latestOrder", JSON.stringify([]));
         localStorage.setItem("latestOrder", JSON.stringify([]));
         window.location.reload();
       });

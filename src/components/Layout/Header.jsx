@@ -255,7 +255,7 @@ const Header = ({ activeHeading }) => {
           <div
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
-            <div className="fixed w-[70%] bg-[#fff] h-screen top-0 left-0 z-10 overflow-y-scroll">
+            <div className="fixed w-[70%] bg-[#fff] h-[125vh] top-0 left-0 z-10 overflow-y-scroll">
               <div className="w-full justify-between flex pr-3">
                 <div>
                   <div
@@ -365,10 +365,10 @@ const Header = ({ activeHeading }) => {
             <div className="hs-text mb-4">
               
               <ReactTextTransition
-            springConfig={presets.gentle}
-            className="big"
-            delay={300}
-            inline
+            // springConfig={presets.gentle}
+            // className="big"
+            // delay={300}
+            // inline
             >
             <span>
             {texts[textIndex]}

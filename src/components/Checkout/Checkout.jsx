@@ -48,16 +48,38 @@ const Checkout = () => {
       user,
     }
 
-    // update local storage with the updated orders array
-    localStorage.setItem("latestOrder", JSON.stringify(orderData));
-    navigate("/payment");
+    if(localStorage.getItem('buy-now')) {
+      // update local storage with the updated orders array if buy now is set
+      const buyNowItem = JSON.parse(localStorage.getItem('buy-now'))
+      console.log(buyNowItem);
+      localStorage.setItem("latestOrder", JSON.stringify({...orderData,
+        cart:[buyNowItem]}));
+      navigate("/payment");
+
+    }
+    else
+    { 
+      // update local storage with the updated orders array
+      localStorage.setItem("latestOrder", JSON.stringify(orderData));
+      navigate("/payment");
+    }
    }
   };
 
-  const subTotalPrice = cart.reduce(
-    (acc, item) => acc + item.qty * item.discountPrice,
-    0
-  );
+  var subTotalPrice
+
+  if(localStorage.getItem('buy-now'))
+  {
+    const buyNowItem = JSON.parse(localStorage.getItem('buy-now'))
+    subTotalPrice = buyNowItem.qty * buyNowItem.discountPrice
+  }
+  else
+  {
+    subTotalPrice = cart.reduce(
+      (acc, item) => acc + item.qty * item.discountPrice,
+      0
+      );
+  }
 
   // this is shipping cost variable
   const shipping = subTotalPrice * 0.006;

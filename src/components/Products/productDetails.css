@@ -18,3 +18,11 @@
     font-size: 1.5rem;
     border-radius: 6px !important;
 }
+
+.buyNow-btn
+{
+    border:2px solid #00B4D8;
+    color: #00B4D8 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+}

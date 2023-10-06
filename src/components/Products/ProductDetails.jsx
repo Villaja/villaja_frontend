@@ -77,6 +77,11 @@ const ProductDetails = ({ data }) => {
     }
   };
 
+  const buyNowHandler = () => {
+    localStorage.setItem('buy-now',JSON.stringify({...data,qty:count}))
+    navigate('/checkout')
+  }
+
   const totalReviewsLength =
     products &&
     products.reduce((acc, product) => acc + product.reviews.length, 0);
@@ -210,6 +215,14 @@ const ProductDetails = ({ data }) => {
                 >
                   <span className="text-white flex items-center">
                     ADD TO CART 
+                  </span>
+                </div>
+                <div
+                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
+                  onClick={() => buyNowHandler(data._id)}
+                >
+                  <span className="text-[#00B4D8] flex items-center">
+                    BUY NOW 
                   </span>
                 </div>
                 {/* <div className="flex items-center pt-8">
