@@ -194,7 +194,7 @@ const ShippingInfo = ({
               type="number"
               required
               value={user && user.phoneNumber}
-              className={`${styles.input} !w-[95%]`}
+              className={`${styles.input}`}
             />
           </div>
           <div className="w-[50%]">
@@ -259,7 +259,7 @@ const ShippingInfo = ({
               required
               value={address1}
               onChange={(e) => setAddress1(e.target.value)}
-              className={`${styles.input} !w-[95%]`}
+              className={`${styles.input} `}
             />
           </div>
           <div className="w-[50%]">

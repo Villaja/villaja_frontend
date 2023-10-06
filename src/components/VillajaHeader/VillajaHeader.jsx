@@ -25,6 +25,8 @@ const VillajaHeader = () => {
             </Link>
         </div>
 
+      {
+        location.pathname.split('/')[1]=='user' ?null:
        <div className="vh-menu">
             <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(1)} onMouseOut={() => setHoverState(0)} onClick={(e) => submitHandle(e)}> Phones
             {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
@@ -37,6 +39,7 @@ const VillajaHeader = () => {
             {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["EarHeadphones","Smart Watches","Speakers","Micropphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
             <div className="vh-item vh-menu-item">Support</div>
         </div>
+      }
         
 
         <div className="mobile-menu">

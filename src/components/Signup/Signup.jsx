@@ -63,7 +63,7 @@ const Singup = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Welcome To Villaja
+          Create An Account
         </h2>
       </div>
       <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
@@ -72,9 +72,9 @@ const Singup = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-bold text-gray-700"
               >
-                firstname
+                First Name
               </label>
               <div className="mt-1">
                 <input
@@ -84,16 +84,17 @@ const Singup = () => {
                   required
                   value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  placeholder="Enter your first name"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
               </div>
             </div>
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-bold text-gray-700"
               >
-                lastname
+                Last Name
               </label>
               <div className="mt-1">
                 <input
@@ -103,7 +104,8 @@ const Singup = () => {
                   required
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  placeholder="Enter your last name"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
               </div>
             </div>
@@ -119,11 +121,12 @@ const Singup = () => {
                 <input
                   type="email"
                   name="email"
-                  autoComplete="email"
+                  autoComplete="name"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  placeholder="jaysmith@example.com"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
               </div>
             </div>
@@ -139,11 +142,12 @@ const Singup = () => {
                 <input
                   type="text"
                   name="text"
-                  autoComplete="name"
+                  autoComplete="phone"
                   required
                   value={phoneNumber}
+                  placeholder="0909090909"
                   onChange={(e) => setPhonenumber(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
               </div>
             </div>
@@ -162,8 +166,9 @@ const Singup = () => {
                   autoComplete="current-password"
                   required
                   value={password}
+                  placeholder="Enter your Password"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -205,20 +210,22 @@ const Singup = () => {
             <div>
             <button
               type="submit"
-              className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-md text-white ${
+              className={`login-button group relative w-full h-[45px] shadow-md flex justify-center items-center py-2 px-4 border border-transparent text-[1.05rem] font-light rounded-md text-white ${
                 loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
               }`}
               disabled={loading}
             >
-              {loading ? "Loading..." : "Submit"}
+              {loading ? "Loading..." : "SIGN UP"}
             </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
+            <div className={`dha-box ${styles.noramlFlex} w-full`}>
+              <span></span>
               <h4>Already have an account?</h4>
-              <Link to="/user/login" className="text-blue-600 pl-2">
-                Sign In
-              </Link>
+              <span></span>
             </div>
+              <div className="login-signup-btn h-[45px] flex justify-center items-center py-2 px-4 text-[1.05rem] font-light rounded-md">
+                  Sign In
+                </div>
           </form>
         </div>
       </div>
