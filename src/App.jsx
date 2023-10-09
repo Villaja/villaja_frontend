@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// user routes
 import {
   LoginPage,
   SignupPage,
@@ -23,6 +25,8 @@ import {
   UserInbox,
 } from "./routes/Routes.js";
 
+// seller routes
+
 import {
   ShopDashboardPage,
   ShopCreateProduct,
@@ -38,6 +42,19 @@ import {
   ShopWithDrawMoneyPage,
   ShopInboxPage,
 } from "./routes/ShopRoutes";
+
+// admin routes
+
+import {
+  AdminDashboardPage,
+  AdminDashboardUsers,
+  AdminDashboardSellers,
+  AdminDashboardOrders,
+  AdminDashboardProducts,
+  AdminDashboardEvents,
+  AdminDashboardWithdraw
+} from "./routes/AdminRoutes";
+
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -253,6 +270,66 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
+
+
+        {/* Admin Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardPage />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-users"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardUsers />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-sellers"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardSellers />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-orders"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardOrders />
+            </ProtectedAdminRoute>
+          }
+        />
+         <Route
+          path="/admin-products"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardProducts />
+            </ProtectedAdminRoute>
+          }
+        />
+         <Route
+          path="/admin-events"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardEvents />
+            </ProtectedAdminRoute>
+          }
+        />
+         <Route
+          path="/admin-withdraw-request"
+          element={
+            <ProtectedAdminRoute>
+              <AdminDashboardWithdraw />
+            </ProtectedAdminRoute>
+          }
+        />
+
         
       </Routes>
       {/* <VillajaFooter/> */}

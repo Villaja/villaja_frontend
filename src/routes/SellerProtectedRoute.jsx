@@ -23,7 +23,8 @@ const SellerProtectedRoute = ({ children }) => {
   </div>
   } else {
     if (!isSeller) {
-      navigate('/shop/login');
+      // navigate('/shop/login');
+      console.log("lets see")
     }
     return children;
   }

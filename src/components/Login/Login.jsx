@@ -32,8 +32,8 @@ const Login = () => {
   
       if (response.status === 200 || response.status === 201) {
         toast.success("Login Success!");
-        navigate("/products");
-        window.location.reload(true);
+        navigate("/");
+       
       } else {
         toast.error("Login Failed");
       }
