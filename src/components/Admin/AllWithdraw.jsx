@@ -36,8 +36,20 @@ const AllWithdraw = () => {
       flex: 1.4,
     },
     {
-      field: "shopId",
-      headerName: "Shop Id",
+      field: "bankName",
+      headerName: "Bank Name",
+      minWidth: 180,
+      flex: 1.4,
+    },
+    {
+      field: "accNumber",
+      headerName: "Acc Number",
+      minWidth: 180,
+      flex: 1.4,
+    },
+    {
+      field: "holder",
+      headerName: "Bank Holder",
       minWidth: 180,
       flex: 1.4,
     },
@@ -98,7 +110,9 @@ const AllWithdraw = () => {
     data.forEach((item) => {
       row.push({
         id: item._id,
-        shopId: item.seller._id,
+        bankName: item?.seller?.withdrawMethod?.bankName,
+        accNumber: item?.seller?.withdrawMethod?.bankAccountNumber,
+        holder: item?.seller?.withdrawMethod?.bankHolderName,
         name: item.seller.name,
         amount: "₦ " + item.amount,
         status: item.status,

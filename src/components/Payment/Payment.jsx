@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/styles";
 import { useEffect } from "react";
-
+import { PaystackButton } from 'react-paystack'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -13,6 +13,7 @@ import { RxCross1 } from "react-icons/rx";
 const Payment = () => {
   const [orderData, setOrderData] = useState([]);
   const [open, setOpen] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -37,6 +38,8 @@ const Payment = () => {
       toast.error(error.response.data.message || "Payment failed");
     }
   };
+
+  
 
   const order = {
     cart: orderData?.cart,
@@ -113,15 +116,26 @@ const Payment = () => {
       );
       const payment_link = response.data.payment_link;
 
-      // Redirect the user to the Paystack payment page
-      window.location.href = payment_link;
+      // Open the payment modal
+      setShowPaymentModal(true);
+
+      // Set the iframe source to the payment link
+      const iframe = document.getElementById("paymentIframe");
+      iframe.src = payment_link;
+
+      // Close the modal and display a success alert when payment is successful
+      window.addEventListener("message", (event) => {
+        if (event.data === "payment_success") {
+          setShowPaymentModal(false);
+          alert("Payment successful!");
+          // Assuming the payment was successful, you can confirm the order here
+          // Call the createOrder function or any other logic to confirm the order
+          createOrder();
+        }
+      });
     } catch (error) {
       toast.error(error.response.data.message || "Payment failed");
     }
-    
-    // Assuming the payment was successful, you can confirm the order here
-    // Call the createOrder function or any other logic to confirm the order
-    createOrder();
   };
 
   const cashOnDeliveryHandler = async (e) => {
@@ -158,25 +172,43 @@ const Payment = () => {
       });
   };
 
+ 
+
   return (
-    <div className="w-full flex flex-col items-center py-8">
-      <div className="w-[90%] 1000px:w-[70%] block 800px:flex">
-        <div className="w-full 800px:w-[65%]">
-          <PaymentInfo
-            user={user}
-            open={open}
-            setOpen={setOpen}
-            onApprove={onApprove}
-            createOrder={createOrder}
-            paymentHandler={paymentHandler}
-            cashOnDeliveryHandler={cashOnDeliveryHandler}
-          />
-        </div>
-        <div className="w-full 800px:w-[35%] 800px:mt-0 mt-8">
-          <CartData orderData={orderData} />
-        </div>
-      </div>
+    <div>
+      {/* {showPaymentModal && (
+  <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-75 z-50">
+    <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md">
+      <iframe
+        id="paymentIframe"
+        title="Paystack Payment"
+        className="w-full h-96"
+      />
     </div>
+  </div>
+)} */}
+
+      <div className="w-full flex flex-col items-center py-8">
+       
+       <div className="w-[90%] 1000px:w-[70%] block 800px:flex">
+         <div className="w-full 800px:w-[65%]">
+           <PaymentInfo
+             user={user}
+             open={open}
+             setOpen={setOpen}
+             onApprove={onApprove}
+             createOrder={createOrder}
+             paymentHandler={paymentHandler}
+             cashOnDeliveryHandler={cashOnDeliveryHandler}
+           />
+         </div>
+         <div className="w-full 800px:w-[35%] 800px:mt-0 mt-8">
+           <CartData orderData={orderData} />
+         </div>
+       </div>
+     </div>
+    </div>
+    
   );
 };
 
@@ -190,13 +222,79 @@ const PaymentInfo = ({
   cashOnDeliveryHandler,
 }) => {
   const [select, setSelect] = useState(1);
+  const [orderData, setOrderData] = useState([]);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const orderData = JSON.parse(localStorage.getItem("latestOrder"));
+    setOrderData(orderData);
+  }, []);
+
+  const order = {
+    cart: orderData?.cart,
+    shippingAddress: orderData?.shippingAddress,
+    user: user && user,
+    totalPrice: orderData?.totalPrice,
+  };
+
+  const paystackOrder = async (paymentInfo) => {
+    
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    order.paymentInfo = {
+      id: paymentInfo.payer_id,
+      status: "succeeded",
+      type: "Paystack",
+    };
+
+    await axios
+      .post(`${server}/order/create-order`, order, config)
+      .then((res) => {
+        setOpen(false);
+        navigate("/order/success");
+        toast.success("Order successful!");
+        if(localStorage.getItem('buy-now'))
+        {
+          console.log('success');
+        }
+        else
+        {
+          localStorage.setItem("cartItems", JSON.stringify([]));
+        }
+        // localStorage.setItem("cartItems", JSON.stringify([]));
+        localStorage.setItem("latestOrder", JSON.stringify([]));
+        window.location.reload();
+      });
+  };
+
+  
+
+
+  const componentProps = {
+    email: user?.email, 
+    amount: Math.round(orderData?.totalPrice * 100), 
+    metadata: {
+      name: user?.firstname,
+      phone: user?.phoneNumber,
+    },
+    publicKey: "pk_test_2c518b6f78f30d2675048a24dd6b9ee925d74204",
+    text: "Pay Now",
+    onSuccess: (paymentInfo) => paystackOrder(paymentInfo), 
+    onClose: () => alert("Wait! Don't leave :("),
+  };
+  
 
   return (
     <div className="w-full 800px:w-[95%] bg-[#fff] rounded-md p-5 pb-8">
       {/* select buttons */}
+    
      
       <div>
-        {/* <div className="flex w-full pb-5 border-b mb-2">
+        <div className="flex w-full pb-5 border-b mb-2">
           <div
             className="w-[25px] h-[25px] rounded-full bg-transparent border-[3px] border-[#1d1a1ab4] relative flex items-center justify-center"
             onClick={() => setSelect(2)}
@@ -208,17 +306,18 @@ const PaymentInfo = ({
           <h4 className="text-[18px] pl-2 font-[600] text-[#000000b1]">
             Pay with Paystack
           </h4>
-        </div> */}
+        </div>
 
         {/* paystack */}
         {select === 2 ? (
           <div className="w-full flex">
             <form className="w-full" onSubmit={paymentHandler}>
-              <input
+              {/* <input
                 type="submit"
                 value="Confirm payment"
                 className={`${styles.button} bg-blue-600 text-[#fff] mb-6 h-[40px] rounded-[5px] cursor-pointer text-[13px] font-[600]`}
-              />
+              /> */}
+              <PaystackButton className={`${styles.button} bg-blue-600 text-[#fff] mb-6 h-[40px] rounded-[5px] cursor-pointer text-[13px] font-[600]`} {...componentProps} />
             </form>
           </div>
         ) : null}
