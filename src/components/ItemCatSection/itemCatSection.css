@@ -66,3 +66,9 @@
         overflow-x: auto;
     }
 }
+@media screen and (max-width:800px) {
+    .cat-ic-body
+    {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
