@@ -8,6 +8,23 @@ export const createProduct =
     description,
     category,
     tags,
+    condition,
+    aboutProduct,
+    brand,
+    model,
+    displaySize,
+    color,
+    os,
+    memorySize,
+    cellularTechnology,
+    connectivityTechnology,
+    simCard,
+    dimensions,
+    serialNumber,
+    weight,
+    inTheBox,
+    minDelivery,
+    maxDelivery,
     originalPrice,
     discountPrice,
     stock,
@@ -26,6 +43,23 @@ export const createProduct =
         description,
         category,
         tags,
+        condition,
+        aboutProduct,
+        brand,
+        model,
+        displaySize,
+        color,
+        os,
+        memorySize,
+        cellularTechnology,
+        connectivityTechnology,
+        simCard,
+        dimensions,
+        serialNumber,
+        weight,
+        inTheBox,
+        minDelivery,
+        maxDelivery,
         originalPrice,
         discountPrice,
         stock,
@@ -91,6 +125,32 @@ export const deleteProduct = (id) => async (dispatch) => {
     });
   }
 };
+
+// Update product
+export const updateProduct = (productId, productData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "updateProductRequest",
+    });
+
+    const { data } = await axios.put(
+      `${server}/product/update-product/${productId}`,
+      productData
+    );
+
+    dispatch({
+      type: "updateProductSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "updateProductFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
 
 // get all products
 export const getAllProducts = () => async (dispatch) => {

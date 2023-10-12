@@ -26,7 +26,8 @@ import { getAllOrdersOfUser } from "../../redux/actions/order";
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
-  const [name, setName] = useState(user && user.name);
+  const [firstname, setFirstName] = useState(user && user.firstname);
+  const [lastname, setLastName] = useState(user && user.lastname);
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
@@ -46,7 +47,7 @@ const ProfileContent = ({ active }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateUserInformation(name, email, phoneNumber, password));
+    dispatch(updateUserInformation(firstname, lastname, email, phoneNumber, password));
   };
 
   const handleImage = async (e) => {
@@ -83,22 +84,6 @@ const ProfileContent = ({ active }) => {
         <>
           <div className="flex justify-center w-full">
             <div className="relative">
-              <img
-                src={`${user?.avatar?.url}`}
-                className="w-[150px] h-[150px] rounded-full object-cover border-[3px] border-[#3ad132]"
-                alt=""
-              />
-              <div className="w-[30px] h-[30px] bg-[#E3E9EE] rounded-full flex items-center justify-center cursor-pointer absolute bottom-[5px] right-[5px]">
-                <input
-                  type="file"
-                  id="image"
-                  className="hidden"
-                  onChange={handleImage}
-                />
-                <label htmlFor="image">
-                  <AiOutlineCamera />
-                </label>
-              </div>
             </div>
           </div>
           <br />
@@ -107,13 +92,35 @@ const ProfileContent = ({ active }) => {
             <form onSubmit={handleSubmit} aria-required={true}>
               <div className="w-full 800px:flex block pb-3">
                 <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Full Name</label>
+                  <label className="block pb-2">First Name</label>
                   <input
                     type="text"
                     className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
                     required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={firstname}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className=" w-[100%] 800px:w-[50%]">
+                  <label className="block pb-2">Last Name</label>
+                  <input
+                    type="text"
+                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
+                    required
+                    value={lastname}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="w-full 800px:flex block pb-3">
+                <div className=" w-[100%] 800px:w-[50%]">
+                <label className="block pb-2">Phone Number</label>
+                  <input
+                    type="number"
+                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+                    required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
                 <div className=" w-[100%] 800px:w-[50%]">
@@ -129,17 +136,7 @@ const ProfileContent = ({ active }) => {
               </div>
 
               <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Phone Number</label>
-                  <input
-                    type="number"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-
+                
                 <div className=" w-[100%] 800px:w-[50%]">
                   <label className="block pb-2">Enter your password</label>
                   <input

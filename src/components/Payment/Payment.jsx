@@ -37,9 +37,7 @@ const Payment = () => {
     } catch (error) {
       toast.error(error.response.data.message || "Payment failed");
     }
-  };
-
-  
+  };  
 
   const order = {
     cart: orderData?.cart,
@@ -60,38 +58,7 @@ const Payment = () => {
     });
   };
 
-  const paypalPaymentHandler = async (paymentInfo) => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    order.paymentInfo = {
-      id: paymentInfo.payer_id,
-      status: "succeeded",
-      type: "Paypal",
-    };
-
-    await axios
-      .post(`${server}/order/create-order`, order, config)
-      .then((res) => {
-        setOpen(false);
-        navigate("/order/success");
-        toast.success("Order successful!");
-        if(localStorage.getItem('buy-now'))
-        {
-          console.log('success');
-        }
-        else
-        {
-          localStorage.setItem("cartItems", JSON.stringify([]));
-        }
-        // localStorage.setItem("cartItems", JSON.stringify([]));
-        localStorage.setItem("latestOrder", JSON.stringify([]));
-        window.location.reload();
-      });
-  };
+  
 
   const paymentData = {
     email: user.email,
@@ -165,8 +132,6 @@ const Payment = () => {
         {
           localStorage.setItem("cartItems", JSON.stringify([]));
         }
-        // localStorage.setItem("cartItems", JSON.stringify([]));
-        // localStorage.setItem("latestOrder", JSON.stringify([]));
         localStorage.setItem("latestOrder", JSON.stringify([]));
         window.location.reload();
       });
@@ -176,18 +141,6 @@ const Payment = () => {
 
   return (
     <div>
-      {/* {showPaymentModal && (
-  <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-75 z-50">
-    <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md">
-      <iframe
-        id="paymentIframe"
-        title="Paystack Payment"
-        className="w-full h-96"
-      />
-    </div>
-  </div>
-)} */}
-
       <div className="w-full flex flex-col items-center py-8">
        
        <div className="w-[90%] 1000px:w-[70%] block 800px:flex">
@@ -284,15 +237,13 @@ const PaymentInfo = ({
     publicKey: "pk_test_2c518b6f78f30d2675048a24dd6b9ee925d74204",
     text: "Pay Now",
     onSuccess: (paymentInfo) => paystackOrder(paymentInfo), 
-    onClose: () => alert("Wait! Don't leave :("),
+    onClose: () => alert("your progress would be lost"),
   };
   
 
   return (
     <div className="w-full 800px:w-[95%] bg-[#fff] rounded-md p-5 pb-8">
       {/* select buttons */}
-    
-     
       <div>
         <div className="flex w-full pb-5 border-b mb-2">
           <div
@@ -311,14 +262,9 @@ const PaymentInfo = ({
         {/* paystack */}
         {select === 2 ? (
           <div className="w-full flex">
-            <form className="w-full" onSubmit={paymentHandler}>
-              {/* <input
-                type="submit"
-                value="Confirm payment"
-                className={`${styles.button} bg-blue-600 text-[#fff] mb-6 h-[40px] rounded-[5px] cursor-pointer text-[13px] font-[600]`}
-              /> */}
+           
               <PaystackButton className={`${styles.button} bg-blue-600 text-[#fff] mb-6 h-[40px] rounded-[5px] cursor-pointer text-[13px] font-[600]`} {...componentProps} />
-            </form>
+           
           </div>
         ) : null}
       </div>

@@ -1,115 +1,37 @@
-.seller-log-in {
-    background-color: #ffffff;
+.login-button
+{
+    background: linear-gradient(180deg, #00B4D8, #0077B6) !important;
+}
+
+
+.dha-box
+{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
-.seller-log-in .div-2 {
-    background-color: #ffffff;
-    height: 1024px;
-    position: relative;
-    width: 1440px;
-}
-
-.seller-log-in .bottom-directory-instance {
-    left: 0 !important;
-    position: absolute !important;
-    top: 880px !important;
-}
-
-.seller-log-in .top-bar-seller-side-instance {
-    left: 0 !important;
-    position: absolute !important;
-    top: 0 !important;
-}
-
-.seller-log-in .design-component-instance-node {
-    left: 613px !important;
-}
-
-.seller-log-in .frame-6 {
     align-items: center;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 24px;
-    left: 570px;
-    position: absolute;
-    top: 96px;
-}
-
-.seller-log-in .text-wrapper-9 {
-    color: #000000;
-    font-family: var(--headings-desktop-h3-font-family);
-    font-size: var(--headings-desktop-h3-font-size);
-    font-style: var(--headings-desktop-h3-font-style);
-    font-weight: var(--headings-desktop-h3-font-weight);
-    letter-spacing: var(--headings-desktop-h3-letter-spacing);
-    line-height: var(--headings-desktop-h3-line-height);
-    margin-top: -1px;
+    justify-content: space-between;
+    padding: 0.5rem 0;
     position: relative;
-    text-align: center;
-    white-space: nowrap;
-    width: fit-content;
+    color: #ABABB5;
+    font-size: 0.9rem;
 }
 
-.seller-log-in .icon-input-fields-instance {
-    top: 25px !important;
-}
-
-.seller-log-in .buttons-7 {
-    align-items: flex-start !important;
-    width: 300px !important;
-}
-
-.seller-log-in .buttons-8 {
-    margin-top: -1px !important;
-}
-
-.seller-log-in .group-4 {
-    height: 24px;
-    margin-right: -2px;
-    position: relative;
-    width: 303.5px;
-}
-
-.seller-log-in .text-wrapper-10 {
-    color: #abaab4;
-    font-family: var(--body-semibold-4-font-family);
-    font-size: var(--body-semibold-4-font-size);
-    font-style: var(--body-semibold-4-font-style);
-    font-weight: var(--body-semibold-4-font-weight);
-    height: 24px;
-    left: 61px;
-    letter-spacing: var(--body-semibold-4-letter-spacing);
-    line-height: var(--body-semibold-4-line-height);
-    position: absolute;
-    text-align: center;
-    top: 0;
-    white-space: nowrap;
-}
-
-.seller-log-in .line {
+.dha-box span
+{
+    width: 25%;
     height: 1px;
-    left: 254px;
-    object-fit: cover;
-    position: absolute;
-    top: 12px;
-    width: 48px;
+    background-color: #ABABB5;
 }
 
-.seller-log-in .line-2 {
-    height: 1px;
-    left: 0;
-    object-fit: cover;
-    position: absolute;
-    top: 12px;
-    width: 48px;
+.login-signup-btn
+{
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    border: 1.5px solid #0077B6;
+    transition: all 0.2s ease;
+
 }
 
-.seller-log-in .buttons-9 {
-    height: 44px;
-    position: relative;
-    width: 301px;
+.login-signup-btn:hover
+{
+    box-shadow: 0 0 3px #0077B6;
 }

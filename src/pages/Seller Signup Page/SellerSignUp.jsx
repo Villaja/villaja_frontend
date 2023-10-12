@@ -4,48 +4,59 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../utils/server";
 import { toast } from "react-toastify";
+import styles from "../../styles/styles";
 import { RxAvatar } from "react-icons/rx";
 import VillajaFooter from '../../components/VillajaFooter/VillajaFooter.jsx'
 import VillajaHeader from '../../components/VillajaHeader/VillajaHeader.jsx'
-
+import Header from '../../components/SellerHeader/SellerHeader'
+import Footer from '../../components/SellerFooter/SellerFooter'
 
 const ShopCreate = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [fullName, setFullName] = useState("")
   const [phoneNumber, setPhoneNumber] = useState();
   const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false)
   const [zipCode, setZipCode] = useState();
   const [avatar, setAvatar] = useState();
+  const [accountType, setAccountType] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
     axios
       .post(`${server}/shop/create-shop`, {
         name,
         email,
         password,
+        fullName,
         avatar,
         zipCode,
         address,
         phoneNumber,
+        accountType,
       })
       .then((res) => {
         toast.success(res.data.message);
         navigate("/shop/login");
+        setLoading(false)
         setName("");
         setEmail("");
         setPassword("");
         setAvatar();
         setZipCode();
         setAddress("");
+        setFullName("");
         setPhoneNumber();
+        setAccountType("");
       })
       .catch((error) => {
-        toast.error(error.response.data.message);
+        toast.error(error?.response?.data?.message);
+        setLoading(false);
       });
   };
 
@@ -61,17 +72,24 @@ const ShopCreate = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const handleAccountTypeChange = (e) => {
+    setAccountType(e.target.value); // Update accountType when a radio button is selected
+  };
+
   return (
     <div>
-    <VillajaHeader/>
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Villaja Seller Center
+    <Header/>
+    <div className="min-h-screen justify-left py-12 sm:px-12 lg:px-8">
+      <div className="sm:w-full sm:max-w-md">
+        <h2 className="mt-6 text-left pl-8 text-3xl font-bold text-gray-900">
+          Seller Signup
         </h2>
+        <p className="mt-2 text-left pl-8 text-lg text-gray-900">
+          Seller account Information
+        </p>
       </div>
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[35rem]">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div className="mt-8 sm:w-full sm:max-w-[52rem]">
+        <div className="py-8 px-4  sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
@@ -91,13 +109,70 @@ const ShopCreate = () => {
                 />
               </div>
             </div>
+            <div>
+                <p className="mb-3">Account Type</p>
+                <div className="flex mb-3">
+                  <label
+                    className="ml-2 mr-2 mb-3 block text-sm text-gray-900"
+                  >
+                    Individual
+                  </label>
+                  <input
+                    type="radio"
+                    name="accountType"
+                    value="Individual" // Set the value for Individual
+                    required
+                    onChange={handleAccountTypeChange}
+                    checked={accountType === "Individual"}
+                    className="h-4 w-4 text-blue-600 mt-1 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                </div>
+                <div className="flex">
+                  <label
+                    className="ml-2 mr-2 mb-3 block text-sm text-gray-900"
+                  >
+                    Registered Business
+                  </label>
+                  <input
+                    type="radio"
+                    name="accountType"
+                    value="Business" // Set the value for Business
+                    required
+                    onChange={handleAccountTypeChange}
+                    checked={accountType === "Business"}
+                    className="h-4 w-4 text-blue-600 mt-1 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                </div>
+              </div>
+
+              
+
+           
+              <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Account Handler  Fullname
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="fullName"
+                  required
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+            </div>
 
             <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Phone Number
+                Account Handler Phone Number
               </label>
               <div className="mt-1">
                 <input
@@ -136,7 +211,7 @@ const ShopCreate = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Address
+               Shop Address
               </label>
               <div className="mt-1">
                 <input
@@ -206,7 +281,7 @@ const ShopCreate = () => {
               <label
                 htmlFor="avatar"
                 className="block text-sm font-medium text-gray-700"
-              >shop logo</label>
+              >shop logo(optional)</label>
               <div className="mt-2 flex items-center">
                 <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
                   {avatar ? (
@@ -252,24 +327,35 @@ const ShopCreate = () => {
               </div>
 
             <div>
-              <button
-                type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-              >
-                Submit
-              </button>
-            </div>
-            <div className='w-full flex'>
-              <h4>Already have have seller account?</h4>
-              <Link to="/shop/login" className="text-blue-600 pl-2">
-                Sign in
-              </Link>
-            </div>
+            <div>
+      <button
+      type="submit"
+      className={`login-button group relative w-full h-[45px] shadow-md flex justify-center items-center py-2 px-4 border border-transparent text-[1.05rem] font-light rounded-md text-white ${
+      loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+      }`}
+      disabled={loading}
+      >
+      {loading ? "Loading..." : "Sign Up"}
+      </button>
+      </div>
+      <div className={`dha-box ${styles.noramlFlex} w-full`}>
+        <span></span>
+        <h4>Already have an account?</h4>
+        <span></span>
+      </div>
+
+  <Link to="/shop/login" className={` text-[#0077B6] pl-2 w-full`} style={{textDecoration:'none'}}>
+    <div className="login-signup-btn h-[45px] flex justify-center items-center py-2 px-4 text-[1.05rem] font-light rounded-md">
+      Sign In
+    </div>
+  </Link>
+  </div>
+          
           </form>
         </div>
       </div>
     </div>
-    <VillajaFooter/>
+    <Footer/>
     </div>
   );
 };

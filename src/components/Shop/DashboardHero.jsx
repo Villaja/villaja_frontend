@@ -6,8 +6,12 @@ import { MdBorderClear } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfShop } from "../../redux/actions/order";
 import { getAllProductsShop } from "../../redux/actions/product";
+import { BsBank } from "react-icons/bs";
 import { Button } from "@material-ui/core";
+import { GrProductHunt } from "react-icons/gr";
+import { BiStoreAlt } from "react-icons/bi";
 import { DataGrid } from "@material-ui/data-grid";
+import { AiOutlineStock } from "react-icons/ai";
 
 const DashboardHero = () => {
   const dispatch = useDispatch();
@@ -88,31 +92,32 @@ const DashboardHero = () => {
   });
   return (
     <div className="w-full p-8">
-      <h3 className="text-[22px] font-Poppins font-bold pb-2">Overview</h3>
+      <h3 className="text-[22px] font-Poppins pb-2">Overview</h3>
       <div className="w-full block 800px:flex items-center justify-between">
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
-            <AiOutlineMoneyCollect
+            <BsBank
               size={30}
-              className="mr-2"
-              fill="#00000085"
+              className="ml-[36px] mb-3 mr-2"
+              fill="#333"
             />
             <h3
               className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
             >
-              Total Sales{" "}
+            Account Balance{" "}
               
             </h3>
           </div>
-          <h5 className="pt-2 pl-[36px] text-2xl text-gray-800 font-bold font-Poppins">{availableBalance.toLocaleString() }NGN</h5>
-          {/* <Link to="/dashboard-withdraw-money">
-            <h5 className="pt-4 pl-[2] text-[#077f9c]">Withdraw Money</h5>
-          </Link> */}
+          <h5 className="pt-2 pl-[36px] text-2xl text-gray-800 font-bold font-Poppins">{availableBalance.toLocaleString()}NGN</h5>
+          <Link to="/dashboard-withdraw-money">
+            <h5 className="pt-4 pl-[36px] font-bold text-[#077f9c]">Request Withdraw</h5>
+          </Link>
         </div>
 
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
-            <MdBorderClear size={30} className="mr-2" fill="#00000085" />
+            <AiOutlineStock size={30} className="ml-[36px] mb-3 mr-2"
+              fill="#333" />
             <h3
               className={`${styles.productTitle} !text-[18px] leading-5 !font-[400] text-[#00000085]`}
             >
@@ -120,30 +125,32 @@ const DashboardHero = () => {
             </h3>
           </div>
           <h5 className="pt-2 pl-[36px] text-2xl text-gray-800 font-bold font-Poppins">{orders && orders.length}</h5>
-          {/* <Link to="/dashboard-orders">
-            <h5 className="pt-4 pl-2 text-[#077f9c]">View Orders</h5>
-          </Link> */}
+          <Link to="/dashboard-orders">
+            <h5 className="pt-4 pl-[36px] font-bold text-[#077f9c]">View Orders</h5>
+          </Link>
         </div>
 
         <div className="w-full mb-4 800px:w-[30%] min-h-[20vh] bg-white shadow rounded px-2 py-5">
           <div className="flex items-center">
-            <AiOutlineMoneyCollect
+            <BiStoreAlt
               size={30}
-              className="mr-2"
-              fill="#00000085"
+              className="ml-[36px] mb-3 mr-2"
+              fill="#333"
             />
             <h3
               className={`${styles.productTitle}  !text-[18px] leading-5 !font-[400] text-[#00000085]`}
             >
-              Total Products
+              Inventory
             </h3>
           </div>
           <h5 className="pt-2 pl-[36px] text-2xl text-gray-800 font-bold font-Poppins">{products && products.length}</h5>
-          {/* <Link to="/dashboard-products">
-            <h5 className="pt-4 pl-2 text-[#077f9c]">View Products</h5>
-          </Link> */}
+          <Link to="/dashboard-products">
+            <h5 className="pt-4 pl-[36px] text-[#077f9c] font-bold">View Products</h5>
+          </Link>
         </div>
       </div>
+
+      
       <br />
       <h3 className="text-[22px] font-Poppins font-semibold pb-2">Latest Orders</h3>
       <div className="w-full min-h-[45vh] bg-white rounded">

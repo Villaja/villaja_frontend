@@ -57,7 +57,22 @@ export const productReducer = createReducer(initialState, {
     state.isLoading = false;
     state.error = action.payload;
   },
-  
+
+  // update product
+  updateProductRequest: (state) => {
+    state.isLoading = true;
+  },
+  updateProductSuccess: (state, action) => {
+    state.isLoading = false;
+    state.product = action.payload;
+    state.success = true;
+  },
+  updateProductFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+    state.success = false;
+  },
+
   clearErrors: (state) => {
     state.error = null;
   },

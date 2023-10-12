@@ -2,8 +2,10 @@ import { React, useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "../../styles/styles";
 import { server } from "../../utils/server";
 import { toast } from "react-toastify";
+import './SellerLogin.css'
 import VillajaFooter from '../../components/VillajaFooter/VillajaFooter.jsx'
 import VillajaHeader from '../../components/VillajaHeader/VillajaHeader.jsx'
 
@@ -12,7 +14,7 @@ const ShopLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading]  = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,14 +43,15 @@ const ShopLogin = () => {
 
   return (
     <div>
-    <VillajaHeader/>
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+
+      <VillajaHeader/>
+      <div className="min-h-screen flex flex-col  pt-20 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Villaja, Seller Center
+        <h2 className=" text-center text-3xl font-bold text-gray-900">
+          Welcome, Villaja
         </h2>
       </div>
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -66,7 +69,7 @@ const ShopLogin = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
               </div>
             </div>
@@ -85,7 +88,7 @@ const ShopLogin = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -102,8 +105,8 @@ const ShopLogin = () => {
                 )}
               </div>
             </div>
-            <div className={`flex justify-between`}>
-              <div className='flex'>
+            {/* <div className={`${styles.noramlFlex} justify-between`}>
+              <div className={`${styles.noramlFlex}`}>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -119,35 +122,38 @@ const ShopLogin = () => {
               </div>
               <div className="text-sm">
                 <a
-                  href=".forgot-password"
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
                   Forgot your password?
                 </a>
               </div>
-            </div>
+            </div> */}
             <div>
             <button
         type="submit"
-        className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
-          loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+        className={`login-button group relative w-full h-[45px] shadow-md flex justify-center items-center py-2 px-4 border border-transparent text-[1.05rem] font-light rounded-md text-white ${
+          loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
         }`}
         disabled={loading}
       >
-        {loading ? "Loading..." : "Submit"}
+        {loading ? "Loading..." : "LOG IN"}
       </button>
             </div>
-            <div className='w-full flex'>
-              <h4>Not have any account?</h4>
-              <Link to="/shop/signup" className="text-blue-600 pl-2">
-                Sign Up
-              </Link>
+            <div className={`dha-box ${styles.noramlFlex} w-full`}>
+              <span></span>
+              <h4>Don't have an account?</h4>
+              <span></span>
             </div>
+
+              <Link to="/shop/signup" className={` text-[#0077B6] pl-2 w-full`} style={{textDecoration:'none'}}>
+                <div className="login-signup-btn h-[45px] flex justify-center items-center py-2 px-4 text-[1.05rem] font-light rounded-md">
+                  Sign Up
+                </div>
+              </Link>
           </form>
         </div>
       </div>
     </div>
-    <VillajaFooter/>
     </div>
   );
 };
