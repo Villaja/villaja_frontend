@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import Loader from "../components/Layout/Loader";
@@ -18,16 +18,19 @@ import { Link } from "react-router-dom";
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
   const categoryData = searchParams.get("category");
+  const searchData = searchParams.get("searchTerm");
   const {allProducts,isLoading} = useSelector((state) => state.products);
   const [data, setData] = useState([]);
-  const [category,setCategory] = useState('')
+  const [scategory,setCategory] = useState('')
   const [pageNumber,setPageNumber] = useState(24)
   const [catItemFiltered,setCatItemFiltered] = useState([])
   const [allCatProducts,setAllCatProducts] = useState([])
   const [priceFilter,setPriceFilter] = useState({min:0,max:3000000})
 
   const location = useLocation()
+  const queryP = new useSearchParams(window.location.search)
 
+  const firstRender = useRef(true)
 
 
   useEffect(() => {
@@ -35,8 +38,18 @@ const ProductsPage = () => {
       const d = allProducts;
       setData(d);
     } else {
-      const d =
-      allProducts && allProducts.filter((i) => i.category === categoryData);
+      let d
+      if(searchData)
+      {
+        d =
+        allProducts && allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()));
+        console.log();
+      }
+      else
+      {
+        d =
+        allProducts && allProducts.filter((i) => i.category === categoryData);
+      }
       setAllCatProducts(d)
       setData(d);
     }
@@ -44,9 +57,31 @@ const ProductsPage = () => {
   }, [allProducts]);
 
   useEffect(() => {
+    if(firstRender.current)
+    {
+      firstRender.current = false
+    }
+    else
+    {
+
+      console.log(queryP[0].get('category'));
+      window.location.reload();
+    }
+  },[queryP[0].get('category'),queryP[0].get('searchTerm')])
+
+  useEffect(() => {
     if(allProducts){
-      console.log(allProducts[0])
-      setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+      if(searchData)
+      {
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+
+      }
+      else
+      {
+
+        console.log(allProducts[0])
+        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+      }
     }
     console.log(allProducts);
   },[pageNumber,allProducts,priceFilter])

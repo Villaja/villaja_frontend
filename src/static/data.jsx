@@ -7,12 +7,12 @@ export const navItems = [
       url: "/",
     },
     {
-      title: "Best Selling",
-      url: "/best-selling",
+      title: "Phones",
+      url: "/products?category=Phones",
     },
     {
-      title: "Products",
-      url: "/products",
+      title: "Computers",
+      url: "/products?category=Computers",
     },
     
     // {
@@ -20,16 +20,16 @@ export const navItems = [
     //   url: "/events",
     // },
     {
-      title: "FAQ",
-      url: "/faq",
+      title: "Tablets",
+      url: "/products?category=Tablets",
+    },
+    {
+      title: "Accessories",
+      url: "/products?category=Accessories",
     },
     {
       title: "Support",
-      url: "/support",
-    },
-    {
-      title: "Shop",
-      url: "/shop/login",
+      url: "/",
     },
   ];
   

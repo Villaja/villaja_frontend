@@ -58,6 +58,11 @@ const Header = ({ activeHeading }) => {
 
   const texts = ['Phones','Gadgets','Tablets']
 
+
+  const handleHeroSearch = () => {
+    navigate(`/products?searchTerm=${searchTerm}`)
+  }
+
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -80,7 +85,7 @@ const Header = ({ activeHeading }) => {
 
   const submitHandle = (i) => {
     navigate(`/products?category=${i.target.innerHTML.split(" ")[0]}`);
-    window.location.reload();
+    // window.location.reload();
   };
 
   function getRandomInt(min, max) {
@@ -256,14 +261,14 @@ const Header = ({ activeHeading }) => {
             className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
           >
             <div className="fixed w-[70%] bg-[#fff] h-[125vh] top-0 left-0 z-10 overflow-y-scroll">
-              <div className="w-full justify-between flex pr-3">
+              <div className="w-full justify-between flex pr-3 mb-2">
                 <div>
                   <div
                     className="relative mr-[15px]"
                     onClick={() => setOpenWishlist(true) || setOpen(false)}
                   >
                     <AiOutlineHeart size={30} className="mt-5 ml-3" />
-                    <span class="absolute right-0 top-0 rounded-full bg-red-500 w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                    <span class="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
                       {wishlist && wishlist.length}
                     </span>
                   </div>
@@ -275,7 +280,7 @@ const Header = ({ activeHeading }) => {
                 />
               </div>
 
-              <div className="my-8 w-[92%] m-auto h-[40px relative]">
+              {/* <div className="my-8 w-[92%] m-auto h-[40px relative]">
                 <input
                   type="search"
                   placeholder="Search Product..."
@@ -304,7 +309,7 @@ const Header = ({ activeHeading }) => {
                     })}
                   </div>
                 )}
-              </div>
+              </div> */}
 
               <Navbar active={activeHeading} />
               <div className={`${styles.button} ml-4 !rounded-[4px]`}>
@@ -364,37 +369,33 @@ const Header = ({ activeHeading }) => {
             </div>
             <div className="hs-text mb-4">
               
-              <ReactTextTransition
-            // springConfig={presets.gentle}
-            // className="big"
-            // delay={300}
-            // inline
-            >
-            <span>
-            {texts[textIndex]}
-                </span> 
-          </ReactTextTransition>
-                {/* Phones */}
+              <ReactTextTransition>
+                <span>{texts[textIndex]}</span> 
+              </ReactTextTransition>
+                
               <span>from sellers you can trust</span>
             </div>
+            <div className='hero-search-wrapper'>
+
             <div className="w-[120%] relative">
+              <AiOutlineSearch
+                size={20}
+                className="absolute left-2 top-2.5 cursor-pointer"
+              />
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[38px] w-full px-2  pl-6 text-base border-gray-200 border-[2px] rounded-md"
+                className="h-[44px] w-full px-2  pl-8 text-base border-gray-200 border-[2px] rounded-md"
               />
-              <AiOutlineSearch
-                size={20}
-                className="absolute right-2 top-2.5 cursor-pointer"
-              />
+              
               {searchData && searchData.length !== 0 ? (
                 <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                   {searchData &&
                     searchData.slice(0,7).map((i, index) => {
                       return (
-                        <Link to={`/product/${i._id}`}>
+                        <Link to={`/product/${i._id}`} key={index}>
                           <div className="w-full flex items-start-py-3">
                             <img
                               src={`${i.images[0]?.url}`}
@@ -409,6 +410,9 @@ const Header = ({ activeHeading }) => {
                 </div>
               ) : null}
             </div>
+            <div className="search-go-btn" onClick={() => handleHeroSearch()}>Go</div>
+            </div>
+
         </div>
       </div>
 
