@@ -18,7 +18,7 @@ import { addTocart } from "../redux/actions/cart";
 import { toast } from "react-toastify";
 // import Ratings from "./Ratings";
 import axios from "axios";
-import '../components/Products/ProductDetails.css'
+// import '../components/Products/ProductDetails.css'
 // import SuggestedProduct from "../components/Products/SuggestedProduct";
 import Reviews from "../components/Reviews/Reviews";
 // import DeliveryIcon from '../../assets/delivery_icon.svg'
