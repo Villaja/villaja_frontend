@@ -251,15 +251,11 @@ const Header = ({ activeHeading }) => {
 
           <div className={`${styles.noramlFlex}`}>
               <div className="relative cursor-pointer mr-[15px]">
-                {isAuthenticated ? (
+                
                   <Link to="/profile">
                     <CgProfile size={30} />
                   </Link>
-                ) : (
-                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/profile">
-                    Sign In
-                  </Link>
-                )}
+                
               </div>
             </div>
          
