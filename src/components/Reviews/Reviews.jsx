@@ -4,7 +4,7 @@ import './Reviews.css'
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 import { review } from './ReviewsData'
 
-const Reviews = () => {
+const Reviews = ({ratings,reviews}) => {
     const [reviewStars,setReviewStars] = useState(4)
   return (
     <div className="reviews-wrapper">
@@ -16,51 +16,51 @@ const Reviews = () => {
             <div className="reviews-main">
                 <div className="reviews-main-left">
                     <div className="review-summary">
-                        <div className='review-summary-rating'>4.5/5</div>
+                        <div className='review-summary-rating'>{ratings?ratings:"0"}/5</div>
                         <div className='stars-wrapper'>
                             <div className="star-container">
                                 {
-                                    reviewStars>0?
+                                    ratings>0?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    reviewStars>1?
+                                    ratings>1?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    reviewStars>2?
+                                    ratings>2?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    reviewStars>3?
+                                    ratings>3?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    reviewStars>4?
+                                    ratings>4?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                         </div>
-                        <div className='rs-num'>{review && review.length > 0?review.length:"0"} reviews</div>
+                        <div className='rs-num'>{reviews && reviews.length > 0?reviews.length === 1?"1 review":reviews.length+" reviews":""}</div>
                     </div>
                 </div>
                 <div className="reviews-main-right">
                     {
-                        review && review.length > 0 ?
-                        review.map((rev,id) => {
+                        reviews && reviews.length > 0 ?
+                        reviews.map((rev,id) => {
                             return <SingleReview data={rev} key={id}/>
                         })
                         : 
@@ -75,7 +75,7 @@ const Reviews = () => {
 
 
 const SingleReview = ({data}) => {
-    const {heading,content,stars,user,date} = data
+    const {heading,comment,rating,user,createdAt} = data
     // const [reviewStars,setReviewStars] = useState(4)
 
     return(
@@ -84,35 +84,35 @@ const SingleReview = ({data}) => {
                 <div className='stars-wrapper'>
                             <div className="star-container">
                                 {
-                                    stars>0?
+                                    rating>0?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    stars>1?
+                                    rating>1?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    stars>2?
+                                    rating>2?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    stars>3?
+                                    rating>3?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
                             </div>
                             <div className="star-container">
                                 {
-                                    stars>4?
+                                    rating>4?
                                     <AiFillStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>:
                                     <AiOutlineStar style={{color:"#FFB41F",fontSize:"1.5rem"}}/>
                                 }
@@ -124,11 +124,11 @@ const SingleReview = ({data}) => {
                 </div>
 
                 <div className="single-review-content">
-                    {content}
+                    {comment}
                 </div>
 
                 <div className="single-review-user">
-                    Posted on {date} by {user}
+                    Posted on {createdAt.split("T")[0]} by {user.firstname}
                 </div>
             </div>
         </div>

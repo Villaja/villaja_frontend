@@ -263,7 +263,7 @@ const ProductDetails = ({ data }) => {
             averageRating={averageRating}
           />
           <br />
-          <Reviews/>
+          <Reviews ratings={data.ratings} reviews={data.reviews}/>
           <br />
         </div>
       ) : null}

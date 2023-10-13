@@ -113,7 +113,7 @@ const UserOrderDetails = () => {
 
       {/* review popup */}
       {open && (
-        <div className="w-full fixed top-0 left-0 h-screen bg-[#0005] z-50 flex items-center justify-center">
+        <div className="w-full fixed top-0 left-0 h-[125vh] bg-[#0005] z-50 flex items-center justify-center">
           <div className="w-[50%] h-min bg-[#fff] shadow rounded-md p-3">
             <div className="w-full flex justify-end p-3">
               <RxCross1
