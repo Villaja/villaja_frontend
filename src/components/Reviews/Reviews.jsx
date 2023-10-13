@@ -3,15 +3,17 @@ import { useState } from 'react'
 import './Reviews.css'
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 import { review } from './ReviewsData'
+import { useNavigate } from 'react-router-dom'
 
-const Reviews = ({ratings,reviews}) => {
+const Reviews = ({ratings,reviews,id}) => {
     const [reviewStars,setReviewStars] = useState(4)
+    const navigate = useNavigate()
   return (
     <div className="reviews-wrapper">
         <div className="reviews-container item-cat-container">
             <div className="reviews-top ic-header">
                 <div className="item-cat-title">Customer Reviews</div>
-                <div className="seemore-btn">See more &#8250; </div>
+                <div className="seemore-btn" onClick={() => navigate(`/reviews/${id}`)}>See more &#8250; </div>
             </div>
             <div className="reviews-main">
                 <div className="reviews-main-left">

@@ -75,6 +75,7 @@ import VillajaHeader from './components/VillajaHeader/VillajaHeader';
 import VillajaFooter from './components/VillajaFooter/VillajaFooter';
 import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
+import ProductReviews from "./pages/ProductReviews";
 
 const App = () => {
   const [Apikey, setApiKey] = useState("");
@@ -107,6 +108,7 @@ const App = () => {
         /> 
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
+        <Route path="/reviews/:id" element={<ProductReviews />} />
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
