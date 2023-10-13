@@ -256,7 +256,7 @@ const Header = ({ activeHeading }) => {
                     <CgProfile size={30} />
                   </Link>
                 ) : (
-                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login">
+                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/profile">
                     Sign In
                   </Link>
                 )}
