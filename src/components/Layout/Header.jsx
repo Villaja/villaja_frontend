@@ -224,7 +224,7 @@ const Header = ({ activeHeading }) => {
         }
       w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center mt-3 justify-between">
           <div>
             <BiMenuAltLeft
               size={40}
@@ -239,7 +239,7 @@ const Header = ({ activeHeading }) => {
           </div>
           <div>
             <div
-              className="relative mr-[20px]"
+              className="relative ml-[250px]"
               onClick={() => setOpenCart(true)}
             >
               <AiOutlineShoppingCart size={30} />
@@ -248,6 +248,21 @@ const Header = ({ activeHeading }) => {
               </span>
             </div>
           </div>
+
+          <div className={`${styles.noramlFlex}`}>
+              <div className="relative cursor-pointer mr-[15px]">
+                {isAuthenticated ? (
+                  <Link to="/profile">
+                    <CgProfile size={30} />
+                  </Link>
+                ) : (
+                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login">
+                    Sign In
+                  </Link>
+                )}
+              </div>
+            </div>
+         
           {/* cart popup */}
           {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
 
@@ -312,18 +327,18 @@ const Header = ({ activeHeading }) => {
               </div> */}
 
               <Navbar active={activeHeading} />
-              <div className={`${styles.button} ml-4 !rounded-[4px]`}>
+              {/* <div className={`${styles.button} ml-4 !rounded-[4px]`}>
                 <Link to="/profile">
                   <h1 className="text-[#fff] flex items-center">
                     Dashboard <IoIosArrowForward className="ml-1" />
                   </h1>
                 </Link>
-              </div>
+              </div> */}
               <br />
               <br />
               <br />
 
-              <div className="flex w-full justify-center">
+              {/* <div className="flex w-full justify-center">
                 {isAuthenticated ? (
                   <div>
                     <Link to="/profile">
@@ -351,7 +366,7 @@ const Header = ({ activeHeading }) => {
                     </Link>
                   </>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         )}

@@ -33,7 +33,7 @@ const Login = () => {
       if (response.status === 200 || response.status === 201) {
         toast.success("Login Success!");
         navigate("/");
-       
+        window.location.reload();
       } else {
         toast.error("Login Failed");
       }

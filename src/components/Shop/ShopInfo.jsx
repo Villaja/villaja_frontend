@@ -106,3 +106,18 @@ const ShopInfo = ({ isOwner }) => {
 };
 
 export default ShopInfo;
+
+
+const logoutHandler = async () => {
+  axios.get(`${server}/shop/logout`,{
+    withCredentials: true,
+  });
+  navigate('/shop/login')
+};
+
+
+<div className={`${styles.button} !w-full !h-[42px] !rounded-[5px]`}
+onClick={logoutHandler}
+>
+  <span className="text-white">Log Out</span>
+</div>
