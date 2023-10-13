@@ -26,3 +26,22 @@
     background: #ffffff !important;
     background-color: #ffffff !important;
 }
+.more-product-info
+{
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 501px;
+    height: 72px;
+    flex-shrink: 0;
+    background:  rgba(0, 119, 182, 0.12);
+    justify-content: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+.delivers-within
+{
+    background: linear-gradient(180deg, #0077B6 0%, #03045E 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+}

@@ -7,24 +7,24 @@ import {
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { getAllProductsShop } from "../../redux/actions/product";
-import { server } from "../../server";
-import styles from "../../styles/styles";
+import { getAllProductsShop } from "../redux/actions/product";
+import { server } from "../server";
+import styles from "../styles/styles";
 import {
   addToWishlist,
   removeFromWishlist,
-} from "../../redux/actions/wishlist";
-import { addTocart } from "../../redux/actions/cart";
+} from "../redux/actions/wishlist";
+import { addTocart } from "../redux/actions/cart";
 import { toast } from "react-toastify";
-import Ratings from "./Ratings";
+// import Ratings from "./Ratings";
 import axios from "axios";
-import './productDetails.css'
-import SuggestedProduct from "../../components/Products/SuggestedProduct";
-import Reviews from "../Reviews/Reviews";
-import DeliveryIcon from '../../assets/delivery_icon.svg'
+// import '../components/Products/ProductDetails.css'
+// import SuggestedProduct from "../components/Products/SuggestedProduct";
+import Reviews from "../components/Reviews/Reviews";
+// import DeliveryIcon from '../../assets/delivery_icon.svg'
 
 
-const ProductDetails = ({ data }) => {
+const ReviewsDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -145,7 +145,7 @@ const ProductDetails = ({ data }) => {
       {data ? (
         <div className={`${styles.section} w-[80%] 800px:w-[80%]`}>
           <div className="w-full py-10">
-            <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
+            <div className="block w-full 800px:flex" style={{flexDirection:"row"}}>
               <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end",paddingRight:"2rem"}}>
                 <img
                   src={`${data && data.images[select]?.url}`}
@@ -177,7 +177,7 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle}`} style={{maxWidth:"45ch",fontSize:'1.7rem',fontWeight:'500'}}>{data.name}</h1>
-                <p className="mb-20"></p>
+                {/* <p className="mb-20"></p> */}
                 <p>Sold by: <span className={`${styles.shop_name} pb-1 pt-1`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
@@ -190,7 +190,7 @@ const ProductDetails = ({ data }) => {
                   </h3>
                 </div>
 
-                <div className="flex items-center mt-14 mb-14 justify-between pr-3">
+                <div className="flex items-center mt-4 mb-14 justify-between pr-3">
                   <div>
                     <button
                       className=" cart-action-btn  transition duration-300 ease-in-out " 
@@ -229,7 +229,7 @@ const ProductDetails = ({ data }) => {
                   </div>
                 </div>
                 <div
-                  className={`addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
+                  className={`addToCart-btn  ${styles.button} 800px:!w-[40%] !mt-2  flex items-center`}
                   onClick={() => addToCartHandler(data._id)}
                 >
                   <span className="text-white flex items-center">
@@ -237,56 +237,20 @@ const ProductDetails = ({ data }) => {
                   </span>
                 </div>
                 <div
-                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
+                  className={`buyNow-btn addToCart-btn  ${styles.button} 800px:!w-[40%] !mt-2  flex items-center`}
                   onClick={() => buyNowHandler(data._id)}
                 >
                   <span className="text-[#00B4D8] flex items-center">
                     BUY NOW 
                   </span>
                 </div>
-                {/* <div className="flex items-center pt-8">
-                  <Link to={`/shop/preview/${data?.shop._id}`}>
-                    <img
-                      src={`${data?.shop?.avatar?.url}`}
-                      alt=""
-                      className="w-[50px] h-[50px] rounded-full mr-2"
-                    />
-                  </Link>
-                  <div className="pr-8">
-                    <Link to={`/shop/preview/${data?.shop._id}`}>
-                      <h3 className={`${styles.shop_name} pb-1 pt-1`}>
-                        {data.shop.name}
-                      </h3>
-                    </Link>
-                    <h5 className="pb-3 text-[15px]">
-                      ({averageRating}/5) Ratings
-                    </h5>
-                  </div>
-                  <div
-                    className={`bg-gray-300 mt-4 !rounded !h-11`}
-                    onClick={handleMessageSubmit}
-                  >
-                    <span className="text-black font-semibold px-4 py-2 flex items-center">
-                      Send A DM<AiOutlineMessage className="ml-1" />
-                    </span>
-                  </div>
-                </div> */}
+               
               </div>
             </div>
-            <div className="more-product-info flex items-center">
-                <img src={DeliveryIcon} alt="" />
-                <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days with SHIPPR</div>
-            </div>
-          {data && <SuggestedProduct data={data} />}
           </div>
-          <ProductDetailsInfo
-            data={data}
-            products={products}
-            totalReviewsLength={totalReviewsLength}
-            averageRating={averageRating}
-          />
+          
           <br />
-          <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews}/>
+          <Reviews ratings={data.ratings} reviews={data.reviews}/>
           <br />
         </div>
       ) : null}
@@ -396,54 +360,11 @@ const ProductDetailsInfo = ({
       {active === 3 && (
         <div className="w-full block 800px:flex py-3">
           <p style={{fontSize:"1.2rem",fontWeight:"600"}}>{data.inTheBox}</p>
-          {/* <div className="w-full 800px:w-[50%]">
-            <Link to={`/shop/preview/${data.shop._id}`}>
-              <div className="flex items-center">
-                <img
-                  src={`${data?.shop?.avatar?.url}`}
-                  className="w-[50px] h-[50px] rounded-full"
-                  alt=""
-                />
-                <div className="pl-3">
-                  <h3 className={`${styles.shop_name}`}>{data.shop.name}</h3>
-                  <h5 className="pb-2 text-[15px]">
-                  </h5>
-                </div>
-              </div>
-            </Link>
-            <p className="pt-2">{data.shop.description}</p>
-          </div>
-          <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex flex-col items-end">
-            <div className="text-left">
-              <h5 className="font-[600]">
-                Joined on:{" "}
-                <span className="font-[500]">
-                  {data.shop?.createdAt?.slice(0, 10)}
-                </span>
-              </h5>
-              <h5 className="font-[600] pt-3">
-                Total Products:{" "}
-                <span className="font-[500]">
-                  {products && products.length}
-                </span>
-              </h5> */}
-              {/* <h5 className="font-[600] pt-3">
-                Total Reviews:{" "}
-                <span className="font-[500]">{totalReviewsLength}</span>
-              </h5> */}
-              {/* <Link to="/">
-                <div
-                  className={`${styles.button} !rounded-[4px] !h-[39.5px] mt-3`}
-                >
-                  <h4 className="text-white">Visit Shop</h4>
-                </div>
-              </Link> */}
-            {/* </div>
-          </div> */}
+          
         </div>
       )}
     </div>
   );
 };
 
-export default ProductDetails;
+export default ReviewsDetails;

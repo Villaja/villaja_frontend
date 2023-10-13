@@ -127,6 +127,8 @@ const Payment = () => {
         if(localStorage.getItem('buy-now'))
         {
           console.log('success');
+          localStorage.removeItem("buy-now");
+
         }
         else
         {
@@ -213,6 +215,8 @@ const PaymentInfo = ({
         if(localStorage.getItem('buy-now'))
         {
           console.log('success');
+          localStorage.removeItem("buy-now");
+
         }
         else
         {

@@ -29,6 +29,7 @@ const ProfileContent = ({ active }) => {
   const [firstname, setFirstName] = useState(user && user.firstname);
   const [lastname, setLastName] = useState(user && user.lastname);
   const [email, setEmail] = useState(user && user.email);
+  const [loading, setLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -50,32 +51,7 @@ const ProfileContent = ({ active }) => {
     dispatch(updateUserInformation(firstname, lastname, email, phoneNumber, password));
   };
 
-  const handleImage = async (e) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatar(reader.result);
-        axios
-          .put(
-            `${server}/user/update-avatar`,
-            { avatar: reader.result },
-            {
-              withCredentials: true,
-            }
-          )
-          .then((response) => {
-            dispatch(loadUser());
-            toast.success("avatar updated successfully!");
-          })
-          .catch((error) => {
-            toast.error(error);
-          });
-      }
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
-  };
+ 
 
   return (
     <div className="w-full">
