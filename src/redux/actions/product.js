@@ -2,81 +2,42 @@ import axios from "axios";
 import { server } from "../../server";
 
 // create product
-export const createProduct =
-  (
-    name,
-    description,
-    category,
-    tags,
-    condition,
-    aboutProduct,
-    brand,
-    model,
-    displaySize,
-    color,
-    os,
-    memorySize,
-    cellularTechnology,
-    connectivityTechnology,
-    simCard,
-    dimensions,
-    serialNumber,
-    weight,
-    inTheBox,
-    minDelivery,
-    maxDelivery,
-    originalPrice,
-    discountPrice,
-    stock,
-    shopId,
-    images
-  ) =>
-  async (dispatch) => {
-    try {
-      dispatch({
-        type: "productCreateRequest",
-      });
+export const createProduct = (productData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "productCreateRequest",
+    });
 
-      const { data } = await axios.post(
-        `${server}/product/create-product`,
-        name,
-        description,
-        category,
-        tags,
-        condition,
-        aboutProduct,
-        brand,
-        model,
-        displaySize,
-        color,
-        os,
-        memorySize,
-        cellularTechnology,
-        connectivityTechnology,
-        simCard,
-        dimensions,
-        serialNumber,
-        weight,
-        inTheBox,
-        minDelivery,
-        maxDelivery,
-        originalPrice,
-        discountPrice,
-        stock,
-        shopId,
-        images,
-      );
-      dispatch({
-        type: "productCreateSuccess",
-        payload: data.product,
-      });
-    } catch (error) {
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
       dispatch({
         type: "productCreateFail",
-        payload: error.response.data.message,
+        payload: "Authentication token not found",
       });
+      return;
     }
-  };
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.post(`${server}/product/create-product`, productData, config);
+
+    dispatch({
+      type: "productCreateSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "productCreateFail",
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // get All Products of a shop
 export const getAllProductsShop = (id) => async (dispatch) => {
@@ -107,12 +68,24 @@ export const deleteProduct = (id) => async (dispatch) => {
       type: "deleteProductRequest",
     });
 
-    const { data } = await axios.delete(
-      `${server}/product/delete-shop-product/${id}`,
-      {
-        withCredentials: true,
-      }
-    );
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "deleteProductFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.delete(`${server}/product/delete-shop-product/${id}`, config);
 
     dispatch({
       type: "deleteProductSuccess",
@@ -126,6 +99,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   }
 };
 
+
 // Update product
 export const updateProduct = (productId, productData) => async (dispatch) => {
   try {
@@ -133,10 +107,24 @@ export const updateProduct = (productId, productData) => async (dispatch) => {
       type: "updateProductRequest",
     });
 
-    const { data } = await axios.put(
-      `${server}/product/update-product/${productId}`,
-      productData
-    );
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "updateProductFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.put(`${server}/product/update-product/${productId}`, productData, config);
 
     dispatch({
       type: "updateProductSuccess",

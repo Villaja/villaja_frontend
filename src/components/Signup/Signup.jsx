@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ const Singup = () => {
   const [phoneNumber, setPhonenumber] = useState("")
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [success, setSuccess] = useState(false)
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -33,28 +34,51 @@ const Singup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setLoading(true);
-
+  
+    setLoading(true); // Start loading
     try {
-      await axios.post(`${server}/user/register`, {
-        firstname,
-        lastname,
-        phoneNumber,
-        email,
-        password,
-        avatar,
-      });
-
-      toast.success("User registered successfully!");
-      navigate("/user/login");
-      
+      const response = await axios.post(
+        `${server}/user/register`,
+        {
+          email,
+          password,
+          firstname,
+          lastname,
+          phoneNumber,
+        },
+        { withCredentials: true }
+      );
+  
+      if (response.status === 200 || response.status === 201) {
+        const { token } = response.data;
+        localStorage.setItem('user-token', token);
+        toast.success("sign up Success!");
+        // setSuccess(true)
+        navigate("/");
+        window.location.reload();
+      } else {
+        toast.error("register Failed");
+      }
     } catch (error) {
-      toast.error(error.response.data.message);
+      if (error.response) {
+        // Handle known error responses with status codes
+        toast.error(error.response.data.message);
+      } else {
+        // Handle unexpected errors (e.g., network issues)
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false); // Stop loading
     }
   };
+
+
+  // useEffect(() => {
+  //   if(success){
+  //    navigate('/')
+  //   }
+  //  }, [success]);
+ 
  
 
   return (

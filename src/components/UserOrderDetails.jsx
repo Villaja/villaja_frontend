@@ -28,8 +28,15 @@ const UserOrderDetails = () => {
   const data = orders && orders.find((item) => item._id === id);
 
   const reviewHandler = async (e) => {
-    await axios
-      .put(
+    try {
+      const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+      if (!token) {
+        // Handle the case where the user is not authenticated
+        toast.error('User is not authenticated.');
+        return;
+      }
+      
+      const response = await axios.put(
         `${server}/product/create-new-review`,
         {
           user,
@@ -38,30 +45,52 @@ const UserOrderDetails = () => {
           productId: selectedItem?._id,
           orderId: id,
         },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        toast.success(res.data.message);
-        dispatch(getAllOrdersOfUser(user._id));
-        setComment("");
-        setRating(null);
-        setOpen(false);
-      })
-      .catch((error) => {
-        toast.error(error);
-      });
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      toast.success(response.data.message);
+      dispatch(getAllOrdersOfUser(user._id));
+      setComment("");
+      setRating(null);
+      setOpen(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
   
+  
   const refundHandler = async () => {
-    await axios.put(`${server}/order/order-refund/${id}`,{
-      status: "Processing refund"
-    }).then((res) => {
-       toast.success(res.data.message);
-    dispatch(getAllOrdersOfUser(user._id));
-    }).catch((error) => {
+    try {
+      const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+      if (!token) {
+        // Handle the case where the user is not authenticated
+        toast.error('User is not authenticated.');
+        return;
+      }
+      
+      const response = await axios.put(
+        `${server}/order/order-refund/${id}`,
+        {
+          status: "Processing refund",
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      toast.success(response.data.message);
+      dispatch(getAllOrdersOfUser(user._id));
+    } catch (error) {
       toast.error(error.response.data.message);
-    })
+    }
   };
+  
 
   return (
     <div className={`py-4 min-h-screen ${styles.section}`}>

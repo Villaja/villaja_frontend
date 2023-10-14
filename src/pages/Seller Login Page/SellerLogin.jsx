@@ -6,8 +6,8 @@ import styles from "../../styles/styles";
 import { server } from "../../utils/server";
 import { toast } from "react-toastify";
 import './SellerLogin.css'
-import VillajaFooter from '../../components/VillajaFooter/VillajaFooter.jsx'
-import VillajaHeader from '../../components/VillajaHeader/VillajaHeader.jsx'
+import Header from '../../components/SellerHeader/SellerHeader'
+import Footer from '../../components/SellerFooter/SellerFooter'
 
 const ShopLogin = () => {
   const navigate = useNavigate();
@@ -18,11 +18,10 @@ const ShopLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     setLoading(true); // Start loading
-
     try {
-      await axios.post(
+      const response = await axios.post(
         `${server}/shop/login-shop`,
         {
           email,
@@ -30,12 +29,25 @@ const ShopLogin = () => {
         },
         { withCredentials: true }
       );
-
-      toast.success("Login Success!");
-      navigate("/dashboard");
-      // window.location.reload(true);
-    } catch (err) {
-      toast.error(err.response.data.message);
+  
+      if (response.status === 200 || response.status === 201) {
+        const { token } = response.data;
+        localStorage.setItem('seller-token', token);
+        toast.success("Login Success!");
+        // setSuccess(true)
+        navigate("/dashboard");
+        window.location.reload();
+      } else {
+        toast.error("Login Failed");
+      }
+    } catch (error) {
+      if (error.response) {
+        // Handle known error responses with status codes
+        toast.error(error.response.data.message);
+      } else {
+        // Handle unexpected errors (e.g., network issues)
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false); // Stop loading
     }
@@ -44,7 +56,7 @@ const ShopLogin = () => {
   return (
     <div>
 
-      <VillajaHeader/>
+      <Header/>
       <div className="min-h-screen flex flex-col  pt-20 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className=" text-center text-3xl font-bold text-gray-900">
@@ -154,6 +166,7 @@ const ShopLogin = () => {
         </div>
       </div>
     </div>
+    <Footer/>
     </div>
   );
 };

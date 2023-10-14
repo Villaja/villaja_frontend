@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import './Login.css'
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false)
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
@@ -31,7 +32,10 @@ const Login = () => {
       );
   
       if (response.status === 200 || response.status === 201) {
+        const { token } = response.data;
+        localStorage.setItem('user-token', token);
         toast.success("Login Success!");
+        // setSuccess(true)
         navigate("/");
         window.location.reload();
       } else {
@@ -50,6 +54,12 @@ const Login = () => {
     }
   };
   
+
+  // useEffect(() => {
+  //  if(success){
+  //   navigate('/')
+  //  }
+  // }, [success]);
 
   return (
     <div>

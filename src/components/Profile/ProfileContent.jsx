@@ -18,6 +18,7 @@ import {
   updatUserAddress,
   updateUserInformation,
 } from "../../redux/actions/user";
+
 import { Country, State } from "country-state-city";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
@@ -438,12 +439,24 @@ const ChangePassword = () => {
 
   const passwordChangeHandler = async (e) => {
     e.preventDefault();
-
+  
+    const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     await axios
       .put(
         `${server}/user/update-user-password`,
         { oldPassword, newPassword, confirmPassword },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: token,
+          },
+        }
       )
       .then((res) => {
         toast.success(res.data.success);
@@ -455,6 +468,7 @@ const ChangePassword = () => {
         toast.error(error.response.data.message);
       });
   };
+  
   return (
     <div className="w-full px-5">
       <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">

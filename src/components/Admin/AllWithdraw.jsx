@@ -15,9 +15,19 @@ const AllWithdraw = () => {
   const [withdrawStatus,setWithdrawStatus] = useState('Processing');
 
   useEffect(() => {
+    const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     axios
       .get(`${server}/withdraw/get-all-withdraw-request`, {
         withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
       })
       .then((res) => {
         setData(res.data.withdraws);
@@ -26,6 +36,7 @@ const AllWithdraw = () => {
         console.log(error.response.data.message);
       });
   }, []);
+  
 
   const columns = [
     { field: "id", headerName: "Withdraw Id", minWidth: 150, flex: 0.7 },

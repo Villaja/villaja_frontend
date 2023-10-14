@@ -8,9 +8,24 @@ export const getAllOrdersOfUser = (userId) => async (dispatch) => {
       type: "getAllOrdersUserRequest",
     });
 
-    const { data } = await axios.get(
-      `${server}/order/get-all-orders/${userId}`
-    );
+    const token = localStorage.getItem("user-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "getAllOrdersUserFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`${server}/order/get-all-orders/${userId}`, config);
 
     dispatch({
       type: "getAllOrdersUserSuccess",
@@ -31,9 +46,24 @@ export const getAllOrdersOfShop = (shopId) => async (dispatch) => {
       type: "getAllOrdersShopRequest",
     });
 
-    const { data } = await axios.get(
-      `${server}/order/get-seller-all-orders/${shopId}`
-    );
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "getAllOrdersShopFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`${server}/order/get-seller-all-orders/${shopId}`, config);
 
     dispatch({
       type: "getAllOrdersShopSuccess",
@@ -47,6 +77,7 @@ export const getAllOrdersOfShop = (shopId) => async (dispatch) => {
   }
 };
 
+
 // get all orders of Admin
 export const getAllOrdersOfAdmin = () => async (dispatch) => {
   try {
@@ -54,9 +85,24 @@ export const getAllOrdersOfAdmin = () => async (dispatch) => {
       type: "adminAllOrdersRequest",
     });
 
-    const { data } = await axios.get(`${server}/order/admin-all-orders`, {
-      withCredentials: true,
-    });
+    const token = localStorage.getItem("user-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "adminAllOrdersFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.get(`${server}/order/admin-all-orders`, config);
 
     dispatch({
       type: "adminAllOrdersSuccess",
@@ -69,3 +115,4 @@ export const getAllOrdersOfAdmin = () => async (dispatch) => {
     });
   }
 };
+

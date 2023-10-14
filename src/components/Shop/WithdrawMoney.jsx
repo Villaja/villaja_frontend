@@ -32,7 +32,7 @@ const WithdrawMoney = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const withdrawMethod = {
       bankName: bankInfo.bankName,
       bankCountry: bankInfo.bankCountry,
@@ -41,16 +41,28 @@ const WithdrawMoney = () => {
       bankHolderName: bankInfo.bankHolderName,
       bankAddress: bankInfo.bankAddress,
     };
-
+  
     setPaymentMethod(false);
-
+  
+    const token = localStorage.getItem('seller-token'); // Retrieve the user token from localStorage
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     await axios
       .put(
         `${server}/shop/update-payment-methods`,
         {
           withdrawMethod,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: token,
+          },
+        }
       )
       .then((res) => {
         toast.success("Withdraw method added successfully!");
@@ -68,40 +80,60 @@ const WithdrawMoney = () => {
         console.log(error.response.data.message);
       });
   };
+  
 
   const deleteHandler = async () => {
+    const token = localStorage.getItem('seller-token'); // Retrieve the user token from localStorage
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     await axios
       .delete(`${server}/shop/delete-withdraw-method`, {
         withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
       })
       .then((res) => {
         toast.success("Withdraw method deleted successfully!");
         dispatch(loadSeller());
       });
   };
-
-  const error = () => {
-    toast.error("You not have enough balance to withdraw!");
-  };
+  
 
   const withdrawHandler = async () => {
     if (withdrawAmount < 50 || withdrawAmount > availableBalance) {
       toast.error("You can't withdraw this amount!");
     } else {
       const amount = withdrawAmount;
+      const token = localStorage.getItem('seller-token'); // Retrieve the user token from localStorage
+      if (!token) {
+        // Handle the case where the user is not authenticated
+        console.log('User is not authenticated.');
+        return;
+      }
+  
       await axios
         .post(
           `${server}/withdraw/create-withdraw-request`,
           { amount },
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: token,
+            },
+          }
         )
         .then((res) => {
-
           toast.success("Withdraw money request is successful!");
-          navigate("/dashboard")
+          navigate("/dashboard");
         });
     }
   };
+  
 
   const availableBalance = seller?.availableBalance.toFixed(2);
 

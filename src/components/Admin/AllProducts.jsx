@@ -15,10 +15,24 @@ const AllProducts = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${server}/product/admin-all-products`, {withCredentials: true}).then((res) => {
-        setData(res.data.products);
-    })
+    const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+  
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
+    axios.get(`${server}/product/admin-all-products`, {
+      withCredentials: true,
+      headers: {
+        Authorization: token,
+      },
+    }).then((res) => {
+      setData(res.data.products);
+    });
   }, []);
+  
 
   const columns = [
     { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },

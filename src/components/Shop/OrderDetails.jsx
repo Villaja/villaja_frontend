@@ -24,13 +24,20 @@ const OrderDetails = () => {
   const data = orders && orders.find((item) => item._id === id);
 
   const orderUpdateHandler = async (e) => {
+    // Extract the JWT token from local storage
+    const token = localStorage.getItem('seller-token');
+  
     await axios
       .put(
         `${server}/order/update-order-status/${id}`,
         {
           status,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       )
       .then((res) => {
         toast.success("Order updated!");
@@ -40,24 +47,32 @@ const OrderDetails = () => {
         toast.error(error.response.data.message);
       });
   };
-
+  
   const refundOrderUpdateHandler = async (e) => {
+    // Extract the JWT token from local storage
+    const token = localStorage.getItem('seller-token');
+  
     await axios
-    .put(
-      `${server}/order/order-refund-success/${id}`,
-      {
-        status,
-      },
-      { withCredentials: true }
-    )
-    .then((res) => {
-      toast.success("Order updated!");
-      dispatch(getAllOrdersOfShop(seller._id));
-    })
-    .catch((error) => {
-      toast.error(error.response.data.message);
-    });
-  }
+      .put(
+        `${server}/order/order-refund-success/${id}`,
+        {
+          status,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        toast.success("Order updated!");
+        dispatch(getAllOrdersOfShop(seller._id));
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
+  };
+  
 
   console.log(data?.status);
 

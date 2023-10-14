@@ -11,7 +11,7 @@ import { AiOutlineSetting } from "react-icons/ai";
 
 const AdminSideBar = ({ active }) => {
   return (
-    <div className="w-full h-[90vh] bg-white shadow-sm overflow-y-scroll sticky top-0 left-0 z-10">
+    <div className="w-full bg-white overflow-y-scroll sticky top-0 left-0 pl-10 pt-8 z-10">
       {/* single item */}
       <div className="w-full flex items-center p-4">
         <Link to="/admin/dashboard" className="w-full flex items-center">
@@ -72,7 +72,7 @@ const AdminSideBar = ({ active }) => {
               active === 4 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            All Users
+            All Customers
           </h5>
         </Link>
       </div>
@@ -93,7 +93,7 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      {/* <div className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
             size={30}
@@ -107,7 +107,7 @@ const AdminSideBar = ({ active }) => {
             All Events
           </h5>
         </Link>
-      </div>
+      </div> */}
 
 
 

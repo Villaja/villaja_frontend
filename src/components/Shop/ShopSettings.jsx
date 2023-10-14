@@ -22,16 +22,26 @@ const ShopSettings = () => {
 
   const handleImage = async (e) => {
     const reader = new FileReader();
-
+  
     reader.onload = () => {
       if (reader.readyState === 2) {
         setAvatar(reader.result);
+        const token = localStorage.getItem('seller-token'); // Retrieve the user token from localStorage
+        if (!token) {
+          // Handle the case where the user is not authenticated
+          console.log('User is not authenticated.');
+          return;
+        }
+  
         axios
           .put(
             `${server}/shop/update-shop-avatar`,
             { avatar: reader.result },
             {
               withCredentials: true,
+              headers: {
+                Authorization: token,
+              },
             }
           )
           .then((res) => {
@@ -43,13 +53,21 @@ const ShopSettings = () => {
           });
       }
     };
-
+  
     reader.readAsDataURL(e.target.files[0]);
   };
+  
 
   const updateHandler = async (e) => {
     e.preventDefault();
-
+  
+    const token = localStorage.getItem('seller-token'); // Retrieve the user token from localStorage
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     await axios
       .put(
         `${server}/shop/update-seller-info`,
@@ -60,17 +78,22 @@ const ShopSettings = () => {
           phoneNumber,
           description,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: token,
+          },
+        }
       )
       .then((res) => {
-        toast.success("Shop info updated succesfully!");
+        toast.success("Shop info updated successfully!");
         dispatch(loadSeller());
       })
       .catch((error) => {
         toast.error(error.response.data.message);
       });
   };
-
+  
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
       <div className="flex w-full 800px:w-[80%] flex-col justify-center my-5">

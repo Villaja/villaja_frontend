@@ -18,28 +18,24 @@ import { useSelector } from "react-redux";
 const ProfileSidebar = ({ setActive, active }) => {
   const navigate = useNavigate();
  const {user} = useSelector((state) => state.user);
-  const logoutHandler = () => {
-    axios
-      .get(`${server}/user/logout`, { withCredentials: true })
-      .then((res) => {
-        toast.success(res.data.message);
-        window.location.reload(true);
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
-  };
+ const logoutHandler = () => {
+  // Remove the token from local storage
+  localStorage.removeItem('user-token');
+  window.location.reload(true);
+  // Redirect to the login page
+  navigate('/user/login');
+};
+
   return (
     <div className="w-full bg-transparent shadow-sm rounded-[10px] p-4 pt-8">
       <div
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(1)}
       >
-        <RxPerson size={20} color={active === 1 ? "red" : ""} />
+        <RxPerson size={20} color={active === 1 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 1 ? "text-[red]" : ""
+            active === 1 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Profile
@@ -49,10 +45,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(2)}
       >
-        <HiOutlineShoppingBag size={20} color={active === 2 ? "red" : ""} />
+        <HiOutlineShoppingBag size={20} color={active === 2 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 2 ? "text-[red]" : ""
+            active === 2 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Orders
@@ -62,10 +58,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(3)}
       >
-        <HiOutlineReceiptRefund size={20} color={active === 3 ? "red" : ""} />
+        <HiOutlineReceiptRefund size={20} color={active === 3 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 3 ? "text-[red]" : ""
+            active === 3 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Refunds
@@ -76,10 +72,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(4) || navigate("/inbox")}
       >
-        <AiOutlineMessage size={20} color={active === 4 ? "red" : ""} />
+        <AiOutlineMessage size={20} color={active === 4 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 4 ? "text-[red]" : ""
+            active === 4 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Inbox
@@ -90,10 +86,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(5)}
       >
-        <MdOutlineTrackChanges size={20} color={active === 5 ? "red" : ""} />
+        <MdOutlineTrackChanges size={20} color={active === 5 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 5 ? "text-[red]" : ""
+            active === 5 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Track Order
@@ -104,10 +100,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(6)}
       >
-        <RiLockPasswordLine size={20} color={active === 6 ? "red" : ""} />
+        <RiLockPasswordLine size={20} color={active === 6 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 6 ? "text-[red]" : ""
+            active === 6 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Change Password
@@ -118,10 +114,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="flex items-center cursor-pointer w-full mb-8"
         onClick={() => setActive(7)}
       >
-        <TbAddressBook size={20} color={active === 7 ? "red" : ""} />
+        <TbAddressBook size={20} color={active === 7 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 7 ? "text-[red]" : ""
+            active === 7 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Address
@@ -136,11 +132,11 @@ const ProfileSidebar = ({ setActive, active }) => {
           >
             <MdOutlineAdminPanelSettings
               size={20}
-              color={active === 7 ? "red" : ""}
+              color={active === 7 ? "dodgerblue" : ""}
             />
             <span
               className={`pl-3 ${
-                active === 8 ? "text-[red]" : ""
+                active === 8 ? "text-blue-400" : ""
               } 800px:block hidden`}
             >
               Admin Dashboard
@@ -152,10 +148,10 @@ const ProfileSidebar = ({ setActive, active }) => {
         className="single_item flex items-center cursor-pointer w-full mb-8"
         onClick={logoutHandler}
       >
-        <AiOutlineLogin size={20} color={active === 8 ? "red" : ""} />
+        <AiOutlineLogin size={20} color={active === 8 ? "dodgerblue" : ""} />
         <span
           className={`pl-3 ${
-            active === 8 ? "text-[red]" : ""
+            active === 8 ? "text-blue-400" : ""
           } 800px:block hidden`}
         >
           Log out

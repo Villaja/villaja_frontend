@@ -22,14 +22,28 @@ const AllUsers = () => {
   }, [dispatch]);
 
   const handleDelete = async (id) => {
+    const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+  
+    if (!token) {
+      // Handle the case where the user is not authenticated
+      console.log('User is not authenticated.');
+      return;
+    }
+  
     await axios
-    .delete(`${server}/user/delete-user/${id}`, { withCredentials: true })
-    .then((res) => {
-      toast.success(res.data.message);
-    });
-
-  dispatch(getAllUsers());
+      .delete(`${server}/user/delete-user/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+      });
+  
+    dispatch(getAllUsers());
   };
+  
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 150, flex: 0.7 },

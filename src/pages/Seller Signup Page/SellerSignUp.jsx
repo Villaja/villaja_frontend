@@ -27,37 +27,46 @@ const ShopCreate = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
-    axios
-      .post(`${server}/shop/create-shop`, {
-        name,
-        email,
-        password,
-        fullName,
-        avatar,
-        zipCode,
-        address,
-        phoneNumber,
-        accountType,
-      })
-      .then((res) => {
-        toast.success(res.data.message);
+  
+    setLoading(true); // Start loading
+    try {
+      const response = await axios.post(
+        `${server}/shop/create-shop`,
+        {
+          name,
+          email,
+          password,
+          fullName,
+          avatar,
+          zipCode,
+          address,
+          phoneNumber,
+          accountType,
+        },
+        { withCredentials: true }
+      );
+  
+      if (response.status === 200 || response.status === 201) {
+        const { token } = response.data;
+        localStorage.setItem('seller-token', token);
+        toast.success("sign up Success!");
+        // setSuccess(true)
         navigate("/shop/login");
-        setLoading(false)
-        setName("");
-        setEmail("");
-        setPassword("");
-        setAvatar();
-        setZipCode();
-        setAddress("");
-        setFullName("");
-        setPhoneNumber();
-        setAccountType("");
-      })
-      .catch((error) => {
-        toast.error(error?.response?.data?.message);
-        setLoading(false);
-      });
+        window.location.reload();
+      } else {
+        toast.error("sign up Failed");
+      }
+    } catch (error) {
+      if (error.response) {
+        // Handle known error responses with status codes
+        toast.error(error.response.data.message);
+      } else {
+        // Handle unexpected errors (e.g., network issues)
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
+    } finally {
+      setLoading(false); // Stop loading
+    }
   };
 
   const handleFileInputChange = (e) => {
