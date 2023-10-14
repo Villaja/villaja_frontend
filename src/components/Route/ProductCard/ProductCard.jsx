@@ -62,24 +62,26 @@ const ProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="pc-container w-full h-[350px] bg-white rounded-lg shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]">
+      <div className="pc-container w-full h-[220px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]">
         <div className="flex justify-end"></div>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <img
-            src={`${data.images && data.images[0]?.url}`}
-            alt=""
-            className="w-full h-[170px] object-contain"
-          />
+        <img
+  src={`${data.images && data.images[0]?.url}`}
+  alt=""
+  className="h-[110px] sm:h-[150px] w-[100%] sm:w-[80%]"
+/>
+
         </Link>
-        <Link>
+        <Link className="sm:block hidden">
           <p className='font-semibold px-3 pt-4 text-blue-500 text-sm'>{data.shop.name}</p>
         </Link>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-          <p className="pb-3 text-lg text-gray-700 font-bold px-3">
-            {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
-          </p>
+        <p className="pb-3 pt-2 text-sm sm:text-lg text-gray-700 font-bold px-3 overflow-hidden whitespace-nowrap">
+  {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
+</p>
 
-          <div className="px-3 flex">
+
+          <div className="px-3 hidden sm:flex">
             <Ratings rating={data?.ratings} />
           </div>
 
@@ -121,20 +123,7 @@ const ProductCard = ({ data,isEvent }) => {
               title="Add to wishlist"
             />
           )}
-          {/* <AiOutlineEye
-            size={22}
-            className="cursor-pointer absolute right-2 top-14"
-            onClick={() => setOpen(!open)}
-            color="#333"
-            title="Quick view"
-          />
-          <AiOutlineShoppingCart
-            size={25}
-            className="cursor-pointer absolute right-2 top-24"
-            onClick={() => addToCartHandler(data._id)}
-            color="#444"
-            title="Add to cart"
-          /> */}
+         
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
