@@ -205,7 +205,7 @@ export const navItems = [
       title: "Phones",
       subTitle: "Shop for smartphones from the best brands.",
       image_Url:
-        "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-blacktitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692845694698",
+        "https://th.bing.com/th/id/OIP.EQ2QbIPvO0u_uH1EjdlvAAHaLH?pid=ImgDet&w=680&h=1020&rs=1",
     },
     {
       id: 2,

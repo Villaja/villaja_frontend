@@ -5,7 +5,7 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    object-fit:cover;
+    object-fit:contain;
 }
 
 .cat-comp-img
@@ -29,8 +29,8 @@
 
 .cat-comp-card:hover .cat-comp-img
 {
-    width: 150%;
-    height: 150%;
+    width: 200%;
+    height: 200%;
 }
 
 .cat-ic-body

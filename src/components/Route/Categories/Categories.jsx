@@ -46,7 +46,7 @@ const Categories = ({isSellerHomepage}) => {
                 
                 <div className="cat-comp-card h-52 800px:h-72 text-center bg-white  rounded-md cursor-pointer p-4 shadow-sm" key={i.id} onClick={() => handleSubmit(i)}>
                   <div className="cat-comp-img-container flex justify-center mb-4">
-                    <img src={i.image_Url} className="cat-comp-img w-32 h-32 object-cover mb-4" alt="" />
+                    <img src={i.image_Url} className="cat-comp-img w-32 h-32 object-contain mb-4" alt="" />
                   </div>
                   <div className="cat-text">
                   <p className="text-2xl font-semibold text-gray-800 mb-2">{i.title}</p>
