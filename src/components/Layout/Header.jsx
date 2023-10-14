@@ -67,12 +67,21 @@ const Header = ({ activeHeading }) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts =
-      allProducts &&
-      allProducts.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
-      );
-    setSearchData(filteredProducts);
+    if(term === "")
+    {
+      setSearchData([])
+    }
+    else
+    {
+
+      const filteredProducts =
+        allProducts &&
+        allProducts.filter((product) =>
+          product.name.toLowerCase().includes(term.toLowerCase())
+        );
+      setSearchData(filteredProducts);
+    }
+
   };
 
   window.addEventListener("scroll", () => {
@@ -408,7 +417,7 @@ const Header = ({ activeHeading }) => {
               />
               
               {searchData && searchData.length !== 0 ? (
-                <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                <div className="absolute w-full min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                   {searchData &&
                     searchData.slice(0,7).map((i, index) => {
                       return (
