@@ -394,7 +394,7 @@ const Header = ({ activeHeading }) => {
             </div>
             <div className='hero-search-wrapper'>
 
-            <div className="w-[120%] relative">
+            <div className="w-[100%] relative">
               <AiOutlineSearch
                 size={20}
                 className="absolute left-2 top-2.5 cursor-pointer"
