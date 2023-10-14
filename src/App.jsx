@@ -76,6 +76,7 @@ import VillajaFooter from './components/VillajaFooter/VillajaFooter';
 import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import ProductReviews from "./pages/ProductReviews";
+import SellerHomePage from "./pages/SellerHomePage/SellerHomePage";
 
 const App = () => {
   const [Apikey, setApiKey] = useState("");
@@ -165,6 +166,7 @@ const App = () => {
 
 
         {/* Seller Routes */}
+        <Route path="/shop/home" element={<SellerHomePage />} />
         <Route path="/shop/signup" element={<SellerSignUp />} />
         <Route path="/shop/login" element={<SellerLogin />} />
         <Route

@@ -5,7 +5,7 @@ import styles from "../../../styles/styles";
 import {IoIosArrowForward} from 'react-icons/io'
 import './Categories.css'
 
-const Categories = () => {
+const Categories = ({isSellerHomepage}) => {
   const navigate = useNavigate();
   return (
     <>
@@ -28,7 +28,7 @@ const Categories = () => {
 
       <div className="item-cat-container">
         <div className="ic-header">
-            <div className="item-cat-title">Shop By Category</div>
+            <div className="item-cat-title">{isSellerHomepage?"Categories to Sell Under":"Shop By Category"}</div>
             <div className="seemore-btn">See more &#8250; </div>
         </div>
         <div className="ic-body cat-ic-body">

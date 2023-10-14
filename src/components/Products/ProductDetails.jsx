@@ -308,7 +308,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(1)}
           >
@@ -321,7 +321,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(2)}
           >
@@ -334,7 +334,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-[18px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
             }
             onClick={() => setActive(3)}
           >

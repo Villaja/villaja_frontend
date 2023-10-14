@@ -1,0 +1,211 @@
+.seller-homeheader-wrapper
+{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 48px;
+    padding: 0px 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.seller-homeheader-container
+{
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shhw-actions
+{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.shhw-action
+{
+    display: flex;
+    width: 120px;
+    height: 32px;
+    padding: 8px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #F2F2F5;
+    color: #00B4D8;
+    font-weight: 600;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.shhw-signup
+{
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+}
+
+.seller-homepage-container
+{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+
+}
+
+.shc-mains
+{
+    width: 100%;
+    max-width: 1528px;
+    background-color: #F2F2F5;
+    margin-top: 2rem;
+}
+
+.shc-heros
+{
+    width: 100%;
+    height: auto;
+    position: relative;
+    object-fit:cover;
+}
+
+.shc-heros img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.shc-heroes-text
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.50);
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+    justify-content: center;
+}
+
+.sht-top-text
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.7vw;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.sht-top-text img
+{
+    width: 30%;
+}
+.sht-sell-btn
+{
+    display: flex;
+        width: 17%;
+        height: 9.5%;
+        /* padding: 1%; */
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.45vw;
+        background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+        font-weight: 500;
+        font-size: 1.5vw;
+        color: #FFFFFF;
+        cursor: pointer;
+}
+.sht-sell-btn-last
+{
+    display: flex;
+        width: 280px;
+        height: 72px;
+        /* padding: 1%; */
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+        font-weight: 500;
+        font-size: 22px;
+        color: #FFFFFF;
+        cursor: pointer;
+        margin: 3rem 0;
+}
+
+.new-itc {
+    max-width: 1528px !important;
+}
+
+.new-itc-body
+{
+    grid-template-columns: repeat(4,1fr) !important;
+    overflow: scroll;
+    
+}
+.new-itc-body-last
+{
+    grid-template-columns: repeat(3,1fr) !important;
+    overflow: scroll;
+}
+
+.itc-item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 250px;
+}
+.itc-item-last
+{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 1rem;
+    min-width: 550px;
+}
+
+.stepText
+{
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 42px;
+    background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+}
+
+.stepText-last
+{
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 42px;
+        color: #000;
+        text-align: center;
+}
+
+.stepInfo
+{
+    text-align: center;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+}
