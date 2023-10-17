@@ -77,8 +77,13 @@ import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './compon
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import ProductReviews from "./pages/ProductReviews";
 import SellerHomePage from "./pages/SellerHomePage/SellerHomePage";
+// import { Amplify } from "aws-amplify";
+// import { awsmobile } from "../aws-exports";
+
 
 const App = () => {
+  // Amplify.configure(awsmobile);
+
   const [Apikey, setApiKey] = useState("");
 
   useEffect(() => {
