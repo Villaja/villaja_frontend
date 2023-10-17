@@ -65,7 +65,7 @@ const ProductsPage = () => {
     {
 
       console.log(queryP[0].get('category'));
-      window.location.reload();
+      // window.location.reload();
     }
   },[queryP[0].get('category'),queryP[0].get('searchTerm')])
 
