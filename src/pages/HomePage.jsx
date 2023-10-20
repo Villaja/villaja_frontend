@@ -94,9 +94,9 @@ const HomePage = () => {
           <div className="homepage-category-main">
 
           <Categories />
-          <ItemCatSection itemCatTitle={"Best Selling Items"} items={items}/>
-          <ItemCatSection itemCatTitle={"Top Deals"} items={items}/>
-          <ItemCatSection itemCatTitle={"Official Store Deals"} items={items}/>
+          <ItemCatSection itemCatTitle={"Best Selling Items"} items={items} catIndex={1} />
+          <ItemCatSection itemCatTitle={"Top Deals"} items={items} catIndex={2} />
+          <ItemCatSection itemCatTitle={"Official Store Deals"} items={items} catIndex={3} />
           </div>
         </div>
         {/* <Sponsored /> */}
