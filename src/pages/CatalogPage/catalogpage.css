@@ -126,6 +126,12 @@
     cursor: pointer;
 }
 
+.cid-top-catname
+{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
 @media screen and (max-width:1200px) {
     .cid-main
     {

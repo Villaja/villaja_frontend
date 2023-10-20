@@ -15,6 +15,10 @@ import SingleItemCard from "../components/SingleItemCard/SingleItemCard";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+import ItemCatSection from "../components/ItemCatSection/ItemCatSection";
+import { items } from '../mock_data/Sample_Items'
+
+
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
   const categoryData = searchParams.get("category");
@@ -99,6 +103,13 @@ const ProductsPage = () => {
     ) : (
       <div>
       <Header activeHeading={headingNumber[activeHeadingValue]} />
+      {/* <br /> */}
+      {/* <br /> */}
+      <div className="homepage-category-body">
+          <div className="homepage-category-main">
+            <ItemCatSection itemCatTitle={"Best Selling Items"} items={items} catIndex={1} />
+          </div>
+      </div>
       <br />
       <br />
       <div className="cc-main-body">
