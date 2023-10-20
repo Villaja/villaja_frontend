@@ -26,6 +26,8 @@ const ProductsPage = () => {
   const [catItemFiltered,setCatItemFiltered] = useState([])
   const [allCatProducts,setAllCatProducts] = useState([])
   const [priceFilter,setPriceFilter] = useState({min:0,max:3000000})
+  const [activeHeadingValue,SetActiveHeadingValue] = useState("")
+  const headingNumber = {Phones:2,Computers:3,Tablets:4,Accessories:5}
 
   const location = useLocation()
   const queryP = new useSearchParams(window.location.search)
@@ -65,6 +67,7 @@ const ProductsPage = () => {
     {
 
       console.log(queryP[0].get('category'));
+      SetActiveHeadingValue(queryP[0].get('category'))
       window.location.reload();
     }
   },[queryP[0].get('category'),queryP[0].get('searchTerm')])
@@ -95,7 +98,7 @@ const ProductsPage = () => {
       <Loader />
     ) : (
       <div>
-      <Header activeHeading={3} />
+      <Header activeHeading={headingNumber[activeHeadingValue]} />
       <br />
       <br />
       <div className="cc-main-body">

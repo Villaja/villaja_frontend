@@ -1,60 +1,55 @@
-
-
-
+/* eslint-disable react/prop-types */
 // import HeroPic from '../../'
 import HeroPic from '../../assets/hero_iphonepic.svg'
 import villajaLogoHeader from '../../assets/villaja_logo.svg'
 import villajaLogo from '../../assets/villaja_footer_logo.svg'
 import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderDropdown'
-import ReactTextTransition, { presets } from "react-text-transition";
-
+import ReactTextTransition from "react-text-transition";
 import { useEffect } from 'react'
-
-
 import { useNavigate } from 'react-router-dom'
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
-import { categoriesData, productData } from "../../static/data";
+// import { categoriesData, productData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart, 
 } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+
+import {CgMenuLeft} from "react-icons/cg"
+// import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-import DropDown from "./DropDown";
+// import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
-import logo from '../../assets/villaja.png'
-
+// import logo from '../../assets/villaja.png'
 import './Header.css'
 import '../../components/VillajaHeader/villajaHeader.css'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Header = ({ activeHeading }) => {
 
   const navigate = useNavigate()
-    const [dropdownHoverState,setHoverState] = useState(0)
-
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { isSeller } = useSelector((state) => state.seller);
-  
+  const [dropdownHoverState,setHoverState] = useState(0)
+  // const { isAuthenticated, user } = useSelector((state) => state.user);
+  // const { isSeller } = useSelector((state) => state.seller);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { allProducts } = useSelector((state) => state.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
-  const [dropDown, setDropDown] = useState(false);
+  // const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
   const [textIndex,setTextIndex] = useState(0)
+  const [mobileSearch,setMobileSearch] = useState(false)
 
   const texts = ['Phones','Gadgets','Tablets']
 
@@ -133,7 +128,6 @@ const Header = ({ activeHeading }) => {
         <div
           className={`vh-header-container`}
         >
-          
           {/* <div>
             <Link to="/">
              <img src={logo} alt="logo"/>
@@ -144,150 +138,242 @@ const Header = ({ activeHeading }) => {
             <Navbar active={activeHeading} />
           </div> */}
 
-          <div className="vh-item vh-logo">
-           <Link to={'/'}>
-                <img src={villajaLogoHeader} alt="" />
-            </Link>
-        </div>
+        <div className="vh-item vh-logo">
+          <Link to={'/'}>
+              <img src={villajaLogoHeader} alt="" />
+          </Link>
 
-        <div className="vh-menu">
-            <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
-            {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
+          <div className="vh-item-header-search">
+            <div className='hero-search-wrapper'>
+
+            <div className="w-[100%] relative">
+              <AiOutlineSearch
+                size={20}
+                className="absolute left-2 top-3 cursor-pointer"
+              />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="h-[44px] w-full px-2  pl-8 text-base border-gray-200 border-[2px] rounded-md"
+                onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
+              />
+              
+              {searchData && searchData.length !== 0 ? (
+                <div className="absolute w-full min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                  {searchData &&
+                    searchData.slice(0,7).map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`} key={index}>
+                          <div className="w-full flex items-start-py-3">
+                            <img
+                              src={`${i.images[0]?.url}`}
+                              alt=""
+                              className="w-[40px] h-[40px] mr-[10px]"
+                            />
+                            <h1>{i.name}</h1>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              ) : null}
             </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
-            {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
-            {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
-            <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
-            {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["EarHeadphones","Smart Watches","Speakers","Micropphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
-            <div className="vh-item vh-menu-item">Support</div>
-        </div>
-
-          <div className="flex" style={{gap:"2rem"}}>
-            <div className={`${styles.noramlFlex}`}>
-              <div
-                className="relative cursor-pointer mr-[15px]"
-                onClick={() => setOpenWishlist(true)}
-              >
-                <AiOutlineHeart size={30} />
-                <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {wishlist && wishlist.length}
-                </span>
-              </div>
+            {/* <div className="search-go-btn" onClick={() => handleHeroSearch()}>Go</div> */}
             </div>
-
-            <div className={`${styles.noramlFlex}`}>
-              <div
-                className="relative cursor-pointer mr-[15px]"
-                onClick={() => setOpenCart(true)}
-              >
-                <AiOutlineShoppingCart
-                  size={30}
-                  // color="rgb(255 255 255 / 83%)"
-                />
-                <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {cart && cart.length}
-                </span>
-              </div>
-            </div>
-
-            <div className={`${styles.noramlFlex}`}>
-              <div className="relative cursor-pointer mr-[15px]">
-                {localStorage.getItem('user-token') ? (
-                  <Link to="/profile">
-                    <CgProfile size={30} />
-                  </Link>
-                ) : (
-                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login">
-                    Sign In
-                  </Link>
-                )}
-              </div>
-            </div>
-
-            {/* cart popup */}
-            {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
-
-            {/* wishlist popup */}
-            {openWishlist ? (
-              <Wishlist setOpenWishlist={setOpenWishlist} />
-            ) : null}
           </div>
+        </div>
+
+        <div className="vh-header-right">
+
+
+          <div className="vh-menu">
+              <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
+              {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
+              </div>
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
+              {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
+              {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
+              {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["EarHeadphones","Smart Watches","Speakers","Micropphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
+              <div className="vh-item vh-menu-item">Support</div>
+          </div>
+
+            <div className="flex" style={{gap:"2rem"}}>
+              <div className={`${styles.noramlFlex}`}>
+                <div
+                  className="relative cursor-pointer mr-[15px]"
+                  onClick={() => setOpenWishlist(true)}
+                >
+                  <AiOutlineHeart size={30} />
+                  <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                    {wishlist && wishlist.length}
+                  </span>
+                </div>
+              </div>
+
+              <div className={`${styles.noramlFlex}`}>
+                <div
+                  className="relative cursor-pointer mr-[15px]"
+                  onClick={() => setOpenCart(true)}
+                >
+                  <AiOutlineShoppingCart
+                    size={30}
+                    // color="rgb(255 255 255 / 83%)"
+                  />
+                  <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                    {cart && cart.length}
+                  </span>
+                </div>
+              </div>
+
+              <div className={`${styles.noramlFlex}`}>
+                <div className="relative cursor-pointer mr-[0px]">
+                  {localStorage.getItem('user-token') ? (
+                    <Link to="/profile">
+                      <CgProfile size={30} />
+                    </Link>
+                  ) : (
+                    <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" style={{flexShrink:"0"}}>
+                      Sign In
+                    </Link>
+                  )}
+                </div>
+              </div>
+
+              {/* cart popup */}
+              {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+
+              {/* wishlist popup */}
+              {openWishlist ? (
+                <Wishlist setOpenWishlist={setOpenWishlist} />
+              ) : null}
+            </div>
+        </div>
+
         </div>
         
       </div>
 
 
-
-
-
-
-
-
-
-
       {/* mobile header */}
       <div
         className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          active === true ? "shadow-sm fixed top-0 left-0 z-10 " : null
         }
-      w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      w-full h-[60px] ${mobileSearch?'bg-[#111]':'bg-[#fff]'} z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
-        <div className="w-full flex items-center mt-3 justify-between">
+        {
+          mobileSearch ? 
+         
+        
+        <div className="w-[100%] h-[44px]  relative flex text-center justify-center" style={{transition:"all 0.3s ease"}}> 
+              <AiOutlineSearch
+                size={20}
+                className="absolute left-7 top-5 cursor-pointer"
+              />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="h-full w-[90%] mt-2 px-2  pl-8 text-base border-gray-200 border-[2px] rounded-md mobile-search-wrapper"
+                onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
+              />
+            
+              
+                <RxCross1
+                size={20}
+                className="absolute right-8 top-5 cursor-pointer"
+                onClick={() => setMobileSearch(false)}
+                />
+                :
+              
+            
+              
+              
+              {searchData && searchData.length !== 0 ? (
+                <div className="absolute w-full min-h-[125vh] bg-slate-50 shadow-sm-2 z-[9] p-4" style={{top:"4rem",zIndex:"100000"}}>
+                  {searchData &&
+                    searchData.slice(0,7).map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`} key={index}>
+                          <div className="w-full flex items-start-py-3 justify-between mb-[16px]" style={{alignItems:"center"}}>
+                            <h1 className='ml-[16px] ' style={{maxWidth:"90%",textAlign:"left"}}>{i.name}</h1>
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 0.555538V7.77754C10 7.92487 9.94147 8.06618 9.83729 8.17036C9.7331 8.27455 9.5918 8.33308 9.44446 8.33308C9.29712 8.33308 9.15582 8.27455 9.05164 8.17036C8.94745 8.06618 8.88892 7.92487 8.88892 7.77754V1.89647L0.948891 9.8372C0.844649 9.94144 0.703267 10 0.555847 10C0.408427 10 0.267045 9.94144 0.162804 9.8372C0.0585623 9.73295 0 9.59157 0 9.44415C0 9.29673 0.0585623 9.15535 0.162804 9.05111L8.10353 1.11108H2.22246C2.07512 1.11108 1.93382 1.05255 1.82964 0.948363C1.72545 0.84418 1.66692 0.702876 1.66692 0.555538C1.66692 0.4082 1.72545 0.266897 1.82964 0.162714C1.93382 0.0585299 2.07512 0 2.22246 0H9.44446C9.5918 0 9.7331 0.0585299 9.83729 0.162714C9.94147 0.266897 10 0.4082 10 0.555538Z" fill="black"/>
+                            </svg>
+
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              ) : null}
+            </div>
+          :
+        <div className="w-full h-[44px] flex items-center mt-3 justify-between" style={{transition:"all 0.3s ease"}}>
           <div>
-            <BiMenuAltLeft
-              size={40}
+            {
+              !open?
+              <CgMenuLeft
+              size={30}
               className="ml-4"
+              style={{transition:"all 0.3s ease"}}
               onClick={() => setOpen(true)}
-            />
+              />:
+              <RxCross1
+                size={25}
+                className="ml-4"
+                style={{transition:"all 0.3s ease"}}
+                onClick={() => setOpen(false)}
+                />
+            }
           </div>
-          <div>
+          <div className='ml-[30px]'>
             <Link to="/">
-              <p className="text-xl font-bold"></p>
+              <p className="text-xl font-bold ">
+                <img src={villajaLogoHeader} alt="" />
+              </p>
             </Link>
           </div>
-          <div>
-            <div
-              className="relative ml-[250px]"
-              onClick={() => setOpenCart(true)}
-            >
-              <AiOutlineShoppingCart size={30} />
-              <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
-                {cart && cart.length}
-              </span>
+
+          <div className='mr-[15px] flex justify-between ' style={{alignItems:"center",gap:"1rem"}}>
+            <div style={{cursor:'pointer'}} onClick={() => setMobileSearch(true)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 25 25" fill="none">
+                <path d="M10.0667 18.8516C11.8416 18.8512 13.5655 18.257 14.9637 17.1636L19.3596 21.5596L20.7737 20.1456L16.3777 15.7496C17.4717 14.3512 18.0662 12.627 18.0667 10.8516C18.0667 6.44056 14.4776 2.85156 10.0667 2.85156C5.65565 2.85156 2.06665 6.44056 2.06665 10.8516C2.06665 15.2626 5.65565 18.8516 10.0667 18.8516ZM10.0667 4.85156C13.3757 4.85156 16.0667 7.54256 16.0667 10.8516C16.0667 14.1606 13.3757 16.8516 10.0667 16.8516C6.75765 16.8516 4.06665 14.1606 4.06665 10.8516C4.06665 7.54256 6.75765 4.85156 10.0667 4.85156Z" fill="#111111"/>
+              </svg>
+            </div>
+            <div className='mr-[15px]'>
+              <div
+                className="relative"
+                onClick={() => setOpenCart(true)}
+                >
+                <AiOutlineShoppingCart size={30} />
+                <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                  {cart && cart.length}
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className={`${styles.noramlFlex}`}>
-              <div className="relative cursor-pointer mr-[15px]">
-                
-              {localStorage.getItem('user-token') ? (
-                  <Link to="/profile">
-                    <CgProfile size={30} />
-                  </Link>
-                ) : (
-                  <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login">
-                    Sign In
-                  </Link>
-                )}
-                
-              </div>
-            </div>
+
          
-          {/* cart popup */}
           {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
 
-          {/* wishlist popup */}
           {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
         </div>
+        }
 
         {/* header sidebar */}
         {open && (
           <div
-            className={`fixed w-full bg-[#0000005f] z-20 h-full top-0 left-0`}
+            className={`fixed w-full bg-[#0000005f] z-20 h-full left-0`} style={{top:"60px"}}
           >
-            <div className="fixed w-[70%] bg-[#fff] h-[125vh] top-0 left-0 z-10 overflow-y-scroll">
-              <div className="w-full justify-between flex pr-3 mb-2">
+            <div className="fixed w-[100%] bg-[#111111] h-[125vh] left-0 z-10 overflow-y-scroll text-white" style={{top:"60px"}}>
+              {/* <div className="w-full justify-between flex pr-3 mb-2">
                 <div>
                   <div
                     className="relative mr-[15px]"
@@ -304,80 +390,46 @@ const Header = ({ activeHeading }) => {
                   className="ml-4 mt-5"
                   onClick={() => setOpen(false)}
                 />
+              </div> */}
+
+              <Navbar active={activeHeading}/>
+              <div className={`${styles.noramlFlex}`} style={{flexShrink:"0",marginLeft:"1rem"}}>
+              <div className="relative cursor-pointer mr-[15px]">
+                
+                    {localStorage.getItem('user-token') ? (
+                        <Link to="/profile">
+                          <CgProfile size={30} />
+                        </Link>
+                      ) : (
+                        <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" >
+                          Sign In
+                        </Link>
+                      )}
+                    
+                  </div>
+
               </div>
 
-              {/* <div className="my-8 w-[92%] m-auto h-[40px relative]">
-                <input
-                  type="search"
-                  placeholder="Search Product..."
-                  className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                />
-                {searchData && (
-                  <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
-                    {searchData.map((i) => {
-                      const d = i.name;
-
-                      const Product_name = d.replace(/\s+/g, "-");
-                      return (
-                        <Link to={`/product/${Product_name}`}>
-                          <div className="flex items-center">
-                            <img
-                              src={i.image_Url[0]?.url}
-                              alt=""
-                              className="w-[50px] mr-2"
-                            />
-                            <h5>{i.name}</h5>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div> */}
-
-              <Navbar active={activeHeading} />
-              {/* <div className={`${styles.button} ml-4 !rounded-[4px]`}>
-                <Link to="/profile">
-                  <h1 className="text-[#fff] flex items-center">
-                    Dashboard <IoIosArrowForward className="ml-1" />
-                  </h1>
-                </Link>
-              </div> */}
+              <div className="w-full justify-between flex pr-3 mb-2 ml-1">
+                    <div>
+                      <div
+                        className="relative mr-[15px]"
+                        onClick={() => setOpenWishlist(true) || setOpen(false)}
+                      >
+                        <AiOutlineHeart size={30} className="mt-5 ml-3" />
+                        <span class="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                          {wishlist && wishlist.length}
+                        </span>
+                      </div>
+                    </div>
+                    
+              </div>
+              
               <br />
               <br />
               <br />
 
-              {/* <div className="flex w-full justify-center">
-                {isAuthenticated ? (
-                  <div>
-                    <Link to="/profile">
-                      <img
-                        src={`${user.avatar?.url}`}
-                        alt=""
-                        className="w-[60px] h-[60px] rounded-full border-[3px] border-[#0eae88]"
-                      />
-                     
-                    </Link>
-                  </div>
-                ) : (
-                  <>
-                    <Link
-                      to="/user/login"
-                      className="text-[18px] pr-[10px] text-[#000000b7]"
-                    >
-                      Login 
-                    </Link>
-                    <Link
-                      to="/user/signup"
-                      className="text-[18px] text-[#000000b7]"
-                    >
-                      Sign up
-                    </Link>
-                  </>
-                )}
-              </div> */}
+              
             </div>
           </div>
         )}
@@ -385,7 +437,7 @@ const Header = ({ activeHeading }) => {
 
       {/*Hero Section */}
 
-      <div className={`hero-container`}>
+      {/* <div className={`hero-container`}>
         <div className="hero-pic-container">
             <img src={HeroPic} alt="" />
         </div>
@@ -440,57 +492,66 @@ const Header = ({ activeHeading }) => {
             </div>
 
         </div>
-      </div>
+      </div> */}
 
 
+      {/* <div className={`hero-container`}>
+        <div className="hero-pic-container">
+            <img src={HeroPic} alt="" />
+        </div>
+        <div className="hero-search-section">
+            <div className="hs-logo">
+                <img src={villajaLogo} alt="" />
+            </div>
+            <div className="hs-text mb-4">
+              
+              <ReactTextTransition>
+                <span>{texts[textIndex]}</span> 
+              </ReactTextTransition>
+                
+              <span>from sellers you can trust</span>
+            </div>
+            <div className='hero-search-wrapper'>
 
-      {/* <div className="hidden 800px:h-[30px] px-16 py-4 800px:my-[30px] 800px:flex items-center justify-between">
-        
-          <div onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[58px] w-[270px] hidden 1000px:block">
-              <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
-              <button
-                className={`h-[100%] w-full flex justify-between mb-4 items-center border-gray-200 border-[2px] pl-10 bg-white font-sans text-md font-[500] select-none rounded`}
-              >
-                All Categories
-              </button>
-              <IoIosArrowDown
+            <div className="w-[100%] relative">
+              <AiOutlineSearch
                 size={20}
-                className="absolute right-2 top-4 cursor-pointer"
-                onClick={() => setDropDown(!dropDown)}
+                className="absolute left-2 top-2.5 cursor-pointer"
               />
-              {dropDown ? (
-                <DropDown
-                  categoriesData={categoriesData}
-                  setDropDown={setDropDown}
-                />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="h-[44px] w-full px-2  pl-8 text-base border-gray-200 border-[2px] rounded-md"
+              />
+              
+              {searchData && searchData.length !== 0 ? (
+                <div className="absolute w-full min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                  {searchData &&
+                    searchData.slice(0,7).map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`} key={index}>
+                          <div className="w-full flex items-start-py-3">
+                            <img
+                              src={`${i.images[0]?.url}`}
+                              alt=""
+                              className="w-[40px] h-[40px] mr-[10px]"
+                            />
+                            <h1>{i.name}</h1>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
               ) : null}
             </div>
-          </div>
-        </div> */}
+            <div className="search-go-btn" onClick={() => handleHeroSearch()}>Go</div>
+            </div>
 
+        </div>
+      </div> */}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-      
     </>
   );
 };

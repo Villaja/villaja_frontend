@@ -1,11 +1,4 @@
-.vh-header-wrapper
-{
-    /* position: sticky;
-    top: 0;
-    left: 0; */
-    /* z-index: 1; */
-}
-
+/* 
 
 Link{
     background-color: aqua;
@@ -14,7 +7,6 @@ Link{
 .vh-header-container
 {
     position: relative;
-    /* width: 100%; */
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -99,4 +91,4 @@ Link{
         place-items: center;
         transition: all 0.2s ease;
     }
-}
+} */
