@@ -30,6 +30,8 @@ const ProductsPage = () => {
   const [catItemFiltered,setCatItemFiltered] = useState([])
   const [allCatProducts,setAllCatProducts] = useState([])
   const [priceFilter,setPriceFilter] = useState({min:0,max:3000000})
+  const [brandFilter,setBrandFilter] = useState(["apple","oppo","samsung","infinix","nokia","blackberry","google"])
+  const [colorFilter,setcolorFilter] = useState(["black","white","silver","gold","gray"])
   const [activeHeadingValue,SetActiveHeadingValue] = useState("")
   const headingNumber = {Phones:2,Computers:3,Tablets:4,Accessories:5}
 
@@ -80,18 +82,18 @@ const ProductsPage = () => {
     if(allProducts){
       if(searchData)
       {
-        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max) && brandFilter.includes(i.brand?.toLowerCase()) && i.color?.toLowerCase().includes(colorFilter)).slice(pageNumber-24,pageNumber))
 
       }
       else
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max) && brandFilter.includes(i.brand?.toLowerCase()) && colorFilter.includes(i.color?.toLowerCase())).slice(pageNumber-24,pageNumber) )
       }
     }
     console.log(allProducts);
-  },[pageNumber,allProducts,priceFilter])
+  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter])
 
 
 
@@ -116,7 +118,7 @@ const ProductsPage = () => {
 
       <div className="catalog-page-body">
                 <div className="catalog-filter-section">
-                  <CategoryComponent category={categoryData} setPriceFilter={setPriceFilter}/>
+                  <CategoryComponent category={categoryData} setPriceFilter={setPriceFilter} setcolorFilter={setcolorFilter} setBrandFilter={setBrandFilter}/>
                 </div>
                 { data && data.length > 0 ?<div className="catalog-item-display">
                     <div className="cid-top-bar">
@@ -128,7 +130,7 @@ const ProductsPage = () => {
                       </div>
                     </div>
                       <div className="cid-main-header">
-                        {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{allCatProducts.length} products found</span>
+                        {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{data.length} products found</span>
                       </div>
                     <div className="cid-main">
                       {

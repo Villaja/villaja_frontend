@@ -92,7 +92,7 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
 
           <div className="py-2 px-3 flex items-center justify-between">
             <div className="flex">
-            <h5 className="pr-3 font-bold  text-gray-800" style={{fontSize:"1.6rem",fontWeight:"500"}}>
+            <h5 className="pr-3 font-bold  text-gray-800" style={{fontSize:"1.4rem",fontWeight:"500"}}>
               ₦{data.originalPrice === 0
                 ? data.originalPrice
                 : data.discountPrice.toLocaleString()}
