@@ -81,7 +81,7 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
           <p className='font-semibold px-3 pt-4 text-blue-500 text-sm'>{data.shop.name}</p>
         </Link>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-        <p className="pb-3 pt-2 text-md sm:text-lg text-gray-700 font-normal px-3 overflow-hidden whitespace-nowrap">
+        <p className="pb-3 pt-2 text-sm sm:text-md text-gray-700 font-normal px-3 overflow-hidden whitespace-nowrap">
   {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
 </p>
 
@@ -92,12 +92,12 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
 
           <div className="py-2 px-3 flex items-center justify-between">
             <div className="flex">
-            <h5 className="pr-3 font-bold  text-gray-800" style={{fontSize:"1.4rem",fontWeight:"500"}}>
+            <h5 className="pr-3 font-bold  text-gray-800" style={{fontSize:"1.3rem",fontWeight:"500"}}>
               ₦{data.originalPrice === 0
                 ? data.originalPrice
                 : data.discountPrice.toLocaleString()}
             </h5>
-            <h4 className="text-xs line-through hidden sm:block text-red-400">
+            <h4 className="text-[0.55rem] line-through hidden sm:block text-red-400">
               {data.originalPrice
                 ? "₦" + data.originalPrice.toLocaleString()
                 : null}
