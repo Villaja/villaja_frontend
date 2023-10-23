@@ -125,9 +125,9 @@ const Checkout = () => {
   console.log(discountPercentenge);
 
   return (
-    <div className="w-full flex flex-col items-center py-8">
-      <div className="w-[90%] 1000px:w-[85%] block 800px:flex">
-        <div className="w-full 800px:w-[65%]">
+    <div className="w-full flex flex-col items-center py-8 ">
+      <div className="w-full 1000px:w-[85%] block 800px:flex">
+        <div className="w-full 800px:w-[65%] ">
           <ShippingInfo
             user={user}
             country={country}
@@ -184,12 +184,14 @@ const ShippingInfo = ({
   setZipCode,
 }) => {
   return (
-    <div className="w-full 800px:w-[95%] bg-white rounded-md p-5 pb-8">
+    <div className="w-full 800px:w-[95%] bg-white rounded-md p-5 pb-8 ">
+          <h1 className="mb-6 font-normal text-[2rem] ">Checkout</h1>
+
       <h5 className="text-[18px] font-[500]">Contact Information</h5>
       <br />
       <form>
-        <div className="w-full flex pb-3">
-          <div className="w-[50%]">
+        <div className="w-full block 800px:flex pb-3 gap-6 ">
+          <div className="w-full mb-2 800px:w-[50%] ">
             <label className="block pb-2">Name</label>
             <input
               type="text"
@@ -198,7 +200,7 @@ const ShippingInfo = ({
               className={`${styles.input}`}
             />
           </div>
-          <div className="w-[50%]">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Email Address</label>
             <input
               type="email"
@@ -209,8 +211,8 @@ const ShippingInfo = ({
           </div>
         </div>
 
-        <div className="w-full flex pb-3">
-          <div className="w-[50%]">
+        <div className="w-full block 800px:flex pb-3 gap-6 ">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Phone Number</label>
             <input
               type="number"
@@ -219,7 +221,7 @@ const ShippingInfo = ({
               className={`${styles.input}`}
             />
           </div>
-          <div className="w-[50%]">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Zip Code</label>
             <input
               type="number"
@@ -234,11 +236,11 @@ const ShippingInfo = ({
       <br />
       <h5 className="text-[18px] font-[500]">Shipping Information</h5>
       <br />
-        <div className="w-full flex pb-3">
-          <div className="w-[50%]">
+        <div className="w-full block 800px:flex pb-3 gap-6">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Country</label>
             <select
-              className="w-[80%] border h-[50px] rounded-[8px]"
+              className="w-[100%] border h-[50px] rounded-[8px]"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
@@ -253,10 +255,10 @@ const ShippingInfo = ({
                 ))}
             </select>
           </div>
-          <div className="w-[50%]">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">City</label>
             <select
-              className="w-[80%] border h-[50px] rounded-[8px]"
+              className="w-[100%] border h-[50px] rounded-[8px]"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -273,8 +275,8 @@ const ShippingInfo = ({
           </div>
         </div>
 
-        <div className="w-full flex pb-3">
-          <div className="w-[50%]">
+        <div className="w-full block 800px:flex pb-3 gap-6 ">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Address1</label>
             <input
               type="address"
@@ -284,7 +286,7 @@ const ShippingInfo = ({
               className={`${styles.input} `}
             />
           </div>
-          <div className="w-[50%]">
+          <div className="w-full mb-2 800px:w-[50%]">
             <label className="block pb-2">Address2</label>
             <input
               type="address"

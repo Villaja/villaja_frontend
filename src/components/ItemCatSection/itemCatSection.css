@@ -35,7 +35,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 2rem;
-    padding: 1rem;
+    /* padding: 1rem; */
     /* grid-auto-rows: minmax(100px, auto); */
 }
 
@@ -81,6 +81,12 @@
     .special-ic-body-two
     {
         grid-template-columns: repeat(1,1fr) !important;
+    }
+
+    .suggested-ic-body
+    {
+        grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1rem;
     }
 
 }

@@ -10,7 +10,7 @@ const CheckoutPage = () => {
     <div>
         <Header />
         <br />
-        <br />
+        {/* <br /> */}
         {/* <CheckoutSteps active={1} /> */}
         <Checkout />
         <br />

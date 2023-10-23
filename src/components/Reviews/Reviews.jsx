@@ -5,7 +5,7 @@ import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 import { review } from './ReviewsData'
 import { useNavigate } from 'react-router-dom'
 
-const Reviews = ({ratings,reviews,id}) => {
+const Reviews = ({ratings,reviews,id,isDetailsPage}) => {
     const [reviewStars,setReviewStars] = useState(4)
     const navigate = useNavigate()
   return (
@@ -62,6 +62,10 @@ const Reviews = ({ratings,reviews,id}) => {
                 <div className="reviews-main-right">
                     {
                         reviews && reviews.length > 0 ?
+                        isDetailsPage?
+                        reviews.slice(0,5).map((rev,id) => {
+                            return <SingleReview data={rev} key={id}/>
+                        }):
                         reviews.map((rev,id) => {
                             return <SingleReview data={rev} key={id}/>
                         })
