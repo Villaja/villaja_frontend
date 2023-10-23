@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import './categorycomponent.css'
 import { catData } from '../../mock_data/Category_info'
 import { useEffect, useState } from 'react';
+import { RxCross1 } from "react-icons/rx";
 
-const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setcolorFilter}) => {
+const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setcolorFilter,setOpenFilter}) => {
 
     const [priceRangeValue,setPriceRangeValue] = useState("3000000")
     const [brandValue,setBrandValue] = useState([])
@@ -18,12 +18,13 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
         }
         else
         {
-            if(brandValue.length === 1)
+            if(brandValue.length <= 1)
             {
                 // let tempCol = colorValue.filter((b) => b!= e.target.name.toLowerCase())
                 // tempCol.push()
                 // console.log(tempCol);
-                setBrandValue(["apple","oppo","samsung","infinix","nokia","blackberry","google"])
+                setBrandValue([])
+                setBrandFilter(["apple","oppo","samsung","infinix","nokia","blackberry","google"])
                 
             }
             else setBrandValue(brandValue.filter((b) => b!= e.target.name))
@@ -38,7 +39,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
         }
         else
         {
-            if(colorValue.length === 1)
+            if(colorValue.length <= 1)
             {
                 // let tempCol = colorValue.filter((b) => b!= e.target.name.toLowerCase())
                 // tempCol.push()
@@ -63,6 +64,19 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
     console.log(catData[0]['subcat']);
   return (
     <div className={`filter-container ${isMobile?'filter-container-mobile':''}`}>
+
+        <div className="filter-container-action">
+            <div className="close-btn">
+                <RxCross1
+                size={20}
+                className="cursor-pointer"
+                onClick={() => setOpenFilter(false)}
+                />
+            </div>
+            <div className="close-name">Filter</div>
+        </div>
+
+
         <div className="filter-top-bar">
             Category
         </div>
@@ -82,7 +96,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
             })}
         </div> */}
 
-        <div className="filter-sub filter-sub-brand">
+        {/* <div className="filter-sub filter-sub-brand">
             <div className="filter-sub-title">
                 Brand
             </div>
@@ -95,7 +109,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                 })}
             </div>
 
-        </div>
+        </div> */}
 
         <div className="filter-sub filter-sub-price">
             <div className="filter-sub-title">
@@ -132,7 +146,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                 
             </div>
         </div> */}
-        <div className="filter-sub filter-sub-color">
+        {/* <div className="filter-sub filter-sub-color">
             <div className="filter-sub-title">
                 Color
             </div>
@@ -144,7 +158,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                     </div>
                 })}
             </div>
-        </div>
+        </div> */}
         {/* <div className="filter-sub filter-sub-condition">
             <div className="filter-sub-title">
                 Condition

@@ -1,0 +1,44 @@
+.cid-top-filter
+{
+    background: #0077B6;
+    display: flex;
+    align-items: center;
+    height: 3.7rem;
+    padding: 2.2rem 0;
+}
+
+.ctf-action
+{
+    padding: 1rem;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.ctf-action-2
+{
+    border-left: 2px solid rgba(255, 255, 255, 0.20);;
+    border-right: 2px solid rgba(255, 255, 255, 0.20);;
+}
+
+
+@media screen and (max-width:756px) {
+
+    .catalog-filter-section
+    {
+        display: none;
+    }
+
+    .catalog-filter-mobile {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100000;
+        min-height: 125vh;
+        width: 125vw;
+        background-color: #fff;
+    }
+}
+

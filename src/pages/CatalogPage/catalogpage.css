@@ -36,7 +36,7 @@
     position: relative;
     display: flex;
     gap: 2rem;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .catalog-item-display
@@ -51,6 +51,7 @@
         gap: 2rem;
         grid-auto-rows: minmax(100px, auto);
         margin-bottom: 1rem;
+        padding: 0 1rem;
 }
 
 .cid-main-header
@@ -142,11 +143,17 @@
     .catalog-page-body
     {
         gap: 0;
+        display: block;
     }
 
     .cid-top-mobile-filter
     {
         display: contents;
+    }
+
+    .cid-main-tab
+    {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 @media screen and (max-width:620px) {
@@ -154,4 +161,5 @@
     {
         grid-template-columns: repeat(1, 1fr);
     }
+
 }

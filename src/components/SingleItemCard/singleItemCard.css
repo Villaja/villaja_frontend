@@ -58,3 +58,11 @@
 {
     background: linear-gradient(180deg, #00B4D8, #0077B6);
 }
+
+
+@media screen and (max-width:756px) {
+    .single-item-container
+    {
+        min-width: 10rem
+    }
+}
