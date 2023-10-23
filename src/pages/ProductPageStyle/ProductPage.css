@@ -1,7 +1,7 @@
 .cid-top-filter
 {
     background: #0077B6;
-    display: flex;
+    display: none;
     align-items: center;
     height: 3.7rem;
     padding: 2.2rem 0;
@@ -25,6 +25,11 @@
 
 @media screen and (max-width:756px) {
 
+    .cid-top-filter
+    {
+        display: flex;
+    }
+
     .catalog-filter-section
     {
         display: none;
@@ -37,7 +42,7 @@
         left: 0;
         z-index: 100000;
         min-height: 125vh;
-        width: 125vw;
+        width: 100%;
         background-color: #fff;
     }
 }
