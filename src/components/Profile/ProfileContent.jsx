@@ -802,7 +802,7 @@ const ChangePassword = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <input
-              className={`w-[95%] h-[50px] border-[2px] font-semibold border-[#00A8D1] text-center text-[#00A8D1] rounded-[8px] mt-8 cursor-pointer`} style={{maxWidth:"24rem"}}
+              className={`w-[95%] h-[52px] border-[2px] font-semibold border-[#00A8D1] text-center text-[#00A8D1] rounded-[8px] mt-8 cursor-pointer`} style={{maxWidth:"24rem"}}
               required
               value="Update"
               type="submit"
