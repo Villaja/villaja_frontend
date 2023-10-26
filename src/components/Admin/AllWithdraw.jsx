@@ -104,16 +104,28 @@ const AllWithdraw = () => {
   ];
 
   const handleSubmit = async () => {
+    // Extract the JWT token from local storage
+    const token = localStorage.getItem('user-token');
+  
     await axios
-      .put(`${server}/withdraw/update-withdraw-request/${withdrawData.id}`,{
-        sellerId: withdrawData.shopId,
-      },{withCredentials: true})
+      .put(
+        `${server}/withdraw/update-withdraw-request/${withdrawData.id}`,
+        {
+          sellerId: withdrawData.shopId,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
       .then((res) => {
         toast.success("Withdraw request updated successfully!");
         setData(res.data.withdraws);
         setOpen(false);
       });
   };
+  
 
   const row = [];
 
