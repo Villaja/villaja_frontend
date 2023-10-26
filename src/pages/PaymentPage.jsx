@@ -7,7 +7,7 @@ import VillajaFooter from '../components/VillajaFooter/VillajaFooter';
 
 const PaymentPage = () => {
   return (
-    <div className='w-full min-h-screen bg-[#f6f9fc]'>
+    <div className='w-full min-h-[125vh] bg-[#f6f9fc]'>
        <Header />
        <br />
        <br />
@@ -16,7 +16,10 @@ const PaymentPage = () => {
        <br />
        <br />
        {/* <Footer /> */}
+       <div style={{position:"fixed",bottom:"0",left:"0",width:"100%"}}>
        <VillajaFooter/>
+
+       </div>
     </div>
   )
 }

@@ -66,6 +66,112 @@
 }
 
 
+.delivered,.processing,.cancelled
+{
+    border-radius: 1.25rem;
+    background-color: #F1FFEE;
+    color: #1FD000 ;
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.cancelled
+{
+    background-color: rgba(174, 18, 18, 0.075);
+    color: red;
+}
+
+.processing
+{
+    background-color: rgba(212, 212, 3, 0.1);
+    color: rgb(114, 114, 12);
+}
+
+.myOrders-tabs
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-bottom: 2px solid rgb(0, 0, 0, 0.10);
+}
+
+.myOrder-tab
+{
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0, 0.40);
+    gap: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.myOrder-tab span
+{
+    background-color: rgb(0, 0, 0, 0.10);
+    border-radius: 1.25rem;
+    padding:  0 0.5em;
+    font-size: 0.8rem;
+}
+
+.myOrderActive
+{
+    border-bottom: 2px solid #00A8D1;
+    color: #00A8D1;
+}
+
+.myOrderActive span
+{
+    transition: all 0.3s ease;
+    color: #00A8D1;
+}
+
+
+.orderTable-header
+{
+    /* background-color: rebeccapurple; */
+}
+
+.myOrders-search
+{
+    border-radius: 0.625rem;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+    background: rgba(0, 0, 0, 0.02);
+    max-width: 20rem;
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.myOrders-search-mobile
+{   
+    max-width: 3rem;
+    cursor: pointer;
+}
+
+.myOrders-search-mobile input
+{
+    display: none;
+}
+
+.myOrders-search input
+{
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+
+
+
 @media screen and (max-width:750px) {
     
 
@@ -88,4 +194,9 @@
             gap: 0.5rem !important;
         }
 
+
+        .myOrder-tab {
+            
+            font-size: 0.8rem;
+        }
 } 

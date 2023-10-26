@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
+import { FiSearch } from "react-icons/fi";
 import {
   deleteUserAddress,
   loadUser,
@@ -28,6 +29,8 @@ import { getAllOrdersOfUser } from "../../redux/actions/order";
 import './ProfileContent.css'
 
 import EditIcon from './editIcon.svg'
+import EyeIcon from './eyeIcon.svg'
+import PadLock from './padlock.svg'
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
@@ -76,10 +79,8 @@ const ProfileContent = ({ active }) => {
         ))
   }
 
- 
-
   return (
-    <div className=" relative" style={{maxWidth:"1500px",width:"100%"}}>
+    <div className=" relative mb-8" style={{maxWidth:"1500px",width:"100%"}}>
       {/* profile */}
       {active === 1 && (
         <>
@@ -87,7 +88,7 @@ const ProfileContent = ({ active }) => {
             <div className="relative">
             </div>
           </div>
-          <br />
+          {window.screen.width < 800 ?null:<br />}
           {/* <br /> */}
           <div className="w-full pl-0 1100px:pl-5 ">
             <h1 className="font-semibold text-[2rem] mb-4">My Profile</h1>
@@ -293,18 +294,6 @@ const ProfileContent = ({ active }) => {
 
             </form>
 
-
-
-              
-
-
-              
-              {/* <input
-                className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
-                required
-                value="Update"
-                type="submit"
-              /> */}
           </div>
         </>
       )}
@@ -352,31 +341,52 @@ const AllOrders = () => {
   const { orders } = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
+  const [myOrderNo,setMyOrderNo] = useState("all")
+
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID",headerClassName: 'orderTable-header', minWidth: 150, flex: 0.7 },
+    { field: "createdAt", headerName: "Date", minWidth: 150, flex: 0.7 },
 
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
-    },
+    
     {
       field: "itemsQty",
-      headerName: "Items Qty",
+      headerName: "Unit",
       type: "number",
       minWidth: 130,
       flex: 0.7,
     },
+
+    {
+      field: "status",
+      headerName: "Status",
+      headerAlign: 'center',
+      minWidth: 130,
+      flex: 0.7,
+      renderCell: (params) => {
+        return(
+
+        
+        params.getValue(params.id, "status") === "Delivered" ?
+          <div className="delivered">
+            Delivered
+          </div>  : 
+          params.getValue(params.id, "status") === "Processing"? <div className="processing">processing</div>
+          :
+          <div className="cancelled">Cancelled</div>
+        )
+        
+      },
+      // cellClassName: (params) => {
+      //   return params.getValue(params.id, "status") === "Delivered"
+      //     ? "greenColor"
+      //     : "redColor";
+      // },
+    },
+    
 
     {
       field: "total",
@@ -390,7 +400,7 @@ const AllOrders = () => {
       field: " ",
       flex: 1,
       minWidth: 150,
-      headerName: "",
+      headerName: "Actions",
       type: "number",
       sortable: false,
       renderCell: (params) => {
@@ -398,7 +408,7 @@ const AllOrders = () => {
           <>
             <Link to={`/user/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <img src={EyeIcon} alt="" />
               </Button>
             </Link>
           </>
@@ -407,25 +417,130 @@ const AllOrders = () => {
     },
   ];
 
-  const row = [];
+  const [rowState,setRowState] = useState([])
 
-  orders &&
-    orders.forEach((item) => {
-      row.push({
-        id: item._id,
-        itemsQty: item.cart.length,
-        total: "₦ " + item.totalPrice,
-        status: item.status,
+  const [searchVal,setSearchVal] = useState("")
+
+  const [mobileSearch,setMobileSearch] = useState(window.screen.width < 500?true:false)
+
+  console.log("windowwwww " + window.screen.width);
+
+  const handlePopulateRow = () => {
+      const row = [];
+
+    orders &&
+      orders.forEach((item) => {
+        row.push({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        });
       });
-    });
+
+      return row
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchVal(e.target.value)
+    if(myOrderNo === "all")
+    {
+      setRowState(orders.filter((od) => od._id.includes(e.target.value)).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+    else
+    {
+
+    setRowState(orders.filter((od) => od._id.includes(e.target.value) && od.status.toLowerCase() === myOrderNo).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+
+  }
+
+  const handleOrderNo = (val) => {
+    setMyOrderNo(val)
+    if(val != "all")
+    {
+
+      setRowState(orders.filter((od) => od.status.toLowerCase() === val && od._id.includes(searchVal)).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+    else
+    {
+        setRowState(orders.map((item) => {
+      return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+      })
+    }))
+    }
+  }
+  
+
+  useEffect(() => {
+    
+    // const newRow = handlePopulateRow()
+    console.log(orders);
+    orders && setRowState(orders.map((item) => {
+      return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+      })
+    }))
+  },[orders])
 
   return (
-    <div className="pl-8 pt-1">
+    <div className="500px:pl-8 800px:pt-1">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">My Orders</h1>
+
+      <div className="myOrders-tabs">
+          <div className={`myOrder-tab myOrder-all ${myOrderNo === "all" && 'myOrderActive'}`} onClick = {() => handleOrderNo("all")}>All <span> {orders?.length} </span></div>
+          <div className={`myOrder-tab myOrder-delivered ${myOrderNo === "delivered" && 'myOrderActive'}`} onClick = {() => handleOrderNo("delivered")}>Delivered <span> {orders?.filter((od) => od.status === "Delivered").length}  </span></div>
+          <div className={`myOrder-tab myOrder-processing ${myOrderNo === "processing" && 'myOrderActive'}`} onClick = {() => handleOrderNo("processing")}>Processing <span> {orders?.filter((od) => od.status === "Processing").length} </span></div>
+          <div className={`myOrder-tab myOrder-cancelled ${myOrderNo === "cancelled" && 'myOrderActive'}`} onClick = {() => handleOrderNo("cancelled")}>Cancelled <span> {orders?.filter((od) => od.status === "Cancelled").length} </span></div>
+      </div>
+
+      <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6`}>
+          <FiSearch size={20} onClick={
+            () => setMobileSearch(!mobileSearch)
+          }/>
+          <input type="text" placeholder="Search..." onChange={(e) => handleSearchChange(e)}/>
+      </div>
+
       <DataGrid
-        rows={row}
+        rows={rowState}
         columns={columns}
         pageSize={10}
         disableSelectionOnClick
+        checkboxSelection
         autoHeight
       />
     </div>
@@ -478,7 +593,7 @@ const AllRefundOrders = () => {
       field: " ",
       flex: 1,
       minWidth: 150,
-      headerName: "",
+      headerName: "Actions",
       type: "number",
       sortable: false,
       renderCell: (params) => {
@@ -514,6 +629,7 @@ const AllRefundOrders = () => {
         columns={columns}
         pageSize={10}
         autoHeight
+        checkboxSelection
         disableSelectionOnClick
       />
     </div>
@@ -643,47 +759,50 @@ const ChangePassword = () => {
   };
   
   return (
-    <div className="w-full px-5">
-      <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">
+    <div className="w-full px-5 800px:py-1">
+      <img src={PadLock} alt="" className="mt-8" />
+      <h1 className="block text-[25px]  font-[600] text-[#000000ba] pb-2 text-[2rem] mt-2">
         Change Password
       </h1>
+      <p style={{color: 'rgba(0, 0, 0, 0.30)',fontWeight: '500',lineHeight: '1.49344rem',letterSpacing: '-0.01344rem',maxWidth:'50ch',marginBottom:"2rem"}}>To change your password, please fill in the details below.
+        your passwords most contain at least 8 characters, and must have one upper cast letter. </p>
       <div className="w-full">
         <form
           aria-required
           onSubmit={passwordChangeHandler}
-          className="flex flex-col items-center"
+          // className="flex flex-col items-center"
         >
           <div className=" w-[100%] 800px:w-[50%] mt-5">
-            <label className="block pb-2">Enter your old password</label>
+            <label className="block pb-2">Current Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
             />
           </div>
           <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your new password</label>
+            <label className="block pb-2">New Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your confirm password</label>
+            <label className="block pb-2">Confirm Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <input
-              className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+              className={`w-[95%] h-[50px] border-[2px] font-semibold border-[#00A8D1] text-center text-[#00A8D1] rounded-[8px] mt-8 cursor-pointer`} style={{maxWidth:"24rem"}}
               required
               value="Update"
               type="submit"

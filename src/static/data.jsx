@@ -223,7 +223,7 @@ export const navItems = [
     },
     {
       id: 4,
-      title: "Assessories",
+      title: "Accessories",
       subTitle: "For phones, tablets, computers and more!",
       image_Url:
         "https://latalata.ng/image/cache/catalog/Product%20images/CASPER/44mm-700x700.jpg",

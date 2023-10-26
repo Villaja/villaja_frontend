@@ -111,7 +111,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         </span>
       </div>
 
-      <div
+      {/* <div
         className={` ${active === 7?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(7)}
       >
@@ -123,7 +123,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         >
           Address
         </span>
-      </div>
+      </div> */}
 
       {user && user?.role === "Admin" && (
         <Link to="/admin/dashboard">
