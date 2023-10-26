@@ -1,0 +1,91 @@
+.profile-content-pi
+{
+    /* background-color: aqua; */
+    border-radius: 0.625rem;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+    padding: 1rem;
+    padding-top: 0.5rem;
+}
+
+.pc-pi-top
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.pc-pi-edit
+{
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+    border-radius: 0.3125rem;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+    color: rgba(0, 0, 0, 0.30);
+    cursor: pointer;
+    
+}
+.pc-pi-save
+{
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+    border-radius: 0.3125rem;
+    background-color: #00A8D1;
+    border: 2px solid #00A8D1;
+    /* color: #ffffff; */
+    cursor: pointer;
+}
+
+.pc-pi-cancel
+{
+    background-color: rgb(139, 10, 10) !important;
+    color: white;
+}
+.pcmain-input
+{
+    font-size: 1.2rem;
+}
+
+.profileUpdatePass
+{
+    display: none !important;
+}
+
+.profileUpdatePassActive
+{
+    display: flex;
+
+}
+
+.pc-pi-main1,.pc-pi-main2{
+    gap: 12rem !important;
+}
+
+
+@media screen and (max-width:750px) {
+    
+
+        .pc-pi-main3 {
+            /* gap: 0.5rem !important; */
+            max-width: 635px !important;
+        }
+
+} 
+@media screen and (max-width:600px) {
+    .pcmain-input
+    {
+        max-width: 180px !important;
+        font-size: 1rem;
+        /* background-color: #00A8D1; */
+    }
+
+        .pc-pi-main1,
+        .pc-pi-main2,.pc-pi-main3 {
+            gap: 0.5rem !important;
+        }
+
+} 

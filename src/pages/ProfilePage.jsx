@@ -4,6 +4,7 @@ import styles from "../styles/styles";
 import Loader from "../components/Layout/Loader";
 import ProfileSideBar from "../components/Profile/ProfileSidebar";
 import ProfileContent from "../components/Profile/ProfileContent";
+import VillajaFooter from '../components/VillajaFooter/VillajaFooter'
 import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
@@ -17,12 +18,14 @@ const ProfilePage = () => {
       ) : (
         <>
           <Header />
-          <div className={`${styles.section} flex bg-white py-10`}>
-            <div className="w-[50px] 800px:w-[335px] sticky 800px:mt-0 mt-[18%]">
+          <div className={`${styles.section} block 1100px:flex bg-white py-10 gap-[1.2rem]`}>
+            <div className=" sticky 800px:mt-0 ">
               <ProfileSideBar active={active} setActive={setActive} />
             </div>
             <ProfileContent active={active} />
           </div>
+
+          <VillajaFooter/>
         </>
       )}
     </div>

@@ -78,7 +78,7 @@ export const loadSeller = () => async (dispatch) => {
 };
 
 // User update information with JWT authentication
-export const updateUserInformation = (name, email, phoneNumber, password) => async (dispatch) => {
+export const updateUserInformation = (firstname, lastname, email, phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({
       type: "updateUserInfoRequest",
@@ -105,10 +105,7 @@ export const updateUserInformation = (name, email, phoneNumber, password) => asy
     const { data } = await axios.put(
       `${server}/user/update-user-info`,
       {
-        email,
-        password,
-        phoneNumber,
-        name,
+        firstname, lastname, email, phoneNumber, password
       },
       config
     );

@@ -25,6 +25,10 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { getAllOrdersOfUser } from "../../redux/actions/order";
 
+import './ProfileContent.css'
+
+import EditIcon from './editIcon.svg'
+
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
   const [firstname, setFirstName] = useState(user && user.firstname);
@@ -33,7 +37,15 @@ const ProfileContent = ({ active }) => {
   const [loading, setLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
+  const [country, setCountry] = useState(user.addresses && user.addresses[0]?.country);
+  const [city, setCity] = useState(user.addresses && user.addresses[0]?.city);
+  const [zipCode, setZipCode] = useState(user.addresses && user.addresses[0]?.zipCode);
+  const [address1, setAddress1] = useState(user.addresses && user.addresses[0]?.address1);
+  const [address2, setAddress2] = useState(user.addresses && user.addresses[0]?.address2);
+  const [addressType, setAddressType] = useState(user.addresses && user.addresses[0]?.addressType);
   const [avatar, setAvatar] = useState(null);
+  const [editActive,setEditActive] = useState(false)
+  const [editActiveAddress,setEditActiveAddress] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,10 +64,22 @@ const ProfileContent = ({ active }) => {
     dispatch(updateUserInformation(firstname, lastname, email, phoneNumber, password));
   };
 
+  const handleAddressSubmit = (e) => {
+      e.preventDefault();
+      dispatch(updatUserAddress(
+          country,
+          city,
+          address1,
+          address2,
+          zipCode,
+          addressType
+        ))
+  }
+
  
 
   return (
-    <div className="w-full">
+    <div className=" relative" style={{maxWidth:"1500px",width:"100%"}}>
       {/* profile */}
       {active === 1 && (
         <>
@@ -64,74 +88,223 @@ const ProfileContent = ({ active }) => {
             </div>
           </div>
           <br />
-          <br />
-          <div className="w-full px-5">
+          {/* <br /> */}
+          <div className="w-full pl-0 1100px:pl-5 ">
+            <h1 className="font-semibold text-[2rem] mb-4">My Profile</h1>
             <form onSubmit={handleSubmit} aria-required={true}>
-              <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">First Name</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={firstname}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
+
+              <div className="profile-content-pi w-full mb-[1.88rem]">
+                <div className="pc-pi-top">
+                  <p className="text-[1.4rem] 600px:text-[1.4rem] font-semibold">Personal Information</p>
+                  {
+                    editActive?
+
+                      <div className="flex items-center gap-[0.5rem]">
+
+                        <input required
+                              value="Update"
+                              type="submit"
+                              className="pc-pi-save" />
+
+                        <div className="pc-pi-edit pc-pi-cancel" onClick={() => setEditActive(false)}>
+                          Cancel
+                        </div>
+                        
+                      </div>
+                     
+                    :
+                      <div className="pc-pi-edit" onClick={() => setEditActive(true)}>
+                        <span>Edit</span>
+                        <img src={EditIcon} alt="" />
+                      </div>
+                  }
                 </div>
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Last Name</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
-                    required
-                    value={lastname}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                <label className="block pb-2">Phone Number</label>
-                  <input
-                    type="number"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Email Address</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+
+                <div className="pc-pi-main">
+                  {/**? firstname and lastname */}
+
+                  <div className="pc-pi-main1 flex items-center gap-[0.5rem] 600px:gap-[12rem] mb-4 ">
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>First Name</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={firstname}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Last Name</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={lastname}
+                        onChange={(e) => setLastName(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                  </div>
+
+                  {/**? Phone number and email */}
+                  <div className="pc-pi-main2 flex items-center gap-[0.5rem] 600px:gap-[12rem] mb-4">
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Phone Number</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Email</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={`${editActive?"profileUpdatePassActive":"profileUpdatePass"} w-full 800px:flex block pb-3`}>
+                
+                      <div className=" w-[100%] 800px:w-[50%]">
+                        <label className="block pb-2 text-[1.2rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Enter your password</label>
+                        <input
+                          type="password"
+                          className={`${styles.input} !w-[50%] mb-4 800px:mb-0`}
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                  </div>
+
                 </div>
               </div>
 
-              <div className="w-full 800px:flex block pb-3">
-                
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Enter your password</label>
-                  <input
-                    type="password"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+            </form>
+            
+
+            <form onSubmit={handleAddressSubmit} aria-required={true}>
+                  <div className="profile-content-pi w-full">
+                <div className="pc-pi-top">
+                  <p className="text-[1.4rem] font-semibold">Address</p>
+                  {
+                    editActiveAddress?
+
+                      <div className="flex items-center gap-[0.5rem]">
+
+                        <input required
+                              value="Update"
+                              type="submit"
+                              className="pc-pi-save" />
+
+                        <div className="pc-pi-edit pc-pi-cancel" onClick={() => setEditActiveAddress(false)}>
+                          Cancel
+                        </div>
+                        
+                      </div>
+                     
+                    :
+                      <div className="pc-pi-edit" onClick={() => setEditActiveAddress(true)}>
+                        <span>Edit</span>
+                        <img src={EditIcon} alt="" />
+                      </div>
+                  }
+                </div>
+
+                <div className="pc-pi-main w-full  relative">
+
+                  <div className="pc-pi-main3 w-full flex flex-wrap justify-between items-center mb-4  gap-[5rem]" style={{maxWidth:'1050px'}}>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Country</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>City</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address 1</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={address1}
+                        onChange={(e) => setAddress1(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address 2</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={address2}
+                        onChange={(e) => setAddress2(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>ZipCode</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address Type</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={addressType}
+                        onChange={(e) => setAddressType(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
                 </div>
               </div>
-              <input
+
+            </form>
+
+
+
+              
+
+
+              
+              {/* <input
                 className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
                 required
                 value="Update"
                 type="submit"
-              />
-            </form>
+              /> */}
           </div>
         </>
       )}
