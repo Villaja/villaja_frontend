@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import {
   AiOutlineArrowRight,
@@ -13,6 +14,8 @@ import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import { FiSearch } from "react-icons/fi";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsStarHalf } from "react-icons/bs";
 import {
   deleteUserAddress,
   loadUser,
@@ -31,6 +34,10 @@ import './ProfileContent.css'
 import EditIcon from './editIcon.svg'
 import EyeIcon from './eyeIcon.svg'
 import PadLock from './padlock.svg'
+import ApproveBtn from './approve.svg'
+import DeclineBtn from './decline.svg'
+import FeaturedIcon from './featuredIcon.svg'
+
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
@@ -312,10 +319,10 @@ const ProfileContent = ({ active }) => {
         </div>
       )}
 
-      {/* Track order */}
+      {/* Delivery Approval */}
       {active === 5 && (
         <div>
-          <TrackOrder />
+          <DeliveryApproval />
         </div>
       )}
 
@@ -546,6 +553,214 @@ const AllOrders = () => {
     </div>
   );
 };
+
+
+
+
+const DeliveryApproval = () => {
+
+  const { user } = useSelector((state) => state.user);
+  const { orders } = useSelector((state) => state.order);
+  const [deliverdCart,setDeliveredCart] = useState([])
+  const [openApproval,setOpenApproval] = useState(false)
+  const [currentItem,setCurrentItem] = useState("")
+  const [currentOrderId,setCurrentOrderId] = useState("")
+  const dispatch = useDispatch();
+
+  const [myOrderNo,setMyOrderNo] = useState("all")
+
+  useEffect(() => {
+    dispatch(getAllOrdersOfUser(user._id));
+  }, [])
+
+
+  useEffect(() => {
+    orders && setDeliveredCart(orders.filter((od) => od?.status.toLowerCase() === "delivered").map((el) => {
+      return(el.cart)
+    }))
+  },[orders])
+
+
+
+  return(
+    <>
+    {
+      openApproval ? 
+
+      <ApprovalPage item={currentItem} user={user} id={currentOrderId} setOpenApproval={setOpenApproval}/>
+
+      :
+    <div className="delivery-approval-wrapper 500px:pl-8 800px:pt-1">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Product List</h1>
+      
+      <div className="delivered-product-list">
+        {
+          deliverdCart.map((dc) => {
+
+          return (dc.map((od) => {
+            return(
+              <div className="delivered-product-item" key={od._id}>
+
+                <div className="dpi-img">
+                  <img src={od.images[0].url} alt="img" />
+                </div>
+                <div className="dpi-main">
+                  <div className="dpi-info">
+                    <div className="dpi-info-name">{od.name}</div>
+                    <div className="dpi-info-seller">by {od.shop.name}</div>
+                    <div className="dpi-info-price">N{od.discountPrice}</div>
+                    
+                  </div>
+                  <div className="dpi-btn" onClick={() => {setCurrentOrderId(dc._id);setCurrentItem(od);setOpenApproval(true)}}>Approve Delivery</div>
+                </div>
+                
+              </div>
+            )
+          }))
+          })
+        }
+      </div>
+    </div>
+
+    }
+    </>
+    
+  );
+}
+
+
+const ApprovalPage = ({item,user,id,setOpenApproval}) => {
+
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
+
+
+
+  const reviewHandler = async (e) => {
+    try {
+      const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+      if (!token) {
+        // Handle the case where the user is not authenticated
+        toast.error('User is not authenticated.');
+        return;
+      }
+      
+      const response = await axios.put(
+        `${server}/product/create-new-review`,
+        {
+          user,
+          rating,
+          comment,
+          productId: item?._id,
+          orderId: id,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      toast.success(response.data.message);
+      dispatch(getAllOrdersOfUser(user._id));
+      setComment("");
+      setRating(null);
+      setOpenApproval(false)
+      // setOpen(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[])
+
+
+  return(
+    <div className="approval-page-wrapper">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Delivery Approval</h1>
+
+      <div className="approve-delivery-section">
+        <div className="ads-top">Approve Delivery <span><img src={FeaturedIcon} alt="" /></span> </div>
+        <div className="ads-info">Please confirm that wht you order it what you got. This is needed to give final approval of the delivery.</div>
+        <div className="ads-actions">
+          <div className="ads-action ads-approve"><img src={ApproveBtn} alt="" /></div>
+          <div className="ads-action ads-decline"><img src={DeclineBtn} alt="" /></div>
+        </div>
+      </div>
+
+      <div className="approve-delivery-reviews">
+        <div className="adr-img">
+          <img src={item.images[0].url} alt="" />
+        </div>
+
+        <div className="adr-item-name">
+          {item.name}
+        </div>
+
+        <div className="adr-item-stars">
+            <div className="flex w-full  pt-1">
+              {[1, 2, 3, 4, 5].map((i) =>
+                rating >= i ? (
+                  <AiFillStar
+                    key={i}
+                    className="mr-1 cursor-pointer"
+                    color="rgb(246,186,0)"
+                    size={40}
+                    onClick={() => setRating(i)}
+                  />
+                ) : (
+                  <AiOutlineStar
+                    key={i}
+                    className="mr-1 cursor-pointer"
+                    color="rgb(246,186,0)"
+                    size={40}
+                    onClick={() => setRating(i)}
+                  />
+                )
+              )}
+            </div>
+
+            <div className="w-full mt-4">
+              <label className="block text-[20px] font-[500]">
+                Review
+                
+              </label>
+              <textarea
+                name="comment"
+                id=""
+                cols="20"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Write your review about this product"
+                className="mt-2 w-[95%] border rounded-md p-4 outline-none"
+              ></textarea>
+            </div>
+            <div
+              className={`${styles.button} text-white text-[20px]`}
+              onClick={rating > 1 ? reviewHandler : null}
+            >
+              Submit
+            </div>
+            <div
+              className={`w-[150px] bg-[#f00333] h-[50px] my-3 flex items-center justify-center rounded-md cursor-pointer text-white text-[20px]`}
+              onClick={() => setOpenApproval(false)}
+            >
+              Cancel
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+  )
+}
+
+
+
 
 const AllRefundOrders = () => {
   const { user } = useSelector((state) => state.user);

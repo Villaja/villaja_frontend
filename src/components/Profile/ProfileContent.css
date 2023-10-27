@@ -169,8 +169,168 @@
     border: none;
 }
 
+.delivered-product-item
+{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-radius: 0.625rem;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.02);
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    min-height: 11rem;
+}
+
+.dpi-img
+{
+    width: 15rem;
+    height: 10rem;
+    position: relative;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    overflow: hidden;
+    max-width: 50%;
+    /* min-width: 50%; */
+}
+
+.dpi-img img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dpi-main
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dpi-info-name
+{
+    color: #000;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.49344rem;
+    letter-spacing: -0.01344rem;
+    margin-bottom: 0.63rem;
+}
+
+.dpi-info-seller
+{
+    color: rgba(0, 0, 0, 0.40);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.49344rem;
+    letter-spacing: -0.01344rem;
+    margin-bottom: 1.9rem;
+}
+
+.dpi-info-price
+{
+    color: #000;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.49344rem;
+    letter-spacing: -0.01344rem;
+}
+
+.dpi-btn
+{
+    display: inline-flex;
+    padding: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: #00A8D1;
+    color: white;
+    max-width: 100%;
+    cursor: pointer;
+}
 
 
+.approve-delivery-section
+{
+    border-radius: 0.625rem;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+    padding: 1.5rem;
+}
+
+.ads-top
+{
+    color: #000;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.11844rem;
+    letter-spacing: -0.01344rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.ads-info
+{
+    color: rgba(0, 0, 0, 0.40);
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.49344rem;
+    letter-spacing: -0.01344rem;
+    margin-bottom: 1.5rem;
+}
+
+.ads-actions
+{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+
+.ads-actions img
+{
+    cursor: pointer;
+}
+
+.adr-img
+{
+    width: 27rem;
+    height: 18rem;
+    position: relative;
+    background-color: #ffffff;
+    max-width: 100%;
+}
+
+.adr-img img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.adr-item-name
+{
+    color: #000;
+    font-size: 1.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.49344rem;
+    letter-spacing: -0.01344rem;
+    margin-bottom: 1rem;
+}
 
 @media screen and (max-width:750px) {
     
@@ -197,6 +357,28 @@
 
         .myOrder-tab {
             
+            font-size: 0.8rem;
+        }
+
+        .dpi-info-name,.dpi-info-seller
+        {
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .dpi-info-seller
+        {
+            margin-bottom: 0.3rem;
+        }
+
+        .dpi-info-price
+        {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dpi-btn
+        {
             font-size: 0.8rem;
         }
 } 

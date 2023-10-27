@@ -1,4 +1,5 @@
 import React from "react";
+import {BsPatchCheckFill} from 'react-icons/bs'
 import { AiOutlineLogin, AiOutlineMessage } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
@@ -33,7 +34,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         className={` ${active === 1?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer  1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(1)}
       >
-        <RxPerson size={20} color={active === 1 ? "white" : ""} />
+        <RxPerson size={25} color={active === 1 ? "white" : ""} />
         <span
           className={` ${
             active === 1 ? "text-white" : ""
@@ -46,7 +47,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         className={` ${active === 2?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(2)}
       >
-        <HiOutlineShoppingBag size={20} color={active === 2 ? "white" : ""} />
+        <HiOutlineShoppingBag size={25} color={active === 2 ? "white" : ""} />
         <span
           className={`${
             active === 2 ? "text-white" : ""
@@ -87,13 +88,13 @@ const ProfileSidebar = ({ setActive, active }) => {
         className={` ${active === 5?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(5)}
       >
-        <MdOutlineTrackChanges size={20} color={active === 5 ? "white" : ""} />
+        <BsPatchCheckFill size={25} color={active === 5 ? "white" : ""} />
         <span
           className={`${
             active === 5 ? "text-white" : ""
           } 800px:block `}
         >
-          Track Order
+          Delivery Approval
         </span>
       </div>
 
@@ -101,7 +102,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         className={` ${active === 6?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] 1100px:gap-[0.75rem] `}
         onClick={() => setActive(6)}
       >
-        <RiLockPasswordLine size={18} color={active === 6 ? "white" : ""} />
+        <RiLockPasswordLine size={25} color={active === 6 ? "white" : ""} />
         <span
           className={`${
             active === 6 ? "text-white" : ""
@@ -132,7 +133,7 @@ const ProfileSidebar = ({ setActive, active }) => {
             onClick={() => setActive(8)}
           >
             <MdOutlineAdminPanelSettings
-              size={20}
+              size={25}
               color={active === 7 ? "white" : ""}
             />
             <span
@@ -149,7 +150,7 @@ const ProfileSidebar = ({ setActive, active }) => {
         className={` ${active === 8?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={logoutHandler}
       >
-        <AiOutlineLogin size={20} color={active === 8 ? "white" : ""} />
+        <AiOutlineLogin size={25} color={active === 8 ? "white" : ""} />
         <span
           className={`${
             active === 8 ? "text-white" : ""
