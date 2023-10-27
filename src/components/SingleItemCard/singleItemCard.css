@@ -7,6 +7,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1.5px solid #ffffff;
+    border-radius: 8px;
 }
 
 .single-item-container:hover {
@@ -35,7 +36,7 @@
 
 .si-body-price {
     margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 500;
 
 }
@@ -61,8 +62,19 @@
 
 
 @media screen and (max-width:756px) {
+
+    .single-item-container-mobile .single-item-img
+    {
+        max-width: 50%;
+    }
     .single-item-container
     {
         min-width: 10rem
+    }
+
+    .single-item-container-mobile
+    {
+        display: flex !important;
+        gap: 1rem;
     }
 }

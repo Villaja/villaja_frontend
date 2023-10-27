@@ -153,7 +153,7 @@ const ProductsPage = () => {
                       {
                         data.map((item,id) => {
                           return <div className="cid-item" key={id}>
-                            <SingleItemCard data = {item} key={id}/>
+                            <SingleItemCard data = {item} key={id} itemDisplay={itemDisplay}/>
                           </div>
                         })
                       }

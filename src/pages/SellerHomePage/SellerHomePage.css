@@ -150,7 +150,7 @@
 
 .new-itc-body
 {
-    grid-template-columns: repeat(4,1fr) !important;
+    grid-template-columns: repeat(4,1fr);
     overflow: scroll;
     
 }
@@ -174,7 +174,7 @@
     /* flex-direction: column; */
     align-items: center;
     gap: 1rem;
-    min-width: 550px;
+    /* min-width: 550px; */
 }
 
 .stepText
@@ -208,4 +208,40 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 26px;
+}
+
+
+@media screen and (max-width:800px) {
+
+    .itc-item
+    {
+        min-width: 200px;
+    }
+
+    .stepText
+    {
+        font-size: 1.7rem;
+    }
+
+    .stepInfo
+    {
+        font-size: 0.9rem;
+    }
+
+    .new-itc-body-last
+    {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .stepText-last
+    {
+        font-size: 1.5rem !important;
+    }
+
+}
+
+@media screen and (max-width:500px) {
+    .new-itc-body-last {
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
 }

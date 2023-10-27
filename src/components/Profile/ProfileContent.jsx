@@ -684,7 +684,7 @@ const ApprovalPage = ({item,user,id,setOpenApproval}) => {
 
       <div className="approve-delivery-section">
         <div className="ads-top">Approve Delivery <span><img src={FeaturedIcon} alt="" /></span> </div>
-        <div className="ads-info">Please confirm that wht you order it what you got. This is needed to give final approval of the delivery.</div>
+        <div className="ads-info">Please confirm that what you ordered is what you got. This is needed to give final approval of the delivery.</div>
         <div className="ads-actions">
           <div className="ads-action ads-approve"><img src={ApproveBtn} alt="" /></div>
           <div className="ads-action ads-decline"><img src={DeclineBtn} alt="" /></div>
