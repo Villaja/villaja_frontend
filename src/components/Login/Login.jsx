@@ -125,7 +125,7 @@ const Login = () => {
                 )}
               </div>
             </div>
-            {/* <div className={`${styles.noramlFlex} justify-between`}>
+            <div className={`${styles.noramlFlex} justify-between`}>
               <div className={`${styles.noramlFlex}`}>
                 <input
                   type="checkbox"
@@ -141,14 +141,14 @@ const Login = () => {
                 </label>
               </div>
               <div className="text-sm">
-                <a
-                  className="font-medium text-blue-600 hover:text-blue-500"
-                >
+                <Link to="/user/forgot-password" className="text-right mb-3 text-[#0077B6] cursor-pointer">
                   Forgot your password?
-                </a>
+                </Link>
               </div>
-            </div> */}
+            </div>
             <div>
+             
+              
             <button
         type="submit"
         className={`login-button group relative w-full h-[45px] shadow-md flex justify-center items-center py-2 px-4 border border-transparent text-[1.05rem] font-light rounded-md text-white ${

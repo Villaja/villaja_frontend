@@ -24,6 +24,7 @@ import {
   TrackOrderPage,
   UserInbox,
 } from "./routes/Routes.js";
+import ForgotPassword from "./pages/ForgotPassword";
 
 // seller routes
 
@@ -104,6 +105,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/user/login" element={<CustomerLogin />} />
         <Route path="/user/signup" element={<CustomerSignUp />} />
+        <Route path="/user/forgot-password" element={<ForgotPassword />} />
         <Route
           path="/activation/:activation_token"
           element={<ActivationPage />}
