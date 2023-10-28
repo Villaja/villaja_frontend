@@ -45,17 +45,17 @@ const SellerHomePage = () => {
                         </div>
                         <div className="itc-item">
                             <img src={StepTwo} alt="" />
-                            <p className="stepText">Step 1</p>
+                            <p className="stepText">Step 2</p>
                             <p className="stepInfo">Complete  registration and become a Certified Villajer</p>
                         </div>
                         <div className="itc-item">
                             <img src={StepThree} alt="" />
-                            <p className="stepText">Step 1</p>
+                            <p className="stepText">Step 3</p>
                             <p className="stepInfo">List your products, add details and set prices</p>
                         </div>
                         <div className="itc-item">
                             <img src={StepFour} alt="" />
-                            <p className="stepText">Step 1</p>
+                            <p className="stepText">Step 4</p>
                             <p className="stepInfo">Sell and enjoy benefits of the Villaja platform</p>
                         </div>
                         {/* <ProductCard data={i} key={index} /> */}

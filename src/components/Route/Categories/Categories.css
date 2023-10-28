@@ -5,7 +5,7 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    object-fit:cover;
+    object-fit:contain;
 }
 
 .cat-comp-img
@@ -29,8 +29,8 @@
 
 .cat-comp-card:hover .cat-comp-img
 {
-    width: 150%;
-    height: 150%;
+    width: 200%;
+    height: 200%;
 }
 
 .cat-ic-body
@@ -38,10 +38,8 @@
     /* background-color: aqua; */
 }
 
-.cat-browse-btn
+/* .cat-browse-btn
 {
-    /* display: flex; */
-    /* margin: 0 auto; */
     border-radius: 8px;
     background: #111111;
     align-items: center;
@@ -55,10 +53,15 @@
     font-size: 13px;
     color: #ffffff;
     gap: 8px;
-}
+} */
 
 @media screen and (max-width:800px) {
-    .cat-comp-card
+
+    .cat-comp-text
+    {
+        font-size: 0.8rem !important;
+    }
+    /* .cat-comp-card
     {
         display: flex;
         flex-direction: row-reverse;
@@ -85,5 +88,5 @@
         {
             margin-left: 1rem !important;
             text-align: start;
-        }
+        } */
 }

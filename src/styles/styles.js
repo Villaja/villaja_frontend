@@ -10,7 +10,7 @@ const styles = {
     button: 'w-[150px] bg-[#0077B6] h-[50px] my-3 flex items-center justify-center rounded-md cursor-pointer',
     cart_button: "px-[20px] h-[38px] rounded-[20px] bg-green-800 flex items-center justify-center cursor-pointer",
     cart_button_text:"text-[#fff] text-[16px] font-[600]",
-    input:"!w-[80%] border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px]",
+    input:"!w-[100%] border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px]",
     activeStatus:"w-[10px] h-[10px] rounded-full absolute top-0 right-1 bg-[#40d132]",
     noramlFlex:"flex items-center"
   };

@@ -1,19 +1,82 @@
-/* eslint-disable react/prop-types */
 import './categorycomponent.css'
 import { catData } from '../../mock_data/Category_info'
 import { useEffect, useState } from 'react';
+import { RxCross1 } from "react-icons/rx";
 
-const CategoryComponent = ({category,isMobile,setPriceFilter}) => {
+const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setcolorFilter,setOpenFilter}) => {
 
     const [priceRangeValue,setPriceRangeValue] = useState("3000000")
+    const [brandValue,setBrandValue] = useState([])
+    const [colorValue,setcolorValue] = useState([])
+
+
+    const HandleBrandChange = (e) => {
+        if(e.target.checked)
+        {
+            setBrandValue([...brandValue,e.target.name.toLowerCase()])
+
+        }
+        else
+        {
+            if(brandValue.length <= 1)
+            {
+                // let tempCol = colorValue.filter((b) => b!= e.target.name.toLowerCase())
+                // tempCol.push()
+                // console.log(tempCol);
+                setBrandValue([])
+                setBrandFilter(["apple","oppo","samsung","infinix","nokia","blackberry","google"])
+                
+            }
+            else setBrandValue(brandValue.filter((b) => b!= e.target.name))
+        }
+    }
+    const HandleColorChange = (e) => {
+        if(e.target.checked)
+        {
+            setcolorValue([...colorValue,e.target.name.toLowerCase()])
+            console.log(e.target.name.toLowerCase());
+
+        }
+        else
+        {
+            if(colorValue.length <= 1)
+            {
+                // let tempCol = colorValue.filter((b) => b!= e.target.name.toLowerCase())
+                // tempCol.push()
+                // console.log(tempCol);
+                setcolorValue(["black","white","silver","gold","gray"])
+                
+            }
+            else setcolorValue(colorValue.filter((b) => b!= e.target.name.toLowerCase()))
+        }
+    }
 
     useEffect(() => {
         setPriceFilter({min:500,max:priceRangeValue})
     },[priceRangeValue])
+    useEffect(() => {
+        if(brandValue?.length > 0)setBrandFilter(brandValue)
+    },[brandValue])
+    useEffect(() => {
+        if(colorValue?.length > 0)setcolorFilter(colorValue)
+    },[colorValue])
 
     console.log(catData[0]['subcat']);
   return (
     <div className={`filter-container ${isMobile?'filter-container-mobile':''}`}>
+
+        <div className="filter-container-action">
+            <div className="close-btn">
+                <RxCross1
+                size={20}
+                className="cursor-pointer"
+                onClick={() => setOpenFilter(false)}
+                />
+            </div>
+            <div className="close-name">Filter</div>
+        </div>
+
+
         <div className="filter-top-bar">
             Category
         </div>
@@ -40,7 +103,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter}) => {
             <div className="filter-sub-body filter-body-brand">
                 {catData[0]['brand'].map((brand,id) => {
                     return <div className="filter-sub-row filter-brand" key={id}>
-                        <input type="checkbox" name={brand} id={brand} className='brand-check' />
+                        <input type="checkbox" name={brand} id={brand} className='brand-check' onChange={(e) => HandleBrandChange(e)} />
                         <label htmlFor={brand}>{brand}</label>
                     </div>
                 })}
@@ -90,13 +153,13 @@ const CategoryComponent = ({category,isMobile,setPriceFilter}) => {
             <div className="filter-sub-body">
                 {catData[0]['color'].map((brand,id) => {
                     return <div className="filter-sub-row filter-brand" key={id}>
-                        <input type="checkbox" name={brand} id={brand} className='brand-check' />
+                        <input type="checkbox" name={brand} id={brand} className='brand-check' onChange={(e) => HandleColorChange(e)} />
                         <label htmlFor={brand}>{brand}</label>
                     </div>
                 })}
             </div>
-        </div>
-        <div className="filter-sub filter-sub-condition">
+        </div> */}
+        {/* <div className="filter-sub filter-sub-condition">
             <div className="filter-sub-title">
                 Condition
             </div>

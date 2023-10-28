@@ -5,7 +5,7 @@ import { useState , useEffect} from 'react';
 import { useSelector } from "react-redux";
 
 
-const ItemCatSection = ({itemCatTitle,items}) => {
+const ItemCatSection = ({itemCatTitle,items,catIndex}) => {
 
   const [data, setData] = useState([]);
   const { allProducts } = useSelector((state) => state.products);
@@ -28,7 +28,7 @@ const ItemCatSection = ({itemCatTitle,items}) => {
             <div className="item-cat-title">{itemCatTitle}</div>
             <div className="seemore-btn">See more &#8250; </div>
         </div>
-        <div className="ic-body">
+        <div className={[1,3].includes(catIndex)?'ic-body special-ic-body-one':`ic-body special-ic-body-two`}>
             {/* {items.map((item,id) => {
                 return <ItemCatSingle itemName={item.itemName} itemImg={item.itemImg} itemPrice={item.itemPrice} key={id}/>
             })} */}
@@ -39,7 +39,7 @@ const ItemCatSection = ({itemCatTitle,items}) => {
             <>
               {data &&
                 data.map((i, index) => (
-                  <ProductCard data={i} key={index} />
+                  <ProductCard data={i} key={index} catIndex={catIndex===2?true:false}/>
                 ))}
             </>
           )}

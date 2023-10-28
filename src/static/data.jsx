@@ -205,14 +205,14 @@ export const navItems = [
       title: "Phones",
       subTitle: "Shop for smartphones from the best brands.",
       image_Url:
-        "https://i0.wp.com/abizot.com.ng/wp-content/uploads/2022/01/iphone-12-mini-purple-select-2021.png?fit=940%2C1112&ssl=1",
+        "https://th.bing.com/th/id/OIP.EQ2QbIPvO0u_uH1EjdlvAAHaLH?pid=ImgDet&w=680&h=1020&rs=1",
     },
     {
       id: 2,
       title: "Tablets",
       subTitle: "iPads, Android and Educational Tablets",
       image_Url:
-        "https://www.lenovo.com/medias/lenovo-tab-m10-plus-gen-3-hero.png?context=bWFzdGVyfHJvb3R8NTgzNDgwfGltYWdlL3BuZ3xoZjkvaDNjLzEzNjc0NDgwMTczMDg2LnBuZ3w3M2ZjZTJlOGJlYWQ3ZWZlYzJlZmI4NDg0ODhjMGI2ZTdjNzJmNDFlMTY5ZGQ0OTYwZGFjYmZiMmFmMzRhMDE4",
+        "https://d2xamzlzrdbdbn.cloudfront.net/products/244e4b2f-9faa-4c44-8bb9-aef06b0ac94e22201354.jpg",
     },
     {
       id: 3,

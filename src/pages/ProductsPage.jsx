@@ -6,6 +6,7 @@ import Header from "../components/Layout/Header";
 import Loader from "../components/Layout/Loader";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import styles from "../styles/styles";
+import './ProductPageStyle/ProductPage.css'
 import VillajaFooter from "../components/VillajaFooter/VillajaFooter";
 import CategoryComponent from "./CatalogPage/CategoryComponent";
 import MobileCategpryIcon from '../assets/mobile_category_icon.svg'
@@ -14,6 +15,13 @@ import SingleItemCard from "../components/SingleItemCard/SingleItemCard";
 
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+
+import ItemCatSection from "../components/ItemCatSection/ItemCatSection";
+import { items } from '../mock_data/Sample_Items'
+
+import FilterList from '../assets/filterList.svg'
+import FilterTabs from '../assets/filterTabs.svg'
+
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -26,6 +34,12 @@ const ProductsPage = () => {
   const [catItemFiltered,setCatItemFiltered] = useState([])
   const [allCatProducts,setAllCatProducts] = useState([])
   const [priceFilter,setPriceFilter] = useState({min:0,max:3000000})
+  const [brandFilter,setBrandFilter] = useState(["apple","oppo","samsung","infinix","nokia","blackberry","google"])
+  const [colorFilter,setcolorFilter] = useState(["black","white","silver","gold","gray"])
+  const [activeHeadingValue,SetActiveHeadingValue] = useState("")
+  const headingNumber = {Phones:2,Computers:3,Tablets:4,Accessories:5}
+  const [openFilter,setOpenFilter] = useState(false)
+  const [itemDisplay,setItemDisplay] = useState(false)
 
   const location = useLocation()
   const queryP = new useSearchParams(window.location.search)
@@ -65,6 +79,7 @@ const ProductsPage = () => {
     {
 
       console.log(queryP[0].get('category'));
+      SetActiveHeadingValue(queryP[0].get('category'))
       window.location.reload();
     }
   },[queryP[0].get('category'),queryP[0].get('searchTerm')])
@@ -80,11 +95,11 @@ const ProductsPage = () => {
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber) )
       }
     }
     console.log(allProducts);
-  },[pageNumber,allProducts,priceFilter])
+  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter])
 
 
 
@@ -95,28 +110,46 @@ const ProductsPage = () => {
       <Loader />
     ) : (
       <div>
-      <Header activeHeading={3} />
+      <Header activeHeading={headingNumber[activeHeadingValue]} />
+      {/* <br /> */}
+      {/* <br /> */}
+      <div className="homepage-category-body">
+          <div className="homepage-category-main">
+            <ItemCatSection itemCatTitle={"Best Selling Items"} items={items} catIndex={1} />
+          </div>
+      </div>
       <br />
       <br />
       <div className="cc-main-body">
 
       <div className="catalog-page-body">
-                <div className="catalog-filter-section">
-                  <CategoryComponent category={categoryData} setPriceFilter={setPriceFilter}/>
+                <div className={`catalog-filter-section ${openFilter?'catalog-filter-mobile':''}`}>
+                  <CategoryComponent category={categoryData} setOpenFilter={setOpenFilter} setPriceFilter={setPriceFilter} setcolorFilter={setcolorFilter} setBrandFilter={setBrandFilter}/>
+                </div>
+
+                <div className="cid-top-filter">
+                      <div className="ctf-action ctf-action-1" onClick={() => setItemDisplay(false)}>
+                        <img src={FilterList} alt="" />
+                      </div>
+                      <div className="ctf-action ctf-action-2" onClick={() => setItemDisplay(true)}>
+                        <img src={FilterTabs} alt="" />
+                      </div>
+                      <div className="ctf-action ctf-action-3" onClick={() => setOpenFilter(true)}>Filter</div>
                 </div>
                 { data && data.length > 0 ?<div className="catalog-item-display">
+
                     <div className="cid-top-bar">
                       <div className="cid-top-catname">
                          {categoryData}
                       </div>
-                      <div className="cid-top-mobile-filter">
-                        <Link to='/catalog/filter'><img src={MobileCategpryIcon} alt="" /></Link>
-                      </div>
+                      
                     </div>
+                    
+                    
                       <div className="cid-main-header">
-                        {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{allCatProducts.length} products found</span>
+                        {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{data.length} products found</span>
                       </div>
-                    <div className="cid-main">
+                    <div className={`cid-main ${itemDisplay?"cid-main-tab":''}`}>
                       {
                         data.map((item,id) => {
                           return <div className="cid-item" key={id}>

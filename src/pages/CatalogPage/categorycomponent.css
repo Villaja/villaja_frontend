@@ -9,6 +9,7 @@
 {
     margin-bottom: 1rem;
     font-weight: 500;
+    font-size: 1.3rem;
 }
 
 .filter-sub
@@ -204,6 +205,20 @@ label
     display: none;
 }
 
+.filter-container-action
+{
+    display: none;
+    gap: 1rem;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.close-name
+{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
 @media screen and (max-width:1200px) {
     .filter-container
     {
@@ -213,10 +228,18 @@ label
 @media screen and (max-width:756px) {
     .filter-container
     {
-        display: none;
+        width: 100%;
+        min-height: 125vh;
+        height: 100%;
+        background-color: #ffffff;
     }
 
-    .filter-container-mobile
+    .filter-container-action
+    {
+        display: flex;
+    }
+
+    /* .filter-container-mobile
     {
         position:absolute;
         top: 0;
@@ -225,5 +248,5 @@ label
         display: contents !important;
         padding: 2rem;
         
-    }
+    } */
 }

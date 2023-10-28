@@ -1,12 +1,15 @@
 .vh-header-wrapper {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    /* position: sticky; */
+    /* top: 0; */
+    /* left: 0; */
+    /* z-index: 1; */
     /* width: 100%; */
     /* background-color: red; */
-    /* display: flex;
-    justify-content: center;  */
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    transition: all 0.3s ease;
+    box-shadow: 0 24px 36px #34578c12;
 }
 
 Link {
@@ -14,27 +17,38 @@ Link {
 }
 
 .vh-header-container {
-    position: relative;
     width: 100%;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     /* background-color: #0077B6; */
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 1.5rem;
-    gap: 5rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+    /* padding-right: ; */
+    /* gap: 33rem; */
     transition: all 0.3s ease;
-    box-shadow: 0 24px 36px #34578c12;
+    max-width: 1665px;
     /* max-width: 1200px; */
 }
 
+.vh-header-right
+{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 
 .vh-menu,
 .vh-aux-menu,
 .vh-logo {
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 1rem;
+}
+
+.vh-logo
+{
+    gap: 1.5rem;
 }
 
 .vh-item {
@@ -76,6 +90,11 @@ Link {
 }
 
 .vh-header-container:has(div:hover) {
+    /* background-color: black; */
+    color: #77777aec;
+}
+.vh-header-wrapper:has(div:hover) {
+    transition: all 0.3s ease;
     background-color: black;
     color: #77777aec;
 }
@@ -90,7 +109,7 @@ Link {
     filter: invert(1);
 }
 
-@media screen and (max-width:1111px) {
+@media screen and (max-width:1149px) {
     .vh-header-container {
         justify-content: space-between;
     }
@@ -123,6 +142,9 @@ Link {
     align-items: flex-end;
     justify-content: center;
     padding-right: 6.3rem;
+    width: 100%;
+    max-width: 700px;
+    /* background-color: red; */
 }
 
 .hs-text {
@@ -203,8 +225,8 @@ Link {
 {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    width: 150%;
+    gap: 0.8rem;
+    width: 100%;
     /* background-color: rebeccapurple; */
 }
 
@@ -221,6 +243,17 @@ Link {
     border-radius: 8px;
     background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
     cursor: pointer;
+    color: #ffffff;
+}
+
+input
+{
+    outline: none;
+}
+
+input:focus
+{
+    border-color: #00B4D8;
 }
 
 @media screen and (max-width:1286px) {
@@ -266,4 +299,17 @@ Link {
     {
         width: 100%;
     }
+    .hero-container {
+            justify-content: flex-end;
+            padding-top: 5rem;
+            padding-bottom: 1.5rem;
+            padding-left: 2.3rem;
+    
+        }
+    .hero-search-section
+    {
+        /* justify-content: flex-end !important; */
+    }
 }
+
+

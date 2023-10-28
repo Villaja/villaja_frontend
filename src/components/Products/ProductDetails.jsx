@@ -143,7 +143,7 @@ const ProductDetails = ({ data }) => {
   return (
     <div className="">
       {data ? (
-        <div className={`${styles.section} w-[80%] 800px:w-[80%]`}>
+        <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
               <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end",paddingRight:"2rem"}}>
@@ -286,7 +286,7 @@ const ProductDetails = ({ data }) => {
             averageRating={averageRating}
           />
           <br />
-          <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews}/>
+          <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
       ) : null}
