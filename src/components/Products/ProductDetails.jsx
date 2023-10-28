@@ -365,8 +365,10 @@ const ProductDetailsInfo = ({
       <div className="w-full flex  justify-center pt-10 pb-6">
         <div className="relative">
           <h5
+
+            
             className={
-              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 1?' !text-[#00b4d8]':' text-[#000]'}`
             }
             onClick={() => setActive(1)}
           >
@@ -379,7 +381,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 2?' !text-[#00b4d8]':' text-[#000]'}`
             }
             onClick={() => setActive(2)}
           >
@@ -392,7 +394,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 3?' !text-[#00b4d8]':' text-[#000]'}`
             }
             onClick={() => setActive(3)}
           >
