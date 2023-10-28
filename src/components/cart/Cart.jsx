@@ -139,7 +139,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           <h4 className="font-[400] text-[15px] text-[#00000082]">
            ₦{data.discountPrice.toLocaleString()} * {value}
           </h4>
-          <h4 className="font-[600] text-[17px] pt-[3px] text-[#00b4d8] font-Roboto">
+          <h4 className="font-[600] text-[17px] pt-[3px] text-[#00b4d8] font-Manrope">
            ₦{totalPrice}
           </h4>
         </div>

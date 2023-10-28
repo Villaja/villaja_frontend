@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 import {
   AiFillHeart,
@@ -22,6 +23,9 @@ import './productDetails.css'
 import SuggestedProduct from "../../components/Products/SuggestedProduct";
 import Reviews from "../Reviews/Reviews";
 import DeliveryIcon from '../../assets/delivery_icon.svg'
+import InStockIcon from '../../assets/inStock.svg'
+import SoldOutIcon from '../../assets/soldOut.svg'
+import ShopLinkIcon from './shopLinkArrow.svg'
 
 
 const ProductDetails = ({ data }) => {
@@ -146,7 +150,7 @@ const ProductDetails = ({ data }) => {
         <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
           <div className="w-full py-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-              <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end",paddingRight:"2rem"}}>
+              <div className="w-full 800px:w-[50%] 800px:pr-[2rem]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
@@ -156,9 +160,10 @@ const ProductDetails = ({ data }) => {
                   {data &&
                     data.images.map((i, index) => (
                       <div
+                        key={index}
                         className={`${
-                          select === 0 ? "border" : "null"
-                        } cursor-pointer`}
+                          select === 0 ? "null" : "null"
+                        } cursor-pointer product-images-small`}
                       >
                         <img
                           src={`${i?.url}`}
@@ -176,13 +181,17 @@ const ProductDetails = ({ data }) => {
                 </div>
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle}`} style={{maxWidth:"45ch",fontSize:'1.7rem',fontWeight:'500'}}>{data.name}</h1>
-                <p className="mb-20"></p>
-                <p>Sold by: <span className={`${styles.shop_name} pb-1 pt-1`}>
+                <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
+                <p className="mb-[2rem] 800px:mb-[4rem]"></p>
+                <div className="mb-[1.2rem] flex gap-[0.1rem] items-center">
+                  <Ratings rating={data.ratings}/>
+                  <p className="text-[#0077B6] text-[0.6rem] underline mb-1">{data.reviews.length}</p>
+                </div>
+                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} underline pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
-                <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"3rem"}}>
+                <div className="flex pt-3 mb-[1rem]">
+                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"2.6rem"}}>
                     ₦{data.discountPrice.toLocaleString()}
                   </h4>
                   <h3 className={`${styles.price}`} >
@@ -190,22 +199,22 @@ const ProductDetails = ({ data }) => {
                   </h3>
                 </div>
 
-                <div className="flex items-center mt-14 mb-14 justify-between pr-3">
-                  <div>
+                <div className="flex items-center mb-[1.5rem] justify-between pr-3">
+                  <div className="flex items-center gap-[1.8rem]">
                     <button
                       className=" cart-action-btn  transition duration-300 ease-in-out " 
                       onClick={decrementCount}
                     >
-                      -
+                      &#60;
                     </button>
-                    <span className=" text-gray-800 rounded-lg font-medium px-4 py-[11px]">
+                    <span className=" text-gray-800 rounded-lg font-medium py-[11px]">
                       {count}
                     </span>
                     <button
-                      className=" cart-action-btn  ml-2"
+                      className=" cart-action-btn "
                       onClick={incrementCount}
                     >
-                      +
+                      &#62;
                     </button>
                   </div>
                   <div>
@@ -228,8 +237,11 @@ const ProductDetails = ({ data }) => {
                     )}
                   </div>
                 </div>
+                <div className="availability-icon">
+                  {data.stock > 0?<img src={InStockIcon} alt="" />:<img src={SoldOutIcon} alt="" />}
+                </div>
                 <div
-                  className={`addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
+                  className={`addToCart-btn  ${styles.button} w-[100%] !h-[4rem] !mt-6  flex items-center`}
                   onClick={() => addToCartHandler(data._id)}
                 >
                   <span className="text-white flex items-center">
@@ -237,7 +249,7 @@ const ProductDetails = ({ data }) => {
                   </span>
                 </div>
                 <div
-                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !mt-6  flex items-center`}
+                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !h-[4rem] !mt-6 mb-[3rem] flex items-center`}
                   onClick={() => buyNowHandler(data._id)}
                 >
                   <span className="text-[#00B4D8] flex items-center">
@@ -273,11 +285,57 @@ const ProductDetails = ({ data }) => {
                 </div> */}
               </div>
             </div>
-            <div className="more-product-info flex items-center">
-                <img src={DeliveryIcon} alt="" />
-                <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days with SHIPPR</div>
+            
+
+          <div className="product-details-section flex-col 800px:flex-row">
+            <div className="pds-left w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
+              <h1 className="text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
+              <p className="w-[100%] text-[0.9rem] font-[500] whitespace-pre-line">{data.description}</p>
             </div>
+
+            <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
+
+              <div className="seller-info-section mb-6">
+                <h1 className="text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
+                <div className="w-full 800px:w-[50%] mb-6">
+                  <Link to={`/shop/preview/${data.shop._id}`}>
+                    <div className="flex items-center">
+                      <img
+                        src={`${data?.shop?.avatar?.url}`}
+                        className="w-[50px] h-[50px] rounded-full"
+                        alt=""
+                      />
+                      <div className="pl-3">
+                        <h3 className={`${styles.shop_name} underline mr-2`}>{data.shop.name.toUpperCase()}</h3>
+                        {/* <h5 className="pb-2 text-[15px]">
+                        </h5> */}
+                      </div>
+
+                      <img src={ShopLinkIcon} alt="" />
+                      
+                    </div>
+                  </Link>
+                  <p className="pt-2">{data.shop.description}</p>
+                </div>
+
+                <div>
+                  <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="mr-2 text-[#17E5A1] ">100%</span> Order Fuffilment Rate</p>
+                  <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="ml-[0.5rem] mr-2 text-[#FFB41F]">70%</span> Customer Service</p>
+                  <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="ml-[0.5rem] mr-2 text-[#17E5A1]">80%</span> Quality Rating</p>
+                </div>
+              </div>
+
+              <div className="more-product-info flex items-center">
+                  <img src={DeliveryIcon} alt="" />
+                  <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days with SHIPPR</div>
+              </div>
+
+            </div>
+
+          </div>
           {data && <SuggestedProduct data={data} />}
+
+          
           </div>
           <ProductDetailsInfo
             data={data}
@@ -303,12 +361,12 @@ const ProductDetailsInfo = ({
   const [active, setActive] = useState(1);
 
   return (
-    <div className="bg-[#ffffff] px-3 800px:px-10 py-2 rounded">
-      <div className="w-full flex justify-between border-b pt-10 pb-2">
+    <div className="bg-[#ffffff]  py-2 rounded">
+      <div className="w-full flex  justify-center pt-10 pb-6">
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
             }
             onClick={() => setActive(1)}
           >
@@ -321,7 +379,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
             }
             onClick={() => setActive(2)}
           >
@@ -334,7 +392,7 @@ const ProductDetailsInfo = ({
         <div className="relative">
           <h5
             className={
-              "text-[#000] text-center text-[12px] px-1 leading-5 font-[600] cursor-pointer 800px:text-[20px]"
+              "text-[#000] text-center max-[500px]:text-[10px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[600] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]"
             }
             onClick={() => setActive(3)}
           >
@@ -347,14 +405,14 @@ const ProductDetailsInfo = ({
       </div>
       {active === 1 ? (
         <>
-          <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line">
-            {data.description}
+          <p className="py-2 800px:text-[1.1rem] text-[0.8rem] leading-8 pb-10 whitespace-pre-line" style={{color:"rgb(0,0,0,0.70)"}}>
+            {data.aboutProduct}
           </p>
         </>
       ) : null}
 
       {active === 2 ? (
-        <div className="w-full min-h-[40vh] flex flex-col py-3 overflow-y-auto " style={{fontWeight:600,fontSize:"1.2rem"}}>
+        <div className="w-full min-h-[40vh] flex flex-col py-3 overflow-y-auto 800px:text-[1.1rem] text-[0.8rem]" style={{fontWeight:600,color:"rgb(0,0,0,0.70)"}}>
           {/* {data &&
             data.reviews.map((item, index) => (
               <div className="w-full flex my-2">
@@ -394,8 +452,8 @@ const ProductDetailsInfo = ({
       ) : null}
 
       {active === 3 && (
-        <div className="w-full block 800px:flex py-3">
-          <p style={{fontSize:"1.2rem",fontWeight:"600"}}>{data.inTheBox}</p>
+        <div className="w-full block 800px:flex py-3 800px:text-[1.1rem] text-[0.8rem]">
+          <p style={{fontWeight:"600",color:"rgb(0,0,0,0.70)"}}>{data.inTheBox}</p>
           {/* <div className="w-full 800px:w-[50%]">
             <Link to={`/shop/preview/${data.shop._id}`}>
               <div className="flex items-center">

@@ -22,6 +22,8 @@ import axios from "axios";
 // import SuggestedProduct from "../components/Products/SuggestedProduct";
 import Reviews from "../components/Reviews/Reviews";
 // import DeliveryIcon from '../../assets/delivery_icon.svg'
+import Ratings from "../components/Products/Ratings";
+
 
 
 const ReviewsDetails = ({ data }) => {
@@ -176,13 +178,17 @@ const ReviewsDetails = ({ data }) => {
                 </div>
               </div>
               <div className="w-full 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle}`} style={{maxWidth:"45ch",fontSize:'1.7rem',fontWeight:'500'}}>{data.name}</h1>
-                {/* <p className="mb-20"></p> */}
-                <p>Sold by: <span className={`${styles.shop_name} pb-1 pt-1`}>
+                <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
+                <p className="mb-[2rem] 800px:mb-[4rem]"></p>
+                <div className="mb-[1.2rem] flex gap-[0.1rem] items-center">
+                  <Ratings rating={data.ratings}/>
+                  <p className="text-[#0077B6] text-[0.6rem] underline mb-1">{data.reviews.length}</p>
+                </div>
+                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} underline pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
-                <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"3rem"}}>
+                <div className="flex pt-3 mb-[1rem]">
+                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"2.6rem"}}>
                     ₦{data.discountPrice.toLocaleString()}
                   </h4>
                   <h3 className={`${styles.price}`} >
@@ -190,22 +196,22 @@ const ReviewsDetails = ({ data }) => {
                   </h3>
                 </div>
 
-                <div className="flex items-center mt-4 mb-14 justify-between pr-3">
-                  <div>
+                <div className="flex items-center mb-[1.5rem] justify-between pr-3">
+                  <div className="flex items-center gap-[1.8rem]">
                     <button
                       className=" cart-action-btn  transition duration-300 ease-in-out " 
                       onClick={decrementCount}
                     >
-                      -
+                      &#60;
                     </button>
-                    <span className=" text-gray-800 rounded-lg font-medium px-4 py-[11px]">
+                    <span className=" text-gray-800 rounded-lg font-medium py-[11px]">
                       {count}
                     </span>
                     <button
-                      className=" cart-action-btn  ml-2"
+                      className=" cart-action-btn "
                       onClick={incrementCount}
                     >
-                      +
+                      &#62;
                     </button>
                   </div>
                   <div>

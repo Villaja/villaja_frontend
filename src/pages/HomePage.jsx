@@ -23,10 +23,15 @@ import 'swiper/css/autoplay'
 
 import ApplePhone from '../assets/sliderImages/hero_iphone15pro.jpg'
 import AccessoriesImg from '../assets/sliderImages/hero_apple_watch.jpg'
-import AccessoriesImg2 from '../assets/sliderImages/promo_airpods_pro.jpg'
 import rightArrow from '../assets/sliderImages/rightArrow.svg'
-import slider1 from '../assets/sliderImages/slider1.jpg'
 import slider2 from '../assets/sliderImages/slider2.jpg'
+
+import Slider1 from '../assets/sliderImages/SliderMedia/large.mp4'
+import Slider2 from '../assets/sliderImages/SliderMedia/vivo.webp'
+import Slider3 from '../assets/sliderImages/SliderMedia/galaxyVideo.webm'
+import Slider4 from '../assets/sliderImages/SliderMedia/SurfacePro.webp'
+import Slider5 from '../assets/sliderImages/SliderMedia/flipPhone.jpg'
+import Slider6 from '../assets/sliderImages/SliderMedia/alienwareHero.png'
 
 
 
@@ -53,7 +58,7 @@ const HomePage = () => {
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
-                <img src={AccessoriesImg} alt="" className='swiper-slide-img'/>
+                <video src={Slider1} autoPlay muted loop className='swiper-slide-video'/>
               </div>
             
             </SwiperSlide>
@@ -69,7 +74,70 @@ const HomePage = () => {
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
-                <img src={slider2} alt="" className='swiper-slide-img'/>
+                <img src={Slider2} alt="" className='swiper-slide-img'/>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide className='swiper-slide'>
+
+              <div className="swiper-slide-item">
+                <div className="homepage-slider-info">
+                  <div className="hsinfo-main">
+                    <div className="hsinfo-top">
+                      <p>
+                        Get the Latest Apple products
+                      </p>
+                    </div>
+                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                  </div>
+                </div>
+                <video src={Slider3} autoPlay muted loop className='swiper-slide-video'/>
+              </div>
+            
+            </SwiperSlide>
+            <SwiperSlide className='swiper-slide'>
+              <div className="swiper-slide-item">
+                <div className="homepage-slider-info">
+                  <div className="hsinfo-main">
+                    <div className="hsinfo-top">
+                      <p>
+                        Get the Latest Apple products
+                      </p>
+                    </div>
+                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                  </div>
+                </div>
+                <img src={Slider5} alt="" className='swiper-slide-img'/>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className='swiper-slide'>
+              <div className="swiper-slide-item">
+                <div className="homepage-slider-info">
+                  <div className="hsinfo-main">
+                    <div className="hsinfo-top">
+                      <p>
+                        Get the Latest Apple products
+                      </p>
+                    </div>
+                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                  </div>
+                </div>
+                <img src={Slider6} alt="" className='swiper-slide-img' style={{objectFit:"contain"}}/>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className='swiper-slide'>
+              <div className="swiper-slide-item">
+                <div className="homepage-slider-info">
+                  <div className="hsinfo-main">
+                    <div className="hsinfo-top">
+                      <p>
+                        Get the Latest Apple products
+                      </p>
+                    </div>
+                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                  </div>
+                </div>
+                <img src={Slider4} alt="" className='swiper-slide-img'/>
               </div>
             </SwiperSlide>
             <SwiperSlide className='swiper-slide'>

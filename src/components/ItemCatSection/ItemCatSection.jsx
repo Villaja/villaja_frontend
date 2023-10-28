@@ -4,6 +4,7 @@ import './itemCatSection.css'
 import { useState , useEffect} from 'react';
 import { useSelector } from "react-redux";
 
+import Rolling from '../../assets/animations/Rolling.svg'
 
 const ItemCatSection = ({itemCatTitle,items,catIndex}) => {
 
@@ -33,8 +34,10 @@ const ItemCatSection = ({itemCatTitle,items,catIndex}) => {
                 return <ItemCatSingle itemName={item.itemName} itemImg={item.itemImg} itemPrice={item.itemPrice} key={id}/>
             })} */}
 
-            {loading ? (
-            <p className="text-center">Loading...</p>
+            { 
+              loading          
+            ? (
+            <p className="text-center" style={{margin:"0 auto"}}><img src={Rolling}alt=""/> </p>
           ) : (
             <>
               {data &&
