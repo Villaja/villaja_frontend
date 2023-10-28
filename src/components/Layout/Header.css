@@ -95,7 +95,7 @@ Link {
 }
 .vh-header-wrapper:has(div:hover) {
     transition: all 0.3s ease;
-    background-color: black;
+    background-color: #111111;
     color: #77777aec;
 }
 

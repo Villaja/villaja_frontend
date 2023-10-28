@@ -23,7 +23,7 @@ export const TopBar = ({
 
   return (
     <div
-      className={`top-bar property-1-0-${state.property1} ${className}`}
+      className={`top-bar fixed property-1-0-${state.property1} ${className}`}
       onMouseLeave={() => {
         dispatch("mouse_leave");
       }}

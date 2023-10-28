@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import {
   AiOutlineArrowRight,
@@ -12,6 +13,9 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { MdTrackChanges } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
+import { FiSearch } from "react-icons/fi";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsStarHalf } from "react-icons/bs";
 import {
   deleteUserAddress,
   loadUser,
@@ -25,6 +29,16 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { getAllOrdersOfUser } from "../../redux/actions/order";
 
+import './ProfileContent.css'
+
+import EditIcon from './editIcon.svg'
+import EyeIcon from './eyeIcon.svg'
+import PadLock from './padlock.svg'
+import ApproveBtn from './approve.svg'
+import DeclineBtn from './decline.svg'
+import FeaturedIcon from './featuredIcon.svg'
+
+
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
   const [firstname, setFirstName] = useState(user && user.firstname);
@@ -33,7 +47,15 @@ const ProfileContent = ({ active }) => {
   const [loading, setLoading] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
+  const [country, setCountry] = useState(user && user.addresses[0]?.country);
+  const [city, setCity] = useState(user && user.addresses[0]?.city);
+  const [zipCode, setZipCode] = useState(user && user.addresses[0]?.zipCode);
+  const [address1, setAddress1] = useState(user && user.addresses[0]?.address1);
+  const [address2, setAddress2] = useState(user && user.addresses[0]?.address2);
+  const [addressType, setAddressType] = useState(user && user.addresses[0]?.addressType);
   const [avatar, setAvatar] = useState(null);
+  const [editActive,setEditActive] = useState(false)
+  const [editActiveAddress,setEditActiveAddress] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,10 +74,20 @@ const ProfileContent = ({ active }) => {
     dispatch(updateUserInformation(firstname, lastname, email, phoneNumber, password));
   };
 
- 
+  const handleAddressSubmit = (e) => {
+      e.preventDefault();
+      dispatch(updatUserAddress(
+          country,
+          city,
+          address1,
+          address2,
+          zipCode,
+          addressType
+        ))
+  }
 
   return (
-    <div className="w-full">
+    <div className=" relative mb-8" style={{maxWidth:"1500px",width:"100%"}}>
       {/* profile */}
       {active === 1 && (
         <>
@@ -63,75 +95,212 @@ const ProfileContent = ({ active }) => {
             <div className="relative">
             </div>
           </div>
-          <br />
-          <br />
-          <div className="w-full px-5">
+          {window.screen.width < 800 ?null:<br />}
+          {/* <br /> */}
+          <div className="w-full pl-0 1100px:pl-5 ">
+            <h1 className="font-semibold text-[2rem] mb-4">My Profile</h1>
             <form onSubmit={handleSubmit} aria-required={true}>
-              <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">First Name</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={firstname}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
+
+              <div className="profile-content-pi w-full mb-[1.88rem]">
+                <div className="pc-pi-top">
+                  <p className="text-[1.4rem] 600px:text-[1.4rem] font-semibold">Personal Information</p>
+                  {
+                    editActive?
+
+                      <div className="flex items-center gap-[0.5rem]">
+
+                        <input required
+                              value="Update"
+                              type="submit"
+                              className="pc-pi-save" />
+
+                        <div className="pc-pi-edit pc-pi-cancel" onClick={() => setEditActive(false)}>
+                          Cancel
+                        </div>
+                        
+                      </div>
+                     
+                    :
+                      <div className="pc-pi-edit" onClick={() => setEditActive(true)}>
+                        <span>Edit</span>
+                        <img src={EditIcon} alt="" />
+                      </div>
+                  }
                 </div>
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Last Name</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
-                    required
-                    value={lastname}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="w-full 800px:flex block pb-3">
-                <div className=" w-[100%] 800px:w-[50%]">
-                <label className="block pb-2">Phone Number</label>
-                  <input
-                    type="number"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Email Address</label>
-                  <input
-                    type="text"
-                    className={`${styles.input} !w-[95%] mb-1 800px:mb-0`}
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+
+                <div className="pc-pi-main">
+                  {/**? firstname and lastname */}
+
+                  <div className="pc-pi-main1 flex items-center gap-[0.5rem] 600px:gap-[12rem] mb-4 ">
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>First Name</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={firstname}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Last Name</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={lastname}
+                        onChange={(e) => setLastName(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                  </div>
+
+                  {/**? Phone number and email */}
+                  <div className="pc-pi-main2 flex items-center gap-[0.5rem] 600px:gap-[12rem] mb-4">
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Phone Number</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Email</label>
+                      <input
+                        type="text"
+                        className={editActive?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        readOnly={!editActive?true:false}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={`${editActive?"profileUpdatePassActive":"profileUpdatePass"} w-full 800px:flex block pb-3`}>
+                
+                      <div className=" w-[100%] 800px:w-[50%]">
+                        <label className="block pb-2 text-[1.2rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Enter your password</label>
+                        <input
+                          type="password"
+                          className={`${styles.input} !w-[50%] mb-4 800px:mb-0`}
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </div>
+                  </div>
+
                 </div>
               </div>
 
-              <div className="w-full 800px:flex block pb-3">
-                
-                <div className=" w-[100%] 800px:w-[50%]">
-                  <label className="block pb-2">Enter your password</label>
-                  <input
-                    type="password"
-                    className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+            </form>
+            
+
+            <form onSubmit={handleAddressSubmit} aria-required={true}>
+                  <div className="profile-content-pi w-full">
+                <div className="pc-pi-top">
+                  <p className="text-[1.4rem] font-semibold">Address</p>
+                  {
+                    editActiveAddress?
+
+                      <div className="flex items-center gap-[0.5rem]">
+
+                        <input required
+                              value="Update"
+                              type="submit"
+                              className="pc-pi-save" />
+
+                        <div className="pc-pi-edit pc-pi-cancel" onClick={() => setEditActiveAddress(false)}>
+                          Cancel
+                        </div>
+                        
+                      </div>
+                     
+                    :
+                      <div className="pc-pi-edit" onClick={() => setEditActiveAddress(true)}>
+                        <span>Edit</span>
+                        <img src={EditIcon} alt="" />
+                      </div>
+                  }
+                </div>
+
+                <div className="pc-pi-main w-full  relative">
+
+                  <div className="pc-pi-main3 w-full flex flex-wrap justify-between items-center mb-4  gap-[5rem]" style={{maxWidth:'1050px'}}>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Country</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>City</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address 1</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={address1}
+                        onChange={(e) => setAddress1(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address 2</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={address2}
+                        onChange={(e) => setAddress2(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>ZipCode</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
+                      />
+                    </div>
+                    <div className="">
+                      <label className="block pb-2 text-[1rem]" style={{color:"rgba(0, 0, 0, 0.35)"}}>Address Type</label>
+                      <input
+                        type="text"
+                        className={editActiveAddress?`${styles.input} !w-[100%] mb-4 800px:mb-0`:`pcmain-input`}
+                        required
+                        value={addressType}
+                        onChange={(e) => setAddressType(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
                 </div>
               </div>
-              <input
-                className={`w-[250px] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
-                required
-                value="Update"
-                type="submit"
-              />
+
             </form>
+
           </div>
         </>
       )}
@@ -150,10 +319,10 @@ const ProfileContent = ({ active }) => {
         </div>
       )}
 
-      {/* Track order */}
+      {/* Delivery Approval */}
       {active === 5 && (
         <div>
-          <TrackOrder />
+          <DeliveryApproval />
         </div>
       )}
 
@@ -179,31 +348,52 @@ const AllOrders = () => {
   const { orders } = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
+  const [myOrderNo,setMyOrderNo] = useState("all")
+
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID",headerClassName: 'orderTable-header', minWidth: 150, flex: 0.7 },
+    { field: "createdAt", headerName: "Date", minWidth: 150, flex: 0.7 },
 
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
-    },
+    
     {
       field: "itemsQty",
-      headerName: "Items Qty",
+      headerName: "Unit",
       type: "number",
       minWidth: 130,
       flex: 0.7,
     },
+
+    {
+      field: "status",
+      headerName: "Status",
+      headerAlign: 'center',
+      minWidth: 130,
+      flex: 0.7,
+      renderCell: (params) => {
+        return(
+
+        
+        params.getValue(params.id, "status") === "Delivered" ?
+          <div className="delivered">
+            Delivered
+          </div>  : 
+          params.getValue(params.id, "status") === "Processing"? <div className="processing">processing</div>
+          :
+          <div className="cancelled">Cancelled</div>
+        )
+        
+      },
+      // cellClassName: (params) => {
+      //   return params.getValue(params.id, "status") === "Delivered"
+      //     ? "greenColor"
+      //     : "redColor";
+      // },
+    },
+    
 
     {
       field: "total",
@@ -217,7 +407,7 @@ const AllOrders = () => {
       field: " ",
       flex: 1,
       minWidth: 150,
-      headerName: "",
+      headerName: "Actions",
       type: "number",
       sortable: false,
       renderCell: (params) => {
@@ -225,7 +415,7 @@ const AllOrders = () => {
           <>
             <Link to={`/user/order/${params.id}`}>
               <Button>
-                <AiOutlineArrowRight size={20} />
+                <img src={EyeIcon} alt="" />
               </Button>
             </Link>
           </>
@@ -234,30 +424,343 @@ const AllOrders = () => {
     },
   ];
 
-  const row = [];
+  const [rowState,setRowState] = useState([])
 
-  orders &&
-    orders.forEach((item) => {
-      row.push({
-        id: item._id,
-        itemsQty: item.cart.length,
-        total: "₦ " + item.totalPrice,
-        status: item.status,
+  const [searchVal,setSearchVal] = useState("")
+
+  const [mobileSearch,setMobileSearch] = useState(window.screen.width < 500?true:false)
+
+  console.log("windowwwww " + window.screen.width);
+
+  const handlePopulateRow = () => {
+      const row = [];
+
+    orders &&
+      orders.forEach((item) => {
+        row.push({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        });
       });
-    });
+
+      return row
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchVal(e.target.value)
+    if(myOrderNo === "all")
+    {
+      setRowState(orders.filter((od) => od._id.includes(e.target.value)).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+    else
+    {
+
+    setRowState(orders.filter((od) => od._id.includes(e.target.value) && od.status.toLowerCase() === myOrderNo).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+
+  }
+
+  const handleOrderNo = (val) => {
+    setMyOrderNo(val)
+    if(val != "all")
+    {
+
+      setRowState(orders.filter((od) => od.status.toLowerCase() === val && od._id.includes(searchVal)).map((item) => {
+        return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+        })
+    }))
+    }
+    else
+    {
+        setRowState(orders.map((item) => {
+      return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+      })
+    }))
+    }
+  }
+  
+
+  useEffect(() => {
+    
+    // const newRow = handlePopulateRow()
+    console.log(orders);
+    orders && setRowState(orders.map((item) => {
+      return ({
+          id: item._id,
+          createdAt:item.createdAt.split('T')[0],
+          itemsQty: item.cart.length,
+          total: "₦ " + item.totalPrice,
+          status: item.status,
+      })
+    }))
+  },[orders])
 
   return (
-    <div className="pl-8 pt-1">
+    <div className="500px:pl-8 800px:pt-1">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">My Orders</h1>
+
+      <div className="myOrders-tabs">
+          <div className={`myOrder-tab myOrder-all ${myOrderNo === "all" && 'myOrderActive'}`} onClick = {() => handleOrderNo("all")}>All <span> {orders?.length} </span></div>
+          <div className={`myOrder-tab myOrder-delivered ${myOrderNo === "delivered" && 'myOrderActive'}`} onClick = {() => handleOrderNo("delivered")}>Delivered <span> {orders?.filter((od) => od.status === "Delivered").length}  </span></div>
+          <div className={`myOrder-tab myOrder-processing ${myOrderNo === "processing" && 'myOrderActive'}`} onClick = {() => handleOrderNo("processing")}>Processing <span> {orders?.filter((od) => od.status === "Processing").length} </span></div>
+          <div className={`myOrder-tab myOrder-cancelled ${myOrderNo === "cancelled" && 'myOrderActive'}`} onClick = {() => handleOrderNo("cancelled")}>Cancelled <span> {orders?.filter((od) => od.status === "Cancelled").length} </span></div>
+      </div>
+
+      <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6`}>
+          <FiSearch size={20} onClick={
+            () => setMobileSearch(!mobileSearch)
+          }/>
+          <input type="text" placeholder="Search..." onChange={(e) => handleSearchChange(e)}/>
+      </div>
+
       <DataGrid
-        rows={row}
+        rows={rowState}
         columns={columns}
         pageSize={10}
         disableSelectionOnClick
+        checkboxSelection
         autoHeight
       />
     </div>
   );
 };
+
+
+
+
+const DeliveryApproval = () => {
+
+  const { user } = useSelector((state) => state.user);
+  const { orders } = useSelector((state) => state.order);
+  const [deliverdCart,setDeliveredCart] = useState([])
+  const [openApproval,setOpenApproval] = useState(false)
+  const [currentItem,setCurrentItem] = useState("")
+  const [currentOrderId,setCurrentOrderId] = useState("")
+  const dispatch = useDispatch();
+
+  const [myOrderNo,setMyOrderNo] = useState("all")
+
+  useEffect(() => {
+    dispatch(getAllOrdersOfUser(user._id));
+  }, [])
+
+
+  useEffect(() => {
+    orders && setDeliveredCart(orders.filter((od) => od?.status.toLowerCase() === "delivered").map((el) => {
+      return(el.cart)
+    }))
+  },[orders])
+
+
+
+  return(
+    <>
+    {
+      openApproval ? 
+
+      <ApprovalPage item={currentItem} user={user} id={currentOrderId} setOpenApproval={setOpenApproval}/>
+
+      :
+    <div className="delivery-approval-wrapper 500px:pl-8 800px:pt-1">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Product List</h1>
+      
+      <div className="delivered-product-list">
+        {
+          deliverdCart.map((dc) => {
+
+          return (dc.map((od) => {
+            return(
+              <div className="delivered-product-item" key={od._id}>
+
+                <div className="dpi-img">
+                  <img src={od.images[0].url} alt="img" />
+                </div>
+                <div className="dpi-main">
+                  <div className="dpi-info">
+                    <div className="dpi-info-name">{od.name}</div>
+                    <div className="dpi-info-seller">by {od.shop.name}</div>
+                    <div className="dpi-info-price">N{od.discountPrice}</div>
+                    
+                  </div>
+                  <div className="dpi-btn" onClick={() => {setCurrentOrderId(dc._id);setCurrentItem(od);setOpenApproval(true)}}>Approve Delivery</div>
+                </div>
+                
+              </div>
+            )
+          }))
+          })
+        }
+      </div>
+    </div>
+
+    }
+    </>
+    
+  );
+}
+
+
+const ApprovalPage = ({item,user,id,setOpenApproval}) => {
+
+  const [rating, setRating] = useState(1);
+  const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
+
+
+
+  const reviewHandler = async (e) => {
+    try {
+      const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+      if (!token) {
+        // Handle the case where the user is not authenticated
+        toast.error('User is not authenticated.');
+        return;
+      }
+      
+      const response = await axios.put(
+        `${server}/product/create-new-review`,
+        {
+          user,
+          rating,
+          comment,
+          productId: item?._id,
+          orderId: id,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+  
+      toast.success(response.data.message);
+      dispatch(getAllOrdersOfUser(user._id));
+      setComment("");
+      setRating(null);
+      setOpenApproval(false)
+      // setOpen(false);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[])
+
+
+  return(
+    <div className="approval-page-wrapper">
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Delivery Approval</h1>
+
+      <div className="approve-delivery-section">
+        <div className="ads-top">Approve Delivery <span><img src={FeaturedIcon} alt="" /></span> </div>
+        <div className="ads-info">Please confirm that what you ordered is what you got. This is needed to give final approval of the delivery.</div>
+        <div className="ads-actions">
+          <div className="ads-action ads-approve"><img src={ApproveBtn} alt="" /></div>
+          <div className="ads-action ads-decline"><img src={DeclineBtn} alt="" /></div>
+        </div>
+      </div>
+
+      <div className="approve-delivery-reviews">
+        <div className="adr-img">
+          <img src={item.images[0].url} alt="" />
+        </div>
+
+        <div className="adr-item-name">
+          {item.name}
+        </div>
+
+        <div className="adr-item-stars">
+            <div className="flex w-full  pt-1">
+              {[1, 2, 3, 4, 5].map((i) =>
+                rating >= i ? (
+                  <AiFillStar
+                    key={i}
+                    className="mr-1 cursor-pointer"
+                    color="rgb(246,186,0)"
+                    size={40}
+                    onClick={() => setRating(i)}
+                  />
+                ) : (
+                  <AiOutlineStar
+                    key={i}
+                    className="mr-1 cursor-pointer"
+                    color="rgb(246,186,0)"
+                    size={40}
+                    onClick={() => setRating(i)}
+                  />
+                )
+              )}
+            </div>
+
+            <div className="w-full mt-4">
+              <label className="block text-[20px] font-[500]">
+                Review
+                
+              </label>
+              <textarea
+                name="comment"
+                id=""
+                cols="20"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Write your review about this product"
+                className="mt-2 w-[95%] border rounded-md p-4 outline-none"
+              ></textarea>
+            </div>
+            <div
+              className={`${styles.button} text-white text-[20px]`}
+              onClick={rating > 1 ? reviewHandler : null}
+            >
+              Submit
+            </div>
+            <div
+              className={`w-[150px] bg-[#f00333] h-[50px] my-3 flex items-center justify-center rounded-md cursor-pointer text-white text-[20px]`}
+              onClick={() => setOpenApproval(false)}
+            >
+              Cancel
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+  )
+}
+
+
+
 
 const AllRefundOrders = () => {
   const { user } = useSelector((state) => state.user);
@@ -305,7 +808,7 @@ const AllRefundOrders = () => {
       field: " ",
       flex: 1,
       minWidth: 150,
-      headerName: "",
+      headerName: "Actions",
       type: "number",
       sortable: false,
       renderCell: (params) => {
@@ -341,6 +844,7 @@ const AllRefundOrders = () => {
         columns={columns}
         pageSize={10}
         autoHeight
+        checkboxSelection
         disableSelectionOnClick
       />
     </div>
@@ -470,47 +974,50 @@ const ChangePassword = () => {
   };
   
   return (
-    <div className="w-full px-5">
-      <h1 className="block text-[25px] text-center font-[600] text-[#000000ba] pb-2">
+    <div className="w-full px-5 800px:py-1">
+      <img src={PadLock} alt="" className="mt-8" />
+      <h1 className="block text-[25px]  font-[600] text-[#000000ba] pb-2 text-[2rem] mt-2">
         Change Password
       </h1>
+      <p style={{color: 'rgba(0, 0, 0, 0.30)',fontWeight: '500',lineHeight: '1.49344rem',letterSpacing: '-0.01344rem',maxWidth:'50ch',marginBottom:"2rem"}}>To change your password, please fill in the details below.
+        your passwords most contain at least 8 characters, and must have one upper cast letter. </p>
       <div className="w-full">
         <form
           aria-required
           onSubmit={passwordChangeHandler}
-          className="flex flex-col items-center"
+          // className="flex flex-col items-center"
         >
           <div className=" w-[100%] 800px:w-[50%] mt-5">
-            <label className="block pb-2">Enter your old password</label>
+            <label className="block pb-2">Current Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
             />
           </div>
           <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your new password</label>
+            <label className="block pb-2">New Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div className=" w-[100%] 800px:w-[50%] mt-2">
-            <label className="block pb-2">Enter your confirm password</label>
+            <label className="block pb-2">Confirm Password</label>
             <input
               type="password"
-              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
+              className={`${styles.input} !w-[95%] mb-4 800px:mb-0`} style={{maxWidth:"24rem"}}
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <input
-              className={`w-[95%] h-[40px] border border-[#3a24db] text-center text-[#3a24db] rounded-[3px] mt-8 cursor-pointer`}
+              className={`w-[95%] h-[52px] border-[2px] font-semibold border-[#00A8D1] text-center text-[#00A8D1] rounded-[8px] mt-8 cursor-pointer`} style={{maxWidth:"24rem"}}
               required
               value="Update"
               type="submit"

@@ -31,7 +31,7 @@ const SuggestedProduct = ({ data }) => {
             <>
               {productData &&
                 productData.slice(0,4).map((i, index) => (
-                  <SingleItemCard data={i} key={index} />
+                  <SingleItemCard data={i} key={index} itemDisplay={true}/>
                 ))}
             </>
           }

@@ -76,6 +76,7 @@
     {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1rem;
+        padding: 0.5rem;
     }
 
     .special-ic-body-two

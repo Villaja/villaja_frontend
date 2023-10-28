@@ -49,7 +49,7 @@ const Categories = ({isSellerHomepage}) => {
                     <img src={i.image_Url} className="cat-comp-img w-32 h-32 object-contain mb-4" alt="" />
                   </div>
                   <div className="cat-text">
-                  <p className="text-2xl font-semibold text-gray-800 mb-2">{i.title}</p>
+                  <p className=" text-md 800px:text-2xl font-semibold text-gray-800 mb-2">{i.title}</p>
                   <p className="cat-comp-text text-sm text-gray-600 mt-2" style={{maxWidth:"20ch",margin:"0 auto"}}>{i.subTitle}</p>
                   {/* <div className="cat-browse-btn flex 800px:hidden">
                     Browse

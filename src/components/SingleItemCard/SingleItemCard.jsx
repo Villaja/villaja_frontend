@@ -7,8 +7,9 @@ import { toast } from "react-toastify";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Ratings from '../Products/Ratings';
 
-const SingleItemCard = ({data}) => {
+const SingleItemCard = ({data,itemDisplay}) => {
 
   const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
@@ -31,7 +32,7 @@ const SingleItemCard = ({data}) => {
     }
   };
   return (
-    <div className="single-item-container" onClick={() => navigate(`/product/${data._id}`)}>
+    <div className={`single-item-container ${itemDisplay?"":"single-item-container-mobile"}`} onClick={() => navigate(`/product/${data._id}`)}>
         <div className="single-item-img">
             <img src={`${data.images && data.images[0]?.url}`} alt="asdf" />
         </div>
@@ -40,10 +41,12 @@ const SingleItemCard = ({data}) => {
             <div className="si-body-price">₦{data.originalPrice === 0
                 ? data.originalPrice
                 : data.discountPrice.toLocaleString()}</div>
+            <Ratings rating={data.ratings}/>
         </div>
-        <div className="add-to-cart-btn" onClick={() => addToCartHandler(data._id)}>
+
+        {/* <div className="add-to-cart-btn" onClick={() => addToCartHandler(data._id)}>
             ADD TO CART
-        </div>
+        </div> */}
     </div>
   )
 }

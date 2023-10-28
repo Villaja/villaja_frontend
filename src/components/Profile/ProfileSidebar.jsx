@@ -1,4 +1,5 @@
 import React from "react";
+import {BsPatchCheckFill} from 'react-icons/bs'
 import { AiOutlineLogin, AiOutlineMessage } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
@@ -14,6 +15,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import './ProfileSidebar.css'
 
 const ProfileSidebar = ({ setActive, active }) => {
   const navigate = useNavigate();
@@ -27,29 +29,29 @@ const ProfileSidebar = ({ setActive, active }) => {
 };
 
   return (
-    <div className="w-full bg-transparent shadow-sm rounded-[10px] p-4 pt-8">
+    <div className="profile-sidebar 1100px:block w-full bg-transparent shadow-sm rounded-[10px] 1100px:p-4 1100px:pt-8">
       <div
-        className="flex items-center cursor-pointer w-full mb-8"
+        className={` ${active === 1?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer  1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(1)}
       >
-        <RxPerson size={20} color={active === 1 ? "dodgerblue" : ""} />
+        <RxPerson size={25} color={active === 1 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 1 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={` ${
+            active === 1 ? "text-white" : ""
+          } 800px:block`}
         >
           Profile
         </span>
       </div>
       <div
-        className="flex items-center cursor-pointer w-full mb-8"
+        className={` ${active === 2?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(2)}
       >
-        <HiOutlineShoppingBag size={20} color={active === 2 ? "dodgerblue" : ""} />
+        <HiOutlineShoppingBag size={25} color={active === 2 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 2 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={`${
+            active === 2 ? "text-white" : ""
+          } 800px:block `}
         >
           Orders
         </span>
@@ -83,61 +85,61 @@ const ProfileSidebar = ({ setActive, active }) => {
       </div> */}
 
       <div
-        className="flex items-center cursor-pointer w-full mb-8"
+        className={` ${active === 5?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(5)}
       >
-        <MdOutlineTrackChanges size={20} color={active === 5 ? "dodgerblue" : ""} />
+        <BsPatchCheckFill size={25} color={active === 5 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 5 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={`${
+            active === 5 ? "text-white" : ""
+          } 800px:block `}
         >
-          Track Order
+          Delivery Approval
         </span>
       </div>
 
       <div
-        className="flex items-center cursor-pointer w-full mb-8"
+        className={` ${active === 6?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] 1100px:gap-[0.75rem] `}
         onClick={() => setActive(6)}
       >
-        <RiLockPasswordLine size={20} color={active === 6 ? "dodgerblue" : ""} />
+        <RiLockPasswordLine size={25} color={active === 6 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 6 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={`${
+            active === 6 ? "text-white" : ""
+          } 800px:block `}
         >
           Change Password
         </span>
       </div>
 
-      <div
-        className="flex items-center cursor-pointer w-full mb-8"
+      {/* <div
+        className={` ${active === 7?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(7)}
       >
-        <TbAddressBook size={20} color={active === 7 ? "dodgerblue" : ""} />
+        <TbAddressBook size={20} color={active === 7 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 7 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={` ${
+            active === 7 ? "text-white" : ""
+          } 800px:block `}
         >
           Address
         </span>
-      </div>
+      </div> */}
 
       {user && user?.role === "Admin" && (
         <Link to="/admin/dashboard">
           <div
-            className="flex items-center cursor-pointer w-full mb-8"
+            className={` ${active === 8?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
             onClick={() => setActive(8)}
           >
             <MdOutlineAdminPanelSettings
-              size={20}
-              color={active === 7 ? "dodgerblue" : ""}
+              size={25}
+              color={active === 7 ? "white" : ""}
             />
             <span
-              className={`pl-3 ${
-                active === 8 ? "text-blue-400" : ""
-              } 800px:block hidden`}
+              className={`${
+                active === 8 ? "text-white" : ""
+              } 800px:block `}
             >
               Admin Dashboard
             </span>
@@ -145,14 +147,14 @@ const ProfileSidebar = ({ setActive, active }) => {
         </Link>
       )}
       <div
-        className="single_item flex items-center cursor-pointer w-full mb-8"
+        className={` ${active === 8?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer w-full 1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={logoutHandler}
       >
-        <AiOutlineLogin size={20} color={active === 8 ? "dodgerblue" : ""} />
+        <AiOutlineLogin size={25} color={active === 8 ? "white" : ""} />
         <span
-          className={`pl-3 ${
-            active === 8 ? "text-blue-400" : ""
-          } 800px:block hidden`}
+          className={`${
+            active === 8 ? "text-white" : ""
+          } 800px:block `}
         >
           Log out
         </span>

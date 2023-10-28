@@ -37,7 +37,7 @@ const SellerHomePage = () => {
                     <div className="item-cat-title">How it works</div>
                     {/* <div className="seemore-btn">See more &#8250; </div> */}
                 </div>
-                <div className="ic-body new-itc-body">
+                <div className="ic-body cat-ic-body new-itc-body">
                         <div className="itc-item">
                             <img src={StepOne} alt="" />
                             <p className="stepText">Step 1</p>
