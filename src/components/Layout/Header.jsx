@@ -156,7 +156,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[44px] w-full px-2  pl-8 text-base border-gray-200 border-[2px] rounded-[10px]"
+                className="h-[44px] w-full px-2  pl-8 text-base border-[#00b4d8] border-[2px] rounded-[10px]"
                 onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
               />
               

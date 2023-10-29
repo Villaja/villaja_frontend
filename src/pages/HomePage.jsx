@@ -33,6 +33,7 @@ import Slider4 from '../assets/sliderImages/SliderMedia/SurfacePro.webp'
 import Slider5 from '../assets/sliderImages/SliderMedia/flipPhone.jpg'
 import Slider6 from '../assets/sliderImages/SliderMedia/alienwareHero.png'
 import { useSelector } from 'react-redux';
+import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
 
 
 
@@ -201,6 +202,7 @@ const HomePage = () => {
           <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
           <ItemCatSection itemCatTitle={"Top Deals"} allProducts={allProducts} items={items} catIndex={2} />
           <ItemCatSection itemCatTitle={"Official Store Deals"} allProducts={allProducts} items={items} catIndex={3} />
+          <ShopAccessories/>
           </div>
         </div>
         {/* <Sponsored /> */}
