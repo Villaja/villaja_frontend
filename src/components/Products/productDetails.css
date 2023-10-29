@@ -96,6 +96,7 @@
         margin: 0 auto;
         width: 90% !important;
         border-radius: 30px !important;
-        height: 2rem !important;
+        height: 2rem;
     }
+
 }

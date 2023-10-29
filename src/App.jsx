@@ -78,6 +78,7 @@ import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './compon
 import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import ProductReviews from "./pages/ProductReviews";
 import SellerHomePage from "./pages/SellerHomePage/SellerHomePage";
+import CartPage from "./pages/CartPage/CartPage";
 // import { Amplify } from "aws-amplify";
 // import { awsmobile } from "../aws-exports";
 
@@ -120,6 +121,7 @@ const App = () => {
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route
           path="/checkout"
           element={

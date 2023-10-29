@@ -217,7 +217,7 @@ const Header = ({ activeHeading }) => {
               <div className={`${styles.noramlFlex}`}>
                 <div
                   className="relative cursor-pointer mr-[15px]"
-                  onClick={() => setOpenCart(true)}
+                  onClick={() => navigate('/cart')}
                 >
                   <AiOutlineShoppingCart
                     size={30}
@@ -354,7 +354,7 @@ const Header = ({ activeHeading }) => {
             <div className='mr-[15px]'>
               <div
                 className="relative"
-                onClick={() => setOpenCart(true)}
+                onClick={() => navigate('/cart')}
                 >
                 <AiOutlineShoppingCart size={30} />
                 <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
