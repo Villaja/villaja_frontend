@@ -5,13 +5,13 @@ import styles from "../../styles/styles";
 import ProductCard from "../Route/ProductCard/ProductCard";
 import SingleItemCard from "../SingleItemCard/SingleItemCard";
 
-const SuggestedProduct = ({ data }) => {
+const SuggestedProduct = ({ data}) => {
   const {allProducts} = useSelector((state) => state.products);
   const [productData,setProductData] = useState();
 
   useEffect(() => {
     const d =
-    allProducts && allProducts.filter((i) => i.category === data.category);
+    allProducts && allProducts.filter((i) => i.category === data.category && i._id !== data._id);
     setProductData(d);
   }, []);
 

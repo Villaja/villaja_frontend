@@ -191,7 +191,7 @@ const ProductDetails = ({ data }) => {
                         {data.shop.name.toUpperCase()}
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
-                  <h4 className={`${styles.productDiscountPrice}`} style={{fontSize:"2.6rem"}}>
+                  <h4 className={`${styles.productDiscountPrice} !text-[1.7rem] min-[500px]:!text-[2.6rem]`}>
                     ₦{data.discountPrice.toLocaleString()}
                   </h4>
                   <h3 className={`${styles.price}`} >
@@ -241,7 +241,7 @@ const ProductDetails = ({ data }) => {
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<img src={SoldOutIcon} alt="" />}
                 </div>
                 <div
-                  className={`addToCart-btn  ${styles.button} w-[100%] !h-[4rem] !mt-6  flex items-center`}
+                  className={`addToCart-btn  ${styles.button} w-[100%] !h-[2rem] min-[500px]:!h-[4rem] !mt-6  flex items-center `}
                   onClick={() => addToCartHandler(data._id)}
                 >
                   <span className="text-white flex items-center">
@@ -249,7 +249,7 @@ const ProductDetails = ({ data }) => {
                   </span>
                 </div>
                 <div
-                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !h-[4rem] !mt-6 mb-[3rem] flex items-center`}
+                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
                   onClick={() => buyNowHandler(data._id)}
                 >
                   <span className="text-[#00B4D8] flex items-center">
@@ -289,14 +289,14 @@ const ProductDetails = ({ data }) => {
 
           <div className="product-details-section flex-col 800px:flex-row">
             <div className="pds-left w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
-              <h1 className="text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
+              <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
               <p className="w-[100%] text-[0.9rem] font-[500] whitespace-pre-line">{data.description}</p>
             </div>
 
             <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
 
               <div className="seller-info-section mb-6">
-                <h1 className="text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
+                <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
                 <div className="w-full 800px:w-[50%] mb-6">
                   <Link to={`/shop/preview/${data.shop._id}`}>
                     <div className="flex items-center">
