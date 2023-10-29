@@ -115,7 +115,7 @@ const ProductsPage = () => {
       {/* <br /> */}
       <div className="homepage-category-body">
           <div className="homepage-category-main">
-            <ItemCatSection itemCatTitle={"Best Selling Items"} items={items} catIndex={1} />
+            <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
           </div>
       </div>
       <br />

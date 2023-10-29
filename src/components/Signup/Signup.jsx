@@ -7,6 +7,8 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Rolling from '../../assets/animations/Rolling.svg'
+
 
 const Singup = () => {
   const navigate = useNavigate()
@@ -239,7 +241,7 @@ const Singup = () => {
               }`}
               disabled={loading}
             >
-              {loading ? "Loading..." : "SIGN UP"}
+              {loading ? <img src={Rolling}/> : "SIGN UP"}
             </button>
             </div>
             <div className={`dha-box ${styles.noramlFlex} w-full`}>

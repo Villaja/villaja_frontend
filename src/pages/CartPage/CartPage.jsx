@@ -15,6 +15,7 @@ import { useState } from 'react';
 const CartPage = () => {
 
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (data) => {
@@ -64,7 +65,7 @@ const CartPage = () => {
 
           </div>
           
-          <div className="p-[1rem] mb-3 shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[18.5rem] rounded-[0.5rem] max-[1267px]:mx-[auto]">
+          <div className="p-[1rem] mb-3 shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[20.5rem] rounded-[0.5rem] max-[1267px]:mx-[auto]">
                   <h1 className='text-[1.7rem] font-[600] mb-[0.5rem]'>Cart Summary</h1>
                   <p className='text-[1.125rem] font-[500] mb-[2.7rem]'>Sub Total:</p>
                   <div className='text-[2.3rem] font-[600] mb-[2.5rem] flex justify-center'>
@@ -72,7 +73,7 @@ const CartPage = () => {
                   </div>
 
                   {/* checkout buttons */}
-                  <Link to="/checkout">
+                  <Link to={`${user?.email?"/checkout":'/user/login'}`}>
                     <div
                       className={`h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
                     >

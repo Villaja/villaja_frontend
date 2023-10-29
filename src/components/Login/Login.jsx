@@ -6,6 +6,8 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 import './Login.css'
+import Rolling from '../../assets/animations/Rolling.svg'
+
 
 
 const Login = () => {
@@ -156,7 +158,7 @@ const Login = () => {
         }`}
         disabled={loading}
       >
-        {loading ? "Loading..." : "LOG IN"}
+        {loading ? <img src={Rolling} /> : "LOG IN"}
       </button>
             </div>
             <div className={`dha-box ${styles.noramlFlex} w-full`}>

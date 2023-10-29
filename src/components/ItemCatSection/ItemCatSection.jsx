@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ProductCard from '../Route/ProductCard/ProductCard';
 import ItemCatSingle from './ItemCatSingle'
 import './itemCatSection.css'
@@ -6,16 +7,17 @@ import { useSelector } from "react-redux";
 
 import Rolling from '../../assets/animations/Rolling.svg'
 
-const ItemCatSection = ({itemCatTitle,items,catIndex}) => {
+const ItemCatSection = ({itemCatTitle,items,catIndex,allProducts}) => {
 
   const [data, setData] = useState([]);
-  const { allProducts } = useSelector((state) => state.products);
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (allProducts && allProducts?.length > 0) {
       const allProductsData = [...allProducts];
-      const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
+      // const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
+      const sortedData = allProductsData
       const firstFive = sortedData && sortedData.slice(0, 6);
       setData(firstFive);
       setLoading(false);

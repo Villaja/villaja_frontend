@@ -32,10 +32,12 @@ import Slider3 from '../assets/sliderImages/SliderMedia/galaxyVideo.webm'
 import Slider4 from '../assets/sliderImages/SliderMedia/SurfacePro.webp'
 import Slider5 from '../assets/sliderImages/SliderMedia/flipPhone.jpg'
 import Slider6 from '../assets/sliderImages/SliderMedia/alienwareHero.png'
+import { useSelector } from 'react-redux';
 
 
 
 const HomePage = () => {
+  const { allProducts } = useSelector((state) => state.products);
   return (
     <div>
         <Header activeHeading={1} />
@@ -196,9 +198,9 @@ const HomePage = () => {
           <div className="homepage-category-main">
 
           <Categories />
-          <ItemCatSection itemCatTitle={"Best Selling Items"} items={items} catIndex={1} />
-          <ItemCatSection itemCatTitle={"Top Deals"} items={items} catIndex={2} />
-          <ItemCatSection itemCatTitle={"Official Store Deals"} items={items} catIndex={3} />
+          <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
+          <ItemCatSection itemCatTitle={"Top Deals"} allProducts={allProducts} items={items} catIndex={2} />
+          <ItemCatSection itemCatTitle={"Official Store Deals"} allProducts={allProducts} items={items} catIndex={3} />
           </div>
         </div>
         {/* <Sponsored /> */}
