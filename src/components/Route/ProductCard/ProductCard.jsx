@@ -65,7 +65,7 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
     <>
       <div className={`${catIndex?"pc-container-mobile":""} pc-container w-full h-[300px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]`}>
         {/* <div className="flex justify-end"></div> */}
-        <div style={{width:"100%",maxWidth:"200px",height:"150px",position:"relative"}}>
+        <div style={{width:"100%",maxWidth:"200px",height:"150px",position:"relative",flexShrink:"0"}}>
 
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
         <img
@@ -81,8 +81,8 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
           <p className='font-semibold px-3 pt-4 text-blue-500 text-sm'>{data.shop.name}</p>
         </Link>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-        <p className="pb-3 pt-2 text-sm sm:text-md text-gray-700 font-bold px-3 overflow-hidden whitespace-nowrap">
-  {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
+        <p className="pb-3 pt-2 text-[0.8rem] text-gray-700 font-normal px-3 overflow-hidden whitespace-wrap">
+  {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
 </p>
 
 

@@ -2,6 +2,8 @@ import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import React, { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
@@ -84,6 +86,34 @@ const AllProducts = () => {
     },
   ];
 
+  const [rowState,setRowState] = useState([])
+  const [mobileSearch,setMobileSearch] = useState(window.screen.width < 500?true:false)
+
+  const handleSearchChange = (e) => {
+    setRowState(data.filter((od) => od._id.includes(e.target.value)).map((item) => {
+        return ({
+          id: item._id,
+        name: item.name,
+        price: "₦ " + item.discountPrice,
+        Stock: item.stock,
+        sold: item?.sold_out,
+          
+        })
+    }))
+  }
+
+  useEffect(() => {
+    data && setRowState(data.map((item) => {
+      return ({
+          id: item._id,
+        name: item.name,
+        price: "₦ " + item.discountPrice,
+        Stock: item.stock,
+        sold: item?.sold_out,
+      })
+    }))
+  },[data])
+
   const row = [];
 
   data &&
@@ -99,14 +129,25 @@ const AllProducts = () => {
 
   return (
     <>
-        <div className="w-full mx-8 pt-1 mt-10 bg-white">
-          <DataGrid
-            rows={row}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            autoHeight
-          />
+        <div className="w-full min-h-[120vh] pt-5 rounded flex justify-center bg-[#F4F4F4] p-6">
+            <div className="w-full 500px:pl-8 800px:pt-1 bg-white rounded-[0.3125rem]">
+              <h1 className="font-semibold text-[2rem] p-4 mb-4 border-b-[0.1rem] border-[#000000/25]">Products</h1>
+
+
+              <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6 ml-4`}>
+                  <FiSearch size={20} onClick={
+                    () => setMobileSearch(!mobileSearch)
+                  }/>
+                  <input type="text" placeholder="Search..." onChange={(e) => handleSearchChange(e)}/>
+              </div>
+              <DataGrid
+                rows={rowState}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                autoHeight
+              />
+            </div>
         </div>
     </>
   );

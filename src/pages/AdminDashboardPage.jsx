@@ -1,16 +1,19 @@
-import React from "react";
+import {useState} from "react";
 import AdminHeader from "../components/Layout/AdminHeader";
 import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
 import AdminDashboardMain from "../components/Admin/AdminDashboardMain";
 
 const AdminDashboardPage = () => {
+
+    const [open,setOpen] = useState(true)
+
   return (
     <div>
-      <AdminHeader />
+      <AdminHeader setOpen={setOpen} open={open} />
       <div className="w-full flex">
         <div className="flex items-start justify-between w-full">
-          <div className="w-[80px] 800px:w-[330px]">
-            <AdminSideBar active={1} />
+          <div className="transition-all ease delay-200">
+            <AdminSideBar active={1} sidebarActive={open}/>
           </div>
           <AdminDashboardMain />
         </div>

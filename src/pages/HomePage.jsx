@@ -61,6 +61,23 @@ const HomePage = () => {
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
+                <img src={AccessoriesImg} alt="" className='swiper-slide-video'/>
+              </div>
+            
+            </SwiperSlide>
+            <SwiperSlide className='swiper-slide'>
+
+              <div className="swiper-slide-item">
+                <div className="homepage-slider-info">
+                  <div className="hsinfo-main">
+                    <div className="hsinfo-top">
+                      <p>
+                        Get the Latest Apple products
+                      </p>
+                    </div>
+                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                  </div>
+                </div>
                 <video src={Slider1} autoPlay muted playsInline className='swiper-slide-video'/>
               </div>
             
@@ -115,23 +132,7 @@ const HomePage = () => {
               </div>
             
             </SwiperSlide>
-            <SwiperSlide className='swiper-slide'>
-
-              <div className="swiper-slide-item">
-                <div className="homepage-slider-info">
-                  <div className="hsinfo-main">
-                    <div className="hsinfo-top">
-                      <p>
-                        Get the Latest Apple products
-                      </p>
-                    </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
-                  </div>
-                </div>
-                <img src={AccessoriesImg} alt="" className='swiper-slide-video'/>
-              </div>
             
-            </SwiperSlide>
             <SwiperSlide className='swiper-slide'>
               <div className="swiper-slide-item">
                 <div className="homepage-slider-info">

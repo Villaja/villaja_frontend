@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DataGrid } from "@material-ui/data-grid";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { FiSearch } from "react-icons/fi";
+
 import { Button } from "@material-ui/core";
 import styles from "../../styles/styles";
 import { RxCross1 } from "react-icons/rx";
@@ -114,21 +116,84 @@ const AllSellers = () => {
     },
   ];
 
-  const row = [];
-  sellers &&
-  sellers.forEach((item) => {
-      row.push({
-        id: item._id,
-        name: item?.name,
-        email: item?.email,
-        joinedAt: item.createdAt.slice(0, 10),
-        address: item.address,
-      });
-    });
+  const [rowState,setRowState] = useState([])
+  const [mobileSearch,setMobileSearch] = useState(window.screen.width < 500?true:false)
+
+  const handleSearchChange = (e) => {
+    setRowState(sellers.filter((od) => od._id.includes(e.target.value)).map((item) => {
+        return ({
+          id: item._id,
+          name:item.name,
+          email:item.email,
+          address:item.address,
+          joinedAt:item.createdAt.split('T')[0],
+          
+        })
+    }))
+  }
+
+  useEffect(() => {
+    sellers && setRowState(sellers.map((item) => {
+      return ({
+          id: item._id,
+          name:item.name,
+          email:item.email,
+          address:item.address,
+          joinedAt:item.createdAt.split('T')[0],
+      })
+    }))
+  },[sellers])
 
   return (
-    <div className="w-full flex justify-center pt-5">
-      <div className="w-[97%]">
+    <div className="w-full min-h-[120vh] pt-5 rounded flex justify-center bg-[#F4F4F4] p-6">
+        <div className="w-full 500px:pl-8 800px:pt-1 bg-white rounded-[0.3125rem]">
+              <h1 className="font-semibold text-[2rem] p-4 mb-4 border-b-[0.1rem] border-[#000000/25]">Sellers</h1>
+
+
+              <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6 ml-4`}>
+                  <FiSearch size={20} onClick={
+                    () => setMobileSearch(!mobileSearch)
+                  }/>
+                  <input type="text" placeholder="Search..." onChange={(e) => handleSearchChange(e)}/>
+              </div>
+
+              <DataGrid
+                rows={rowState}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                checkboxSelection
+                autoHeight
+              />
+
+              {open && (
+          <div className="w-full fixed top-0 left-0 z-[999] bg-[#00000039] flex items-center justify-center h-[125vh]">
+            <div className="w-[95%] 800px:w-[40%] min-h-[20vh] bg-white rounded shadow p-5">
+              <div className="w-full flex justify-end cursor-pointer">
+                <RxCross1 size={25} onClick={() => setOpen(false)} />
+              </div>
+              <h3 className="text-[25px] text-center py-5 font-Poppins text-[#000000cb]">
+                Are you sure you wanna delete this user?
+              </h3>
+              <div className="w-full flex items-center justify-center">
+                <div
+                  className={`${styles.button} text-white text-[18px] !h-[42px] mr-4`}
+                  onClick={() => setOpen(false)}
+                >
+                  cancel
+                </div>
+                <div
+                  className={`${styles.button} text-white text-[18px] !h-[42px] ml-4`}
+                  onClick={() =>  setOpen(false) || handleDelete(userId)}
+                >
+                  confirm
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+            </div>
+      {/* <div className="w-[97%]">
         <h3 className="text-[22px] font-Poppins pb-2">All Users</h3>
         <div className="w-full min-h-[45vh] bg-white rounded">
           <DataGrid
@@ -165,7 +230,7 @@ const AllSellers = () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

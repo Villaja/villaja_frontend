@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import {GrWorkshop} from "react-icons/gr";
@@ -8,20 +9,23 @@ import { HiOutlineUserGroup } from "react-icons/hi";
 import { BsHandbag } from "react-icons/bs";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { AiOutlineSetting } from "react-icons/ai";
+import './AdminSideBar.css'
 
-const AdminSideBar = ({ active }) => {
+const AdminSideBar = ({ active,sidebarActive}) => {
   return (
-    <div className="w-full bg-white overflow-y-scroll sticky top-0 left-0 pl-10 pt-8 z-10">
+    <div className={`transition-all ease delay-200 w-[90%] min-[1000px]:w-full min-w-[18.75rem] min-h-[125vh] h-full bg-white overflow-y-auto ${!sidebarActive?'max-[1000px]:block':'max-[1000px]:hidden'}  absolute top-[80px] pl-5 min-[1000px]:sticky min-[1000px]:top-[80px] left-0 min-[1000px]:px-10 pt-6 z-10 shrink-0`}>
       {/* single item */}
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 1?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link to="/admin/dashboard" className="w-full flex items-center">
           <RxDashboard
             size={30}
-            color={`${active === 1 ? "crimson" : "#555"}`}
+            color={`${active === 1 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 1 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 1 ? "text-[white]" : "text-[#555]"
             }`}
           >
             Dashboard
@@ -29,15 +33,17 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 2?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link to="/admin-orders" className="w-full flex items-center">
           <FiShoppingBag
             size={30}
-            color={`${active === 2 ? "crimson" : "#555"}`}
+            color={`${active === 2 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 2 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 2 ? "text-[white]" : "text-[#555]"
             }`}
           >
             All Orders
@@ -45,15 +51,17 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 3?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link to="/admin-sellers" className="w-full flex items-center">
           <GrWorkshop
             size={30}
-            color={`${active === 3 ? "crimson" : "#555"}`}
+            color={`${active === 3 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 3 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 3 ? "text-[white]" : "text-[#555]"
             }`}
           >
             All Sellers
@@ -61,15 +69,17 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 4?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link to="/admin-users" className="w-full flex items-center">
           <HiOutlineUserGroup
             size={30}
-            color={`${active === 4 ? "crimson" : "#555"}`}
+            color={`${active === 4 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 4 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 4 ? "text-[white]" : "text-[#555]"
             }`}
           >
             All Customers
@@ -77,15 +87,17 @@ const AdminSideBar = ({ active }) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 5?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link to="/admin-products" className="w-full flex items-center">
           <BsHandbag
             size={30}
-            color={`${active === 5 ? "crimson" : "#555"}`}
+            color={`${active === 5 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 5 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 5 ? "text-[white]" : "text-[#555]"
             }`}
           >
             All Products
@@ -111,37 +123,41 @@ const AdminSideBar = ({ active }) => {
 
 
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 7?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link
           to="/admin-withdraw-request"
           className="w-full flex items-center"
         >
           <CiMoneyBill
             size={30}
-            color={`${active === 7 ? "crimson" : "#555"}`}
+            color={`${active === 7 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 7 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 7 ? "text-[white]" : "text-[#555]"
             }`}
           >
-            Withdraw Request
+            All Withdraws
           </h5>
         </Link>
       </div>
 
-      <div className="w-full flex items-center p-4">
+      <div 
+      className={` ${active === 8?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
         <Link
           to="/profile"
           className="w-full flex items-center"
         >
           <AiOutlineSetting
             size={30}
-            color={`${active === 8 ? "crimson" : "#555"}`}
+            color={`${active === 8 ? "white" : "#555"}`}
           />
           <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 8 ? "text-[crimson]" : "text-[#555]"
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 8 ? "text-[white]" : "text-[#555]"
             }`}
           >
             Settings

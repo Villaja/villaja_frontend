@@ -4,6 +4,7 @@ import { server } from "../../server";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@material-ui/data-grid";
 import { BsPencil } from "react-icons/bs";
+import { FiSearch } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import styles from "../../styles/styles";
 import { toast } from "react-toastify";
@@ -126,6 +127,38 @@ const AllWithdraw = () => {
       });
   };
   
+  const [rowState,setRowState] = useState([])
+  const [mobileSearch,setMobileSearch] = useState(window.screen.width < 500?true:false)
+
+  const handleSearchChange = (e) => {
+    setRowState(data.filter((od) => od._id.includes(e.target.value)).map((item) => {
+        return ({
+        id: item._id,
+        bankName: item?.seller?.withdrawMethod?.bankName,
+        accNumber: item?.seller?.withdrawMethod?.bankAccountNumber,
+        holder: item?.seller?.withdrawMethod?.bankHolderName,
+        name: item.seller.name,
+        amount: "₦ " + item.amount,
+        status: item.status,
+        createdAt: item.createdAt.slice(0, 10),
+        })
+    }))
+  }
+
+  useEffect(() => {
+    data && setRowState(data.map((item) => {
+      return ({
+        id: item._id,
+        bankName: item?.seller?.withdrawMethod?.bankName,
+        accNumber: item?.seller?.withdrawMethod?.bankAccountNumber,
+        holder: item?.seller?.withdrawMethod?.bankHolderName,
+        name: item.seller.name,
+        amount: "₦ " + item.amount,
+        status: item.status,
+        createdAt: item.createdAt.slice(0, 10),
+      })
+    }))
+  },[data])
 
   const row = [];
 
@@ -143,18 +176,29 @@ const AllWithdraw = () => {
       });
     });
   return (
-    <div className="w-full flex items-center pt-5 justify-center">
-      <div className="w-[95%] bg-white">
-        <DataGrid
-          rows={row}
-          columns={columns}
-          pageSize={10}
-          disableSelectionOnClick
-          autoHeight
-        />
-      </div>
+    <div className="w-full min-h-[120vh] pt-5 rounded flex justify-center bg-[#F4F4F4] p-6">
+            <div className="w-full 500px:pl-8 800px:pt-1 bg-white rounded-[0.3125rem]">
+              <h1 className="font-semibold text-[2rem] p-4 mb-4 border-b-[0.1rem] border-[#000000/25]">All Withdrawals</h1>
+
+
+              <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6 ml-4`}>
+                  <FiSearch size={20} onClick={
+                    () => setMobileSearch(!mobileSearch)
+                  }/>
+                  <input type="text" placeholder="Search..." onChange={(e) => handleSearchChange(e)}/>
+              </div>
+
+              <DataGrid
+                rows={rowState}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                checkboxSelection
+                autoHeight
+              />
+      
       {open && (
-        <div className="w-full fixed h-screen top-0 left-0 bg-[#00000031] z-[9999] flex items-center justify-center">
+        <div className="w-full fixed h-[125vh] top-0 left-0 bg-[#00000031] z-[9999] flex items-center justify-center">
           <div className="w-[50%] min-h-[40vh] bg-white rounded shadow p-4">
             <div className="flex justify-end w-full">
               <RxCross1 size={25} onClick={() => setOpen(false)} />
@@ -182,6 +226,7 @@ const AllWithdraw = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };
