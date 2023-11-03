@@ -4,13 +4,13 @@
     width: 95%;
     /* max-width: 1628px; */
     margin: 0 auto;
-    /* height: 100%; */
+    height: 100%; 
     height: 600px;
     max-height: 600px;
     overflow: hidden;
     margin-top: 1rem;
     border-radius: 15px;
-    background-color: blue;
+   /* background-color: blue;*/
 }
 
 .swiper {
