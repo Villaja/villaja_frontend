@@ -22,7 +22,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay'
 
 import ApplePhone from '../assets/sliderImages/hero_iphone15pro.jpg'
-import AccessoriesImg from '../assets/sliderImages/macbookHero.jpg'
+import AccessoriesImg from '../assets/sliderImages/SliderMedia/macbookHero.jpg'
 import rightArrow from '../assets/sliderImages/rightArrow.svg'
 import slider2 from '../assets/sliderImages/slider2.jpg'
 
