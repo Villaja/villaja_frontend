@@ -1,16 +1,16 @@
-.homepage-slider
-{
+
+.homepage-slider {
     position: relative;
     width: 95%;
-    /* max-width: 1628px; */
-    margin: 0 auto;
-    /*height: 100%;*/
+    /*max-width: 1628px; */
+    margin: 0 auto; 
     height: 600px;
     max-height: 600px;
     overflow: hidden;
     margin-top: 1rem;
     border-radius: 15px;
-   /* background-color: blue;*/
+    background-color: #070707; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Apply a subtle shadow for depth */
 }
 
 .swiper {
@@ -51,21 +51,25 @@
     height: 100%;
 }
 
-.homepage-slider-info
-{
+/* Styles for the homepage slider info container */
+.homepage-slider-info {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    color: white;
-    /* z-index: 100; */
     top: 0;
     left: 0;
-    background-color: red;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: linear-gradient(to right, rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.2));
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to right, #111111 ,#111111b9 , #11111100);
-    padding: 0 1.5rem;
+    justify-content: center; /* Vertically center content */
+    background-blur: 5px; /* Apply a slight background blur effect */
+    color: white;
+    padding: 2rem; /* Increase padding for more spacing */
+    font-size: 1.2rem; /* Increase font size for better readability */
+    border: 2px solid #ece4e4; /* Add a border for better contrast */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Apply a subtle shadow for depth */
 }
 
 .hsinfo-main
