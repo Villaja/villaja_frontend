@@ -59,7 +59,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                        Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -76,7 +76,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -92,7 +92,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -109,7 +109,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -126,7 +126,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -143,7 +143,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -158,7 +158,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -173,7 +173,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
@@ -188,7 +188,7 @@ const HomePage = () => {
                   <div className="hsinfo-main">
                     <div className="hsinfo-top">
                       <p>
-                        Get the Latest Apple products
+                      Explore Trending Products
                       </p>
                     </div>
                     <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
