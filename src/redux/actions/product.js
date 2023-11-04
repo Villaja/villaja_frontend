@@ -159,3 +159,66 @@ export const getAllProducts = () => async (dispatch) => {
     });
   }
 };
+
+// get all products
+export const bestSelling = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "bestSellingRequest",
+    });
+
+    const { data } = await axios.get(`${server}/product/best-selling-products`);
+    dispatch({
+      type: "bestSellingSuccess",
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: "bestSellingFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// get all products
+export const justArrived = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "justArrivedRequest",
+    });
+
+    const { data } = await axios.get(`${server}/product/just-arrived-products`);
+    dispatch({
+      type: "justArrivedSuccess",
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: "justArrivedFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// get all products
+export const topDeals = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "topDealsRequest",
+    });
+
+    const { data } = await axios.get(`${server}/product/top-deals-products`);
+    dispatch({
+      type: "topDealsSuccess",
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: "topDealsFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
+

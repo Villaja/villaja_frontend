@@ -46,6 +46,44 @@ export const productReducer = createReducer(initialState, {
   },
 
   // get all products
+  bestSellingRequest: (state) => {
+    state.isLoading = true;
+  },
+  bestSellingSuccess: (state, action) => {
+    state.isLoading = false;
+    state.bestProducts = action.payload;
+  },
+  bestSellingFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
+  justArrivedRequest: (state) => {
+    state.isLoading = true;
+  },
+  justArrivedSuccess: (state, action) => {
+    state.isLoading = false;
+    state.allProducts = action.payload;
+  },
+  justArrivedFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
+
+  topDealsRequest: (state) => {
+    state.isLoading = true;
+  },
+  topDealsSuccess: (state, action) => {
+    state.isLoading = false;
+    state.allProducts = action.payload;
+  },
+  topDealsFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
+
   getAllProductsRequest: (state) => {
     state.isLoading = true;
   },
@@ -57,6 +95,20 @@ export const productReducer = createReducer(initialState, {
     state.isLoading = false;
     state.error = action.payload;
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // update product
   updateProductRequest: (state) => {

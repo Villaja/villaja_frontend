@@ -94,18 +94,18 @@ const UserOrderDetails = () => {
 
   return (
     <div className={`py-4 min-h-screen ${styles.section}`}>
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center mt-10 justify-between">
         <div className="flex items-center">
-          <BsFillBagFill size={30} color="green" />
-          <h1 className="pl-2 text-[25px]">Order Details</h1>
+          <BsFillBagFill size={30} />
+          <h1 className="pl-2 text-3xl">Order Details</h1>
         </div>
       </div>
 
       <div className="w-full flex items-center justify-between pt-6">
-        <h5 className="text-[#00000084]">
+        <h5 className="text-xl">
           Order ID: <span>#{data?._id?.slice(0, 8)}</span>
         </h5>
-        <h5 className="text-[#00000084]">
+        <h5 className="text-xl">
           Placed on: <span>{data?.createdAt?.slice(0, 10)}</span>
         </h5>
       </div>
@@ -116,17 +116,18 @@ const UserOrderDetails = () => {
       {data &&
         data?.cart.map((item, index) => {
           return(
-          <div className="w-full flex items-start mb-5">
+          <div className="w-full flex gap-5 items-start mb-5">
             <img
               src={`${item.images[0]?.url}`}
               alt=""
-              className="w-[80x] h-[80px]"
+              className="w-[150x] h-[150px]"
             />
             <div className="w-full">
-              <h5 className="pl-3 text-[20px]">{item.name}</h5>
+              <h5 className="pl-3 text-xl font-bold">{item.name}</h5>
               <h5 className="pl-3 text-[20px] text-[#00000091]">
                 ₦{item.discountPrice} x {item.qty}
               </h5>
+             
             </div>
             {!item.isReviewed && data?.status === "Delivered" ?  <div
                 className={`${styles.button} text-[#fff]`}
@@ -139,6 +140,10 @@ const UserOrderDetails = () => {
           </div>
           )
          })}
+
+      <p className="text-xl">Status : {data?.status}</p>
+
+
 
       {/* review popup */}
       {open && (
@@ -233,8 +238,8 @@ const UserOrderDetails = () => {
       </div>
       <br />
       <br />
-      <div className="w-full 800px:flex items-center">
-        <div className="w-full 800px:w-[60%]">
+      <div className="justify-between flex">
+        <div className="w-full">
           <h4 className="pt-3 text-[20px] font-[600]">Shipping Address:</h4>
           <h4 className="pt-3 text-[20px]">
             {data?.shippingAddress.address1 +
@@ -245,11 +250,11 @@ const UserOrderDetails = () => {
           <h4 className=" text-[20px]">{data?.shippingAddress.city}</h4>
           <h4 className=" text-[20px]">{data?.user?.phoneNumber}</h4>
         </div>
-        <div className="w-full 800px:w-[40%]">
-          <h4 className="pt-3 text-[20px]">Payment Info:</h4>
+        <div className="w-full">
+          <h4 className="pt-3 font-bold text-[20px]">Payment Info:</h4>
           <h4>
             Status:{" "}
-            {data?.paymentInfo?.status ? data?.paymentInfo?.status : "Not Paid"}
+            {data?.paymentInfo?.status ? data?.paymentInfo?.status : "Payment on Delivery"}
           </h4>
           <br />
            {
@@ -262,8 +267,8 @@ const UserOrderDetails = () => {
         </div>
       </div>
       <br />
-      <Link to="/">
-        <div className={`${styles.button} text-white`}>Send Message</div>
+      <Link to="/profile">
+        <div className={`${styles.button} text-white`}>Go Back</div>
       </Link>
       <br />
       <br />

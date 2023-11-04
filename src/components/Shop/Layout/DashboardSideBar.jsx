@@ -25,7 +25,7 @@ const DashboardSideBar = ({ active }) => {
 
   const logoutHandler = async () => {
     localStorage.removeItem('seller-token');
-    window.location.reload(true);
+    // window.location.reload(true);
     // Redirect to the login page
     navigate('/shop/login');
 };

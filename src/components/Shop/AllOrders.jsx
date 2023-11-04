@@ -26,28 +26,34 @@ const AllOrders = () => {
       minWidth: 130,
       flex: 0.7,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "text-green-500 font-extrabold"
-          : "text-yellow-700";
+        const status = params.getValue(params.id, "status");
+        if (status === "Delivered") {
+          return "text-green-500 font-extrabold";
+        } else if (status === "Ready To Ship") {
+          return "text-blue-500 font-extrabold";
+        } else {
+          return "text-yellow-700";
+        }
       },
     },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      cellClassName: "font-bold",
-      flex: 0.7,
-    },
+    
+    // {
+    //   field: "itemsQty",
+    //   headerName: "Items Qty",
+    //   type: "number",
+    //   minWidth: 130,
+    //   cellClassName: "font-bold",
+    //   flex: 0.7,
+    // },
 
-    {
-      field: "total",
-      headerName: "Total",
-      cellClassName: "font-bold",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
-    },
+    // {
+    //   field: "total",
+    //   headerName: "Total",
+    //   cellClassName: "font-bold",
+    //   type: "number",
+    //   minWidth: 130,
+    //   flex: 0.8,
+    // },
 
     {
       field: "Action",
@@ -77,8 +83,8 @@ const AllOrders = () => {
     orders.forEach((item) => {
       row.push({
         id: item._id,
-        itemsQty: item.cart.length,
-        total: "₦" + item.totalPrice.toLocaleString(),
+        // itemsQty: item.cart.length,
+        // total: "₦" + item.totalPrice.toLocaleString(),
         status: item.status,
       });
     });

@@ -25,6 +25,7 @@ import {
   UserInbox,
 } from "./routes/Routes.js";
 import ForgotPassword from "./pages/ForgotPassword";
+import AdminOrderDetails from "./pages/AdminOrderManage";
 
 // seller routes
 
@@ -299,6 +300,14 @@ const App = () => {
           element={
             <ProtectedAdminRoute>
               <AdminDashboardUsers />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-order/:id"
+          element={
+            <ProtectedAdminRoute>
+              <AdminOrderDetails />
             </ProtectedAdminRoute>
           }
         />

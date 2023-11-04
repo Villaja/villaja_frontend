@@ -300,12 +300,12 @@ const ShippingInfo = ({
 
         <div></div>
       </form>
-      {/* <h5
-        className="text-[18px] cursor-pointer inline-block"
+      <h5
+        className="text-[18px] cursor-pointer text-blue-500 font-bold inline-block"
         onClick={() => setUserInfo(!userInfo)}
       >
         Choose From saved address
-      </h5> */}
+      </h5>
       {userInfo && (
         <div>
           {user &&

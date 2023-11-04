@@ -355,15 +355,15 @@ const AllOrders = () => {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Order ID",headerClassName: 'orderTable-header', minWidth: 150, flex: 0.7 },
-    { field: "createdAt", headerName: "Date", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID",headerClassName: 'orderTable-header', minWidth: 70, flex: 0.7 },
+    { field: "createdAt", headerName: "Date", minWidth: 100, flex: 0.7 },
 
     
     {
       field: "itemsQty",
       headerName: "Unit",
       type: "number",
-      minWidth: 130,
+      minWidth: 70,
       flex: 0.7,
     },
 
@@ -383,7 +383,7 @@ const AllOrders = () => {
           </div>  : 
           params.getValue(params.id, "status") === "Processing"? <div className="processing">processing</div>
           :
-          <div className="cancelled">Cancelled</div>
+          <div className="canceled">Ready To Ship</div>
         )
         
       },
@@ -404,6 +404,14 @@ const AllOrders = () => {
     },
 
     {
+      field: "shop",
+      headerName: "Shop",
+      type: "string",
+      minWidth: 130,
+      flex: 0.8,
+    },
+
+    {
       field: " ",
       flex: 1,
       minWidth: 150,
@@ -415,7 +423,8 @@ const AllOrders = () => {
           <>
             <Link to={`/user/order/${params.id}`}>
               <Button>
-                <img src={EyeIcon} alt="" />
+                {/* <img src={EyeIcon} alt="" /> */}
+                <p className="text-blue-600 font-bold">See More</p>
               </Button>
             </Link>
           </>
@@ -441,6 +450,7 @@ const AllOrders = () => {
           id: item._id,
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
+          shop: item?.cart?.shop?.name,
           total: "₦ " + item.totalPrice,
           status: item.status,
         });
@@ -458,6 +468,7 @@ const AllOrders = () => {
           id: item._id,
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
+          shop: item?.cart?.shop?.name,
           total: "₦ " + item.totalPrice,
           status: item.status,
         })
@@ -472,6 +483,7 @@ const AllOrders = () => {
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
           total: "₦ " + item.totalPrice,
+          shop: item?.cart?.shop?.name,
           status: item.status,
         })
     }))
@@ -490,6 +502,7 @@ const AllOrders = () => {
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
           total: "₦ " + item.totalPrice,
+          shop: item?.cart?.shop?.name,
           status: item.status,
         })
     }))
@@ -502,6 +515,7 @@ const AllOrders = () => {
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
           total: "₦ " + item.totalPrice,
+          shop: item?.cart?.shop?.name,
           status: item.status,
       })
     }))
@@ -510,20 +524,25 @@ const AllOrders = () => {
   
 
   useEffect(() => {
-    
-    // const newRow = handlePopulateRow()
     console.log(orders);
-    orders && setRowState(orders.map((item) => {
-      return ({
+  
+    orders && setRowState(
+      orders.map((item) => {
+        const shopNames = item.cart.map((cartItem) => cartItem.shop?.name).join(', ');
+  
+        return {
           id: item._id,
-          createdAt:item.createdAt.split('T')[0],
+          createdAt: item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
           total: "₦ " + item.totalPrice,
+          shop: shopNames,
           status: item.status,
+        };
       })
-    }))
-  },[orders])
-
+    );
+  }, [orders]);
+  
+ 
   return (
     <div className="500px:pl-8 800px:pt-1">
       <h1 className="font-semibold text-[2rem] mb-4 mt-8">My Orders</h1>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from "../components/Layout/Header";
 import VillajaHeader from '../components/VillajaHeader/VillajaHeader';
 import Hero from "../components/Route/Hero/Hero";
@@ -15,6 +15,7 @@ import ItemCatSection from '../components/ItemCatSection/ItemCatSection'
 import { items } from '../mock_data/Sample_Items'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
+
 
 import './HomePage.css'
 import 'swiper/css';
@@ -39,6 +40,8 @@ import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
 
 const HomePage = () => {
   const { allProducts } = useSelector((state) => state.products);
+  
+  
   return (
     <div>
         <Header activeHeading={1} />

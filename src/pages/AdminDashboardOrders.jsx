@@ -1,10 +1,13 @@
 import {useState, useEffect } from "react";
+import { Button } from "@material-ui/core";
 import { FiSearch } from "react-icons/fi";
 import AdminHeader from "../components/Layout/AdminHeader";
 import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../redux/actions/order";
+import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const AdminDashboardOrders = () => {
   const dispatch = useDispatch();
@@ -33,28 +36,44 @@ const AdminDashboardOrders = () => {
           : "redColor";
       },
     },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
-    },
-
-    {
-      field: "total",
-      headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
-    },
+    // {
+    //   field: "total",
+    //   headerName: "Total",
+    //   type: "number",
+    //   minWidth: 130,
+    //   flex: 0.8,
+    // },
     {
         field: "createdAt",
         headerName: "Order Date",
         type: "number",
         minWidth: 130,
         flex: 0.8,
+    },
+    
+    {
+      field: "Action",
+      flex: 1,
+      minWidth: 200,
+      headerName: "",
+      flex:0.8,
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/admin-order/${params.id}`}>
+              <Button className="text-blue-500">
+                <p className="text-blue-500">
+                  Manage Order
+                </p>
+                
+              </Button>
+            </Link>
+          </>
+        );
       },
+    },
   ];
 
   const [rowState,setRowState] = useState([])
@@ -66,7 +85,7 @@ const AdminDashboardOrders = () => {
           id: item._id,
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
-          total: "₦ " + item.totalPrice,
+          // total: "₦ " + item.totalPrice,
           status: item.status,
         })
     }))
@@ -78,7 +97,7 @@ const AdminDashboardOrders = () => {
           id: item._id,
           createdAt:item.createdAt.split('T')[0],
           itemsQty: item.cart.length,
-          total: "₦ " + item.totalPrice,
+          // total: "₦ " + item.totalPrice,
           status: item.status,
       })
     }))

@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrdersOfAdmin } from "../../redux/actions/order";
 import Loader from "../Layout/Loader";
 import { getAllSellers } from "../../redux/actions/sellers";
-
 import CalendarIcon from '../../assets/AdminAssets/calendar.svg'
 
 const AdminDashboardMain = () => {
@@ -59,32 +58,48 @@ const AdminDashboardMain = () => {
           </div>  : 
           ['Transferred to delivery partner','Received','Shipping','Processing','On the way'].includes(params.getValue(params.id, "status") )? <div className="processing">{params.getValue(params.id, "status")}</div>
           :
-          <div className="cancelled">Cancelled</div>
+          <div className="canclled">ready to ship</div>
         )
         
       },
     },
-    {
-      field: "itemsQty",
-      headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
-    },
-
-    {
-      field: "total",
-      headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
-    },
+    
+    // {
+    //   field: "total",
+    //   headerName: "Total",
+    //   type: "number",
+    //   minWidth: 130,
+    //   flex: 0.8,
+    // },
     {
       field: "createdAt",
       headerName: "Order Date",
       type: "number",
       minWidth: 130,
       flex: 0.8,
+    },
+    {
+      field: "Action",
+      flex: 1,
+      minWidth: 200,
+      headerName: "",
+      flex:0.8,
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/admin-order/${params.id}`}>
+              <Button className="text-blue-500">
+                <p className="text-blue-500">
+                  Manage Order
+                </p>
+                
+              </Button>
+            </Link>
+          </>
+        );
+      },
     },
   ];
 
@@ -94,7 +109,7 @@ const AdminDashboardMain = () => {
       row.push({
         id: item._id,
         itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
-        total: "₦" + item?.totalPrice ,
+        // total: "₦" + item?.totalPrice ,
         status: item?.status,
         createdAt: item?.createdAt.slice(0,10),
       });
