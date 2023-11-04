@@ -15,6 +15,8 @@ import ItemCatSection from '../components/ItemCatSection/ItemCatSection'
 import { items } from '../mock_data/Sample_Items'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
+import { server } from '../server';
+import { toast } from 'react-toastify';
 
 
 import './HomePage.css'
@@ -39,9 +41,8 @@ import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
 
 
 const HomePage = () => {
-  const { allProducts } = useSelector((state) => state.products);
-  
-  
+  const { allProducts, bestProducts, myProducts } = useSelector((state) => state.products);
+
   return (
     <div>
         <Header activeHeading={1} />
@@ -203,24 +204,28 @@ const HomePage = () => {
           <div className="homepage-category-main">
 
           <Categories />
-          <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
+          {/* <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
           <ItemCatSection itemCatTitle={"Top Deals"} allProducts={allProducts} items={items} catIndex={2} />
-          <ItemCatSection itemCatTitle={"Official Store Deals"} allProducts={allProducts} items={items} catIndex={3} />
-          <ShopAccessories/>
+          <ItemCatSection itemCatTitle={"Official Store Deals"} allProducts={allProducts} items={items} catIndex={3} /> */}
+         
           </div>
         </div>
         {/* <Sponsored /> */}
         {/* <Footer /> */}
-        <VillajaFooter/>
+       
 
 
 
         {/* <VillajaHeader/> */}
         {/* <Hero /> */}
-        {/* <BestDeals /> */}
+        <FeaturedProduct />
+        <BestDeals />
         {/* <Events /> */}
-        {/* <FeaturedProduct /> */}
-        {/* <OfficialStoreDeals /> */}
+       
+        <OfficialStoreDeals />
+
+        <ShopAccessories/>
+        <VillajaFooter/>
 
 
     </div>

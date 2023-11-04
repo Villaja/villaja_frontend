@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductLoading from "../../ProductLoading";
 
 const FeaturedProduct = () => {
   const [data, setData] = useState([]);
@@ -11,11 +12,12 @@ const FeaturedProduct = () => {
   useEffect(() => {
     if (allProducts && allProducts?.length > 0) {
       const allProductsData = [...allProducts];
-      const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
-      const firstFive = sortedData && sortedData.slice(0, 5);
+      const sortedData = allProductsData?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      const firstFive = sortedData && sortedData.slice(0, 6);
       setData(firstFive);
       setLoading(false);
     }
+    
   }, [allProducts]);
 
   return (
@@ -25,12 +27,12 @@ const FeaturedProduct = () => {
           <h1>Featured Products</h1>
         </div> */}
         <div className="ic-header">
-            <div className="item-cat-title">Featured Products</div>
+            <div className="item-cat-title">Just Arrived</div>
             <div className="seemore-btn">See more &#8250; </div>
         </div>
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12 border-0">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-6 xl:gap-[30px] mb-12 border-0">
           {loading ? (
-            <p className="text-center">Loading...</p>
+            <p className="text-center"><ProductLoading/></p>
           ) : (
             <>
               {data &&
