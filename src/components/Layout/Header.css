@@ -40,7 +40,7 @@ Link {
     margin: 0 auto;
     background: #fff;
     border-radius: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,7 +73,7 @@ Link {
     width: 100%;
     top: 100%;
     background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 6 8px 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
     display: none;
     flex-direction: column;
@@ -101,9 +101,7 @@ Link {
     display: flex;
 }
 
-/* Adjust other styles as needed for your specific design */
 
-/* Your existing styles below this line */
 
 .vh-header-right
 {
