@@ -98,20 +98,21 @@
 
 
 
-.hsinfo-btn
-{
+.hsinfo-btn {
     display: flex;
     gap: 1rem;
     padding: 0.375rem 0.75rem;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(255, 255, 255); /* Semi-transparent white background */
     border-radius: 0.375rem;
     width: 12rem;
     height: 2.6rem;
     color: #111111;
     cursor: pointer;
+    backdrop-filter: blur(5px); /* Add a blur effect */
 }
+
 
 
 @media screen and (max-width:500px) {

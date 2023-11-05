@@ -6,12 +6,12 @@ Link{
 
 .vh-header-container
 {
-    position: relative;
+    position: relative;a
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1.5rem;
+    padding: 0 1.5rem;*
     gap: 5rem;
     transition: all 0.3s ease;
     box-shadow: 0 24px 36px #34578c12;
