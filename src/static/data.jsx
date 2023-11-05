@@ -205,28 +205,28 @@ export const navItems = [
       title: "Phones",
       subTitle: "Shop for smartphones from the best brands.",
       image_Url:
-        "https://th.bing.com/th/id/OIP.EQ2QbIPvO0u_uH1EjdlvAAHaLH?pid=ImgDet&w=680&h=1020&rs=1",
+        "https://m.media-amazon.com/images/I/71Sa3dqTqzL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
     },
     {
       id: 2,
       title: "Tablets",
       subTitle: "iPads, Android and Educational Tablets",
       image_Url:
-        "https://d2xamzlzrdbdbn.cloudfront.net/products/244e4b2f-9faa-4c44-8bb9-aef06b0ac94e22201354.jpg",
+        "https://m.media-amazon.com/images/I/81rBUAM2NpL._AC_SY450_.jpg",
     },
     {
       id: 3,
       title: "Computers",
       subTitle: "PCs, Laptops and Desktops",
       image_Url:
-        "https://istore.com.ng/cdn/shop/products/airm1sil1_5000x.png?v=1689000011",
+        "https://m.media-amazon.com/images/I/61aUBxqc5PL._AC_SX679_.jpg",
     },
     {
       id: 4,
       title: "Accessories",
       subTitle: "For phones, tablets, computers and more!",
       image_Url:
-        "https://latalata.ng/image/cache/catalog/Product%20images/CASPER/44mm-700x700.jpg",
+        "https://m.media-amazon.com/images/I/712wglSBTaL.__AC_SY445_SX342_QL70_FMwebp_.jpg",
     },
     {
       id: 5,
