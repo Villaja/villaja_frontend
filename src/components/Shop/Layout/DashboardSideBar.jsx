@@ -1,15 +1,15 @@
 import React from "react";
 import { AiOutlineFolderAdd, AiOutlineGift } from "react-icons/ai";
 import { FiPackage, FiShoppingBag } from "react-icons/fi";
-import { MdOutlineLocalOffer } from "react-icons/md";
+import { MdOutlineLocalOffer, MdForklift, MdTrolley } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { VscNewFile } from "react-icons/vsc";
 import { CiMoneyBill, CiSettings } from "react-icons/ci";
 import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { MdDashboard } from "react-icons/md";
+import { MdAutoAwesomeMosaic } from "react-icons/md";
 import { GrAtm } from "react-icons/gr";
-import { BsCashStack } from "react-icons/bs";
+import { BsCashStack, BsShop } from "react-icons/bs";
 import { GrOrderedList } from "react-icons/gr";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
@@ -17,6 +17,12 @@ import { MdAtm } from "react-icons/md";
 import { server } from "../../../server";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { LiaClipboardCheckSolid } from "react-icons/lia";
+import {HiClipboardDocumentList } from "react-icons/hi2";
+import { BiSolidShoppingBags } from "react-icons/bi";
+import { RiUserSettingsFill, RiLogoutBoxFill } from "react-icons/ri";
+import { FaCircleDollarToSlot } from "react-icons/fa6";
+
 
 const DashboardSideBar = ({ active }) => {
 
@@ -47,7 +53,7 @@ const DashboardSideBar = ({ active }) => {
         : "bg-white text-[#555]"
     } p-2 rounded-lg transition-all`}
   >
-    <MdDashboard
+    <MdAutoAwesomeMosaic
       size={30}
       color={active === 1 ? "white" : "#555"}
     />
@@ -67,7 +73,7 @@ const DashboardSideBar = ({ active }) => {
       ? "bg-[#0077B6] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
-    <FiShoppingBag
+    <BiSolidShoppingBags
       size={30}
       color={active === 2 ? "white" : "#555"}
     />
@@ -87,7 +93,7 @@ const DashboardSideBar = ({ active }) => {
       ? "bg-[#0077B6] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
-    <FiPackage
+    <HiClipboardDocumentList
       size={30}
       color={active === 3 ? "white" : "#555"}
     />
@@ -107,7 +113,7 @@ const DashboardSideBar = ({ active }) => {
       ? "bg-[#0077B6] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
-    <AiOutlineFolderAdd
+    <MdForklift
       size={30}
       color={active === 4 ? "white" : "#555"}
     />
@@ -128,9 +134,9 @@ const DashboardSideBar = ({ active }) => {
       ? "bg-[#0077B6] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
-    <BsCashStack
+    <FaCircleDollarToSlot
       size={30}
-      color={active === 7 ? "white" : "#888"}
+      color={active === 4 ? "white" : "#555"}
     />
     <h5
       className={`hidden 800px:block pl-2 text-[18px] font-bold ${
@@ -148,7 +154,7 @@ const DashboardSideBar = ({ active }) => {
       ? "bg-[#0077B6] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
-    <CiSettings
+    <RiUserSettingsFill
       size={30}
       color={active === 11 ? "white" : "#555"}
     />
@@ -168,7 +174,7 @@ const DashboardSideBar = ({ active }) => {
       ? ""
       : ""
   } p-2 rounded-lg transition-all`}>
-    <BiLogOut
+    <RiLogoutBoxFill
       size={30}
       color={"#555"}
     />

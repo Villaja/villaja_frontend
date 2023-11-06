@@ -5,7 +5,7 @@ import { FiPackage, FiShoppingBag } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { FaShoppingCart } from "react-icons/fa"; // Import the shopping cart icon
+import { IoPersonCircleSharp } from "react-icons/io5"; // Import the shopping cart icon
 
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -30,9 +30,9 @@ const DashboardHeader = () => {
             //   />
             // </Link>
             <Link to={`/shop/${seller?._id}`}>
-            <FaShoppingCart
+            <IoPersonCircleSharp
               color="#555"
-              size={30}
+              size={40}
               className="mx-5 cursor-pointer"
             />
           </Link>
