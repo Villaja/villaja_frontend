@@ -112,6 +112,7 @@ const  AdminOrderDetails = () => {
   };
 
   
+  
 
   return (
     <div className={`py-4 px-4 md:px-20 min-h-screen ${styles.section}`}>
@@ -122,7 +123,7 @@ const  AdminOrderDetails = () => {
         </div>
         <Link to="/dashboard-orders">
           <div
-            className={`${styles.button} bg-green-200 !rounded-[4px] text-green-500 font-[600] !h-[45px] text-[18px]`}
+            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
           >
             Back To Orders
           </div>
@@ -143,18 +144,27 @@ const  AdminOrderDetails = () => {
       <br />
       {data?.cart && data.cart.map((item, index) => (
   <div className="w-full flex items-start mb-5" key={index}>
-    <img
-      src={`${item.images[0]?.url}`}
-      alt=""
-      className="w-[80x] h-[80px]"
-    />
-    <div className="w-full">
+  <img
+    src={`${item.images[0]?.url}`}
+    alt=""
+    className="w-[80x] h-[80px]"
+  />
+  <div className="w-full flex justify-between items-center">
+    <div>
       <h5 className="pl-3 text-[20px]">{item.name}</h5>
       <h5 className="pl-3 text-[20px] text-[#00000091]">
         ₦{item.discountPrice} x {item.qty}
       </h5>
     </div>
+    <Link to={`/product/${item._id}`}>
+    <div
+            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
+          >
+            Product Details
+          </div>
+    </Link>
   </div>
+</div>
 ))}
 
       <div className="border-t w-full text-right">
@@ -230,7 +240,7 @@ const  AdminOrderDetails = () => {
       <div className="mt-5">
       {data?.status !== "Processing refund" && data?.status !== "Refund Success" && (
         <button
-          className={`${styles.button} bg-green-200 !rounded-[4px] text-green-500 font-[600] !h-[45px] text-[18px]`}
+          className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
           onClick={
             data?.status !== "Processing refund"
               ? updateOrderStatus

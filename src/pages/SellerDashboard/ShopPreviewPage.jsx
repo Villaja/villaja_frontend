@@ -6,16 +6,17 @@ import ShopProfileData from "../../components/Shop/ShopProfileData";
 const ShopPreviewPage = () => {
   return (
     <div className={`${styles.section} bg-white`}>
-         <div className="w-full 800px:flex py-10 justify-between">
-          <div className="800px:w-[25%] bg-[#fff] rounded-[4px] shadow-sm 800px:overflow-y-scroll 800px:h-[90vh] 800px:sticky top-10 left-0 z-10">
-            <ShopInfo isOwner={false} />
-          </div>
-          <div className="800px:w-[72%] mt-5 800px:mt-['unset'] rounded-[4px]">
-            <ShopProfileData isOwner={false} />
-          </div>
-         </div>
+      <div className="flex flex-wrap py-10 justify-between">
+        <div className="w-full md:w-1/4 bg-white rounded-md shadow-sm sticky top-10 left-0 max-h-[90vh] overflow-y-auto">
+          <ShopInfo isOwner={false} />
+        </div>
+        <div className="w-full md:w-3/4 mt-5 rounded-md">
+          <ShopProfileData isOwner={false} />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
+
 
 export default ShopPreviewPage

@@ -327,7 +327,7 @@ const ProductDetails = ({ data }) => {
 
               <div className="more-product-info flex items-center">
                   <img src={DeliveryIcon} alt="" />
-                  <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days with SHIPPR</div>
+                  <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days  with <br /> Movelite Logistics</div>
               </div>
 
             </div>

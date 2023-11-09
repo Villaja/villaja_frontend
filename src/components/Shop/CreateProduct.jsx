@@ -165,7 +165,7 @@ const CreateProduct = () => {
         value={description}
         className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Enter your product description..."
+        placeholder="Enter your product description, e.g. a brief description about the product from the manufacturer..."
       ></textarea>
     </div>
     <br />
@@ -196,7 +196,7 @@ const CreateProduct = () => {
         value={tags}
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setTags(e.target.value)}
-        placeholder="Enter your product tags..."
+        placeholder="Enter your product tags; may include a barcode for tracking, product information, or the SKU number. ..."
       />
     </div>
     <br />
@@ -245,7 +245,7 @@ const CreateProduct = () => {
           value={condition}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setCondition(e.target.value)}
-          placeholder="Enter product condition..."
+          placeholder="Enter product condition; if new, used or refurbished..."
         />
       </div>
       {/* Add more input fields here */}
@@ -261,7 +261,7 @@ const CreateProduct = () => {
         value={aboutProduct}
         className="mt-2 appearance-none block w-full pt-2 px-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setAboutProduct(e.target.value)}
-        placeholder="Enter information about the product..."
+        placeholder="Enter information about the product; outline the full specs of the product..."
       ></textarea>
     </div>
     <br />
@@ -334,7 +334,7 @@ const CreateProduct = () => {
       value={memorySize}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setMemorySize(e.target.value)}
-      placeholder="Enter product memory size..."
+      placeholder="Enter product memory size, e.g. RAM and Hard drive..."
     />
   </div>
 
@@ -346,7 +346,7 @@ const CreateProduct = () => {
       value={cellularTechnology}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setCellularTechnology(e.target.value)}
-      placeholder="Enter product cellular technology..."
+      placeholder="Enter product cellular technology, e.g. 3G, 4G, 5G, if any..."
     />
   </div>
 
@@ -358,7 +358,7 @@ const CreateProduct = () => {
       value={connectivityTechnology}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setConnectivityTechnology(e.target.value)}
-      placeholder="Enter product connectivity technology..."
+      placeholder="e.g. Bluetooth and wifi type,..."
     />
   </div>
 
@@ -370,7 +370,7 @@ const CreateProduct = () => {
       value={simCard}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setSimCard(e.target.value)}
-      placeholder="Enter product SIM card..."
+      placeholder="Enter product SIM card, unlocked or not (if any)..."
     />
   </div>
 
@@ -448,6 +448,7 @@ const CreateProduct = () => {
       </div>
     </div>
     <div>
+
       <label className="pb-2">Upload Images <span className="text-red-500">*</span></label>
       <input
         type="file"
