@@ -153,12 +153,12 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[44px] w-full px-2  pl-8 text-base border-[#00b4d8] border-[2px] rounded-[10px]"
+                className="h-[44px] w-full px-2  pl-8 text-base border-[#00b4d8] border-[2px] rounded-lg"
                 onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
               />
               
               {searchData && searchData.length !== 0 ? (
-                <div className="absolute w-full min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+                <div className="absolute w-full min-h-[30vh] bg-slate-50 z-[9] p-4">
                   {searchData &&
                     searchData.slice(0,7).map((i, index) => {
                       return (

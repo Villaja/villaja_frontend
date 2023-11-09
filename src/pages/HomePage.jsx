@@ -45,6 +45,7 @@ const HomePage = () => {
 
   return (
     <div>
+   
         <Header activeHeading={1} />
 
         <div className="homepage-slider">

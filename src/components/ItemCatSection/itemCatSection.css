@@ -15,9 +15,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f2f2f5;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 1.6rem;
+   
     padding: 0.4rem;
     margin-bottom: 1.5rem;
 }
