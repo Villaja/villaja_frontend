@@ -238,7 +238,7 @@ const PaymentInfo = ({
       name: user?.firstname,
       phone: user?.phoneNumber,
     },
-    publicKey: "pk_test_2c518b6f78f30d2675048a24dd6b9ee925d74204",
+    publicKey: "pk_test_ba3974730a50a8f120783a5c097a2b9603129aa7",
     text: "Pay Now",
     onSuccess: (paymentInfo) => paystackOrder(paymentInfo), 
     onClose: () => alert("your progress would be lost"),
