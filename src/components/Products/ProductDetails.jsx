@@ -151,11 +151,12 @@ const ProductDetails = ({ data }) => {
           <div className="w-full pt-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
               <div className="w-full 800px:w-[50%] 800px:pr-[2rem]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
-                <img
-                  src={`${data && data.images[select]?.url}`}
-                  alt=""
-                  className="w-[100%] 800px:w-[60%] mb-5"
-                />
+              <img
+  src={`${data && data.images[select]?.url}`}
+  alt=""
+  className="w-full lg:w-[60%] mb-5 rounded-md shadow-md"
+/>
+
                 <div className="flex" style={{gap:"30px"}}>
                   {data &&
                     data.images.map((i, index) => (
@@ -361,61 +362,34 @@ const ProductDetailsInfo = ({
   const [active, setActive] = useState(1);
 
   return (
-    <div className="bg-[#ffffff]  py-2 rounded">
-      <div className="w-full flex  justify-center pt-5 pb-6">
-        <div className="relative">
+    <div className="bg-white py-2 rounded shadow-md">
+    <div className="w-full flex justify-center pt-5 pb-6">
+      {[1, 2, 3].map((index) => (
+        <div key={index} className="relative mx-2">
           <h5
+            className={`text-[#000] text-center px-2 py-[0.75rem] leading-5 font-[500] cursor-pointer ${
+              active === index ? 'text-[#00b4d8]' : 'text-[#000]'
+            }`}
+            onClick={() => setActive(index)}
+          >
+            {index === 1 && 'About This Product'}
+            {index === 2 && 'Product Specifications'}
+            {index === 3 && "What's in The Box"}
+          </h5>
+          {active === index && <div className={`${styles.active_indicator}`} />}
+        </div>
+      ))}
+    </div>
+    
+    {active === 1 && (
+      <p className="py-2 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)]">
+        {data.aboutProduct}
+      </p>
+    )}
 
-            
-            className={
-              "text-[#000] text-center max-[500px]:text-[13px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 1?' !text-[#00b4d8]':' text-[#000]'}`
-            }
-            onClick={() => setActive(1)}
-          >
-            About This Product
-          </h5>
-          {active === 1 ? (
-            <div className={`${styles.active_indicator}`} />
-          ) : null}
-        </div>
-        <div className="relative">
-          <h5
-            className={
-              "text-[#000] text-center max-[500px]:text-[13px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 2?' !text-[#00b4d8]':' text-[#000]'}`
-            }
-            onClick={() => setActive(2)}
-          >
-            Product Specifications
-          </h5>
-          {active === 2 ? (
-            <div className={`${styles.active_indicator}`} />
-          ) : null}
-        </div>
-        <div className="relative">
-          <h5
-            className={
-              "text-[#000] text-center max-[500px]:text-[13px]  px-2 800px:py-[0.75rem] 800px:px-[2.75rem] leading-5 font-[500] cursor-pointer min-[1117px]:text-[1.7rem] max-[1117px]:text-[15px]" + `${active === 3?' !text-[#00b4d8]':' text-[#000]'}`
-            }
-            onClick={() => setActive(3)}
-          >
-            What's in The Box
-          </h5>
-          {active === 3 ? (
-            <div className={`${styles.active_indicator}`} />
-          ) : null}
-        </div>
-      </div>
-      {active === 1 ? (
-        <>
-          <p className="py-2 800px:text-[1.1rem] text-[0.8rem] leading-8 pb-10 whitespace-pre-line" style={{color:"rgb(0,0,0,0.70)"}}>
-            {data.aboutProduct}
-          </p>
-        </>
-      ) : null}
 
       {active === 2 ? (
-        <div className="w-full min-h-[40vh] flex flex-col py-3 overflow-y-auto 800px:text-[1.1rem] text-[0.8rem]" style={{fontWeight:600,color:"rgb(0,0,0,0.70)"}}>
-          {/* {data &&
+         <div className="w-full min-h-[40vh] flex flex-col py-3 overflow-y-auto text-[1rem] font-bold text-[rgba(0,0,0,0.70)]">          {/* {data &&
             data.reviews.map((item, index) => (
               <div className="w-full flex my-2">
                 <img
@@ -454,8 +428,10 @@ const ProductDetailsInfo = ({
       ) : null}
 
       {active === 3 && (
-        <div className="w-full block 800px:flex py-3 800px:text-[1.1rem] text-[0.8rem]">
-          <p style={{fontWeight:"600",color:"rgb(0,0,0,0.70)"}}>{data.inTheBox}</p>
+        <div className="w-full block flex py-3 text-[1rem]">
+        <p style={{ fontWeight: '600', color: 'rgba(0,0,0,0.70)' }}>
+          {data.inTheBox}
+        </p>
           {/* <div className="w-full 800px:w-[50%]">
             <Link to={`/shop/preview/${data.shop._id}`}>
               <div className="flex items-center">

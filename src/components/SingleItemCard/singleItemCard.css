@@ -7,12 +7,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1.5px solid #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
+    background-color: #ffffff; /* Set the background color to white */
 }
 
 .single-item-container:hover {
     border: 1.5px solid #deded5;
-    /* box-shadow: 0 24px 36px #34578c12; */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Adjusted box shadow for a subtle effect */
 }
 
 .single-item-img {
@@ -26,12 +27,13 @@
 .single-item-img img {
     width: 100%;
     height: 100%;
-    object-fit:contain;
-    margin: 0 auto;
+    object-fit: contain; /* Use 'cover' for a more modern image fit */
+    border-radius: 8px; /* Match the border radius of the container */
 }
-
 .si-body-name {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Slightly reduced margin for better spacing */
+    font-size: 1rem; /* Slightly increased font size for better readability */
+     
 }
 
 .si-body-price {

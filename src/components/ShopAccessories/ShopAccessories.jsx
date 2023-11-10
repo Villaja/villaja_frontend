@@ -23,96 +23,129 @@ const ShopAccessories = () => {
             <div className="item-cat-title">Shop Accessories</div>
             <div className="seemore-btn underline">Shop all &#8250; </div>
         </div>
-        <div className='accessories-ic-body grid'>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]'  onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={EarPhones} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>EarPhones & HeadPhones</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={watches} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Smart <br /> Watches</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={speakers} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Speakers</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={microphones} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Microphones</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={chargers} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Chargers & <br /> More</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={cases} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Cases &  <br /> Covers</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={storage} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Storage</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={gaming} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Gaming Accessories</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={keyboards} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Keyboards & Mice</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={bags} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Laptop Bags</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={stands} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Stands & Lights</p>
-            </div>
-            <div className='flex flex-col justify-center items-center p-[1.12rem] rounded-[0.5rem] shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)]' onClick = {() => navigate('/products?category=Accessories')}>
-                <div className='mb-[1.26rem]'>
-                    <img src={stylus} alt="" />
-                </div>
-                <p className='max-w-[12ch] font-[600] text-[1.125] text-center'>Stylus & Tablet</p>
-            </div>
-            
+        <div className="accessories-ic-body grid">
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={EarPhones} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">EarPhones & HeadPhones</p>
         </div>
-        
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={watches} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Smart Watches</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={speakers} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Speakers</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={microphones} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Microphones</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={chargers} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Chargers & More</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={cases} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Cases & Covers</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={storage} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Storage</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={gaming} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Gaming Accessories</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={keyboards} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Keyboards & Mice</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={bags} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Laptop Bags</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={stands} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Stands & Lights</p>
+        </div>
+        <div
+          className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
+          onClick={() => navigate(`/products?category=Accessories`)}
+        >
+          <div className="mb-4">
+            <img src={stylus} alt="" />
+          </div>
+          <p className="max-w-[12ch] font-semibold text-xl text-center">Stylus & Tablet</p>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
+const AccessoriesCard = ({ data }) => {
+  return (
+    <div>
+      <div>
+        <img src={data.img} alt="" />
+      </div>
+      <p>{data.text}</p>
+    </div>
+  );
+};
 
-const AccessoriesCard = ({data}) => {
-    return (
-        <div>
-            <div>
-                <img src={data.img} alt="" />
-            </div>
-            <p>{data.text}</p>
-        </div>
-    )
-}
-
-export default ShopAccessories
+export default ShopAccessories;
