@@ -105,7 +105,7 @@ const UserOrderDetails = () => {
         <h5 className="text-lg md:text-xl mb-2 md:mb-0 md:mr-4">
           Order ID: <span>#{data?._id?.slice(0, 8)}</span>
         </h5>
-        <h5 className="text-lg md:text-xl">
+        <h5 className="text-[#00000084]">
           Placed on: <span>{data?.createdAt?.slice(0, 10)}</span>
         </h5>
       </div>

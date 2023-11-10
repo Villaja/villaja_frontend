@@ -139,7 +139,7 @@ const WithdrawMoney = () => {
 
   return (
     <div className="w-full h-[90vh] p-8">
-      <div className="w-full bg-white h-full rounded flex items-center justify-center flex-col">
+      <div className="w-full bg-white rounded shadow-md flex items-center justify-between flex-col mt-[12rem] pl-4 pr-4 text-center"><br/><br/>
         <h5 className="text-2xl pb-4">
           Available Balance: {availableBalance} NGN
         </h5>
