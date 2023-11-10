@@ -36,7 +36,7 @@ const CartPage = () => {
     <>
       <Header/>
       <div className="cart-page-wrapper p-[1rem]">
-        <div className="cart-page-container max-[500px]:py-1  py-[3rem] max-w-[1628px] mx-[auto] my-0 flex justify-between gap-[1rem] flex-wrap">
+        <div className="cart-page-container max-w-full py-1 py-3rem mx-auto my-0 flex justify-between gap-1rem flex-wrap">
           <div className='w-full max-w-[65rem] mb-[3rem]'>
 
           <h1 className='text-[1.7rem] font-[600] mb-[1.5rem]'>Your Cart</h1>
