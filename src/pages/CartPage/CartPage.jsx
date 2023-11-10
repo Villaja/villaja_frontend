@@ -42,11 +42,11 @@ const CartPage = () => {
           <h1 className='text-[1.7rem] font-[600] mb-[1.5rem]'>Your Cart</h1>
           
             {cart && cart.length === 0 ? (
-              <div className="w-full h-screen flex items-center justify-center">
+             <div className="w-full h-screen flex items-center justify-center">
                 <h5>Cart Items is empty!</h5>
               </div>
             ) : (
-              <div className="cart-page-items ">
+              <div className="cart-page-items bg-white shadow-md transition duration-300 hover:shadow-lg">
                   <div className="w-full ">
                     {cart &&
                       cart.map((i, index) => (

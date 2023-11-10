@@ -31,7 +31,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={EarPhones} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">EarPhones & HeadPhones</p>
+          <p className="max-w-[12ch] font-semibold text text-center">EarPhones <br/> & <br/> HeadPhones</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -40,7 +40,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={watches} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Smart Watches</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Smart Watches</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -49,7 +49,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={speakers} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Speakers</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Speakers</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -58,7 +58,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={microphones} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Microphones</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Microphones</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -67,7 +67,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={chargers} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Chargers & More</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Chargers <br/> & <br/> More</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -76,7 +76,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={cases} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Cases & Covers</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Cases & Covers</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -85,7 +85,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={storage} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Storage</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Storage</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -94,7 +94,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={gaming} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Gaming Accessories</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Gaming Accessories</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -103,7 +103,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={keyboards} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Keyboards & Mice</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Keyboards <br/> & <br/> Mice</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -112,7 +112,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={bags} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Laptop Bags</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Laptop Bags</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -121,7 +121,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={stands} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Stands & Lights</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Stands & Lights</p>
         </div>
         <div
           className="flex flex-col justify-center items-center p-6 rounded-md bg-white shadow-md cursor-pointer"
@@ -130,7 +130,7 @@ const ShopAccessories = () => {
           <div className="mb-4">
             <img src={stylus} alt="" />
           </div>
-          <p className="max-w-[12ch] font-semibold text-xl text-center">Stylus & Tablet</p>
+          <p className="max-w-[12ch] font-semibold text text-center">Stylus & Tablet</p>
         </div>
       </div>
     </div>

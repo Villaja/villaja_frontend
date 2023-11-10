@@ -291,7 +291,7 @@ const ProductDetails = ({ data }) => {
           <div className="product-details-section flex-col 800px:flex-row">
             <div className="pds-left w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="w-[100%] text-[0.9rem] font-[500] whitespace-pre-line">{data.description}</p>
+              <p className="w-[100%] text-[0.9rem] font-[500] whitespace-pre-line pr-4 text-justify">{data.description}</p>
             </div>
 
             <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
@@ -326,7 +326,7 @@ const ProductDetails = ({ data }) => {
                 </div>
               </div>
 
-              <div className="more-product-info flex items-center">
+              <div className="more-product-info flex items-center text-justify">
                   <img src={DeliveryIcon} alt="" />
                   <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} days  with <br /> Movelite Logistics</div>
               </div>
@@ -382,14 +382,14 @@ const ProductDetailsInfo = ({
     </div>
     
     {active === 1 && (
-      <p className="py-2 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)]">
+      <p className="py-2 pl-4 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">
         {data.aboutProduct}
       </p>
     )}
 
 
       {active === 2 ? (
-         <div className="w-full min-h-[40vh] flex flex-col py-3 overflow-y-auto text-[1rem] font-bold text-[rgba(0,0,0,0.70)]">          {/* {data &&
+         <div className="w-full min-h-[40vh] pl-4 pr-4 flex flex-col py-3 overflow-y-auto text-[1rem] font-bold text-[rgba(0,0,0,0.70)] text-justify">          {/* {data &&
             data.reviews.map((item, index) => (
               <div className="w-full flex my-2">
                 <img
@@ -428,7 +428,7 @@ const ProductDetailsInfo = ({
       ) : null}
 
       {active === 3 && (
-        <div className="w-full block flex py-3 text-[1rem]">
+        <div className="w-full block flex py-3 text-[1rem] pl-4 pr-4 text-justify">
         <p style={{ fontWeight: '600', color: 'rgba(0,0,0,0.70)' }}>
           {data.inTheBox}
         </p>

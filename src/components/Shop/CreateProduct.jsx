@@ -148,7 +148,7 @@ const CreateProduct = () => {
         value={name}
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setName(e.target.value)}
-        placeholder="Enter your product name..."
+        placeholder="Enter your product name and a short title..."
       />
     </div>
     <br />
@@ -196,7 +196,7 @@ const CreateProduct = () => {
         value={tags}
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setTags(e.target.value)}
-        placeholder="Enter your product tags; may include a barcode for tracking, product information, or the SKU number. ..."
+        placeholder="e.g. barcode for tracking or SKU number. ..."
       />
     </div>
     <br />
@@ -220,7 +220,7 @@ const CreateProduct = () => {
           value={discountPrice}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
-          placeholder="Enter price with discount..."
+          placeholder="price with discount..."
         />
       </div>
     </div>
@@ -245,7 +245,7 @@ const CreateProduct = () => {
           value={condition}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setCondition(e.target.value)}
-          placeholder="Enter product condition; if new, used or refurbished..."
+          placeholder="e.g. new, used or refurbished..."
         />
       </div>
       {/* Add more input fields here */}
@@ -334,7 +334,7 @@ const CreateProduct = () => {
       value={memorySize}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setMemorySize(e.target.value)}
-      placeholder="Enter product memory size, e.g. RAM and Hard drive..."
+      placeholder="e.g. RAM and Hard drive..."
     />
   </div>
 
@@ -346,7 +346,7 @@ const CreateProduct = () => {
       value={cellularTechnology}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setCellularTechnology(e.target.value)}
-      placeholder="Enter product cellular technology, e.g. 3G, 4G, 5G, if any..."
+      placeholder="e.g. 3G, 4G, 5G, if any..."
     />
   </div>
 
@@ -370,7 +370,7 @@ const CreateProduct = () => {
       value={simCard}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setSimCard(e.target.value)}
-      placeholder="Enter product SIM card, unlocked or not (if any)..."
+      placeholder="e.g. unlocked or not (if any)..."
     />
   </div>
 
@@ -425,31 +425,31 @@ const CreateProduct = () => {
 
     <div className="flex justify-between">
       <div className="w-[48%]">
-        <label className="pb-2">Min Delivery</label>
+        <label className="pb-2">Min Delivery time frame e.g. 3-5 days</label>
         <input
           type="text"
           name="minDelivery"
           value={minDelivery}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setMinDelivery(e.target.value)}
-          placeholder="Enter minimum delivery information..."
+          placeholder="(3 days) ..."
         />
       </div>
       <div className="w-[48%]">
-        <label className="pb-2">Max Delivery</label>
+        <label className="pb-2">Min Delivery time frame e.g. 3-5 days</label>
         <input
           type="text"
           name="maxDelivery"
           value={maxDelivery}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setMaxDelivery(e.target.value)}
-          placeholder="Enter maximum delivery information..."
+          placeholder=" (5 days)"
         />
       </div>
     </div>
     <div>
 
-      <label className="pb-2">Upload Images <span className="text-red-500">*</span></label>
+      <label className="pb-2">Upload downloaded clear 1080p Images <span className="text-red-500">*</span></label>
       <input
         type="file"
         name=""
