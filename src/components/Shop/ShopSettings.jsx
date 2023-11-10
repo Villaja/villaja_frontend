@@ -98,7 +98,7 @@ const ShopSettings = () => {
     <div className="w-full min-h-screen flex flex-col items-center">
       <div className="flex w-full 800px:w-[80%] flex-col justify-center my-5">
         <div className="w-full flex items-center justify-center">
-          <div className="relative">
+          <div className="relative bg-white rounded-xl p-4 shadow-md">
             <img
               src={avatar ? avatar : `${seller.avatar?.url}`}
               alt=""

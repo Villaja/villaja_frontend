@@ -98,7 +98,7 @@ const ProfileContent = ({ active }) => {
           {window.screen.width < 800 ?null:<br />}
           {/* <br /> */}
           <div className="w-full pl-0 1100px:pl-5 ">
-            <h1 className="font-semibold text-[2rem] mb-4">My Profile</h1>
+            <h1 className=" font-semibold text-[1.4rem] mb-4 pl-4">My profile</h1>
             <form onSubmit={handleSubmit} aria-required={true}>
 
               <div className="profile-content-pi w-full mb-[1.88rem]">
@@ -610,7 +610,7 @@ const DeliveryApproval = () => {
 
       :
     <div className="delivery-approval-wrapper 500px:pl-8 800px:pt-1">
-      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Product List</h1>
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8 pl-6">Product List</h1>
       
       <div className="delivered-product-list">
         {
@@ -618,21 +618,22 @@ const DeliveryApproval = () => {
 
           return (dc.map((od) => {
             return(
-              <div className="delivered-product-item" key={od._id}>
-
+              
+                <div className="delivered-product-item" key={od._id}>
+                <div className="bg-white rounded-md shadow-md p-4 w-full">
                 <div className="dpi-img">
-                  <img src={od.images[0].url} alt="img" />
+                  <img src={od.images[0].url} alt="img" className="w-24 h-24 object-cover rounded-md"   />
                 </div>
                 <div className="dpi-main">
                   <div className="dpi-info">
-                    <div className="dpi-info-name">{od.name}</div>
-                    <div className="dpi-info-seller">by {od.shop.name}</div>
-                    <div className="dpi-info-price">N{od.discountPrice}</div>
+                    <div className="dpi-info-name text-xl  pr-4">{od.name}</div>
+                    <div className="dpi-info-seller text-sm text-gray-500">by {od.shop.name}</div><br/>
+                    <div className="dpi-info-price text-[1.3rem] font-bold">N{od.discountPrice}</div>
                     
                   </div>
-                  <div className="dpi-btn" onClick={() => {setCurrentOrderId(dc._id);setCurrentItem(od);setOpenApproval(true)}}>Approve Delivery</div>
+                  <div className="dpi-btn ml-auto" onClick={() => {setCurrentOrderId(dc._id);setCurrentItem(od);setOpenApproval(true)}}>Approve Delivery</div>
                 </div>
-                
+                </div>
               </div>
             )
           }))
@@ -699,7 +700,7 @@ const ApprovalPage = ({item,user,id,setOpenApproval}) => {
 
   return(
     <div className="approval-page-wrapper">
-      <h1 className="font-semibold text-[2rem] mb-4 mt-8">Delivery Approval</h1>
+      <h1 className="font-semibold text-[2rem] mb-4 mt-8 pl-6">Delivery Approval</h1>
 
       <div className="approve-delivery-section">
         <div className="ads-top">Approve Delivery <span><img src={FeaturedIcon} alt="" /></span> </div>
@@ -715,11 +716,11 @@ const ApprovalPage = ({item,user,id,setOpenApproval}) => {
           <img src={item.images[0].url} alt="" />
         </div>
 
-        <div className="adr-item-name">
+        <div className="adr-item-name pl-7">
           {item.name}
         </div>
 
-        <div className="adr-item-stars">
+        <div className="adr-item-stars pl-6">
             <div className="flex w-full  pt-1">
               {[1, 2, 3, 4, 5].map((i) =>
                 rating >= i ? (
@@ -743,7 +744,7 @@ const ApprovalPage = ({item,user,id,setOpenApproval}) => {
             </div>
 
             <div className="w-full mt-4">
-              <label className="block text-[20px] font-[500]">
+              <label className="block text-[20px] font-[500] pl-2">
                 Review
                 
               </label>

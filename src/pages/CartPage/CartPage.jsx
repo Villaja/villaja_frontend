@@ -47,7 +47,7 @@ const CartPage = () => {
               </div>
             ) : (
               <div className="cart-page-items bg-white shadow-md transition duration-300 hover:shadow-lg">
-                  <div className="w-full ">
+                  <div className="w-full text-left py-2 ">
                     {cart &&
                       cart.map((i, index) => (
                         <CartSingle

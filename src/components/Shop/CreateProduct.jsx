@@ -233,7 +233,7 @@ const CreateProduct = () => {
           value={stock}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setStock(e.target.value)}
-          placeholder="Enter product stock..."
+          placeholder="Enter stock No..."
         />
       </div>
       {/* Add the additional input fields here */}
@@ -245,7 +245,7 @@ const CreateProduct = () => {
           value={condition}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setCondition(e.target.value)}
-          placeholder="e.g. new, used or refurbished..."
+          placeholder="new, used or refurbished..."
         />
       </div>
       {/* Add more input fields here */}
@@ -425,25 +425,25 @@ const CreateProduct = () => {
 
     <div className="flex justify-between">
       <div className="w-[48%]">
-        <label className="pb-2">Min Delivery time frame e.g. 3-5 days</label>
+        <label className="pb-2">Min Delivery time frame e.g. 3-5 days or hours</label>
         <input
           type="text"
           name="minDelivery"
           value={minDelivery}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setMinDelivery(e.target.value)}
-          placeholder="(3 days) ..."
+          placeholder="e.g. 3 days or hours  ..."
         />
       </div>
       <div className="w-[48%]">
-        <label className="pb-2">Min Delivery time frame e.g. 3-5 days</label>
+        <label className="pb-2">Max Delivery time frame e.g. 3-5 days or hours</label>
         <input
           type="text"
           name="maxDelivery"
           value={maxDelivery}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setMaxDelivery(e.target.value)}
-          placeholder=" (5 days)"
+          placeholder=" e.g. 5 days or hours "
         />
       </div>
     </div>

@@ -24,14 +24,14 @@ const ShopProfileData = ({ isOwner }) => {
     products && products.map((product) => product.reviews).flat();
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-white shadow-xl p-6">
       <div className="flex w-full items-center justify-between">
         <div className="w-full flex">
           <div className="flex items-center" onClick={() => setActive(1)}>
             <h5
-              className={`font-[600] text-[20px] ${
+              className={`font-semibold text-lg ${
                 active === 1 ? "text-red-500" : "text-[#333]"
-              } cursor-pointer pr-[20px]`}
+              } cursor-pointer pr-4`}
             >
               Shop Products
             </h5>
@@ -49,7 +49,7 @@ const ShopProfileData = ({ isOwner }) => {
           <div className="flex items-center" onClick={() => setActive(3)}>
             <h5
               className={`font-[600] text-[20px] ${
-                active === 3 ? "text-red-500" : "text-[#333]"
+                active === 3 ? "text-red-500" : "text-lg"
               } cursor-pointer pr-[20px]`}
             >
               Shop Reviews
@@ -60,7 +60,7 @@ const ShopProfileData = ({ isOwner }) => {
           {isOwner && (
             <div>
               <Link to="/dashboard">
-                <div className={`${styles.button} !rounded-[4px] h-[42px]`}>
+                <div className={`${styles.button} rounded-md h-12 px-4 text-white`}>
                   <span className="text-[#fff]">Go Dashboard</span>
                 </div>
               </Link>
@@ -71,7 +71,7 @@ const ShopProfileData = ({ isOwner }) => {
 
       <br />
       {active === 1 && (
-        <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] xl:grid-cols-4 xl:gap-[20px] mb-12 border-0">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4 xl:gap-5 mb-12 border-0">
           {products &&
             products.map((i, index) => (
               <ProductCard data={i} key={index} isShop={true} />
@@ -81,7 +81,7 @@ const ShopProfileData = ({ isOwner }) => {
 
       {active === 2 && (
         <div className="w-full">
-          <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] xl:grid-cols-4 xl:gap-[20px] mb-12 border-0">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4 xl:gap-4">
             {events &&
               events.map((i, index) => (
                 <ProductCard
@@ -93,7 +93,7 @@ const ShopProfileData = ({ isOwner }) => {
               ))}
           </div>
           {events && events.length === 0 && (
-            <h5 className="w-full text-center py-5 text-[18px]">
+            <h5 className="w-full text-center py-5 text-lg">
               No Events have for this shop!
             </h5>
           )}
@@ -106,22 +106,22 @@ const ShopProfileData = ({ isOwner }) => {
             allReviews.map((item, index) => (
               <div className="w-full flex my-4">
                 <img
-                  src={`${item.user.avatar?.url}`}
-                  className="w-[50px] h-[50px] rounded-full"
+                 /* src={`${item.user.avatar?.url}`} 
+                  className="w-[50px] h-[50px] rounded-full"*/
                   alt=""
                 />
                 <div className="pl-2">
                   <div className="flex w-full items-center">
-                    <h1 className="font-[600] pr-2">{item.user.name}</h1>
+                    <h1 className="font-semibold pr-2">{item.user.name}</h1>
                     <Ratings rating={item.rating} />
                   </div>
-                  <p className="font-[400] text-[#000000a7]">{item?.comment}</p>
-                  <p className="text-[#000000a7] text-[14px]">{"2days ago"}</p>
+                  <p className="text-gray-500">{item?.comment}</p>
+                  <p className="text-gray-500 text-sm pl-1">{"2days ago"}</p>
                 </div>
               </div>
             ))}
           {allReviews && allReviews.length === 0 && (
-            <h5 className="w-full text-center py-5 text-[18px]">
+            <h5 className="w-full text-center py-5 text-lg">
               No Reviews have for this shop
             </h5>
           )}

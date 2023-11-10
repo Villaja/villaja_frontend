@@ -94,18 +94,18 @@ const UserOrderDetails = () => {
 
   return (
     <div className={`py-4 min-h-screen ${styles.section}`}>
-      <div className="w-full flex items-center mt-10 justify-between">
+      <div className="w-full flex flex-col items-center mt-10 md:flex-row md:justify-between">
         <div className="flex items-center">
           <BsFillBagFill size={30} />
-          <h1 className="pl-2 text-3xl">Order Details</h1>
+          <h1 className="pl-2 text-3xl md:text-4xl">Order Details</h1>
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-between pt-6">
-        <h5 className="text-xl">
+      <div className="flex flex-col items-center md:flex-row md:items-center pt-6 md:pt-0">
+        <h5 className="text-lg md:text-xl mb-2 md:mb-0 md:mr-4">
           Order ID: <span>#{data?._id?.slice(0, 8)}</span>
         </h5>
-        <h5 className="text-xl">
+        <h5 className="text-lg md:text-xl">
           Placed on: <span>{data?.createdAt?.slice(0, 10)}</span>
         </h5>
       </div>
@@ -116,24 +116,29 @@ const UserOrderDetails = () => {
       {data &&
         data?.cart.map((item, index) => {
           return(
-          <div className="w-full flex gap-5 items-start mb-5">
+          <div className="w-full flex items-start mb-5 shadow-md bg-white p-4 hover:shadow-lg transition duration-300">
             <img
               src={`${item.images[0]?.url}`}
-              alt=""
-              className="w-[150x] h-[150px]"
+              alt={item.name}
+              className="w-32 h-32 object-cover rounded-md"
             />
-            <div className="w-full">
-              <h5 className="pl-3 text-xl font-bold">{item.name}</h5>
-              <h5 className="pl-3 text-[20px] text-[#00000091]">
+            <div className="w-full pl-3">
+              <h5 className="text-xl font-semibold  pl-4">{item.name}</h5>
+              <h5 className="pl-3 text-sm text-[#00000091] pl-5">
                 ₦{item.discountPrice} x {item.qty}
               </h5>
              
             </div>
-            {!item.isReviewed && data?.status === "Delivered" ?  <div
-                className={`${styles.button} text-[#fff]`}
+            
+            {!item.isReviewed && data?.status === "Delivered" ?  
+            
+            
+          <div
+                className={`${styles.button} text-white 
+                lg:text-red-500= text-center`}
                 onClick={() => setOpen(true) || setSelectedItem(item)}
               >
-                Write a review
+                Write review
               </div> : (
              null
             )}
@@ -240,29 +245,29 @@ const UserOrderDetails = () => {
       <br />
       <div className="justify-between flex">
         <div className="w-full">
-          <h4 className="pt-3 text-[20px] font-[600]">Shipping Address:</h4>
-          <h4 className="pt-3 text-[20px]">
+          <h4 className="pt-3 text-lg font-bold">Shipping Address:</h4><br/>
+          <h4 className="pt-3 text-lg py-2 ">
             {data?.shippingAddress.address1 +
               " " +
               data?.shippingAddress.address2}
           </h4>
-          <h4 className=" text-[20px]">{data?.shippingAddress.country}</h4>
-          <h4 className=" text-[20px]">{data?.shippingAddress.city}</h4>
-          <h4 className=" text-[20px]">{data?.user?.phoneNumber}</h4>
+          <h4 className="text-lg py-2  ">{data?.shippingAddress.country}</h4>
+          <h4 className="text-lg">{data?.shippingAddress.city}</h4>
+          <h4 className="text-lg py-2">{data?.user?.phoneNumber}</h4>
         </div>
         <div className="w-full">
-          <h4 className="pt-3 font-bold text-[20px]">Payment Info:</h4>
-          <h4>
+          <h4 className="pt-3 text-lg font-bold  ">Payment Info:</h4><br/><br/><br/>
+          <h4> 
             Status:{" "}
             {data?.paymentInfo?.status ? data?.paymentInfo?.status : "Payment on Delivery"}
           </h4>
           <br />
            {
-            data?.status === "Delivered" && (
+           /* data?.status === "Delivered" && (
               <div className={`${styles.button} text-white`}
               onClick={refundHandler}
               >Give a Refund</div>
-            )
+            )*/
            }
         </div>
       </div>
