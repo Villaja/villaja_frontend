@@ -60,7 +60,7 @@ const ShopProfileData = ({ isOwner }) => {
           {isOwner && (
             <div>
               <Link to="/dashboard">
-                <div className={`${styles.button} rounded-md h-12 px-4 text-white`}>
+                <div className={`${styles.button} rounded-md h-12 px-4 text-white mt-auto`}>
                   <span className="text-[#fff]">Go Dashboard</span>
                 </div>
               </Link>

@@ -115,23 +115,16 @@ const  AdminOrderDetails = () => {
   
 
   return (
-    <div className={`py-4 px-4 md:px-20 min-h-screen ${styles.section}`}>
-      <div className="w-full flex items-center justify-between">
+    <div className={`py-4 min-h-screen ${styles.section}`}>
+      <div className="w-full flex flex-col items-center mt-10 md:flex-row md:justify-between">
         <div className="flex items-center">
-          <BsFillBagFill size={30} color="green" />
-          <h1 className="pl-2 text-[25px]">Order Details</h1>
+          <BsFillBagFill size={30}/>
+          <h1 className="pl-2 text-3xl md:text-4xl">Order Details</h1>
         </div>
-        <Link to="/dashboard-orders">
-          <div
-            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
-          >
-            Back To Orders
-          </div>
-        </Link>
       </div>
 
-      <div className="w-full flex items-center justify-between pt-6">
-        <h5 className="text-[#00000084]">
+      <div className="flex flex-col items-center md:flex-row md:items-center pt-6 md:pt-0">
+        <h5 className="text-lg md:text-xl mb-2 md:mb-0 md:mr-4">
           Order ID: <span>#{data?._id?.slice(0, 8)}</span>
         </h5>
         <h5 className="text-[#00000084]">
@@ -143,22 +136,22 @@ const  AdminOrderDetails = () => {
       <br />
       <br />
       {data?.cart && data.cart.map((item, index) => (
-  <div className="w-full flex items-start mb-5" key={index}>
+  <div className="w-full flex items-start mb-5 shadow-md bg-white p-4 hover:shadow-lg transition duration-300" key={index}>
   <img
     src={`${item.images[0]?.url}`}
     alt=""
     className="w-[80x] h-[80px]"
   />
-  <div className="w-full flex justify-between items-center">
+  <div className="w-full pl-3">
     <div>
-      <h5 className="pl-3 text-[20px]">{item.name}</h5>
-      <h5 className="pl-3 text-[20px] text-[#00000091]">
+      <h5 className="text-xl font-semibold  pl-4">{item.name}</h5>
+      <h5 className="pl-3 text-sm text-[#00000091] pl-6">
         ₦{item.discountPrice} x {item.qty}
       </h5>
     </div>
     <Link to={`/product/${item._id}`}>
     <div
-            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
+            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px] ml-auto`}
           >
             Product Details
           </div>
@@ -184,10 +177,10 @@ const  AdminOrderDetails = () => {
           </h4>
           <h4 className=" text-[20px]">{data?.shippingAddress?.country}</h4>
           <h4 className=" text-[20px]">{data?.shippingAddress?.city}</h4>
-          <h4 className=" text-[20px]">{data?.user?.phoneNumber}</h4>
+          <h4 className=" text-[20px]">{data?.user?.phoneNumber}</h4><br/><br/>
         </div>
-        <div className="w-full 800px:w-[40%] pl-20">
-          <h4 className="pt-3 text-[20px] text-semibold">Payment Info:</h4>
+        <div className="w-full">
+          <h4 className="pt-3 text-[1.3rem] font-bold mb-auto ml-auto">Payment Info:</h4><br/>
           <h4>
             Status:{" "}
             {data?.paymentInfo?.status ? data?.paymentInfo?.status : "Payment On Delevery"}
@@ -263,7 +256,13 @@ const  AdminOrderDetails = () => {
           </button>
           </div>
           
-        )} */}
+        )} */} <Link to="/dashboard-orders">
+          <div
+            className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px] ml-0`}
+          >
+            Back To Orders
+          </div>
+        </Link>
       </div>
     </div>
   );
