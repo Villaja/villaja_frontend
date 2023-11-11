@@ -79,11 +79,7 @@ setShowModal(true);
     navigate("/shop/login");
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-    navigate("/shop/login");
-  };
-
+  
   const handleFileInputChange = (e) => {
     const reader = new FileReader();
 
@@ -416,6 +412,7 @@ setShowModal(true);
             </div>
           </div>
         )}
+    </div>
     </div>
   );
 };

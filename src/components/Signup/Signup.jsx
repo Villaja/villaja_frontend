@@ -73,7 +73,7 @@ const closeModal = () => {
  
 
   return (
-    <div>
+    
     <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
     <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
 
@@ -264,6 +264,7 @@ const closeModal = () => {
             </div>
           </div>
         )}
+    </div>
     </div>
   );
 };
