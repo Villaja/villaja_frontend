@@ -78,7 +78,7 @@ const CartPage = () => {
                       className={`h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
                     >
                       <h1 className="text-[#fff] text-[18px] font-[600] ">
-                        CHECKOUT
+                      {`${user?.email?"CHECK OUT":'LOGIN TO CONTINUE'}`}
                       </h1>
                     </div>
                   </Link>
