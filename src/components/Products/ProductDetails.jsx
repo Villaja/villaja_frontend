@@ -142,7 +142,7 @@ const ProductDetails = ({ data }) => {
               <img
               src={`${data && data.images[select]?.url}`}
               alt=""
-              className="w-full lg:w-[90%] px-6 py-3 bg-white mb-5 rounded-md shadow-sm"
+              className="w-full lg:w-[80%] h-[800px] px-6 py-3 bg-white mb-5 rounded-md shadow-sm"
             />
 
 <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
@@ -166,7 +166,7 @@ const ProductDetails = ({ data }) => {
 </div>
 
               </div>
-              <div className="w-full bg-white px-4 rounded-lg shadow-sm  800px:w-[50%] pt-5">
+              <div className="w-full bg-white px-4 h-[700px] rounded-lg shadow-sm  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
                
                 <div className="mb-[1.2rem] mt-3 gap-[0.1rem] items-center">
@@ -185,7 +185,7 @@ const ProductDetails = ({ data }) => {
                   </h3>
                 </div>
 
-                <div className="flex items-center mb-[1.5rem] justify-between pr-3">
+                <div className="flex items-center mb-[1.5rem]  justify-between pr-3">
                   <div className="flex items-center gap-[1.8rem]">
                     <button
                       className=" cart-action-btn  transition duration-300 ease-in-out " 
@@ -227,7 +227,7 @@ const ProductDetails = ({ data }) => {
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<img src={SoldOutIcon} alt="" />}
                 </div>
                 <div
-                  className={`addToCart-btn  ${styles.button} w-[100%] !h-[2rem] min-[500px]:!h-[4rem] !mt-6  flex items-center `}
+                  className={`addToCart-btn  ${styles.button} w-[100%] mt-28 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
                   onClick={() => addToCartHandler(data._id)}
                 >
                   <span className="text-white flex items-center">

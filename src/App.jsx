@@ -27,6 +27,7 @@ import {
 } from "./routes/Routes.js";
 import ForgotPassword from "./pages/ForgotPassword";
 import AdminOrderDetails from "./pages/AdminOrderManage";
+import TermsAndConditions from "./pages/Terms";
 
 
 // seller routes
@@ -126,6 +127,7 @@ const App = () => {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions/>} />
         <Route
           path="/checkout"
           element={

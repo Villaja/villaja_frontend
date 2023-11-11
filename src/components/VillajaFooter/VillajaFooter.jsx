@@ -15,7 +15,7 @@ const VillajaFooter = () => {
         <div className="vf-menu">
             <div className="vf-menu-item"><Link to="/shop/home">Sell on Villaja</Link></div>
             <div className="vf-menu-item">Help</div>
-            <div className="vf-menu-item">Terms of Use</div>
+            <div className="vf-menu-item"><Link to="/terms-conditions">Terms Of Use</Link></div>
             <div className="vf-menu-item">Privacy Policy</div>
             <div className="vf-menu-item">About</div>
             <div className="vf-menu-item">Contact</div>
