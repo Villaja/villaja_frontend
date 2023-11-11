@@ -13,7 +13,7 @@ const VillajaFooter = () => {
           </div>
         </Link>
         <div className="vf-menu">
-            <div className="vf-menu-item"><Link to="/shop/home">Sell on Villaja</Link></div>
+            <div className="vf-menu-item"><Link to="/shop/home">Sell on Villajar</Link></div>
             <div className="vf-menu-item">Help</div>
             <div className="vf-menu-item">Terms of Use</div>
             <div className="vf-menu-item">Privacy Policy</div>

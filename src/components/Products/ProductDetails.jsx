@@ -16,6 +16,7 @@ import {
   removeFromWishlist,
 } from "../../redux/actions/wishlist";
 import LoadingSkelenton from "./LoadingSkelenton";
+import LoadingSkelenton from "./LoadingSkelenton";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
@@ -45,6 +46,9 @@ const [loading, setLoading] = useState(true);
   const queryP = new useSearchParams(window.location.search)
 
   const firstRender = useRef(true)
+
+  
+  
 
   
   
@@ -131,13 +135,17 @@ setLoading(false)
 
   
 
+  
+
   return (
 
     <div className="">
       {data ? (
         <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
+        <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
           <div className="w-full pt-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
+              <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
   src={`${data && data.images[select]?.url}`}
@@ -168,11 +176,13 @@ setLoading(false)
               </div>
               <div className="w-full  px-4 rounded-lg shadow-sm  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
-                <p className="mb-[2rem] 800px:mb-[4rem]"></p>
-                <div className="mb-[1.2rem] flex gap-[0.1rem] items-center">
+               
+                <div className="mb-[1.2rem] mt-3 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
+                  <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
+                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
                 <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
@@ -260,6 +270,8 @@ setLoading(false)
                     />
                   </Link> */}
                   {/* <div className="pr-8">
+                  </Link> */}
+                  {/* <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
                       <h3 className={`${styles.shop_name} pb-1 pt-1`}>
                         {data.shop.name}
@@ -288,6 +300,7 @@ setLoading(false)
               <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
             </div>
 
+            <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
             <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
 
               <div className="seller-info-section mb-6">
@@ -333,6 +346,8 @@ setLoading(false)
 
                
 
+               
+
                 <div>
 <h5 className="mb-[1rem] text-[1.125rem] font-[500]">
                       <span className="mr-2 text-[#FFB41F] ">({averageRating}/5)</span> Ratings
@@ -365,6 +380,7 @@ setLoading(false)
           <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
+      ) : <div><LoadingSkelenton/></div>}
       ) : <div><LoadingSkelenton/></div>}
     </div>
   );

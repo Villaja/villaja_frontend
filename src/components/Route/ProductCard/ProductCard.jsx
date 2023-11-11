@@ -81,7 +81,7 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
           <p className='font-semibold px-3 pt-4 text-blue-500 text-[0.8rem] '>{data.shop.name}</p>
         </Link>
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
-        <p className="pb-3 pt-2 text-[0.8rem] text-gray-700 font-normal px-3 overflow-hidden whitespace-wrap">
+        <p className="pb-3 pt-2 text-sm sm:text-md text-gray-700 font-bold px-3 overflow-hidden whitespace-wrap">
   {data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}
 </p>
 

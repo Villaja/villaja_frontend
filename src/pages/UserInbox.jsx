@@ -12,6 +12,20 @@
 // import styles from "../styles/styles";
 // const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
 // const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
+// import React, { useEffect, useRef, useState } from "react";
+// import Header from "../components/Layout/Header";
+// import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
+// import socketIO from "socket.io-client";
+// import { format } from "timeago.js";
+// import { server } from "../server";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
+// import { TfiGallery } from "react-icons/tfi";
+// import styles from "../styles/styles";
+// const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
+// const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 // const UserInbox = () => {
   //   const { user,loading } = useSelector((state) => state.user);
@@ -455,6 +469,18 @@
   //   );
 // };
 
+// export default UserInbox;
+
+
+import React from 'react'
+
+function UserInbox() {
+  return (
+    <div>UserInbox</div>
+  )
+}
+
+export default UserInbox
 // export default UserInbox;
 
 
