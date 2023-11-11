@@ -47,25 +47,25 @@ const CartPage = () => {
               </div>
             ) : (
               <div className="cart-page-items bg-white shadow-md transition duration-300 hover:shadow-lg">
-                  <div className="w-full text-left py-2 ">
-                    {cart &&
+                <div className="w-full text-left py-2 ">
+                        {cart &&
                       cart.map((i, index) => (
                         <CartSingle
-                          key={index}
-                          data={i}
-                          quantityChangeHandler={quantityChangeHandler}
-                          removeFromCartHandler={removeFromCartHandler}
+                         key={index}
+                         data={i}
+                         quantityChangeHandler={quantityChangeHandler}
+                         removeFromCartHandler={removeFromCartHandler}
                         />
-                      ))}
-                  </div>
+      ))}
+    </div>
+  
 
-                
-              </div>
+</div>
             )}
 
           </div>
           
-          <div className="p-[1rem] mb-3 shadow-[0_4px_8px_0px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[20.5rem] rounded-[0.5rem] max-[1267px]:mx-[auto]">
+          <div className="p-[1rem] mb-3 shadow-[0_8px_16px_8px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[20.5rem] rounded-[0.5rem] max-[1267px]:mx-[auto]">
                   <h1 className='text-[1.7rem] font-[600] mb-[0.5rem]'>Cart Summary</h1>
                   <p className='text-[1.125rem] font-[500] mb-[2.7rem]'>Sub Total:</p>
                   <div className='text-[2.3rem] font-[600] mb-[2.5rem] flex justify-center'>
@@ -78,7 +78,7 @@ const CartPage = () => {
                       className={`h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
                     >
                       <h1 className="text-[#fff] text-[18px] font-[600] ">
-                        CHECKOUT
+                        {`${user?.email?"CHECK OUT":'LOGIN TO CONTINUE'}`}
                       </h1>
                     </div>
                   </Link>

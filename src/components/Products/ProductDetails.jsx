@@ -15,6 +15,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from "../../redux/actions/wishlist";
+import LoadingSkelenton from "./LoadingSkelenton";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
@@ -29,6 +30,7 @@ import ShopLinkIcon from './shopLinkArrow.svg'
 
 
 const ProductDetails = ({ data }) => {
+const [loading, setLoading] = useState(true);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -43,12 +45,18 @@ const ProductDetails = ({ data }) => {
   const queryP = new useSearchParams(window.location.search)
 
   const firstRender = useRef(true)
+
+  
+  
   useEffect(() => {
+setLoading(true)
     dispatch(getAllProductsShop(data && data?.shop._id));
     if (wishlist && wishlist.find((i) => i._id === data?._id)) {
       setClick(true);
+setLoading(false)
     } else {
       setClick(false);
+setLoading(false)
     }
   }, [data, wishlist]);
 
@@ -108,29 +116,6 @@ const ProductDetails = ({ data }) => {
 
   const averageRating = avg.toFixed(2);
 
-
-  const handleMessageSubmit = async () => {
-    if (isAuthenticated) {
-      const groupTitle = data._id + user._id;
-      const userId = user._id;
-      const sellerId = data.shop._id;
-      await axios
-        .post(`${server}/conversation/create-new-conversation`, {
-          groupTitle,
-          userId,
-          sellerId,
-        })
-        .then((res) => {
-          navigate(`/inbox?${res.data.conversation._id}`);
-        })
-        .catch((error) => {
-          toast.error(error.response.data.message);
-        });
-    } else {
-      toast.error("Please login to create a conversation");
-    }
-  };
-
   useEffect(() => {
     if(firstRender.current)
     {
@@ -144,27 +129,30 @@ const ProductDetails = ({ data }) => {
     }
   },[window.location.pathname.split("/")[2]])
 
+  
+
   return (
+
     <div className="">
       {data ? (
-        <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
+        <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
           <div className="w-full pt-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-              <div className="w-full 800px:w-[50%] 800px:pr-[2rem]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
+              <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
   src={`${data && data.images[select]?.url}`}
   alt=""
-  className="w-full lg:w-[60%] mb-5 rounded-md shadow-md"
+  className="w-full lg:w-[60%] mb-5 rounded-md shadow-md  px-6 py-3 bg-white"
 />
 
-                <div className="flex" style={{gap:"30px"}}>
+                <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
                   {data &&
-                    data.images.map((i, index) => (
+                    data.images.slice(0, 5).map((i, index) => (
                       <div
                         key={index}
                         className={`${
-                          select === 0 ? "null" : "null"
-                        } cursor-pointer product-images-small`}
+                          select === index ? "null" : "null"
+                        } cursor-pointer bg-white product-images-small`}
                       >
                         <img
                           src={`${i?.url}`}
@@ -174,21 +162,18 @@ const ProductDetails = ({ data }) => {
                         />
                       </div>
                     ))}
-                  <div
-                    className={`${
-                      select === 1 ? "border" : "null"
-                    } cursor-pointer`}
-                  ></div>
+                  {/* Additional divs if needed */}
                 </div>
+
               </div>
-              <div className="w-full 800px:w-[50%] pt-5">
+              <div className="w-full  px-4 rounded-lg shadow-sm  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
                 <p className="mb-[2rem] 800px:mb-[4rem]"></p>
                 <div className="mb-[1.2rem] flex gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
-                  <p className="text-[#0077B6] text-[0.6rem] underline mb-1">{data.reviews.length}</p>
+                  <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
-                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} underline pl-2`}>
+                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
@@ -250,22 +235,31 @@ const ProductDetails = ({ data }) => {
                   </span>
                 </div>
                 <div
-                  className={`buyNow-btn addToCart-btn  ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
+                  className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
                   onClick={() => buyNowHandler(data._id)}
                 >
+{localStorage.getItem('user-token') ? (
                   <span className="text-[#00B4D8] flex items-center">
                     BUY NOW 
                   </span>
+) : (
+    <Link to="/user/login" className="text-[#00B4D8] flex items-center" style={{ textDecoration: 'none' }}>
+      <div className="text-[#00B4D8] flex items-center">
+        LOGIN TO BUY NOW
                 </div>
-                {/* <div className="flex items-center pt-8">
-                  <Link to={`/shop/preview/${data?.shop._id}`}>
+                </Link>
+  )}
+</div>
+
+                <div className="flex items-center pt-8">
+                  {/* <Link to={`/shop/preview/${data?.shop._id}`}>
                     <img
                       src={`${data?.shop?.avatar?.url}`}
                       alt=""
                       className="w-[50px] h-[50px] rounded-full mr-2"
                     />
-                  </Link>
-                  <div className="pr-8">
+                  </Link> */}
+                  {/* <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
                       <h3 className={`${styles.shop_name} pb-1 pt-1`}>
                         {data.shop.name}
@@ -282,19 +276,19 @@ const ProductDetails = ({ data }) => {
                     <span className="text-black font-semibold px-4 py-2 flex items-center">
                       Send A DM<AiOutlineMessage className="ml-1" />
                     </span>
-                  </div>
-                </div> */}
+                                  </div> */}
+</div>
               </div>
             </div>
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-            <div className="pds-left w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
+            <div className="pds-left  mt-8 px-5 py-4 rounded-lg shadow-[0_8px_16px_8px_rgba(0,0,0,0.12)] w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="w-[100%] text-[0.9rem] font-[500] whitespace-pre-line pr-4 text-justify">{data.description}</p>
+              <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
             </div>
 
-            <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
+            <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
 
               <div className="seller-info-section mb-6">
                 <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
@@ -310,6 +304,7 @@ const ProductDetails = ({ data }) => {
                         <h3 className={`${styles.shop_name} underline mr-2`}>{data.shop.name.toUpperCase()}</h3>
                         {/* <h5 className="pb-2 text-[15px]">
                         </h5> */}
+
                       </div>
 
                       <img src={ShopLinkIcon} alt="" />
@@ -317,9 +312,31 @@ const ProductDetails = ({ data }) => {
                     </div>
                   </Link>
                   <p className="pt-2">{data.shop.description}</p>
+<h5 className="font-[600]">
+                Joined on:{" "}
+                <span className="font-[500]">
+                  {data.shop?.createdAt?.slice(0, 10)}
+                </span>
+              </h5>
+              <h5 className="font-[600] pt-3">
+                Total Products:{" "}
+                <span className="font-[500]">
+                  {products && products.length}
+                </span>
+              </h5>
+              <h5 className="font-[600] pt-3">
+                Total Reviews:{" "}
+                <span className="font-[500]">{totalReviewsLength}</span>
+              </h5> 
+
                 </div>
 
+               
+
                 <div>
+<h5 className="mb-[1rem] text-[1.125rem] font-[500]">
+                      <span className="mr-2 text-[#FFB41F] ">({averageRating}/5)</span> Ratings
+                    </h5>
                   <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="mr-2 text-[#17E5A1] ">100%</span> Order Fuffilment Rate</p>
                   <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="ml-[0.5rem] mr-2 text-[#FFB41F]">70%</span> Customer Service</p>
                   <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="ml-[0.5rem] mr-2 text-[#17E5A1]">80%</span> Quality Rating</p>
@@ -348,7 +365,7 @@ const ProductDetails = ({ data }) => {
           <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
-      ) : null}
+      ) : <div><LoadingSkelenton/></div>}
     </div>
   );
 };

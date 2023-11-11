@@ -7,6 +7,7 @@ import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderD
 import ReactTextTransition from "react-text-transition";
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BiSearch } from 'react-icons/bi';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
@@ -116,7 +117,7 @@ const Header = ({ activeHeading }) => {
     };
   }, []);
   return (
-    <>
+    <nav>
       <div className={`${styles.section}`}>
         
       </div>
@@ -177,7 +178,7 @@ const Header = ({ activeHeading }) => {
                 </div>
               ) : null}
             </div>
-            {/* <div className="search-go-btn" onClick={() => handleHeroSearch()}>Go</div> */}
+            <div className="search-go-btn" onClick={() => handleHeroSearch()}><BiSearch size="lg" color='#333'/></div>
             </div>
           </div>
         </div>
@@ -195,7 +196,7 @@ const Header = ({ activeHeading }) => {
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
               <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
               {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones","Smart Watches","Speakers","Microphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
-              <div className="vh-item vh-menu-item">Support</div>
+              <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
           </div>
 
             <div className="flex" style={{gap:"2rem"}}>
@@ -554,7 +555,7 @@ const Header = ({ activeHeading }) => {
         </div>
       </div> */}
 
-    </>
+    </nav>
   );
 };
 

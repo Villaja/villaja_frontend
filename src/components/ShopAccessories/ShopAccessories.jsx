@@ -21,7 +21,7 @@ const ShopAccessories = () => {
     <div className="item-cat-container">
         <div className="ic-header">
             <div className="item-cat-title">Shop Accessories</div>
-            <div className="seemore-btn underline">Shop all &#8250; </div>
+            {/* <div className="seemore-btn underline">Shop all &#8250; </div> */}
         </div>
         <div className="accessories-ic-body grid">
         <div

@@ -18,21 +18,9 @@ const Singup = () => {
   const [phoneNumber, setPhonenumber] = useState("")
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-  const [success, setSuccess] = useState(false)
-  const [avatar, setAvatar] = useState(null);
-  const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
+const [showModal, setShowModal] = useState(false);
 
-  const handleFileInputChange = (e) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatar(reader.result);
-      }
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,11 +41,12 @@ const Singup = () => {
   
       if (response.status === 200 || response.status === 201) {
         const { token } = response.data;
-        localStorage.setItem('user-token', token);
+        // localStorage.setItem('user-token', token);
         toast.success("sign up Success!");
+setShowModal(true);
         // setSuccess(true)
-        navigate("/");
-        window.location.reload();
+        // navigate("/");
+        // window.location.reload();
       } else {
         toast.error("register Failed");
       }
@@ -74,25 +63,22 @@ const Singup = () => {
     }
   };
 
-
-  // useEffect(() => {
-  //   if(success){
-  //    navigate('/')
-  //   }
-  //  }, [success]);
- 
+const closeModal = () => {
+  setShowModal(false);
+    navigate("/user/login");
+ };
  
 
   return (
     <div>
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
-          Create An Account
+          Create An Account.
         </h2>
       </div>
-      <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className={`mt-4 sm:mx-auto sm:w-full sm:max-w-xl ${showModal ? 'hidden' : ''}`}>
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -213,27 +199,6 @@ const Singup = () => {
             </div>
 
             <div>
-              {/* <label
-                htmlFor="avatar"
-                className="block text-sm font-medium text-gray-700"
-              ></label>
-              <div className="mt-2 flex items-center">
-                <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
-                  {avatar ? (
-                    <img
-                      src={avatar}
-                      alt="avatar"
-                      className="h-full w-full object-cover rounded-full"
-                    />
-                  ) : (
-                    <RxAvatar className="h-8 w-8" />
-                  )}
-                </span>
-                
-              </div> */}
-            </div>
-
-            <div>
             <button
               type="submit"
               className={`login-button group relative w-full h-[45px] shadow-md flex justify-center items-center py-2 px-4 border border-transparent text-[1.05rem] font-light rounded-md text-white ${
@@ -259,6 +224,23 @@ const Singup = () => {
         </div>
       </div>
     </div>
+
+    {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="bg-white p-6 rounded-lg shadow-md max-w-md">
+              <h2 className="text-3xl font-bold mb-4">Sign Up Successful!</h2>
+              <p className="mb-4">
+                An <span className="text-blue-400">activation link</span> has been sent to your email. Please check your inbox(your spam as well) and click the link to activate your account.
+              </p>
+              <button
+                className="bg-blue-400 w-full text-white px-4 py-2 rounded-md"
+                onClick={closeModal}
+              >
+                Okay
+              </button>
+            </div>
+          </div>
+        )}
     </div>
   );
 };

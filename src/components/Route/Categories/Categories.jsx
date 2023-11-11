@@ -29,7 +29,7 @@ const Categories = ({isSellerHomepage}) => {
       <div className="item-cat-container">
         <div className="ic-header">
             <div className="item-cat-title">{isSellerHomepage?"Categories to Sell Under":"Shop By Category"}</div>
-            <div className="seemore-btn">See more &#8250; </div>
+            {/* <div className="seemore-btn">See more &#8250; </div> */}
         </div>
         <div className="ic-body cat-ic-body">
             {categoriesData &&
