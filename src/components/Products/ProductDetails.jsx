@@ -16,7 +16,6 @@ import {
   removeFromWishlist,
 } from "../../redux/actions/wishlist";
 import LoadingSkelenton from "./LoadingSkelenton";
-import LoadingSkelenton from "./LoadingSkelenton";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
@@ -31,7 +30,7 @@ import ShopLinkIcon from './shopLinkArrow.svg'
 
 
 const ProductDetails = ({ data }) => {
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -49,18 +48,15 @@ const [loading, setLoading] = useState(true);
 
   
   
-
-  
-  
   useEffect(() => {
-setLoading(true)
+    setLoading(true)
     dispatch(getAllProductsShop(data && data?.shop._id));
     if (wishlist && wishlist.find((i) => i._id === data?._id)) {
       setClick(true);
-setLoading(false)
+      setLoading(false)
     } else {
       setClick(false);
-setLoading(false)
+      setLoading(false)
     }
   }, [data, wishlist]);
 
@@ -135,54 +131,48 @@ setLoading(false)
 
   
 
-  
-
   return (
-
+    
     <div className="">
       {data ? (
-        <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
         <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
           <div className="w-full pt-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
               <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
-              <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
-  src={`${data && data.images[select]?.url}`}
-  alt=""
-  className="w-full lg:w-[60%] mb-5 rounded-md shadow-md  px-6 py-3 bg-white"
-/>
+              src={`${data && data.images[select]?.url}`}
+              alt=""
+              className="w-full lg:w-[90%] px-6 py-3 bg-white mb-5 rounded-md shadow-sm"
+            />
 
-                <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
-                  {data &&
-                    data.images.slice(0, 5).map((i, index) => (
-                      <div
-                        key={index}
-                        className={`${
-                          select === index ? "null" : "null"
-                        } cursor-pointer bg-white product-images-small`}
-                      >
-                        <img
-                          src={`${i?.url}`}
-                          alt=""
-                          className="h-[60px] overflow-hidden"
-                          onClick={() => setSelect(index)}
-                        />
-                      </div>
-                    ))}
-                  {/* Additional divs if needed */}
-                </div>
+<div className="flex mt-7 mb-5 gap-2 sm:gap-4">
+  {data &&
+    data.images.slice(0, 5).map((i, index) => (
+      <div
+        key={index}
+        className={`${
+          select === index ? "null" : "null"
+        } cursor-pointer bg-white px-3 py-2 product-images-small`}
+      >
+        <img
+          src={`${i?.url}`}
+          alt=""
+          className="h-[80px] overflow-hidden"
+          onClick={() => setSelect(index)}
+        />
+      </div>
+    ))}
+  {/* Additional divs if needed */}
+</div>
 
               </div>
-              <div className="w-full  px-4 rounded-lg shadow-sm  800px:w-[50%] pt-5">
+              <div className="w-full bg-white px-4 rounded-lg shadow-sm  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
                
                 <div className="mb-[1.2rem] mt-3 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
-                  <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
-                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
                 <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
@@ -245,19 +235,19 @@ setLoading(false)
                   </span>
                 </div>
                 <div
-                  className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
-                  onClick={() => buyNowHandler(data._id)}
-                >
-{localStorage.getItem('user-token') ? (
-                  <span className="text-[#00B4D8] flex items-center">
-                    BUY NOW 
-                  </span>
-) : (
+  className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
+  onClick={() => buyNowHandler(data._id)}
+>
+  {localStorage.getItem('user-token') ? (
+    <span className="text-[#00B4D8] flex items-center">
+      BUY NOW
+    </span>
+  ) : (
     <Link to="/user/login" className="text-[#00B4D8] flex items-center" style={{ textDecoration: 'none' }}>
       <div className="text-[#00B4D8] flex items-center">
         LOGIN TO BUY NOW
-                </div>
-                </Link>
+      </div>
+    </Link>
   )}
 </div>
 
@@ -268,8 +258,6 @@ setLoading(false)
                       alt=""
                       className="w-[50px] h-[50px] rounded-full mr-2"
                     />
-                  </Link> */}
-                  {/* <div className="pr-8">
                   </Link> */}
                   {/* <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
@@ -288,19 +276,18 @@ setLoading(false)
                     <span className="text-black font-semibold px-4 py-2 flex items-center">
                       Send A DM<AiOutlineMessage className="ml-1" />
                     </span>
-                                  </div> */}
-</div>
+                  </div> */}
+                </div>
               </div>
             </div>
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-            <div className="pds-left  mt-8 px-5 py-4 rounded-lg shadow-[0_8px_16px_8px_rgba(0,0,0,0.12)] w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
+            <div className="pds-left bg-white mt-8 px-5 py-4 rounded-lg shadow-sm w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
+              <p className="w-[100%] text-md font-[500] whitespace-pre-line pr-4 text-justify">{data.description}</p>
             </div>
 
-            <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
             <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
 
               <div className="seller-info-section mb-6">
@@ -317,7 +304,7 @@ setLoading(false)
                         <h3 className={`${styles.shop_name} underline mr-2`}>{data.shop.name.toUpperCase()}</h3>
                         {/* <h5 className="pb-2 text-[15px]">
                         </h5> */}
-
+                      
                       </div>
 
                       <img src={ShopLinkIcon} alt="" />
@@ -325,7 +312,7 @@ setLoading(false)
                     </div>
                   </Link>
                   <p className="pt-2">{data.shop.description}</p>
-<h5 className="font-[600]">
+                  <h5 className="font-[600]">
                 Joined on:{" "}
                 <span className="font-[500]">
                   {data.shop?.createdAt?.slice(0, 10)}
@@ -346,10 +333,8 @@ setLoading(false)
 
                
 
-               
-
                 <div>
-<h5 className="mb-[1rem] text-[1.125rem] font-[500]">
+                <h5 className="mb-[1rem] text-[1.125rem] font-[500]">
                       <span className="mr-2 text-[#FFB41F] ">({averageRating}/5)</span> Ratings
                     </h5>
                   <p className="mb-[1rem] text-[1.125rem] font-[500]"><span className="mr-2 text-[#17E5A1] ">100%</span> Order Fuffilment Rate</p>
@@ -380,7 +365,6 @@ setLoading(false)
           <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
-      ) : <div><LoadingSkelenton/></div>}
       ) : <div><LoadingSkelenton/></div>}
     </div>
   );

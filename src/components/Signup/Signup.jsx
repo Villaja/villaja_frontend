@@ -18,10 +18,10 @@ const Singup = () => {
   const [phoneNumber, setPhonenumber] = useState("")
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-    const [loading, setLoading] = useState(false);
-const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -42,12 +42,9 @@ const [showModal, setShowModal] = useState(false);
       if (response.status === 200 || response.status === 201) {
         const { token } = response.data;
         // localStorage.setItem('user-token', token);
-        // localStorage.setItem('user-token', token);
         toast.success("sign up Success!");
-setShowModal(true);
+        setShowModal(true);
         // setSuccess(true)
-        // navigate("/");
-        // window.location.reload();
         // navigate("/");
         // window.location.reload();
       } else {
@@ -66,24 +63,21 @@ setShowModal(true);
     }
   };
 
-const closeModal = () => {
-  setShowModal(false);
+  const closeModal = () => {
+    setShowModal(false);
     navigate("/user/login");
- };
- 
+  };
+
 
   return (
-    
-    <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
+    <div>
     <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">
           Create An Account.
-          Create An Account.
         </h2>
       </div>
-      <div className={`mt-4 sm:mx-auto sm:w-full sm:max-w-xl ${showModal ? 'hidden' : ''}`}>
       <div className={`mt-4 sm:mx-auto sm:w-full sm:max-w-xl ${showModal ? 'hidden' : ''}`}>
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -247,24 +241,6 @@ const closeModal = () => {
             </div>
           </div>
         )}
-
-    {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="bg-white p-6 rounded-lg shadow-md max-w-md">
-              <h2 className="text-3xl font-bold mb-4">Sign Up Successful!</h2>
-              <p className="mb-4">
-                An <span className="text-blue-400">activation link</span> has been sent to your email. Please check your inbox(your spam as well) and click the link to activate your account.
-              </p>
-              <button
-                className="bg-blue-400 w-full text-white px-4 py-2 rounded-md"
-                onClick={closeModal}
-              >
-                Okay
-              </button>
-            </div>
-          </div>
-        )}
-    </div>
     </div>
   );
 };

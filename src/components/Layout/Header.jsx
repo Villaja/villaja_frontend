@@ -573,9 +573,3 @@ const Header = ({ activeHeading }) => {
 };
 
 export default Header;
-
-
-
-
-
-

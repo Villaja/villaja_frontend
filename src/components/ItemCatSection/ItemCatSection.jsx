@@ -3,7 +3,6 @@ import ItemCatSingle from './ItemCatSingle';
 import './itemCatSection.css';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Rolling from '../../assets/animations/Rolling.svg';
 
@@ -25,7 +24,7 @@ const ItemCatSection = ({ itemCatTitle, items, catIndex, allProducts }) => {
     <div className="item-cat-container">
       <div className="ic-header">
         <div className="item-cat-title">{itemCatTitle}</div>
-        <Link to="/all" className="seemore-btn">See more &#8250;</Link>
+        <div className="seemore-btn">See more &#8250;</div>
       </div>
       <div className={[1, 3].includes(catIndex) ? 'ic-body special-ic-body-one' : `ic-body special-ic-body-two`}>
         {loading ? (

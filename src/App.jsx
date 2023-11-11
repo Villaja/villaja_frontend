@@ -23,11 +23,10 @@ import {
   OrderDetailsPage,
   TrackOrderPage,
   UserInbox,
-AllProducts
+  AllProducts
 } from "./routes/Routes.js";
 import ForgotPassword from "./pages/ForgotPassword";
 import AdminOrderDetails from "./pages/AdminOrderManage";
-
 
 
 // seller routes
@@ -120,7 +119,7 @@ const App = () => {
           element={<SellerActivationPage />}
         /> 
         <Route path="/products" element={<ProductsPage />} />
-<Route path="/all" element={<AllProducts/>} />
+        <Route path="/all" element={<AllProducts/>} />
         <Route path="/product/:id" element={<ProductDetailsPage />} />
         <Route path="/reviews/:id" element={<ProductReviews />} />
         <Route path="/best-selling" element={<BestSellingPage />} />

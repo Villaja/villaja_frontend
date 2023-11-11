@@ -9,11 +9,6 @@
   zoom: 80%;
 }
 
-nav :not(nav) {
-  zoom: 100%;
-}
-
-
 *
 {
   margin:0;

@@ -23,7 +23,7 @@ const ShopCreate = () => {
   const [accountType, setAccountType] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
-const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -50,12 +50,9 @@ const [showModal, setShowModal] = useState(false);
       if (response.status === 200 || response.status === 201) {
         const { token } = response.data;
         // localStorage.setItem('seller-token', token);
-        // localStorage.setItem('seller-token', token);
         toast.success("sign up Success!");
-setShowModal(true);
+        setShowModal(true);
         // setSuccess(true)
-        // navigate("/shop/login");
-        // window.location.reload();
         // navigate("/shop/login");
         // window.location.reload();
       } else {
@@ -79,7 +76,6 @@ setShowModal(true);
     navigate("/shop/login");
   };
 
-  
   const handleFileInputChange = (e) => {
     const reader = new FileReader();
 
@@ -103,13 +99,11 @@ setShowModal(true);
       <div className="sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-left pl-8 text-3xl font-bold text-gray-900">
           Seller Signup.
-          Seller Signup.
         </h2>
         <p className="mt-2 text-left pl-8 text-lg text-gray-900">
           Seller account Information
         </p>
       </div>
-      <div className={`mt-8 sm:w-full bg-white rounded-lg shadow ${showModal ? 'hidden' : ''} sm:max-w-[52rem]`}>
       <div className={`mt-8 sm:w-full bg-white rounded-lg shadow ${showModal ? 'hidden' : ''} sm:max-w-[52rem]`}>
         <div className="py-8 px-4  sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
@@ -395,24 +389,6 @@ setShowModal(true);
             </div>
           </div>
         )}
-
-    {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="bg-white p-6 rounded-lg shadow-md max-w-md">
-              <h2 className="text-3xl font-bold mb-4">Sign Up Successful!</h2>
-              <p className="mb-4">
-                An <span className="text-blue-400">activation link</span> has been sent to your email. Please check your inbox(your spam as well) and click the link to activate your account.
-              </p>
-              <button
-                className="bg-blue-400 w-full text-white px-4 py-2 rounded-md"
-                onClick={closeModal}
-              >
-                Okay
-              </button>
-            </div>
-          </div>
-        )}
-    </div>
     </div>
   );
 };
