@@ -585,25 +585,25 @@ export const navItems = [
       name: "Our Blog",
     },
     {
-      name: "Reviews",
+      name: "Privacy Policy",
     },
   ];
   
   export const footercompanyLinks = [
     {
-      name: "Game & Video",
+      name: "Phones",
     },
     {
-      name: "Phone &Tablets",
+      name: "Tablets",
     },
     {
-      name: "Computers & Laptop",
+      name: "Computers",
     },
     {
-      name: "Sport Watches",
+      name: "Accessories",
     },
     {
-      name: "Events",
+      name: "Others",
     },
   ];
   

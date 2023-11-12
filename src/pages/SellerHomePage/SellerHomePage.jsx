@@ -10,7 +10,7 @@ import StepFour from './assets/hit4.svg'
 import Done from './assets/done.svg'
 import Categories from '../../components/Route/Categories/Categories'
 import { useNavigate } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 const SellerHomePage = () => {
     const navigate = useNavigate()

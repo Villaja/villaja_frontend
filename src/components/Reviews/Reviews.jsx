@@ -59,7 +59,7 @@ const Reviews = ({ratings,reviews,id,isDetailsPage}) => {
                         <div className='rs-num'>{reviews && reviews.length > 0?reviews.length === 1?"1 review":reviews.length+" reviews":""}</div>
                     </div>
                 </div>
-                <div className="reviews-main-right p-4 bg-white rounded">
+                <div className="reviews-main-right p-4 shadow-[0_4px_8px_4px_rgba(0,0,0,0.12)]">
                     {
                         reviews && reviews.length > 0 ?
                         isDetailsPage?

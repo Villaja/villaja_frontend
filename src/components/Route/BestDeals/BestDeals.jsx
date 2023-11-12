@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styles from "../../../styles/styles";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductLoading from "../../ProductLoading";
-
+import { Link } from "react-router-dom";
 const BestDeals = () => {
   const [data, setData] = useState([]);
   const { allProducts } = useSelector((state) => state.products);
@@ -27,7 +27,7 @@ const BestDeals = () => {
         </div> */}
         <div className="ic-header">
             <div className="item-cat-title">Best Selling Items</div>
-            <div className="seemore-btn">See more &#8250; </div>
+            <Link to="/all" className="seemore-btn">See more &#8250; </Link>
         </div>
         <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-6 xl:gap-[30px] mb-12 border-0">
           {loading ? (

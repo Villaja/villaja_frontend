@@ -70,7 +70,7 @@ const Login = () => {
       <div className="min-h-screen flex flex-col  pt-20 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className=" text-center text-3xl font-bold text-gray-900">
-          Welcome back
+        Sign In To Continue
         </h2>
       </div>
       <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-lg">

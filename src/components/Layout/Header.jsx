@@ -124,7 +124,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "vh-header-wrapper " : null
-        } vh-header-wrapper heading bg-white transition hidden 800px:flex`}
+        } vh-header-wrapper  transition hidden 800px:flex`}
       >
         <div
           className={`vh-header-container`}
@@ -154,7 +154,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[44px] w-full px-2  pl-8 text-base border-[2px] rounded-lg"
+                className="h-[44px] w-full px-2  pl-8 text-base border-[#00b4d8] border-[2px] rounded-lg"
                 onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
               />
               
@@ -178,7 +178,7 @@ const Header = ({ activeHeading }) => {
                 </div>
               ) : null}
             </div>
-            <div className="search-go-btn" onClick={() => handleHeroSearch()}><BiSearch size="lg" color='#333'/></div>
+            
             </div>
           </div>
         </div>

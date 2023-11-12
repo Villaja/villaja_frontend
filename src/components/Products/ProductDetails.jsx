@@ -135,40 +135,44 @@ const ProductDetails = ({ data }) => {
     
     <div className="">
       {data ? (
-        <div className={`${styles.section} w-[100%] px-3 sm:px-10 800px:w-[100%]`}>
+      <div className={`${styles.section} w-[90%] px-3 sm:px-10 800px:w-[100%]`}>
           <div className="w-full pt-10">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-              <div className="w-full 800px:w-[50%]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
+            <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
-              src={`${data && data.images[select]?.url}`}
-              alt=""
-              className="w-full lg:w-[80%] h-[800px] px-6 py-3 bg-white mb-5 rounded-md shadow-sm"
-            />
-
-<div className="flex mt-7 mb-5 gap-2 sm:gap-4">
-  {data &&
-    data.images.slice(0, 5).map((i, index) => (
-      <div
-        key={index}
-        className={`${
-          select === index ? "null" : "null"
-        } cursor-pointer bg-white px-3 py-2 product-images-small`}
-      >
-        <img
-          src={`${i?.url}`}
-          alt=""
-          className="h-[80px] overflow-hidden"
-          onClick={() => setSelect(index)}
-        />
-      </div>
-    ))}
-  {/* Additional divs if needed */}
-</div>
+               src={`${data && data.images[select]?.url}`}
+               alt=""
+               className="w-full lg:w-[60%] bg-white mb-5 rounded-md shadow-md"
+             />
+             
+             <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
+                               {data &&
+                                 data.images.slice(0, 5).map((i, index) => (
+                                   <div
+                                     key={index}
+                                     className={`${
+                                      select === index ? "null" : "null"
+                                    } cursor-pointer bg-white px-3 py-2 product-images-small`}
+                                   >
+                                     <img
+                                       src={`${i?.url}`}
+                                       alt=""
+                                       className="h-[60px] overflow-hidden"
+                                       onClick={() => setSelect(index)}
+                                     />
+                                   </div>
+                                 ))}
+                               <div
+                                 className={`${
+                                   select === 1 ? "border" : "null"
+                                 } cursor-pointer`}
+                               ></div>
+                             </div>
 
               </div>
-              <div className="w-full bg-white px-4 h-[700px] rounded-lg shadow-sm  800px:w-[50%] pt-5">
+              <div className="w-full  px-4 rounded-lg shadow-sm 800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
-               
+                <p className="mb-[2rem] 800px:mb-[4rem]"></p>
                 <div className="mb-[1.2rem] mt-3 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
@@ -283,14 +287,14 @@ const ProductDetails = ({ data }) => {
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-            <div className="pds-left bg-white mt-8 px-5 py-4 rounded-lg shadow-sm w-full mb-[2rem] 800px:w-[50%] 800px:mb-0">
+          <div className="pds-left mt-8 px-5 py-4 rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.12)] w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="w-[100%] text-md font-[500] whitespace-pre-line pr-4 text-justify">{data.description}</p>
+              <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
             </div>
 
-            <div className="pds-right mt-4 mb-[2rem] 800px:w-[50%]">
+            <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
 
-              <div className="seller-info-section mb-6">
+              <div className="seller-info-section mb-6 mt-7">
                 <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
                 <div className="w-full 800px:w-[50%] mb-6">
                   <Link to={`/shop/preview/${data.shop._id}`}>
