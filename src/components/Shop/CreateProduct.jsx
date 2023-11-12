@@ -11,7 +11,7 @@ const CreateProduct = () => {
   const { success, error } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false)
   const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -66,14 +66,16 @@ const CreateProduct = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
   
     const newForm = new FormData();
   
     images.forEach((image) => {
-      newForm.set("images", image);
+      newForm.append("images", image);
     });
+  
     newForm.append("name", name);
     newForm.append("description", description);
     newForm.append("category", category);
@@ -99,37 +101,53 @@ const CreateProduct = () => {
     newForm.append("minDelivery", minDelivery);
     newForm.append("maxDelivery", maxDelivery);
     newForm.append("shopId", seller._id);
-    dispatch(
-      createProduct({
-        name,
-        description,
-        category,
-        tags,
-        originalPrice,
-        discountPrice,
-        stock,
-        shopId: seller._id,
-        images,
-        condition,
-        aboutProduct,
-        brand,
-        model,
-        displaySize,
-        color,
-        os,
-        memorySize,
-        cellularTechnology,
-        connectivityTechnology,
-        simCard,
-        dimensions,
-        serialNumber,
-        weight,
-        inTheBox,
-        minDelivery,
-        maxDelivery,
-      })
-    );
+  
+    try {
+      // Assuming createProduct is an asynchronous function
+      await dispatch(
+        createProduct({
+          name,
+          description,
+          category,
+          tags,
+          originalPrice,
+          discountPrice,
+          stock,
+          shopId: seller._id,
+          images,
+          condition,
+          aboutProduct,
+          brand,
+          model,
+          displaySize,
+          color,
+          os,
+          memorySize,
+          cellularTechnology,
+          connectivityTechnology,
+          simCard,
+          dimensions,
+          serialNumber,
+          weight,
+          inTheBox,
+          minDelivery,
+          maxDelivery,
+        })
+      );
+  
+      toast.success("Product created successfully!");
+      navigate("/dashboard");
+      window.location.reload();
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      // Loading is set to false after dispatch or in case of an error
+      setLoading(false);
+    }
   };
+  
+  
+  
   
 
   return (
@@ -474,12 +492,13 @@ const CreateProduct = () => {
       </div>
       <br />
       <div>
-        <input
-          type="submit"
-          value="Add Product"
-          className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-        />
-      </div>
+  <input
+    type="submit"
+    value={loading ? "Loading..." : "Add Product"}
+    disabled={loading}
+    className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+  />
+</div>
     </div>
   </form>
 </div>

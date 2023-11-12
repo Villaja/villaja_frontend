@@ -7,7 +7,6 @@ import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderD
 import ReactTextTransition from "react-text-transition";
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BiSearch } from 'react-icons/bi';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
@@ -117,14 +116,14 @@ const Header = ({ activeHeading }) => {
     };
   }, []);
   return (
-    <nav>
+    <>
       <div className={`${styles.section}`}>
         
       </div>
       <div
         className={`${
           active === true ? "vh-header-wrapper " : null
-        } vh-header-wrapper  transition hidden 800px:flex`}
+        } vh-header-wrapper bg-white transition hidden 800px:flex`}
       >
         <div
           className={`vh-header-container`}
@@ -178,7 +177,7 @@ const Header = ({ activeHeading }) => {
                 </div>
               ) : null}
             </div>
-            
+            {/* <div className="search-go-btn" onClick={() => handleHeroSearch()}>Go</div> */}
             </div>
           </div>
         </div>
@@ -196,7 +195,7 @@ const Header = ({ activeHeading }) => {
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
               <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
               {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones","Smart Watches","Speakers","Microphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
-              <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
+              <div className="vh-item vh-menu-item">Support</div>
           </div>
 
             <div className="flex" style={{gap:"2rem"}}>
@@ -349,7 +348,7 @@ const Header = ({ activeHeading }) => {
                 <path d="M10.0667 18.8516C11.8416 18.8512 13.5655 18.257 14.9637 17.1636L19.3596 21.5596L20.7737 20.1456L16.3777 15.7496C17.4717 14.3512 18.0662 12.627 18.0667 10.8516C18.0667 6.44056 14.4776 2.85156 10.0667 2.85156C5.65565 2.85156 2.06665 6.44056 2.06665 10.8516C2.06665 15.2626 5.65565 18.8516 10.0667 18.8516ZM10.0667 4.85156C13.3757 4.85156 16.0667 7.54256 16.0667 10.8516C16.0667 14.1606 13.3757 16.8516 10.0667 16.8516C6.75765 16.8516 4.06665 14.1606 4.06665 10.8516C4.06665 7.54256 6.75765 4.85156 10.0667 4.85156Z" fill="#111111"/>
               </svg>
             </div>
-            <div className='mr-[5px]'>
+            <div className='mr-[15px]'>
               <div
                 className="relative"
                 onClick={() => navigate('/cart')}
@@ -359,19 +358,6 @@ const Header = ({ activeHeading }) => {
                   {cart && cart.length}
                 </span>
               </div>
-            </div>
-            <div>
-            <div className="relative cursor-pointer mr-[0px]">
-                  {localStorage.getItem('user-token') ? (
-                    <Link to="/profile">
-                      <CgProfile size={30} />
-                    </Link>
-                  ) : (
-                    <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" style={{flexShrink:"0"}}>
-                      Sign In
-                    </Link>
-                  )}
-                </div>
             </div>
           </div>
 
@@ -568,8 +554,14 @@ const Header = ({ activeHeading }) => {
         </div>
       </div> */}
 
-    </nav>
+    </>
   );
 };
 
 export default Header;
+
+
+
+
+
+

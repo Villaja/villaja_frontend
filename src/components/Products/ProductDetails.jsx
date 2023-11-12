@@ -7,6 +7,7 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { BiTag } from "react-icons/bi";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { server } from "../../server";
@@ -172,8 +173,8 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full  px-4 rounded-lg shadow-sm 800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
-                <p className="mb-[2rem] 800px:mb-[4rem]"></p>
-                <div className="mb-[1.2rem] mt-3 gap-[0.1rem] items-center">
+                <p className="mb-[2rem] 800px:mb-[2rem] flex gap-1 mt-3 font-semibold text-lg text-gray-600"><span>{data.condition}</span> <BiTag/></p>
+                <div className="mb-[1.2rem] mt-0 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
@@ -240,10 +241,10 @@ const ProductDetails = ({ data }) => {
                 </div>
                 <div
   className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
-  onClick={() => buyNowHandler(data._id)}
+ 
 >
   {localStorage.getItem('user-token') ? (
-    <span className="text-[#00B4D8] flex items-center">
+    <span   onClick={() => buyNowHandler(data._id)} className="text-[#00B4D8] flex items-center">
       BUY NOW
     </span>
   ) : (
@@ -287,7 +288,7 @@ const ProductDetails = ({ data }) => {
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-          <div className="pds-left mt-8 px-5 py-4 rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.12)] w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
+          <div className="pds-left mt-8 px-5 py-4 rounded-lg shadow-md w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
               <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
             </div>
