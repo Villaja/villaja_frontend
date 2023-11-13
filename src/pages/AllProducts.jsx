@@ -68,15 +68,15 @@ const AllProducts = () => {
   return (
     <div>
       <Header />
-      <div className={`${styles.section} mt-16 flex`}>
-        <FilterSidebar
+      <div className={`${styles.section} mt-16`}>
+        {/* <FilterSidebar
           filters={filters}
           setFilters={setFilters}
           applyFilters={applyFilters}
           resetFilters={resetFilters}
-        />
-        <div className="ml-8">
-          <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12 border-0">
+        /> */}
+        <div className="sm:ml-8">
+          <div className="grid grid-cols-2 gap-5 md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12 border-0">
             {loading ? (
               <p className="text-center">
                 <ProductLoading />

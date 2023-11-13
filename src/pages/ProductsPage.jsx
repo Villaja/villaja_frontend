@@ -113,11 +113,11 @@ const ProductsPage = () => {
       <Header activeHeading={headingNumber[activeHeadingValue]} />
       {/* <br /> */}
       {/* <br /> */}
-      <div className="homepage-category-body">
+      {/* <div className="homepage-category-body">
           <div className="homepage-category-main">
             <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
           </div>
-      </div>
+      </div> */}
       <br />
       <br />
       <div className="cc-main-body">

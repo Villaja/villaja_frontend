@@ -241,7 +241,7 @@ const ProductDetails = ({ data }) => {
                 </div>
                 <div
   className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
- 
+ ipvjcv
 >
   {localStorage.getItem('user-token') ? (
     <span   onClick={() => buyNowHandler(data._id)} className="text-[#00B4D8] flex items-center">
