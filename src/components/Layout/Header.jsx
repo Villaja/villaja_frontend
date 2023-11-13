@@ -194,7 +194,7 @@ const Header = ({ activeHeading }) => {
               {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
               <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}><Link to="/accessories">Accessories</Link> &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
               {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones","Smart Watches","Speakers","Microphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
               <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
           </div>

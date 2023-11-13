@@ -149,7 +149,7 @@ const ProductsPage = () => {
                       <div className="cid-main-header">
                         {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{data.length} products found</span>
                       </div>
-                    <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-4 xl:gap-[30px] mb-12">
+                      <div className={`cid-main ${itemDisplay?"cid-main-tab":''}`}>
                       {
                         data.map((item,id) => {
                           return <div className="cid-item" key={id}>
