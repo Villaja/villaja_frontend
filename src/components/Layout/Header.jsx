@@ -123,7 +123,7 @@ const Header = ({ activeHeading }) => {
       <div
         className={`${
           active === true ? "vh-header-wrapper " : null
-        } vh-header-wrapper bg-white transition hidden 800px:flex`}
+        } vh-header-wrapper  transition hidden 800px:flex`}
       >
         <div
           className={`vh-header-container`}
@@ -195,7 +195,8 @@ const Header = ({ activeHeading }) => {
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
               <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
               {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones","Smart Watches","Speakers","Microphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
-              <div className="vh-item vh-menu-item">Support</div>
+              <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
+              
           </div>
 
             <div className="flex" style={{gap:"2rem"}}>
