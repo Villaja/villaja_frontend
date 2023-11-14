@@ -39,7 +39,7 @@
     border-radius: 8px; /* Match the border radius of the container */
 }
 .si-body-name {
-    margin-bottom: 20px; /* Slightly reduced margin for better spacing */
+    margin-bottom: 5px; /* Slightly reduced margin for better spacing */
     font-size: 1rem; /* Slightly increased font size for better readability */
      
 }
