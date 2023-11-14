@@ -2,15 +2,24 @@
 {
     min-width: 220px;
     background-color: red;
+    
+  
+    /* Enable text truncation for overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }
 
 
-@media screen and (max-width:800px){
+@media screen and (max-width:768px){
     
     .pc-container-mobile
     {
         display: flex;
         gap: 1rem;
         height: 200px !important;
+        /* Adjust max-height for smaller screens, like mobile */
+        max-height: calc(2 * (1.1em)); /* Adjusted line height for smaller screens */
+  
     }
 }
