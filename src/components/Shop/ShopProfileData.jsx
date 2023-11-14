@@ -6,6 +6,7 @@ import styles from "../../styles/styles";
 import ProductCard from "../Route/ProductCard/ProductCard";
 import Ratings from "../Products/Ratings";
 import { getAllEventsShop } from "../../redux/actions/event";
+import Header from "../Layout/Header";
 
 const ShopProfileData = ({ isOwner }) => {
   const { products } = useSelector((state) => state.products);
@@ -24,7 +25,9 @@ const ShopProfileData = ({ isOwner }) => {
     products && products.map((product) => product.reviews).flat();
 
   return (
-    <div className="w-full bg-white shadow-xl p-6">
+    <div>
+     
+<div className="w-full bg-white shadow-xl p-6">
       <div className="flex w-full items-center justify-between">
         <div className="w-full flex">
           <div className="flex items-center" onClick={() => setActive(1)}>
@@ -128,6 +131,8 @@ const ShopProfileData = ({ isOwner }) => {
         </div>
       )}
     </div>
+    </div>
+    
   );
 };
 
