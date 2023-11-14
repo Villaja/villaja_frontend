@@ -467,7 +467,7 @@ const CreateProduct = () => {
     </div>
     <div>
 
-      <label className="pb-2">Upload downloaded clear 1080p Images <span className="text-red-500">*</span></label>
+      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
       <input
         type="file"
         name=""
