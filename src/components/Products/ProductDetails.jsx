@@ -350,7 +350,7 @@ const ProductDetails = ({ data }) => {
 
               <div className="more-product-info flex items-center text-justify">
                   <img src={DeliveryIcon} alt="" />
-                  <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} with <br /> Movelite Logistics</div>
+                  <div className="delivers-within">Delivers within Lagos in {data.minDelivery}-{data.maxDelivery} with Movelite Logistics</div>
               </div>
 
             </div>
