@@ -32,7 +32,7 @@ function Accessories() {
       <div className="accessories-ic-body grid">
         {[
           { image: EarPhones, category: 'Earphones and Headphones' },
-          { image: watches, category: 'Smart Watches' },
+          { image: watches, category: 'Smart Watched' },
           { image: speakers, category: 'Speakers' },
           { image: microphones, category: 'Microphones' },
           { image: chargers, category: 'Chargers and More' },
