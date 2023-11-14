@@ -81,7 +81,7 @@
     border-radius: 5px;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0 4px 8px #34578c2c;
+    box-shadow: 0 2px 4px #34578c2c;
 }
 
 .underNav-current, .underNav-total

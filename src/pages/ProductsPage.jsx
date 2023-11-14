@@ -139,14 +139,14 @@ const ProductsPage = () => {
                 { data && data.length > 0 ?<div className="catalog-item-display">
 
                     <div className="cid-top-bar">
-                      <div className="cid-top-catname">
+                      <div className="cid-top-catname text-xl  sm:text-2xl font-bold">
                          {categoryData}
                       </div>
                       
                     </div>
                     
                     
-                      <div className="cid-main-header">
+                      <div className="cid-main-header pl-3">
                         {pageNumber-23 +"-" + pageNumber} &nbsp; / &nbsp; <span>{data.length} products found</span>
                       </div>
                       <div className={`cid-main ${itemDisplay?"cid-main-tab":''}`}>

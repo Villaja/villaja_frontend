@@ -44,7 +44,7 @@ const SingleItemCard = ({data,itemDisplay}) => {
             <Ratings rating={data.ratings}/>
         </div>
 
-        {/* <div className="add-to-cart-btn" onClick={() => addToCartHandler(data._id)}>
+        {/* <div className="border text-gray-900" onClick={() => addToCartHandler(data._id)}>
             ADD TO CART
         </div> */}
     </div>
