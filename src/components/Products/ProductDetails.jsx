@@ -16,6 +16,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from "../../redux/actions/wishlist";
+import { BiX } from "react-icons/bi";
 import LoadingSkelenton from "./LoadingSkelenton";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
@@ -237,32 +238,37 @@ const ProductDetails = ({ data }) => {
                   </div>
                 </div>
                 <div className="availability-icon">
-                  {data.stock > 0?<img src={InStockIcon} alt="" />:<img src={SoldOutIcon} alt="" />}
+                  {data.stock > 0?<img src={InStockIcon} alt="" />:<p className="text-red-500 font-bold text-lg">Out Of Stock<span className="text-xl"> X </span></p>}
                 </div>
                 <div
-                  className={`addToCart-btn  ${styles.button} w-[100%] mt-28 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
-                  onClick={() => addToCartHandler(data._id)}
-                >
-                  <span className="text-white flex items-center">
-                    ADD TO CART 
-                  </span>
+            className={`addToCart-btn  ${styles.button} w-[100%] mt-28 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
+            onClick={() => addToCartHandler(data._id)}
+            disabled={data.stock < 1}
+          >
+            <span className={`text-white flex items-center ${data.stock < 1 ? 'disabled' : ''}`}>
+              ADD TO CART
+            </span>
+          </div>
+          <div
+            className={`buyNow-btn addToCart-btn ${styles.button} ${data.stock < 1 ? 'hidden' : ''} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
+            disabled={data.stock < 1}
+          >
+            {localStorage.getItem('user-token') ? (
+              <span onClick={() => buyNowHandler(data._id)} className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'hidden' : ''}`}>
+                {data.stock < 1 ? 'Out Of Stock' : 'Buy Now'}
+              </span>
+            ) : (
+              <Link
+                to="/user/login"
+                className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'disabled' : ''}`}
+                style={{ textDecoration: 'none' }}
+              >
+                <div className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'disabled' : ''}`}>
+                  LOGIN TO BUY NOW
                 </div>
-                <div
-  className={`buyNow-btn addToCart-btn ${styles.button} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
- ipvjcv
->
-  {localStorage.getItem('user-token') ? (
-    <span   onClick={() => buyNowHandler(data._id)} className="text-[#00B4D8] flex items-center">
-      BUY NOW
-    </span>
-  ) : (
-    <Link to="/user/login" className="text-[#00B4D8] flex items-center" style={{ textDecoration: 'none' }}>
-      <div className="text-[#00B4D8] flex items-center">
-        LOGIN TO BUY NOW
-      </div>
-    </Link>
-  )}
-</div>
+              </Link>
+            )}
+          </div>
 
                 <div className="flex items-center pt-8">
                   {/* <Link to={`/shop/preview/${data?.shop._id}`}>
