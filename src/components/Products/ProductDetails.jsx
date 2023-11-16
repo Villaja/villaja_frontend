@@ -50,15 +50,20 @@ const ProductDetails = ({ data }) => {
   
   
   useEffect(() => {
-    setLoading(true)
-    dispatch(getAllProductsShop(data && data?.shop._id));
-    if (wishlist && wishlist.find((i) => i._id === data?._id)) {
-      setClick(true);
+    const fetchData = async () => {
+      setLoading(true)
+      await dispatch(getAllProductsShop(data && data?.shop._id));
+      if (wishlist && wishlist.find((i) => i._id === data?._id)) {
+        setClick(true);
+      } else {
+        setClick(false);
+        document.title = data ? `${data.name} - Villaja` : "Product Details";
+        
+      }
       setLoading(false)
-    } else {
-      setClick(false);
-      setLoading(false)
-    }
+    };
+
+    fetchData();
   }, [data, wishlist]);
 
   const incrementCount = () => {
@@ -118,9 +123,12 @@ const ProductDetails = ({ data }) => {
   const averageRating = avg.toFixed(2);
 
   useEffect(() => {
+   
+   
     if(firstRender.current)
     {
       firstRender.current = false
+      
     }
     else
     {

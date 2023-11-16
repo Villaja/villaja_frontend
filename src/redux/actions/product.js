@@ -100,46 +100,6 @@ export const deleteProduct = (id) => async (dispatch) => {
 };
 
 
-// Update product
-export const updateProduct = (productId, productData) => async (dispatch) => {
-  try {
-    dispatch({
-      type: "updateProductRequest",
-    });
-
-    const token = localStorage.getItem("seller-token");
-
-    if (!token) {
-      // Handle the case where the token is not available
-      dispatch({
-        type: "updateProductFailed",
-        payload: "Authentication token not found",
-      });
-      return;
-    }
-
-    const config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-
-    const { data } = await axios.put(`${server}/product/update-product/${productId}`, productData, config);
-
-    dispatch({
-      type: "updateProductSuccess",
-      payload: data.product,
-    });
-  } catch (error) {
-    dispatch({
-      type: "updateProductFailed",
-      payload: error.response.data.message,
-    });
-  }
-};
-
-
-
 // get all products
 export const getAllProducts = () => async (dispatch) => {
   try {
@@ -215,6 +175,90 @@ export const topDeals = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "topDealsFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// update product stock
+export const updateProductStock = (productId, stock) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "updateProductStockRequest",
+    });
+
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "updateProductStockFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.put(
+      `${server}/product/update-product-stock/${productId}`,
+      { stock },
+      config
+    );
+
+    dispatch({
+      type: "updateProductStockSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "updateProductStockFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// update product details
+export const updateProductDetails = (productId, updateData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "updateProductDetailsRequest",
+    });
+
+    const token = localStorage.getItem("seller-token");
+
+    if (!token) {
+      // Handle the case where the token is not available
+      dispatch({
+        type: "updateProductDetailsFailed",
+        payload: "Authentication token not found",
+      });
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    const { data } = await axios.put(
+      `${server}/product/update-product/${productId}`,
+      updateData,
+      config
+    );
+
+    dispatch({
+      type: "updateProductDetailsSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "updateProductDetailsFailed",
       payload: error.response.data.message,
     });
   }

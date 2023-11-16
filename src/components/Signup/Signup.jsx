@@ -71,7 +71,7 @@ const Singup = () => {
 
   return (
     <div>
-    <div className={`min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
+    <div className={`flex flex-col justify-center py-12 sm:px-6 lg:px-8 ${showModal ? 'modal-open' : ''}`}>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-2 text-center text-3xl font-bold text-gray-900">

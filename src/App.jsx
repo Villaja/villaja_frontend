@@ -47,6 +47,7 @@ import {
   ShopSettingsPage,
   ShopWithDrawMoneyPage,
   ShopInboxPage,
+  ShopUpdateProduct
 } from "./routes/ShopRoutes";
 
 // admin routes
@@ -212,6 +213,14 @@ const App = () => {
         />
         <Route
           path="/dashboard-create-product"
+          element={
+            <SellerProtectedRoute>
+              <ShopCreateProduct />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/update-product/:id"
           element={
             <SellerProtectedRoute>
               <ShopCreateProduct />

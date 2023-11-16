@@ -20,7 +20,7 @@ const LoginPage = () => {
     <div>
       <VillajaHeader/>
       <Login />
-      <VillajaFooter/>
+      
     </div>
   )
 }

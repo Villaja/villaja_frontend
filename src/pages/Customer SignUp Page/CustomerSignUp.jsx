@@ -18,7 +18,7 @@ const SignupPage = () => {
     <div>
       <VillajaHeader/>
         <Signup />
-      <VillajaFooter/>
+     
     </div>
   )
 }
