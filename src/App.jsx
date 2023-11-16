@@ -223,7 +223,7 @@ const App = () => {
           path="/update-product/:id"
           element={
             <SellerProtectedRoute>
-              <ShopCreateProduct />
+              <ShopUpdateProduct />
             </SellerProtectedRoute>
           }
         />

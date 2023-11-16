@@ -82,7 +82,7 @@ const Checkout = () => {
   }
 
   // this is shipping cost variable
-  const shipping = subTotalPrice * 0.006;
+  const shipping = 450;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

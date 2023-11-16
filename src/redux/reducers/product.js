@@ -112,6 +112,19 @@ export const productReducer = createReducer(initialState, {
     state.success = false;
   },
 
+  // get product by ID
+  getProductByIdRequest: (state) => {
+    state.isLoading = true;
+  },
+  getProductByIdSuccess: (state, action) => {
+    state.isLoading = false;
+    state.product = action.payload;
+  },
+  getProductByIdFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
 
 
   // update product details

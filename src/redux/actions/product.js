@@ -232,7 +232,6 @@ export const updateProductDetails = (productId, updateData) => async (dispatch) 
     const token = localStorage.getItem("seller-token");
 
     if (!token) {
-      // Handle the case where the token is not available
       dispatch({
         type: "updateProductDetailsFailed",
         payload: "Authentication token not found",
@@ -247,7 +246,7 @@ export const updateProductDetails = (productId, updateData) => async (dispatch) 
     };
 
     const { data } = await axios.put(
-      `${server}/product/update-product/${productId}`,
+      `${server}/product/update-product/${productId}`, // Use the correct productId here
       updateData,
       config
     );
@@ -263,6 +262,30 @@ export const updateProductDetails = (productId, updateData) => async (dispatch) 
     });
   }
 };
+
+
+
+// get a single product by ID
+export const getProductById = (productId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "getProductByIdRequest",
+    });
+
+    const { data } = await axios.get(`${server}/product/get-product-details/${productId}`);
+
+    dispatch({
+      type: "getProductByIdSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "getProductByIdFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
 
 
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { updateProductDetails } from "../../redux/actions/product";
+import { updateProductDetails, getProductById} from "../../redux/actions/product";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const UpdateProductDetails = () => {
   const { seller } = useSelector((state) => state.seller);
-  const { success, error } = useSelector((state) => state.products);
+  const { success, error, product } = useSelector((state) => state.products); // Add 'product' here
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
@@ -37,17 +39,25 @@ const UpdateProductDetails = () => {
   const [inTheBox, setInTheBox] = useState(""); // Add inTheBox state
   const [minDelivery, setMinDelivery] = useState(""); // Add minDelivery state
   const [maxDelivery, setMaxDelivery] = useState(""); // Add maxDelivery state
-
+  const { id: productId } = useParams(); 
+ 
   useEffect(() => {
     if (error) {
       toast.error(error);
     }
     if (success) {
-      toast.success("Product created successfully!");
-      navigate("/dashboard");
-      window.location.reload();
+    //   toast.success("Product created successfully!");
+    //   navigate("/dashboard");
+    //   window.location.reload();
+    console.log(success)
     }
   }, [dispatch, error, success]);
+
+  useEffect(() => {
+    if (productId) {
+      dispatch(getProductById(productId));
+    }
+  }, [dispatch, productId]);
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -65,6 +75,64 @@ const UpdateProductDetails = () => {
       reader.readAsDataURL(file);
     });
   };
+
+  useEffect(() => {
+    if (product) {
+      const {
+        name,
+        description,
+        category,
+        tags,
+        originalPrice,
+        discountPrice,
+        stock,
+        condition,
+        aboutProduct,
+        brand,
+        model,
+        displaySize,
+        color,
+        os,
+        memorySize,
+        cellularTechnology,
+        connectivityTechnology,
+        simCard,
+        dimensions,
+        serialNumber,
+        weight,
+        inTheBox,
+        minDelivery,
+        maxDelivery,
+        images,
+      } = product;
+
+      setName(name || "");
+      setDescription(description || "");
+      setCategory(category || "");
+      setTags(tags || "");
+      setOriginalPrice(originalPrice || "");
+      setDiscountPrice(discountPrice || "");
+      setStock(stock || "");
+      setCondition(condition || "");
+      setAboutProduct(aboutProduct || "");
+      setBrand(brand || "");
+      setModel(model || "");
+      setDisplaySize(displaySize || "");
+      setColor(color || "");
+      setOS(os || "");
+      setMemorySize(memorySize || "");
+      setCellularTechnology(cellularTechnology || "");
+      setConnectivityTechnology(connectivityTechnology || "");
+      setSimCard(simCard || "");
+      setDimensions(dimensions || "");
+      setSerialNumber(serialNumber || "");
+      setWeight(weight || "");
+      setInTheBox(inTheBox || "");
+      setMinDelivery(minDelivery || "");
+      setMaxDelivery(maxDelivery || "");
+      setImages(images || []);
+    }
+  }, [product]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,12 +168,11 @@ const UpdateProductDetails = () => {
     newForm.append("inTheBox", inTheBox);
     newForm.append("minDelivery", minDelivery);
     newForm.append("maxDelivery", maxDelivery);
-    newForm.append("shopId", seller._id);
   
     try {
       // Assuming updateProductDetails is an asynchronous function
       await dispatch(
-        updateProductDetails({
+        updateProductDetails(productId, {  // Pass productId as the first argument
           name,
           description,
           category,
@@ -113,7 +180,6 @@ const UpdateProductDetails = () => {
           originalPrice,
           discountPrice,
           stock,
-          shopId: seller._id,
           images,
           condition,
           aboutProduct,
@@ -135,8 +201,9 @@ const UpdateProductDetails = () => {
         })
       );
   
-      toast.success("Product created successfully!");
-      navigate("/dashboard");
+      toast.success("Product updated successfully!");
+      // Remove the following lines to prevent the page from reloading
+      navigate("/dashboard-products");
       window.location.reload();
     } catch (error) {
       toast.error(error.message);
@@ -152,7 +219,8 @@ const UpdateProductDetails = () => {
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white mt-16 rounded-[4px] p-3 ">
-  <h5 className="text-[30px] font-Poppins text-gray-700">Add A Product - Details</h5>
+  <h5 className="text-[30px] font-Poppins text-gray-700 mb-5">Update Product - Details</h5>
+  <Link to="/dashboard-products" className="bg-gray-300 text-black px-6 py-2 rounded mt-10">Back</Link>
   {/* create product form */}
   <form onSubmit={handleSubmit}>
     <br />
@@ -467,34 +535,14 @@ const UpdateProductDetails = () => {
     </div>
     <div>
 
-      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
-      <input
-        type="file"
-        name=""
-        id="upload"
-        className="hidden"
-        multiple
-        onChange={handleImageChange}
-      />
-      <div className="w-full flex items-center flex-wrap">
-        <label htmlFor="upload">
-          <AiOutlinePlusCircle size={30} className="mt-3" color="#555" />
-        </label>
-        {images &&
-          images.map((i) => (
-            <img
-              src={i}
-              key={i}
-              alt=""
-              className="h-[120px] w-[120px] object-cover m-2"
-            />
-          ))}
-      </div>
-      <br />
+     
+     
+      
+      
       <div>
   <input
     type="submit"
-    value={loading ? "Loading..." : "Add Product"}
+    value={loading ? "Loading..." : "Update Product"}
     disabled={loading}
     className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
   />

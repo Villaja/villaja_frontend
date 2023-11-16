@@ -52,6 +52,7 @@ const AllProducts = () => {
       minWidth: 130,
       flex: 0.6,
     },
+   
     {
       field: "Preview",
       flex: 0.8,
@@ -70,6 +71,24 @@ const AllProducts = () => {
           </>
         );
       },
+    },
+    {
+      field: "UpdateProduct",
+      headerName: "Update Product",
+      flex: 1,
+      minWidth: 150,
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/update-product/${params.id}`}>
+              <Button>
+                <span className="text-blue-500">Update Product</span>
+              </Button>
+            </Link>
+          </>
+        );
+      }
     },
     {
       field: "Delete",

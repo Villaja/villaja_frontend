@@ -237,7 +237,7 @@ export const navItems = [
     },
     {
       id: 6,
-      title: "Smart Watched",
+      title: "Smart Watches",
       subTitle: "Any Other thing you may be here for ?",
       image_Url:
         "https://i5.walmartimages.com/asr/70f8c4b3-553e-4cb2-9587-6c26aee8a50e.446b9e594de5c30f674adbb92cde5e90.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
@@ -279,7 +279,7 @@ export const navItems = [
     },
     {
       id: 11,
-      title: "Gaming Assessories",
+      title: "Gaming Accessories",
       subTitle: "Any Other thing you may be here for ?",
       image_Url:
         "https://i5.walmartimages.com/asr/70f8c4b3-553e-4cb2-9587-6c26aee8a50e.446b9e594de5c30f674adbb92cde5e90.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
