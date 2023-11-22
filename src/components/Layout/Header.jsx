@@ -144,10 +144,10 @@ const Header = ({ activeHeading }) => {
               <img src={villajaLogoHeader} alt="" />
           </Link>
 
-          <div className="vh-item-header-search">
-            <div className='hero-search-wrapper'>
+          <div className="vh-item-header-search ">
+            <div className='hero-search-wrapper relative'>
 
-            <div className="w-[100%] relative">
+            <div className="w-[100%] ">
              
               <input
                 type="text"
@@ -164,13 +164,16 @@ const Header = ({ activeHeading }) => {
                     searchData.slice(0,7).map((i, index) => {
                       return (
                         <Link to={`/product/${i._id}`} key={index}>
-                          <div className="w-full flex items-start-py-3">
+                          <div className="w-full flex items-start-py-3 mb-2">
+                            <div className='w-[40px] min-w-[40px] h-[40px] relative mr-[20px]'>
+
                             <img
                               src={`${i.images[0]?.url}`}
                               alt=""
-                              className="w-[40px] h-[40px] mr-[10px]"
-                            />
-                            <h1>{i.name}</h1>
+                              className="w-full h-full object-contain "
+                              />
+                            </div>
+                            <h1>{i.name.length > 40 ? i.name.slice(0, 40) + "..." : i.name}</h1>
                           </div>
                         </Link>
                       );
