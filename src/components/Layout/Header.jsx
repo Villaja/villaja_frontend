@@ -295,7 +295,7 @@ const Header = ({ activeHeading }) => {
             
               
               
-                <div className="absolute w-full min-h-[125vh] bg-slate-50 shadow-sm-2 z-[9] p-4" style={{top:"4rem",zIndex:"100000"}}>
+                <div className="absolute w-full min-h-[125vh] bg-slate-50 shadow-sm-2 z-[9] p-4" style={{top:"60px",zIndex:"100000"}}>
               {searchData && searchData.length !== 0 ? (
                 <>
                   {searchData &&
