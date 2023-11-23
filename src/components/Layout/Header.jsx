@@ -117,14 +117,14 @@ const Header = ({ activeHeading }) => {
     };
   }, []);
   return (
-    <nav>
+    <nav className='sticky top-0 z-[10000]'>
       <div className={`${styles.section}`}>
         
       </div>
       <div
         className={`${
           active === true ? "vh-header-wrapper " : null
-        } vh-header-wrapper heading bg-white transition hidden 800px:flex`}
+        } vh-header-wrapper heading bg-white transition hidden 800px:flex `}
       >
         <div
           className={`vh-header-container`}

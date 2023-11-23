@@ -11,9 +11,14 @@ import Done from './assets/done.svg'
 import Categories from '../../components/Route/Categories/Categories'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const SellerHomePage = () => {
     const navigate = useNavigate()
+
+     useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="seller-homepage-wrapper">
         <SellerHomeHeader/>

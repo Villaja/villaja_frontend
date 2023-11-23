@@ -25,6 +25,10 @@ const ProductDetailsPage = () => {
     }
   }, [allProducts, allEvents]);
 
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Header />

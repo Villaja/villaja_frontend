@@ -102,6 +102,9 @@ const ProductsPage = () => {
   },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter])
 
 
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
   <>
@@ -120,7 +123,7 @@ const ProductsPage = () => {
       </div> */}
       <br />
       <br />
-      <div className="cc-main-body">
+      <div className="cc-main-body min-h-[80vh]">
 
       <div className="catalog-page-body">
                 <div className={`catalog-filter-section ${openFilter?'catalog-filter-mobile':''}`}>

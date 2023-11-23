@@ -43,6 +43,10 @@ import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
 const HomePage = () => {
   const { allProducts, bestProducts, myProducts } = useSelector((state) => state.products);
 
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
    

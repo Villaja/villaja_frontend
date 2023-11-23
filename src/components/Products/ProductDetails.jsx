@@ -143,7 +143,7 @@ const ProductDetails = ({ data }) => {
 
   return (
     
-    <div className="">
+    <div className="min-h-[100vh]">
       {data ? (
       <div className={`${styles.section} w-[90%] max-w-[1756px] mx-auto px-3 sm:px-10 800px:w-[100%]`}>
           <div className="w-full pt-10 ">
@@ -192,10 +192,11 @@ const ProductDetails = ({ data }) => {
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
                   <h4 className={`${styles.productDiscountPrice} !text-[1.7rem] min-[500px]:!text-[2.6rem]`}>
-                    ₦{data.discountPrice.toLocaleString()}
+                    {'₦' + (data.discountPrice === 0?data.originalPrice.toLocaleString():data.discountPrice.toLocaleString())}
                   </h4>
                   <h3 className={`${styles.price}`} >
-                    {"₦" + data.originalPrice?.toLocaleString() ? data.originalPrice?.toLocaleString()  : null}
+                    {( data.discountPrice != 0? data.originalPrice?.toLocaleString()  : null)}
+                    {/* {"₦" + ( data.originalPrice?.toLocaleString() ? data.originalPrice?.toLocaleString()  : null)} */}
                   </h3>
                 </div>
 

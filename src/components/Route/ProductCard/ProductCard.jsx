@@ -93,14 +93,10 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
           <div className="py-2 px-3 flex items-center justify-between">
             <div className="flex">
             <h5 className="pr-1 font-bold  text-gray-800" style={{fontSize:"1.3rem",fontWeight:"500"}}>
-              ₦{data.originalPrice === 0
-                ? data.originalPrice
-                : data.discountPrice.toLocaleString()}
+              {'₦' + (data.discountPrice === 0?data.originalPrice.toLocaleString():data.discountPrice.toLocaleString())}
             </h5>
             <h4 className="text-[0.55rem] line-through hidden sm:block text-red-400">
-              {data.originalPrice
-                ? "₦" + data.originalPrice.toLocaleString()
-                : null}
+              {( data.discountPrice != 0? '₦' + data.originalPrice?.toLocaleString()  : null)}
             </h4>
             </div>
             <span className="hidden sm:block font-semibold pl-2 text-xs text-[#68d284]">
