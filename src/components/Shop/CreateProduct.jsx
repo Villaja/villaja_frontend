@@ -402,17 +402,28 @@ const CreateProduct = () => {
       </select>
     </div>
 
+
+
     <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">Internal Memory Size</label>
-    <input
-      type="text"
-      name="internalMemory"
-      value={internalMemory}
-      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
-      onChange={(e) => setInternalMemory(e.target.value)}
-      placeholder="e.g. ROM and Hard drive..."
-    />
-  </div>
+      <label className="pb-2">Internal Memory Size</label>
+      <select
+        name="internalMemory"
+        value={internalMemory}
+        onChange={(e) => setInternalMemory(e.target.value)}
+        className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+      >
+        <option value="" disabled hidden>ROM and Hard Drive Size...</option>
+        <option value="32GB ROM">32GB ROM</option>
+        <option value="64GB ROM">64GB ROM</option>
+        <option value="128GB ROM">128GB ROM</option>
+        <option value="256GB ROM">256GB ROM</option>
+        <option value="512GB ROM">512GB ROM</option>
+        <option value="1TB ROM">1TB ROM</option>
+        {/* Add more memory size options as needed */}
+      </select>
+    </div>
+
+   
 
     <div className="w-full sm:w-1/2 px-2">
       <label className="pb-2">Memory Size</label>

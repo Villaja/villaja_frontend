@@ -151,7 +151,7 @@ const Header = ({ activeHeading }) => {
              
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="Search Villaja..."
                 value={searchTerm}
                 onChange={handleSearchChange}
                 className="h-[44px] w-full px-2  pl-8 text-base border-[2px] rounded-lg"
