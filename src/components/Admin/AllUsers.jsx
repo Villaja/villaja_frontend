@@ -64,7 +64,7 @@ const AllUsers = () => {
     },
     {
       field: "role",
-      headerName: "User Role",
+      headerName: "Verified",
       type: "text",
       minWidth: 130,
       flex: 0.7,
@@ -106,7 +106,7 @@ const AllUsers = () => {
           id: item._id,
         name: `${item.firstname + ' ' + item.lastname}`,
         email: item.email,
-        role: item.role,
+        role: item.isEmailVerified,
         joinedAt: item.createdAt.slice(0, 10),
         })
     }))
@@ -119,7 +119,7 @@ const AllUsers = () => {
           id: item._id,
         name:  `${item.firstname + ' ' + item.lastname}`,
         email: item.email,
-        role: item.role,
+        role: item.isEmailVerified,
         joinedAt: item.createdAt.slice(0, 10),
       })
     }))
@@ -132,7 +132,7 @@ const AllUsers = () => {
         id: item._id,
         name: item.name,
         email: item.email,
-        role: item.role,
+        role: item.isEmailVerified,
         joinedAt: item.createdAt.slice(0, 10),
       });
     });
