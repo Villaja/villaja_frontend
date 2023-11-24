@@ -321,7 +321,7 @@ const Header = ({ activeHeading }) => {
           <div className=''>
         <div className="w-full h-[60px] flex items-center justify-between" style={{transition:"all 0.3s ease"}}>
 
-          <div className='flex items-center'>
+          <div className=''>
             {
               !open?
               <svg width="25" height="25" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-4" onClick={() => setOpen(true)}>
@@ -335,6 +335,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpen(false)}
                 />
             }
+          </div>
             <div className='ml-[20px]'>
               <Link to="/">
                 <p className="text-xl font-bold ">
@@ -342,14 +343,13 @@ const Header = ({ activeHeading }) => {
                 </p>
               </Link>
             </div>
-          </div>
 
           <div className='mr-[15px] flex justify-between ' style={{alignItems:"center",gap:"1rem"}}>
-            {/* <div style={{cursor:'pointer'}} onClick={() => setMobileSearch(true)}>
+            <div style={{cursor:'pointer'}} onClick={() => setMobileSearch(true)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 25 25" fill="none">
                 <path d="M10.0667 18.8516C11.8416 18.8512 13.5655 18.257 14.9637 17.1636L19.3596 21.5596L20.7737 20.1456L16.3777 15.7496C17.4717 14.3512 18.0662 12.627 18.0667 10.8516C18.0667 6.44056 14.4776 2.85156 10.0667 2.85156C5.65565 2.85156 2.06665 6.44056 2.06665 10.8516C2.06665 15.2626 5.65565 18.8516 10.0667 18.8516ZM10.0667 4.85156C13.3757 4.85156 16.0667 7.54256 16.0667 10.8516C16.0667 14.1606 13.3757 16.8516 10.0667 16.8516C6.75765 16.8516 4.06665 14.1606 4.06665 10.8516C4.06665 7.54256 6.75765 4.85156 10.0667 4.85156Z" fill="#111111"/>
               </svg>
-            </div> */}
+            </div>
             <div className='mr-[5px]'>
               <div
                 className="relative"
@@ -382,7 +382,7 @@ const Header = ({ activeHeading }) => {
 
           {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
           </div>
-          <div className=' pb-[0.8rem] px-[1rem] '>
+          {/* <div className=' pb-[0.8rem] px-[1rem] '>
             <div className='relative rounded-[24px] border border-[#e4dcdc] flex items-center overflow-hidden p-[0.2rem] px-[0.5rem]'>
 
               <AiOutlineSearch
@@ -398,7 +398,7 @@ const Header = ({ activeHeading }) => {
                   onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
                   />
             </div>
-          </div>
+          </div> */}
         </div>
         }
 
