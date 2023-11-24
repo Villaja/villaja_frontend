@@ -38,6 +38,12 @@ const CreateProduct = () => {
   const [inTheBox, setInTheBox] = useState(""); // Add inTheBox state
   const [minDelivery, setMinDelivery] = useState(""); // Add minDelivery state
   const [maxDelivery, setMaxDelivery] = useState(""); // Add maxDelivery state
+  const [connectivityDropdownVisible, setConnectivityDropdownVisible] = useState(false);
+  const [selectedConnectivity, setSelectedConnectivity] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  
+
+
 
   useEffect(() => {
     if (error) {
@@ -66,6 +72,7 @@ const CreateProduct = () => {
       reader.readAsDataURL(file);
     });
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,6 +155,18 @@ const CreateProduct = () => {
       setLoading(false);
     }
   };
+
+ 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setSelectedCategory(e.target.value);
+  };
+
+  const phoneDisplaySizes = [
+    "1 inch", "2 inches", "3 inches", "4 inches", " 5 inches", "6 inches", "7 inches",
+    "8 inches", "9 inches", "10 inches", "11 inches", "12 inches", "13 inches", "14 inches",
+    "15 inches", "16 inches", "17 inches", "18 inches", "19 inches", "20 inches", "21 inches"
+  ];
   
   
   
@@ -191,23 +210,24 @@ const CreateProduct = () => {
     </div>
     <br />
     <div>
-      <label className="pb-2">
-        Category <span className="text-red-500">*</span>
-      </label>
-      <select
-        className="w-full mt-2 border py-3 rounded-[5px]"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      >
-        <option value="">Choose a category</option>
-        {categoriesData &&
-          categoriesData.map((i) => (
-            <option value={i.title} key={i.title}>
-              {i.title}
-            </option>
-          ))}
-      </select>
-    </div>
+        <label className="pb-2">
+          Category <span className="text-red-500">*</span>
+        </label>
+        <select
+          className="w-full mt-2 border py-3 rounded-[5px]"
+          value={category}
+          onChange={handleCategoryChange}
+        >
+          <option value="">Choose a category</option>
+          {categoriesData &&
+            categoriesData.map((i) => (
+              <option value={i.title} key={i.title}>
+                {i.title}
+              </option>
+            ))}
+        </select>
+      </div>
+      
     <br />
     <div>
       <label className="pb-2">Tags</label>
@@ -241,33 +261,44 @@ const CreateProduct = () => {
           value={discountPrice}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
-          placeholder="price with discount..."
+          placeholder="if no discount set original price..."
+          
         />
       </div>
     </div>
     <div className="flex justify-between">
       <div className="w-[48%]">
         <label className="pb-2">Product Stock <span className="text-red-500">*</span></label>
-        <input
-          type="number"
+        <select
           name="stock"
           value={stock}
-          className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setStock(e.target.value)}
-          placeholder="Enter stock No..."
-        />
+          className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option value="" disabled hidden>Select stock No...</option>
+          {[...Array(10)].map((_, index) => (
+            <option key={index + 1} value={index + 1}>
+              {index + 1}
+            </option>
+          ))}
+        </select>
       </div>
       {/* Add the additional input fields here */}
       <div className="w-[48%]">
         <label className="pb-2">Condition</label>
-        <input
-          type="text"
+        <select
           name="condition"
           value={condition}
-          className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setCondition(e.target.value)}
-          placeholder="new, used or refurbished..."
-        />
+          className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option value="" disabled hidden>Select Condition...</option>
+          <option value="Brand New">Brand New</option>
+          <option value="Open Box">Open Box</option>
+          <option value="Refurbished">Refurbished</option>
+          <option value="Uk Used">Uk Used</option>
+          <option value="Pre-owned">Pre-owned</option>
+        </select>
       </div>
       {/* Add more input fields here */}
     </div>
@@ -312,17 +343,22 @@ const CreateProduct = () => {
   </div>
 
   <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">Display Size</label>
-    <input
-      type="text"
-      name="displaySize"
-      value={displaySize}
-      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
-      onChange={(e) => setDisplaySize(e.target.value)}
-      placeholder="Enter product display size..."
-    />
-  </div>
-
+          <label className="pb-2">Display Size</label>
+          <select
+            name="displaySize"
+            value={displaySize}
+            onChange={(e) => setDisplaySize(e.target.value)}
+            className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+            
+          >
+            <option value="" disabled hidden>Select Display Size...</option>
+            {phoneDisplaySizes.map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div>
   <div className="w-full sm:w-1/2 px-2">
     <label className="pb-2">Color</label>
     <input
@@ -336,30 +372,38 @@ const CreateProduct = () => {
   </div>
 
   <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">OS</label>
-    <input
-      type="text"
-      name="os"
-      value={os}
-      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
-      onChange={(e) => setOS(e.target.value)}
-      placeholder="Enter product OS..."
-    />
-  </div>
+      <label className="pb-2">OS</label>
+      <select
+        name="os"
+        value={os}
+        onChange={(e) => setOS(e.target.value)}
+        className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+      >
+        <option value="" disabled hidden>Select OS...</option>
+        <option value="Android OS">Android OS</option>
+        <option value="IOS">IOS</option>
+        <option value="Mac OS">Mac OS</option>
+        <option value="Windows xp OS">Windows xp OS</option>
+        <option value="Windows Vista OS">Windows Vista OS</option>
+        <option value="Windows 7 OS">Windows 7 OS</option>
+        <option value="Windows 7 Professional OS">Windows 7 Professional OS</option>
+        <option value="Windows 8 OS">Windows 8 OS</option>
+        <option value="Windows 10 Home OS">Windows 10 OS</option>
+        <option value="Windows 10 Education OS">Windows 10 Education OS</option>
+        <option value="Windows 10 Pro OS">Windows 10 Pro OS</option>
+        <option value="Windows 11 Home OS">Windows 11 Home OS</option>
+        <option value="Windows 11 Pro OS">Windows 11 Pro OS</option>
+        <option value="Linux OS">Linux OS</option>
+        <option value="Chrome OS">Chrome OS</option>
+        <option value="Ubuntu OS">Ubuntu OS</option>
+        <option value="FreeDOS">FreeDOS</option>
 
-  <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">Memory Size</label>
-    <input
-      type="text"
-      name="memorySize"
-      value={memorySize}
-      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
-      onChange={(e) => setMemorySize(e.target.value)}
-      placeholder="e.g. RAM "
-    />
-  </div>
-  <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">Internal Memory</label>
+        {/* Add more OS options as needed */}
+      </select>
+    </div>
+
+    <div className="w-full sm:w-1/2 px-2">
+    <label className="pb-2">Internal Memory Size</label>
     <input
       type="text"
       name="internalMemory"
@@ -370,41 +414,83 @@ const CreateProduct = () => {
     />
   </div>
 
+    <div className="w-full sm:w-1/2 px-2">
+      <label className="pb-2">Memory Size</label>
+      <select
+        name="memorySize"
+        value={memorySize}
+        onChange={(e) => setMemorySize(e.target.value)}
+        className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+        placeholder="e.g. 3G, 4G, 5G, if any..."
+      >
+        <option value="" disabled hidden>Select Memory Size...</option>
+        <option value="2GB">2GB</option>
+        <option value="4GB">4GB</option>
+        <option value="8GB">8GB</option>
+        <option value="12GB">12GB</option>
+        <option value="16GB">16GB</option>
+        <option value="20GB">20GB</option>
+        <option value="32GB">32GB</option>
+        <option value="64GB">64GB</option>
+        {/* Add more memory size options as needed */}
+      </select>
+    </div>
+
   <div className="w-full sm:w-1/2 px-2">
     <label className="pb-2">Cellular Technology</label>
-    <input
+    <select
       type="text"
       name="cellularTechnology"
       value={cellularTechnology}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setCellularTechnology(e.target.value)}
       placeholder="e.g. 3G, 4G, 5G, if any..."
-    />
+    >
+        <option value="" disabled hidden>select 3G, 4G, 5G, if any...</option>
+        <option value="2G">2G</option>
+        <option value="3G">3G</option>
+        <option value="4G LITE">4G LITE</option>
+        <option value="5G LITE">5G LITE</option>
+     </select>
   </div>
 
   <div className="w-full sm:w-1/2 px-2">
     <label className="pb-2">Connectivity Technology</label>
-    <input
+    <select
       type="text"
       name="connectivityTechnology"
       value={connectivityTechnology}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setConnectivityTechnology(e.target.value)}
       placeholder="e.g. Bluetooth and wifi type,..."
-    />
+    >
+      <option value="" disabled hidden>select connectivity technology...</option>
+        <option value="Bluetooth Only">Bluetooth Only</option>
+        <option value="Wifi Only">Wifi Only</option>
+        <option value="Bluetooth and Wifi">Bluetooth and Wifi</option>
+     </select>
   </div>
 
-  <div className="w-full sm:w-1/2 px-2">
-    <label className="pb-2">SIM Card</label>
-    <input
-      type="text"
+    <div className="w-full sm:w-1/2 px-2">
+  <label className="pb-2">SIM Card</label>
+  <div style={{ position: 'relative' }}>
+    <select
       name="simCard"
       value={simCard}
-      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setSimCard(e.target.value)}
-      placeholder="e.g. unlocked or not (if any)..."
-    />
+      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+    >
+      <option value="" disabled hidden>Select SIM Card Type...</option>
+      <option value="Nano Sim Factory Unlocked">Nano Sim Factory Unlocked</option>
+      <option value="Dual Sim Factory Unlocked">Dual Sim Factory Unlocked</option>
+      <option value="e-Sim Factory Unlocked">e-Sim Factory Unlocked</option>
+      <option value="Nano Sim Factory Locked">Nano Sim Factory Locked</option>
+      <option value="Dual Sim Factory Locked">Dual Sim Factory Locked</option>
+      <option value="e-Sim Factory Locked">e-Sim Factory Locked</option>
+      {/* Add more SIM card options as needed */}
+    </select>
   </div>
+</div>
 
   <div className="w-full sm:w-1/2 px-2">
     <label className="pb-2">Dimensions</label>

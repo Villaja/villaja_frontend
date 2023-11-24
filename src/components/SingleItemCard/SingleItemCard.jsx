@@ -37,7 +37,7 @@ const SingleItemCard = ({data,itemDisplay}) => {
             <img src={`${data.images && data.images[0]?.url}`} alt="asdf" />
         </div>
         <div className="single-item-body">
-            <div className="si-body-name">{data.name.length > 40 ? data.name.slice(0, 40) + "..." : data.name}</div>
+            <div className="si-body-name !h-[6ch]">{data.name.length > 35 ? data.name.slice(0, 35) + "..." : data.name}</div>
             <div className="si-body-price">₦{data.originalPrice === 0
                 ? data.originalPrice
                 : data.discountPrice.toLocaleString()}</div>

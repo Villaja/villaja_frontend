@@ -117,14 +117,14 @@ const Header = ({ activeHeading }) => {
     };
   }, []);
   return (
-    <nav>
+    <nav className='sticky top-0 z-[10000]'>
       <div className={`${styles.section}`}>
         
       </div>
       <div
         className={`${
           active === true ? "vh-header-wrapper " : null
-        } vh-header-wrapper heading bg-white transition hidden 800px:flex`}
+        } vh-header-wrapper heading bg-white transition hidden 800px:flex `}
       >
         <div
           className={`vh-header-container`}
@@ -144,10 +144,10 @@ const Header = ({ activeHeading }) => {
               <img src={villajaLogoHeader} alt="" />
           </Link>
 
-          <div className="vh-item-header-search">
-            <div className='hero-search-wrapper'>
+          <div className="vh-item-header-search ">
+            <div className='hero-search-wrapper relative'>
 
-            <div className="w-[100%] relative">
+            <div className="w-[100%] ">
              
               <input
                 type="text"
@@ -164,13 +164,16 @@ const Header = ({ activeHeading }) => {
                     searchData.slice(0,7).map((i, index) => {
                       return (
                         <Link to={`/product/${i._id}`} key={index}>
-                          <div className="w-full flex items-start-py-3">
+                          <div className="w-full flex items-start-py-3 mb-2">
+                            <div className='w-[40px] min-w-[40px] h-[40px] relative mr-[20px]'>
+
                             <img
                               src={`${i.images[0]?.url}`}
                               alt=""
-                              className="w-[40px] h-[40px] mr-[10px]"
-                            />
-                            <h1>{i.name}</h1>
+                              className="w-full h-full object-contain "
+                              />
+                            </div>
+                            <h1>{i.name.length > 40 ? i.name.slice(0, 40) + "..." : i.name}</h1>
                           </div>
                         </Link>
                       );
@@ -261,7 +264,7 @@ const Header = ({ activeHeading }) => {
         className={`${
           active === true ? "shadow-sm fixed top-0 left-0 z-10 " : null
         }
-      w-full h-[60px] ${mobileSearch?'bg-[#111]':'bg-[#fff]'} z-50 top-0 left-0 shadow-sm 800px:hidden`}
+      w-full ${mobileSearch?'bg-[#111] h-[60px]':'bg-[#fff]'} z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         {
           mobileSearch ? 
@@ -292,8 +295,9 @@ const Header = ({ activeHeading }) => {
             
               
               
+                <div className="absolute w-full min-h-[125vh] bg-slate-50 shadow-sm-2 z-[9] p-4" style={{top:"60px",zIndex:"100000"}}>
               {searchData && searchData.length !== 0 ? (
-                <div className="absolute w-full min-h-[125vh] bg-slate-50 shadow-sm-2 z-[9] p-4" style={{top:"4rem",zIndex:"100000"}}>
+                <>
                   {searchData &&
                     searchData.slice(0,7).map((i, index) => {
                       return (
@@ -308,24 +312,21 @@ const Header = ({ activeHeading }) => {
                         </Link>
                       );
                     })}
-                </div>
-              ) : null}
+                </>
+
+                    ) : null}
+                    </div>
             </div>
           :
-        <div className="w-full h-[44px] flex items-center mt-3 justify-between" style={{transition:"all 0.3s ease"}}>
-          <div>
+          <div className=''>
+        <div className="w-full h-[60px] flex items-center justify-between" style={{transition:"all 0.3s ease"}}>
+
+          <div className='flex items-center'>
             {
               !open?
               <svg width="25" height="25" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-4" onClick={() => setOpen(true)}>
-<path d="M1.33333 0.183594H8C8.35362 0.183594 8.69276 0.32407 8.94281 0.574118C9.19286 0.824167 9.33333 1.16331 9.33333 1.51693C9.33333 1.87055 9.19286 2.20969 8.94281 2.45974C8.69276 2.70978 8.35362 2.85026 8 2.85026H1.33333C0.979711 2.85026 0.640573 2.70978 0.390524 2.45974C0.140476 2.20969 0 1.87055 0 1.51693C0 1.16331 0.140476 0.824167 0.390524 0.574118C0.640573 0.32407 0.979711 0.183594 1.33333 0.183594ZM10.6667 10.8503H17.3333C17.687 10.8503 18.0261 10.9907 18.2761 11.2408C18.5262 11.4908 18.6667 11.83 18.6667 12.1836C18.6667 12.5372 18.5262 12.8764 18.2761 13.1264C18.0261 13.3765 17.687 13.5169 17.3333 13.5169H10.6667C10.313 13.5169 9.97391 13.3765 9.72386 13.1264C9.47381 12.8764 9.33333 12.5372 9.33333 12.1836C9.33333 11.83 9.47381 11.4908 9.72386 11.2408C9.97391 10.9907 10.313 10.8503 10.6667 10.8503ZM1.33333 5.51693H17.3333C17.687 5.51693 18.0261 5.6574 18.2761 5.90745C18.5262 6.1575 18.6667 6.49664 18.6667 6.85026C18.6667 7.20388 18.5262 7.54302 18.2761 7.79307C18.0261 8.04312 17.687 8.18359 17.3333 8.18359H1.33333C0.979711 8.18359 0.640573 8.04312 0.390524 7.79307C0.140476 7.54302 0 7.20388 0 6.85026C0 6.49664 0.140476 6.1575 0.390524 5.90745C0.640573 5.6574 0.979711 5.51693 1.33333 5.51693Z" fill="black"/>
-</svg>
-
-              // <CgMenuLeft
-              // size={30}
-              // className="ml-4"
-              // style={{transition:"all 0.3s ease"}}
-              // onClick={() => setOpen(true)}
-              // />
+              <path d="M1.33333 0.183594H8C8.35362 0.183594 8.69276 0.32407 8.94281 0.574118C9.19286 0.824167 9.33333 1.16331 9.33333 1.51693C9.33333 1.87055 9.19286 2.20969 8.94281 2.45974C8.69276 2.70978 8.35362 2.85026 8 2.85026H1.33333C0.979711 2.85026 0.640573 2.70978 0.390524 2.45974C0.140476 2.20969 0 1.87055 0 1.51693C0 1.16331 0.140476 0.824167 0.390524 0.574118C0.640573 0.32407 0.979711 0.183594 1.33333 0.183594ZM10.6667 10.8503H17.3333C17.687 10.8503 18.0261 10.9907 18.2761 11.2408C18.5262 11.4908 18.6667 11.83 18.6667 12.1836C18.6667 12.5372 18.5262 12.8764 18.2761 13.1264C18.0261 13.3765 17.687 13.5169 17.3333 13.5169H10.6667C10.313 13.5169 9.97391 13.3765 9.72386 13.1264C9.47381 12.8764 9.33333 12.5372 9.33333 12.1836C9.33333 11.83 9.47381 11.4908 9.72386 11.2408C9.97391 10.9907 10.313 10.8503 10.6667 10.8503ZM1.33333 5.51693H17.3333C17.687 5.51693 18.0261 5.6574 18.2761 5.90745C18.5262 6.1575 18.6667 6.49664 18.6667 6.85026C18.6667 7.20388 18.5262 7.54302 18.2761 7.79307C18.0261 8.04312 17.687 8.18359 17.3333 8.18359H1.33333C0.979711 8.18359 0.640573 8.04312 0.390524 7.79307C0.140476 7.54302 0 7.20388 0 6.85026C0 6.49664 0.140476 6.1575 0.390524 5.90745C0.640573 5.6574 0.979711 5.51693 1.33333 5.51693Z" fill="black"/>
+              </svg>
               :
               <RxCross1
                 size={25}
@@ -334,21 +335,21 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpen(false)}
                 />
             }
-          </div>
-          <div className='ml-[30px]'>
-            <Link to="/">
-              <p className="text-xl font-bold ">
-                <img src={villajaLogoHeader} alt="" />
-              </p>
-            </Link>
+            <div className='ml-[20px]'>
+              <Link to="/">
+                <p className="text-xl font-bold ">
+                  <img src={villajaLogoHeader} alt="" />
+                </p>
+              </Link>
+            </div>
           </div>
 
           <div className='mr-[15px] flex justify-between ' style={{alignItems:"center",gap:"1rem"}}>
-            <div style={{cursor:'pointer'}} onClick={() => setMobileSearch(true)}>
+            {/* <div style={{cursor:'pointer'}} onClick={() => setMobileSearch(true)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 25 25" fill="none">
                 <path d="M10.0667 18.8516C11.8416 18.8512 13.5655 18.257 14.9637 17.1636L19.3596 21.5596L20.7737 20.1456L16.3777 15.7496C17.4717 14.3512 18.0662 12.627 18.0667 10.8516C18.0667 6.44056 14.4776 2.85156 10.0667 2.85156C5.65565 2.85156 2.06665 6.44056 2.06665 10.8516C2.06665 15.2626 5.65565 18.8516 10.0667 18.8516ZM10.0667 4.85156C13.3757 4.85156 16.0667 7.54256 16.0667 10.8516C16.0667 14.1606 13.3757 16.8516 10.0667 16.8516C6.75765 16.8516 4.06665 14.1606 4.06665 10.8516C4.06665 7.54256 6.75765 4.85156 10.0667 4.85156Z" fill="#111111"/>
               </svg>
-            </div>
+            </div> */}
             <div className='mr-[5px]'>
               <div
                 className="relative"
@@ -380,6 +381,24 @@ const Header = ({ activeHeading }) => {
           {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
 
           {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
+          </div>
+          <div className=' pb-[0.8rem] px-[1rem] '>
+            <div className='relative rounded-[24px] border border-[#e4dcdc] flex items-center overflow-hidden p-[0.2rem] px-[0.5rem]'>
+
+              <AiOutlineSearch
+                  size={20}
+                  className=" cursor-pointer"
+                  />
+              <input
+                  type="text"
+                  placeholder="Search Products "
+                  value={searchTerm}
+                  onClick={() => setMobileSearch(true)}
+                  className="h-[35px] w-[100%] px-2 text-base border-gray-200 border-[2px] rounded-md mobile-search-wrapper"
+                  onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
+                  />
+            </div>
+          </div>
         </div>
         }
 

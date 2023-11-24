@@ -143,16 +143,16 @@ const ProductDetails = ({ data }) => {
 
   return (
     
-    <div className="">
+    <div className="min-h-[100vh]">
       {data ? (
-      <div className={`${styles.section} w-[90%] px-3 sm:px-10 800px:w-[100%]`}>
-          <div className="w-full pt-10">
+      <div className={`${styles.section} w-[90%] max-w-[1756px] mx-auto px-3 sm:px-10 800px:w-[100%]`}>
+          <div className="w-full pt-10 ">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-            <div className="w-full 800px:w-[50%] " style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
+            <div className="w-full 800px:w-[50%] h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
                src={`${data && data.images[select]?.url}`}
                alt=""
-               className="w-full lg:w-[60%] bg-white mb-5 rounded-md shadow-md"
+               className="w-full h-[530px] object-contain lg:w-[60%] bg-white p-4 mb-5 rounded-md shadow-md"
              />
              
              <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
@@ -162,12 +162,12 @@ const ProductDetails = ({ data }) => {
                                      key={index}
                                      className={`${
                                       select === index ? "null" : "null"
-                                    } cursor-pointer bg-white px-3 py-2 product-images-small`}
+                                    } cursor-pointer bg-white  product-images-small w-[70px] h-[70px] relative flex items-center justify-center`}
                                    >
                                      <img
                                        src={`${i?.url}`}
                                        alt=""
-                                       className="h-[60px] overflow-hidden"
+                                       className="h-[90%] w-[90%] overflow-hidden object-contain"
                                        onClick={() => setSelect(index)}
                                      />
                                    </div>
@@ -180,9 +180,9 @@ const ProductDetails = ({ data }) => {
                              </div>
 
               </div>
-              <div className="w-full  px-4 rounded-lg shadow-sm 800px:w-[50%] pt-5">
+              <div className="w-full  800px:px-4 rounded-lg shadow-sm 800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
-                <p className="mb-[2rem] 800px:mb-[2rem] flex gap-1 mt-3 font-semibold text-lg text-gray-600"><span>{data.condition}</span> <BiTag/></p>
+                <p className="mb-[2rem] 800px:mb-[2rem] flex items-center gap-1 mt-3 font-semibold text-lg text-gray-600"><span>{data.condition}</span> <BiTag/></p>
                 <div className="mb-[1.2rem] mt-0 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
@@ -192,10 +192,11 @@ const ProductDetails = ({ data }) => {
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
                   <h4 className={`${styles.productDiscountPrice} !text-[1.7rem] min-[500px]:!text-[2.6rem]`}>
-                    ₦{data.discountPrice.toLocaleString()}
+                    {'₦' + (data.discountPrice === 0?data.originalPrice.toLocaleString():data.discountPrice.toLocaleString())}
                   </h4>
                   <h3 className={`${styles.price}`} >
-                    {"₦" + data.originalPrice?.toLocaleString() ? data.originalPrice?.toLocaleString()  : null}
+                    {( data.discountPrice != 0? data.originalPrice?.toLocaleString()  : null)}
+                    {/* {"₦" + ( data.originalPrice?.toLocaleString() ? data.originalPrice?.toLocaleString()  : null)} */}
                   </h3>
                 </div>
 
@@ -241,7 +242,7 @@ const ProductDetails = ({ data }) => {
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<p className="text-red-500 font-bold text-lg">Out Of Stock<span className="text-xl"> X </span></p>}
                 </div>
                 <div
-            className={`addToCart-btn  ${styles.button} w-[100%] mt-28 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
+            className={`addToCart-btn  ${styles.button} w-[100%] mt-16 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
             onClick={() => addToCartHandler(data._id)}
             disabled={data.stock < 1}
           >
@@ -384,7 +385,7 @@ const ProductDetails = ({ data }) => {
           <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
-      ) : <div><LoadingSkelenton/></div>}
+      ) : <div className="max-w-[1756px] mx-auto"><LoadingSkelenton/></div>}
     </div>
   );
 };
