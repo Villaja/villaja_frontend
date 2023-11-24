@@ -28,6 +28,7 @@ const CreateProduct = () => {
   const [color, setColor] = useState(""); // Add color state
   const [os, setOS] = useState(""); // Add OS state
   const [memorySize, setMemorySize] = useState(""); // Add memorySize state
+  const [internalMemory, setInternalMemory] = useState(""); // Add memorySize state
   const [cellularTechnology, setCellularTechnology] = useState(""); // Add cellularTechnology state
   const [connectivityTechnology, setConnectivityTechnology] = useState(""); // Add connectivityTechnology state
   const [simCard, setSimCard] = useState(""); // Add simCard state
@@ -91,6 +92,7 @@ const CreateProduct = () => {
     newForm.append("color", color);
     newForm.append("os", os);
     newForm.append("memorySize", memorySize);
+    newForm.append("internalMemory", internalMemory);
     newForm.append("cellularTechnology", cellularTechnology);
     newForm.append("connectivityTechnology", connectivityTechnology);
     newForm.append("simCard", simCard);
@@ -123,6 +125,7 @@ const CreateProduct = () => {
           color,
           os,
           memorySize,
+          internalMemory,
           cellularTechnology,
           connectivityTechnology,
           simCard,
@@ -352,7 +355,18 @@ const CreateProduct = () => {
       value={memorySize}
       className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       onChange={(e) => setMemorySize(e.target.value)}
-      placeholder="e.g. RAM and Hard drive..."
+      placeholder="e.g. RAM "
+    />
+  </div>
+  <div className="w-full sm:w-1/2 px-2">
+    <label className="pb-2">Internal Memory</label>
+    <input
+      type="text"
+      name="internalMemory"
+      value={internalMemory}
+      className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
+      onChange={(e) => setInternalMemory(e.target.value)}
+      placeholder="e.g. ROM and Hard drive..."
     />
   </div>
 

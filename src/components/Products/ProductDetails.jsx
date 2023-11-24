@@ -448,7 +448,8 @@ const ProductDetailsInfo = ({
             <p>Display Size: {data.displaySize}</p>
             <p>Color: {data.color}</p>
             <p>OS: {data.os}</p>
-            <p>Memory Storage Capacity: {data.memorySize}</p>
+            <p>Memory Storage Capacity(RAM): {data.memorySize}</p>
+            <p>Internal Storage Capacity(ROM): {data.internalMemory}</p>
             <p>Cellular Technology: {data.cellularTechnology}</p>
             <p>Connectivity Technology: {data.connectivityTechnology}</p>
             <p>Sim Card: {data.simCard}</p>
