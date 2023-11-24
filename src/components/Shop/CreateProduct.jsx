@@ -274,11 +274,12 @@ const CreateProduct = () => {
           value={stock}
           onChange={(e) => setStock(e.target.value)}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          
         >
           <option value="" disabled hidden>Select stock No...</option>
           {[...Array(10)].map((_, index) => (
-            <option key={index + 1} value={index + 1}>
-              {index + 1}
+            <option key={index} value={index + 1}>
+               {index === 0 ? 'Select stock No...' : index}
             </option>
           ))}
         </select>
