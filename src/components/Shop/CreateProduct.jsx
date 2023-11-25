@@ -269,7 +269,7 @@ const CreateProduct = () => {
           value={discountPrice}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
-          placeholder="Enter Discount Price..."
+          placeholder="Enter Discount Price if any..."
           
         />
       </div>
@@ -588,7 +588,7 @@ const CreateProduct = () => {
     </div>
     <div>
 
-      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
+      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product if listing used products, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
       <input
         type="file"
         name=""
