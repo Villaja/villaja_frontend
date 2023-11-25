@@ -20,7 +20,7 @@ const UpdateProductDetails = () => {
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [originalPrice, setOriginalPrice] = useState();
-  const [discountPrice, setDiscountPrice] = useState(0);
+  const [discountPrice, setDiscountPrice] = useState("");
   const [stock, setStock] = useState();
   const [condition, setCondition] = useState(""); // Add condition state
   const [aboutProduct, setAboutProduct] = useState(""); // Add aboutProduct state
@@ -115,7 +115,7 @@ const UpdateProductDetails = () => {
       setCategory(category || "");
       setTags(tags || "");
       setOriginalPrice(originalPrice || "");
-      setDiscountPrice(discountPrice || 0);
+      setDiscountPrice(discountPrice || "");
       setStock(stock || "");
       setCondition(condition || "");
       setAboutProduct(aboutProduct || "");
@@ -184,7 +184,7 @@ const UpdateProductDetails = () => {
           category,
           tags,
           originalPrice,
-          discountPrice,
+          discountPrice:(discountPrice == ""?0:discountPrice),
           stock,
           images,
           condition,

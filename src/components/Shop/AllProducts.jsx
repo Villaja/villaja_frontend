@@ -1,12 +1,14 @@
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { deleteProduct } from "../../redux/actions/product";
 import Loader from "../Layout/Loader";
+import { toast } from "react-toastify";
+
 
 const AllProducts = () => {
   const { products, isLoading } = useSelector((state) => state.products);
@@ -18,9 +20,17 @@ const AllProducts = () => {
     dispatch(getAllProductsShop(seller._id));
   }, [dispatch]);
 
-  const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
-    // window.location.reload();
+  const handleDelete = async (id) => {
+    try{
+      await dispatch(deleteProduct(id));
+      window.location.reload();
+
+    }
+    catch(error)
+    {
+      toast.error(error)
+    }
+    
   };
 
   const columns = [
@@ -129,7 +139,7 @@ const AllProducts = () => {
       ) : (
         <div className="w-full mx-8 pt-1 mt-10 bg-white">
           <DataGrid
-            rows={row}
+            rows={row.reverse()}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
