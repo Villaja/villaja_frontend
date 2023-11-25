@@ -16,7 +16,7 @@ const CreateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [tags, setTags] = useState("");
+  const [tags, setTags] = useState();
   const [originalPrice, setOriginalPrice] = useState();
   const [discountPrice, setDiscountPrice] = useState();
   const [stock, setStock] = useState();
@@ -76,6 +76,11 @@ const CreateProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (images.length < 1)
+    {
+      toast.error('Upload images')
+      return
+    }
     setLoading(true);
   
     const newForm = new FormData();
@@ -145,9 +150,9 @@ const CreateProduct = () => {
         })
       );
   
-      toast.success("Product created successfully!");
-      navigate("/dashboard");
-      window.location.reload();
+      // toast.success("Product created successfully!");
+      // navigate("/dashboard");
+      // window.location.reload();
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -186,6 +191,7 @@ const CreateProduct = () => {
         type="text"
         name="name"
         value={name}
+        required
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter your product name and a short title..."
@@ -217,6 +223,7 @@ const CreateProduct = () => {
           className="w-full mt-2 border py-3 rounded-[5px]"
           value={category}
           onChange={handleCategoryChange}
+          required
         >
           <option value="">Choose a category</option>
           {categoriesData &&
@@ -243,25 +250,26 @@ const CreateProduct = () => {
     <br />
     <div className="flex justify-between">
       <div className="w-[48%]">
-        <label className="pb-2">Original Price</label>
+        <label className="pb-2">Original Price <span className="text-red-500">*</span></label>
         <input
           type="number"
           name="originalPrice"
           value={originalPrice}
+          required
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setOriginalPrice(e.target.value)}
           placeholder="Enter original price..."
         />
       </div>
       <div className="w-[48%]">
-        <label className="pb-2">Price (With Discount) <span className="text-red-500">*</span></label>
+        <label className="pb-2">Price (With Discount) </label>
         <input
           type="number"
           name="discountPrice"
           value={discountPrice}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
-          placeholder="if no discount set original price..."
+          placeholder="Enter Discount Price..."
           
         />
       </div>
@@ -274,6 +282,7 @@ const CreateProduct = () => {
           value={stock}
           onChange={(e) => setStock(e.target.value)}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          required
           
         >
           <option value="" disabled hidden>Select stock No...</option>

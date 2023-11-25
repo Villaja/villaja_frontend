@@ -32,6 +32,7 @@ export const createProduct = (productData) => async (dispatch) => {
       payload: data.product,
     });
   } catch (error) {
+    console.log(error.response);
     dispatch({
       type: "productCreateFail",
       payload: error.response.data.message,

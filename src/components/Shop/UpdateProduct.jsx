@@ -20,7 +20,7 @@ const UpdateProductDetails = () => {
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
   const [originalPrice, setOriginalPrice] = useState();
-  const [discountPrice, setDiscountPrice] = useState();
+  const [discountPrice, setDiscountPrice] = useState(0);
   const [stock, setStock] = useState();
   const [condition, setCondition] = useState(""); // Add condition state
   const [aboutProduct, setAboutProduct] = useState(""); // Add aboutProduct state
@@ -49,9 +49,9 @@ const UpdateProductDetails = () => {
       toast.error(error);
     }
     if (success) {
-    //   toast.success("Product created successfully!");
-    //   navigate("/dashboard");
-    //   window.location.reload();
+      toast.success("Product Updated successfully!");
+      navigate("/dashboard-products");
+      window.location.reload();
     console.log(success)
     }
   }, [dispatch, error, success]);
@@ -115,7 +115,7 @@ const UpdateProductDetails = () => {
       setCategory(category || "");
       setTags(tags || "");
       setOriginalPrice(originalPrice || "");
-      setDiscountPrice(discountPrice || "");
+      setDiscountPrice(discountPrice || 0);
       setStock(stock || "");
       setCondition(condition || "");
       setAboutProduct(aboutProduct || "");
@@ -208,10 +208,9 @@ const UpdateProductDetails = () => {
         })
       );
   
-      toast.success("Product updated successfully!");
+      // toast.success("Product updated successfully!");
       // Remove the following lines to prevent the page from reloading
-      navigate("/dashboard-products");
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -259,6 +258,7 @@ const UpdateProductDetails = () => {
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter your product name and a short title..."
+        required
       />
     </div>
     <br />
@@ -287,6 +287,7 @@ const UpdateProductDetails = () => {
           className="w-full mt-2 border py-3 rounded-[5px]"
           value={category}
           onChange={handleCategoryChange}
+          required
         >
           <option value="">Choose a category</option>
           {categoriesData &&
@@ -313,7 +314,7 @@ const UpdateProductDetails = () => {
     <br />
     <div className="flex justify-between">
       <div className="w-[48%]">
-        <label className="pb-2">Original Price</label>
+        <label className="pb-2">Original Price <span className="text-red-500">*</span> </label>
         <input
           type="number"
           name="originalPrice"
@@ -321,17 +322,18 @@ const UpdateProductDetails = () => {
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setOriginalPrice(e.target.value)}
           placeholder="Enter original price..."
+          required
         />
       </div>
       <div className="w-[48%]">
-        <label className="pb-2">Price (With Discount) <span className="text-red-500">*</span></label>
+        <label className="pb-2">Price (With Discount)</label>
         <input
           type="number"
           name="discountPrice"
           value={discountPrice}
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
-          placeholder="if no discount set original price..."
+          placeholder="Set discount price..."
           
         />
       </div>
@@ -637,7 +639,7 @@ const UpdateProductDetails = () => {
     </div>
     <div>
 
-      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
+      {/* <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
       <input
         type="file"
         name=""
@@ -659,12 +661,12 @@ const UpdateProductDetails = () => {
               className="h-[120px] w-[120px] object-cover m-2"
             />
           ))}
-      </div>
+      </div> */}
       <br />
       <div>
   <input
     type="submit"
-    value={loading ? "Loading..." : "Add Product"}
+    value={loading ? "Loading..." : "Update Product"}
     disabled={loading}
     className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
   />
