@@ -1,22 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect,} from 'react'
 import Header from "../components/Layout/Header";
-import VillajaHeader from '../components/VillajaHeader/VillajaHeader';
-import Hero from "../components/Route/Hero/Hero";
 import Categories from "../components/Route/Categories/Categories";
 import BestDeals from "../components/Route/BestDeals/BestDeals";
 import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct";
 import OfficialStoreDeals from "../components/Route/OfficialStoreDeals/OfficialStoreDeals";
 
-import Events from "../components/Events/Events";
-import Sponsored from "../components/Route/Sponsored";
-import Footer from "../components/Layout/Footer";
 import VillajaFooter from '../components/VillajaFooter/VillajaFooter';
-import ItemCatSection from '../components/ItemCatSection/ItemCatSection'
-import { items } from '../mock_data/Sample_Items'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
-import { server } from '../server';
-import { toast } from 'react-toastify';
 
 
 import './HomePage.css'
@@ -35,13 +26,13 @@ import Slider3 from '../assets/sliderImages/SliderMedia/galaxyVideo.webm'
 import Slider4 from '../assets/sliderImages/SliderMedia/SurfacePro.webp'
 import Slider5 from '../assets/sliderImages/SliderMedia/flipPhone.jpg'
 import Slider6 from '../assets/sliderImages/SliderMedia/alienwareHero.png'
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
 
 
 
 const HomePage = () => {
-  const { allProducts, bestProducts, myProducts } = useSelector((state) => state.products);
+  // const { allProducts, bestProducts, myProducts } = useSelector((state) => state.products);
 
    useEffect(() => {
     window.scrollTo(0, 0);

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ShopAccessories.css';
 
@@ -24,11 +23,11 @@ const ShopAccessories = () => {
   };
 
   return (
-    <div className="item-cat-container ">
+    <div className="item-cat-container w-[91.67%] mx-auto">
       <div className="ic-header">
-        <div className="item-cat-title sm:ml-6">Shop Accessories</div>
+        <div className="item-cat-title">Shop Accessories</div>
       </div>
-      <div className="accessories-ic-body grid mx-2 sm:mx-10">
+      <div className="accessories-ic-body grid ">
         
         {[
           { image: EarPhones, category: 'Earphones and Headphones' },

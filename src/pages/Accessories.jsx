@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../components/ShopAccessories/ShopAccessories.css'
 import EarPhones from '../components/ShopAccessories/AccessoryImages/earphones.svg'
@@ -14,6 +14,7 @@ import bags from '../components/ShopAccessories/AccessoryImages/bags.svg';
 import stands from '../components/ShopAccessories/AccessoryImages/stands.svg';
 import stylus from '../components/ShopAccessories/AccessoryImages/stylus.svg';
 import Header from '../components/Layout/Header'
+import VillajaFooter from '../components/VillajaFooter/VillajaFooter';
 
 
 function Accessories() {
@@ -22,10 +23,14 @@ function Accessories() {
     const handleCategoryClick = (category) => {
       navigate(`/products?category=${category}`);
     };
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div>
+    <div className=''>
         <Header/>
-         <div className="item-cat-container mx-2 sm:mx-12">
+         <div className="item-cat-container w-[91.67%] mx-auto min-h-[75vh]">
       <div className="ic-header">
         <div className="item-cat-title">Shop Accessories</div>
       </div>
@@ -58,6 +63,8 @@ function Accessories() {
         ))}
       </div>
     </div>
+
+    <VillajaFooter/>
     </div>
   )
 }

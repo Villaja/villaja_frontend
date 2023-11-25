@@ -2,15 +2,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Layout/Header'
 import VillajaFooter from '../../components/VillajaFooter/VillajaFooter'
-import { RxCross1 } from "react-icons/rx";
+// import { RxCross1 } from "react-icons/rx";
 // import { IoBagHandleOutline } from "react-icons/io5";
-import { HiOutlineMinus, HiPlus } from "react-icons/hi";
+// import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { addTocart, removeFromCart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import './CartPage.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const CartPage = () => {
 
@@ -31,11 +31,15 @@ const CartPage = () => {
     dispatch(addTocart(data));
   };
 
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <>
       <Header/>
-      <div className="cart-page-wrapper p-[1rem]">
+      <div className="cart-page-wrapper w-[91.67%] mx-auto max-w-[1665px] p-[1rem]">
         <div className="cart-page-container max-w-full py-1 py-3rem mx-auto my-0 flex justify-between gap-1rem flex-wrap">
           <div className='w-full max-w-[65rem] mb-[3rem]'>
 
@@ -121,7 +125,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             <img
               src={`${data?.images[0]?.url}`}
               alt=""
-              className="w-[100%] h-[100%] contain"
+              className="w-[100%] h-[100%] object-contain"
               
               />
           </div>
