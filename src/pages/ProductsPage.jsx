@@ -88,14 +88,14 @@ const ProductsPage = () => {
     if(allProducts){
       if(searchData)
       {
-        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
 
       }
       else
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.discountPrice >= priceFilter.min && i.discountPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber) )
+        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber) )
       }
     }
     console.log(allProducts);

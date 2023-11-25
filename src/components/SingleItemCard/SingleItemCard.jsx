@@ -38,8 +38,8 @@ const SingleItemCard = ({data,itemDisplay}) => {
         </div>
         <div className="single-item-body">
             <div className="si-body-name !h-[6ch]">{data.name.length > 35 ? data.name.slice(0, 35) + "..." : data.name}</div>
-            <div className="si-body-price">₦{data.originalPrice === 0
-                ? data.originalPrice
+            <div className="si-body-price">₦{data.discountPrice === 0
+                ? data.originalPrice.toLocaleString()
                 : data.discountPrice.toLocaleString()}</div>
             <Ratings rating={data.ratings}/>
         </div>
