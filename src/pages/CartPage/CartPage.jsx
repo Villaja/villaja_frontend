@@ -118,7 +118,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
 
   return (
     <div className="p-[1.2rem]">
-      <div className="w-full flex  justify-between gap-[1rem]">
+      <div className="w-full flex  justify-between gap-[0.8rem]">
 
         <div className='flex gap-[2.25rem] min-500px:pl-[1rem]'>
           <div className='w-[6rem] h-[6rem] relative shrink-0 '>
@@ -171,7 +171,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             {/* <h4 className="font-[400] text-[15px] text-[#00000082]">
             ₦{data.discountPrice.toLocaleString()} * {value}
             </h4> */}
-            <h4 className="font-[500] text-[1.125rem] text-[#111] font-Manrope">
+            <h4 className="font-[500] text-[0.8rem] min-[500px]:text-[1.125rem] text-[#111] font-Manrope">
             ₦{totalPrice}
             </h4>
           </div>
