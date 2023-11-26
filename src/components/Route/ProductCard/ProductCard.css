@@ -1,6 +1,6 @@
 .pc-container
 {
-    min-width: 220px;
+    /* min-width: 200px; */
     background-color: red;
       /* Set max-height for two lines of text */
       max-height: calc(2 * (10em)); /* Assuming line-height is 1.2 times the font-size */

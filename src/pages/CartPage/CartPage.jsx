@@ -118,10 +118,10 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
 
   return (
     <div className="p-[1.2rem]">
-      <div className="w-full flex  justify-between gap-[0.8rem]">
+      <div className="w-full flex  justify-between ">
 
-        <div className='flex gap-[2.25rem] min-500px:pl-[1rem]'>
-          <div className='w-[6rem] h-[6rem] relative shrink-0 '>
+        <div className='flex gap-[1rem] min-[400px]:gap-[2.25rem] min-500px:pl-[1rem]'>
+          <div className='max-[385px]:w-[4rem] w-[6rem] h-[6rem] relative shrink-0 '>
             <img
               src={`${data?.images[0]?.url}`}
               alt=""
@@ -129,9 +129,9 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
               
               />
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between shrink">
             
-            <h1 className="font-normal text-[0.8rem] min-[756px]:text-[1.2rem] ">{data.name}</h1>
+            <h1 className="font-normal text-[0.8rem] min-[756px]:text-[1.2rem] ">{data.name.length > 80 ? data.name.slice(0, 80) + "..." : data.name}</h1>
 
             <div className='flex items-center gap-[1rem]'>
               <div className='flex item-center gap-[2rem]'>
@@ -172,7 +172,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             ₦{data.discountPrice.toLocaleString()} * {value}
             </h4> */}
             <h4 className="font-[500] text-[0.8rem] min-[500px]:text-[1.125rem] text-[#111] font-Manrope min-w-[11ch] text-center">
-            ₦{totalPrice}
+            ₦{totalPrice.toLocaleString()}
             </h4>
           </div>
         
