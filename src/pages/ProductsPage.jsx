@@ -88,14 +88,14 @@ const ProductsPage = () => {
     if(allProducts){
       if(searchData)
       {
-        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber))
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
 
       }
       else
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)).slice(pageNumber-24,pageNumber) )
+        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
       }
     }
     console.log(allProducts);
@@ -143,7 +143,7 @@ const ProductsPage = () => {
 
                     <div className="cid-top-bar">
                       <div className="cid-top-catname text-xl  sm:text-2xl font-bold">
-                         {categoryData}
+                         {searchData?searchData:categoryData}
                       </div>
                       
                     </div>
@@ -154,7 +154,7 @@ const ProductsPage = () => {
                       </div>
                       <div className={`cid-main ${itemDisplay?"cid-main-tab":''}`}>
                       {
-                        data.map((item,id) => {
+                        data.slice(pageNumber-24,pageNumber).map((item,id) => {
                           return <div className="cid-item" key={id}>
                             <SingleItemCard data = {item} key={id} itemDisplay={itemDisplay}/>
                           </div>
@@ -167,8 +167,8 @@ const ProductsPage = () => {
                         <div className={`underNav-action underNav-previous ${pageNumber===24?'btn-inactive':""}`} onClick={() => {setPageNumber(pageNumber-24)}}>&#8249; &nbsp; &nbsp; previous</div>
                         <div className="underNav-current">{pageNumber/24}</div>
                         <div className="underNav-slash"> / </div>
-                        <div className="underNav-total">{Math.ceil(allCatProducts.length/24)}</div>
-                        <div className={`underNav-action underNav-next ${pageNumber>=allCatProducts.length?'btn-inactive':""}`} onClick={() => {setPageNumber(pageNumber+24)}}>Next &nbsp; &nbsp; &#8250;</div>
+                        <div className="underNav-total">{Math.ceil(data.length/24)}</div>
+                        <div className={`underNav-action underNav-next ${pageNumber>=data.length?'btn-inactive':""}`} onClick={() => {setPageNumber(pageNumber+24)}}>Next &nbsp; &nbsp; &#8250;</div>
                       </div>
                     </div>
                 </div> : <h1 className="text-center w-full pb-[100px] text-[20px]">

@@ -37,13 +37,13 @@ function Accessories() {
       <div className="accessories-ic-body grid">
         {[
           { image: EarPhones, category: 'Earphones and Headphones' },
-          { image: watches, category: 'Smart Watched' },
+          { image: watches, category: 'Smart Watches' },
           { image: speakers, category: 'Speakers' },
           { image: microphones, category: 'Microphones' },
           { image: chargers, category: 'Chargers and More' },
           { image: cases, category: 'Cases and Covers' },
           { image: storage, category: 'Storage' },
-          { image: gaming, category: 'Gaming Assessories' },
+          { image: gaming, category: 'Gaming Accessories' },
           { image: keyboards, category: 'Keyboards and Mice' },
           { image: bags, category: 'Laptop Bags' },
           { image: stands, category: 'Stands and lights' },

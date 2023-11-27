@@ -89,7 +89,7 @@ const Header = ({ activeHeading }) => {
   });
 
   const submitHandle = (i) => {
-    navigate(`/products?category=${i.target.innerHTML.split(" ")[0]}`);
+    navigate(`/products?category=${i.target.innerHTML.split('')}`);
     // window.location.reload();
   };
 
@@ -186,19 +186,19 @@ const Header = ({ activeHeading }) => {
           </div>
         </div>
 
-        <div className="vh-header-right">
+        <div className="vh-header-right h-[100%]">
 
 
-          <div className="vh-menu">
-              <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Phones &nbsp;
+          <div className="vh-menu h-[100%] items-center">
+              <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)}> <Link to='/products?category=Phones'> Phones </Link> &nbsp;
               {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
               </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Tablets &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Tablets'>Tablets</Link> &nbsp;
               {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Computers  &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Computers'>Computers</Link>  &nbsp;
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)} onClick={(e) => submitHandle(e)}>Accessories &nbsp;
-              {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones","Smart Watches","Speakers","Microphones","Chargers","Phone Cases","Storage Devices","Gaming Devices","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Accessories'>Accessories</Link> &nbsp;
+              {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones and Headphones","Smart Watches","Speakers","Microphones","Chargers and More","Cases and Covers","Storage","Gaming Accessories","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
               <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
           </div>
 

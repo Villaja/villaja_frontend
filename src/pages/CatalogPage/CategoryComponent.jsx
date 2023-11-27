@@ -5,7 +5,8 @@ import { RxCross1 } from "react-icons/rx";
 
 const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setcolorFilter,setOpenFilter}) => {
 
-    const [priceRangeValue,setPriceRangeValue] = useState("3000000")
+    const [priceRangeValue,setPriceRangeValue] = useState("30000000")
+    const [priceMinValue,setPriceMinValue] = useState('0')
     const [brandValue,setBrandValue] = useState([])
     const [colorValue,setcolorValue] = useState([])
 
@@ -52,8 +53,8 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
     }
 
     useEffect(() => {
-        setPriceFilter({min:500,max:priceRangeValue})
-    },[priceRangeValue])
+        setPriceFilter({min:priceMinValue,max:priceRangeValue})
+    },[priceRangeValue,priceMinValue])
     useEffect(() => {
         if(brandValue?.length > 0)setBrandFilter(brandValue)
     },[brandValue])
@@ -124,7 +125,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                     <input type="range" name="price" id="price-range" value={priceRangeValue} min="500" max="3000000" onChange={(e) => setPriceRangeValue(e.target.value)}/>
                 </div>
                 <div className="price-ranges">
-                    <input type='text' value={500} className="price-max-value" readOnly={true}/>
+                    <input type='text' value={priceMinValue} className="price-max-value" onChange={(e) => setPriceMinValue(e.target.value)}/>
                     <span>-</span>
                     <input type='text' value={priceRangeValue} className="price-max-value" onChange={(e) => setPriceRangeValue(e.target.value)} />
                 </div>

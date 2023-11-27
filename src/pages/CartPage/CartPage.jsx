@@ -6,7 +6,7 @@ import VillajaFooter from '../../components/VillajaFooter/VillajaFooter'
 // import { IoBagHandleOutline } from "react-icons/io5";
 // import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addTocart, removeFromCart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import './CartPage.css'
@@ -97,6 +97,9 @@ const CartPage = () => {
 
 
 const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
+
+  const navigate = useNavigate()
+
   const [value, setValue] = useState(data.qty);
   const totalPrice = data.discountPrice * value;
 
@@ -117,6 +120,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   };
 
   return (
+
     <div className="p-[1.2rem]">
       <div className="w-full flex  justify-between ">
 
@@ -131,7 +135,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </div>
           <div className="flex flex-col justify-between shrink">
             
-            <h1 className="font-normal text-[0.8rem] min-[756px]:text-[1.2rem] ">{data.name.length > 80 ? data.name.slice(0, 80) + "..." : data.name}</h1>
+            <h1 className="font-normal text-[0.8rem] min-[756px]:text-[1.2rem] cursor-pointer" onClick={() => navigate(`/product/${data._id}`)}>{data.name.length > 80 ? data.name.slice(0, 80) + "..." : data.name}</h1>
 
             <div className='flex items-center gap-[1rem]'>
               <div className='flex item-center gap-[2rem]'>

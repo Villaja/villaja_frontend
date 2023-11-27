@@ -1,4 +1,5 @@
 import './villajaHeaderDropdown.css'
+import { Link } from 'react-router-dom'
 
 const VillajaHeaderDropdown = ({categoryNames}) => {
   return (
@@ -8,7 +9,7 @@ const VillajaHeaderDropdown = ({categoryNames}) => {
           {
             categoryNames.map((name,id) => {
               return <div className="dc-main-cat" key={id}>
-                {name}
+                <Link to={`/products?category=${name}`}>{name}</Link>
               </div> 
             })
           }
