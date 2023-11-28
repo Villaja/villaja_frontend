@@ -424,6 +424,12 @@ const CreateProduct = () => {
         className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm"
       >
         <option value="" disabled hidden>ROM and Hard Drive Size...</option>
+        <option value="2GB ROM">2GB ROM</option>
+        <option value="4GB ROM">4GB ROM</option>
+        <option value="8GB ROM">8GB ROM</option>
+        <option value="12GB ROM">12GB ROM</option>
+        <option value="16GB ROM">16GB ROM</option>
+        <option value="20GB ROM">20GB ROM</option>
         <option value="32GB ROM">32GB ROM</option>
         <option value="64GB ROM">64GB ROM</option>
         <option value="128GB ROM">128GB ROM</option>
@@ -446,14 +452,16 @@ const CreateProduct = () => {
         placeholder="e.g. 3G, 4G, 5G, if any..."
       >
         <option value="" disabled hidden>Select Memory Size...</option>
-        <option value="2GB">2GB</option>
-        <option value="4GB">4GB</option>
-        <option value="8GB">8GB</option>
-        <option value="12GB">12GB</option>
-        <option value="16GB">16GB</option>
-        <option value="20GB">20GB</option>
-        <option value="32GB">32GB</option>
-        <option value="64GB">64GB</option>
+        <option value="1GB RAM">1GB RAM</option>
+        <option value="2GB RAM">2GB RAM</option>
+        <option value="4GB RAM">4GB RAM</option>
+        <option value="6GB RAM">6GB RAM</option>
+        <option value="8GB RAM">8GB RAM</option>
+        <option value="12GB RAM">12GB RAM</option>
+        <option value="16GB RAM">16GB RAM</option>
+        <option value="20GB RAM">20GB RAM</option>
+        <option value="32GB RAM">32GB RAM</option>
+        <option value="64GB RAM">64GB RAM</option>
         {/* Add more memory size options as needed */}
       </select>
     </div>
