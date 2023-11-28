@@ -125,7 +125,7 @@ const CreateProduct = () => {
           category,
           tags,
           originalPrice,
-          discountPrice,
+          discountPrice:(discountPrice == ""?0:discountPrice),
           stock,
           shopId: seller._id,
           images,
@@ -270,7 +270,7 @@ const CreateProduct = () => {
           className="mt-2 appearance-none block w-full px-3 py-3 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           onChange={(e) => setDiscountPrice(e.target.value)}
           placeholder="Enter Discount Price if any..."
-          required
+          
           
         />
       </div>
