@@ -32,6 +32,7 @@ import ShopLinkIcon from './shopLinkArrow.svg'
 
 
 const ProductDetails = ({ data }) => {
+
   const [loading, setLoading] = useState(true);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
@@ -143,9 +144,9 @@ const ProductDetails = ({ data }) => {
 
   return (
     
-    <div className="min-h-[100vh]">
+    <div className="min-h-[100vh] w-[100%] max-w-[1710px] mx-auto">
       {data ? (
-      <div className={`${styles.section} w-[90%] max-w-[1756px] mx-auto px-3 sm:px-10 800px:w-[100%]`}>
+      <div className={`   px-[1rem] 800px:w-[100%]`}>
           <div className="w-full pt-10 ">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
             <div className="w-full 800px:w-[50%] h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
@@ -187,7 +188,7 @@ const ProductDetails = ({ data }) => {
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
-                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
+                <p className="text-[1.125rem]" onClick={() => navigate(`/shop/preview/${data.shop._id}`)} >Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
@@ -303,9 +304,9 @@ const ProductDetails = ({ data }) => {
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-          <div className="pds-left mt-8 px-5 py-4 rounded-lg shadow-md w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
-              <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
+          <div className="pds-left mt-8 px-5 py-1 rounded-lg shadow-md w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem] border border-black-600 overflow-hidden ">
+              <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem] flex items-center justify-between  ">Product Details <span className="hidden">&#62;</span></h1>
+              <p className={`product-desc-container py-2 pr-4 max-[500px]:text-[0.8rem] text-[1rem] max-[500px]:leading-6 leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify `}>{data.description}</p>
             </div>
 
             <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
