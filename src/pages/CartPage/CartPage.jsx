@@ -23,7 +23,7 @@ const CartPage = () => {
   };
 
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.qty * item.discountPrice,
+    (acc, item) => acc + item.qty * (item.discountPrice?item.discountPrice:item.originalPrice),
     0
   );
 
@@ -101,7 +101,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const navigate = useNavigate()
 
   const [value, setValue] = useState(data.qty);
-  const totalPrice = data.discountPrice * value;
+  const totalPrice = (data.discountPrice?data.discountPrice:data.originalPrice) * value;
 
   const increment = (data) => {
     if (data.stock < value) {

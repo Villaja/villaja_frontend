@@ -71,12 +71,12 @@ const Checkout = () => {
   if(localStorage.getItem('buy-now'))
   {
     const buyNowItem = JSON.parse(localStorage.getItem('buy-now'))
-    subTotalPrice = buyNowItem.qty * buyNowItem.discountPrice
+    subTotalPrice = buyNowItem.qty * (buyNowItem.discountPrice?buyNowItem.discountPrice:buyNowItem.originalPrice)
   }
   else
   {
     subTotalPrice = cart.reduce(
-      (acc, item) => acc + item.qty * item.discountPrice,
+      (acc, item) => acc + item.qty * (item.discountPrice?item.discountPrice:item.originalPrice),
       0
       );
   }

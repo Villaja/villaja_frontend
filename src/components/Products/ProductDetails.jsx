@@ -33,6 +33,7 @@ import ShopLinkIcon from './shopLinkArrow.svg'
 
 
 const ProductDetails = ({ data }) => {
+
   const [loading, setLoading] = useState(true);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
@@ -200,7 +201,7 @@ const ProductDetails = ({ data }) => {
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
                 </div>
-                <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} pl-2`}>
+                <p className="text-[1.125rem]" onClick={() => navigate(`/shop/preview/${data.shop._id}`)} >Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
                       </span></p>
                 <div className="flex pt-3 mb-[1rem]">
@@ -438,9 +439,9 @@ const ProductDetailsInfo = ({
             }`}
             onClick={() => setActive(index)}
           >
-            {index === 1 && 'Product Specifications'}
-            {index === 2 && 'About This Product'} 
-            {index === 3 && "What's in The Box"}
+            {index === 1 && 'Specifications'}
+            {index === 2 && 'About'} 
+            {index === 3 && "In The Box"}
           </h5>
           {active === index && <div className={`${styles.active_indicator}`} />}
         </div>
@@ -501,13 +502,13 @@ const ProductDetailsInfo = ({
   )}
   {data.memorySize && (
     <li className="font-bold text-[#222]">
-      Memory Storage Capacity(RAM):{" "}
+      Memory Storage(RAM):{" "}
       <span className="text-gray-500">{data.memorySize}</span>
     </li>
   )}
   {data.internalMemory && (
     <li className="font-bold text-[#222]">
-      Internal Storage Capacity(ROM):{" "}
+      Internal Storage (ROM):{" "}
       <span className="text-gray-500">{data.internalMemory}</span>
     </li>
   )}
