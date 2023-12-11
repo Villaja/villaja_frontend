@@ -17,7 +17,7 @@ const Reviews = ({ratings,reviews,id,isDetailsPage}) => {
             </div>
             <div className="reviews-main">
                 <div className="reviews-main-left">
-                    <div className="review-summary rounded-lg bg-white">
+                    <div className="review-summary rounded-lg bg-white border border-gray-300">
                         <div className='review-summary-rating'>{ratings?ratings:"0"}/5</div>
                         <div className='stars-wrapper'>
                             <div className="star-container">
@@ -59,7 +59,7 @@ const Reviews = ({ratings,reviews,id,isDetailsPage}) => {
                         <div className='rs-num'>{reviews && reviews.length > 0?reviews.length === 1?"1 review":reviews.length+" reviews":""}</div>
                     </div>
                 </div>
-                <div className="reviews-main-right p-4 shadow-[0_4px_8px_4px_rgba(0,0,0,0.12)]">
+                <div className="reviews-main-right border border-gray-300 rounded-lg p-4">
                     {
                         reviews && reviews.length > 0 ?
                         isDetailsPage?

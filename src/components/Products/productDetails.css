@@ -67,7 +67,12 @@ body {
 {
     border-radius: 0.25rem;
     border: 2px solid  rgba(255, 255, 255, 0.00);
-    box-shadow: 0px 4px 8px 0px rgba(52, 87, 140, 0.12);
+  
+   
+}
+
+.product-images-small:hover{
+    border: 1px solid #333;
 }
 
 .product-images-small img
@@ -92,7 +97,7 @@ body {
 {
     border-radius: 0.5rem;
     background:  #FFF;
-    box-shadow: 0px 4px 8px 0px rgba(52, 87, 140, 0.12);
+ 
     padding: 1rem;
 }
 

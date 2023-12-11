@@ -32,7 +32,7 @@ const SingleItemCard = ({data,itemDisplay}) => {
     }
   };
   return (
-    <div className={`single-item-container ${itemDisplay?"":"single-item-container-mobile"}`} onClick={() => navigate(`/product/${data._id}`)}>
+    <div className={`single-item-container border border-gray-300 ${itemDisplay?"":"single-item-container-mobile"}`} onClick={() => navigate(`/product/${data._id}`)}>
         <div className="single-item-img">
             <img src={`${data.images && data.images[0]?.url}`} alt="asdf" />
         </div>

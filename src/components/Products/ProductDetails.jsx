@@ -12,6 +12,7 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router-do
 import { getAllProductsShop } from "../../redux/actions/product";
 import { server } from "../../server";
 import styles from "../../styles/styles";
+import { BiShoppingBag, BiCreditCard } from "react-icons/bi";
 import {
   addToWishlist,
   removeFromWishlist,
@@ -43,6 +44,18 @@ const ProductDetails = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
+  const initialWords = 80;
+  const [showFullContent, setShowFullContent] = useState(false);
+
+  const descriptionWords = data?.description.split(" ");
+  const displayedContent = showFullContent
+    ? data?.description
+    : descriptionWords?.slice(0, initialWords).join(" ");
+
+  const toggleReadMore = () => {
+    setShowFullContent(!showFullContent);
+  };
   
   const queryP = new useSearchParams(window.location.search)
 
@@ -143,16 +156,16 @@ const ProductDetails = ({ data }) => {
 
   return (
     
-    <div className="min-h-[100vh]">
+    <div className="min-h-[100vh] mt-2 rounded-lg">
       {data ? (
-      <div className={`${styles.section} w-[90%] max-w-[1756px] mx-auto px-3 sm:px-10 800px:w-[100%]`}>
+      <div className={`${styles.section} w-[95%] mt-5 sm:mt-10 mx-auto bg-white rounded-lg px-5 sm:px-10 `}>
           <div className="w-full pt-10 ">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
-            <div className="w-full 800px:w-[50%] h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
+            <div className="w-full 800px:w-[50%] h-[400px] sm:h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
                src={`${data && data.images[select]?.url}`}
                alt=""
-               className="w-full h-[530px] object-contain lg:w-[60%] bg-white p-4 mb-5 rounded-md shadow-md"
+               className="w-full h-[250px] sm:h-[600px] object-contain lg:w-[70%] bg-white p-4 mb-5 rounded-md"
              />
              
              <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
@@ -180,9 +193,9 @@ const ProductDetails = ({ data }) => {
                              </div>
 
               </div>
-              <div className="w-full  800px:px-4 rounded-lg shadow-sm 800px:w-[50%] pt-5">
-                <h1 className={`${styles.productTitle} !font-semibold `} style={{maxWidth:"45ch",fontSize:'1.7rem'}}>{data.name}</h1>
-                <p className="mb-[2rem] 800px:mb-[2rem] flex items-center gap-1 mt-3 font-semibold text-lg text-gray-600"><span>{data.condition}</span> <BiTag/></p>
+              <div className="w-full  800px:px-4 rounded-lg  800px:w-[50%] pt-5">
+                <h1 className={`${styles.productTitle} sm:text-4xl text-2xl !font-semibold `}>{data.name}</h1>
+                <p className="mb-[2rem] 800px:mb-[2rem] text-blue-500 flex items-center gap-1 mt-3 font-semibold text-lg"><span>{data.condition}</span> <BiTag/></p>
                 <div className="mb-[1.2rem] mt-0 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
                   <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
@@ -241,35 +254,52 @@ const ProductDetails = ({ data }) => {
                 <div className="availability-icon">
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<p className="text-red-500 font-bold text-lg">Out Of Stock<span className="text-xl"> X </span></p>}
                 </div>
-                <div
-            className={`addToCart-btn  ${styles.button} w-[100%] mt-16 !h-[2rem] min-[500px]:!h-[4rem] flex items-center `}
-            onClick={() => addToCartHandler(data._id)}
-            disabled={data.stock < 1}
-          >
-            <span className={`text-white flex items-center ${data.stock < 1 ? 'disabled' : ''}`}>
-              ADD TO CART
-            </span>
-          </div>
-          <div
-            className={`buyNow-btn addToCart-btn ${styles.button} ${data.stock < 1 ? 'hidden' : ''} w-[100%] !h-[28px] min-[500px]:!h-[4rem] !mt-6 mb-[3rem] flex items-center`}
-            disabled={data.stock < 1}
-          >
-            {localStorage.getItem('user-token') ? (
-              <span onClick={() => buyNowHandler(data._id)} className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'hidden' : ''}`}>
-                {data.stock < 1 ? 'Out Of Stock' : 'Buy Now'}
-              </span>
-            ) : (
-              <Link
-                to="/user/login"
-                className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'disabled' : ''}`}
-                style={{ textDecoration: 'none' }}
-              >
-                <div className={`text-[#00B4D8] flex items-center ${data.stock < 1 ? 'disabled' : ''}`}>
-                  LOGIN TO BUY NOW
+
+                <div className="flex gap-6 w-full mt-16 sm:mt-32">
+                  <div className="w-[50%] text-center">
+                  
+                  <div
+  className="bg-[#00b4d8] text-center items-center cursor-pointer py-4 rounded-lg px-10 flex justify-center"
+  onClick={() => addToCartHandler(data._id)}
+  disabled={data.stock < 1}
+>
+  <span className={`text-white flex gap-4 items-center text-sm sm:text-xl ${data.stock < 1 ? 'disabled' : ''}`}>
+    <span>ADD TO CART</span> 
+    <BiShoppingBag className="hidden sm:block" size='25px'/>
+  </span>
+</div>
+
+                  </div>
+
+
+
+                  <div className="w-[50%]">
+                  <div
+  className='bg-[transparent] text-center border-2 border-[#00b4d8] cursor-pointer py-4 rounded-lg px-10 flex justify-center'
+  disabled={data.stock < 1}
+>
+  {localStorage.getItem('user-token') ? (
+    <span onClick={() => buyNowHandler(data._id)} className={`text-[#00B4D8] text-center flex gap-4 text-sm sm:text-xl ${data.stock < 1 ? 'hidden' : ''}`}>
+      {data.stock < 1 ? 'Out Of Stock' : 'BUY NOW'}
+      <BiCreditCard className="hidden sm:block" size='25px'/>
+    </span>
+  ) : (
+    <Link
+      to="/user/login"
+      className={`text-[#00B4D8] ${data.stock < 1 ? 'disabled' : ''}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <div className={`text-[#00B4D8] text-lg ${data.stock < 1 ? 'disabled' : ''}`}>
+        LOGIN TO BUY NOW
+      </div>
+    </Link>
+  )}
+</div>
+
+                  </div>
                 </div>
-              </Link>
-            )}
-          </div>
+               
+         
 
                 <div className="flex items-center pt-8">
                   {/* <Link to={`/shop/preview/${data?.shop._id}`}>
@@ -303,15 +333,26 @@ const ProductDetails = ({ data }) => {
             
 
           <div className="product-details-section flex-col 800px:flex-row">
-          <div className="pds-left mt-8 px-5 py-4 rounded-lg shadow-md w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
+          <div className="pds-left px-5 py-4 rounded-lg w-full mb-[2rem] 800px:w-[50%] 800px:mb-[1.5rem]">
               <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Product Details</h1>
-              <p className="py-2 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">{data.description}</p>
+              <p className="py-2 pr-4 text-sm sm:text-lg leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">
+        {displayedContent}
+        {!showFullContent && descriptionWords.length > initialWords && (
+          <span
+            className="text-blue-500 font-bold cursor-pointer"
+            onClick={toggleReadMore}
+          >
+            {" "}
+            ...Read More
+          </span>
+        )}
+      </p>
             </div>
 
-            <div className="pds-right w-full mb-[2rem] 800px:w-[50%]">
+            <div className="pds-right w-full mb-[2rem] 800px:w-[70%]">
 
               <div className="seller-info-section mb-6 mt-7">
-                <h1 className="text-[1.3rem] min-[500px]:text-[1.7rem] font-[600] mb-[1rem]">Seller Information</h1>
+                <h1 className="text-2xl font-[600] mb-[1rem]">Seller Information</h1>
                 <div className="w-full 800px:w-[50%] mb-6">
                   <Link to={`/shop/preview/${data.shop._id}`}>
                     <div className="flex items-center">
@@ -320,34 +361,18 @@ const ProductDetails = ({ data }) => {
                         className="w-[50px] h-[50px] rounded-full"
                         alt=""
                       />
-                      <div className="pl-3">
+                      <div className="pl-2 w-[70%]">
                         <h3 className={`${styles.shop_name} underline mr-2`}>{data.shop.name.toUpperCase()}</h3>
                         {/* <h5 className="pb-2 text-[15px]">
                         </h5> */}
                       
                       </div>
 
-                      <img src={ShopLinkIcon} alt="" />
+                      
                       
                     </div>
                   </Link>
-                  <p className="pt-2">{data.shop.description}</p>
-                  <h5 className="font-[600]">
-                Joined on:{" "}
-                <span className="font-[500]">
-                  {data.shop?.createdAt?.slice(0, 10)}
-                </span>
-              </h5>
-              <h5 className="font-[600] pt-3">
-                Total Products:{" "}
-                <span className="font-[500]">
-                  {products && products.length}
-                </span>
-              </h5>
-              <h5 className="font-[600] pt-3">
-                Total Reviews:{" "}
-                <span className="font-[500]">{totalReviewsLength}</span>
-              </h5> 
+                
 
                 </div>
 
@@ -371,7 +396,7 @@ const ProductDetails = ({ data }) => {
             </div>
 
           </div>
-          {data && <SuggestedProduct data={data} />}
+         
 
           
           </div>
@@ -382,11 +407,15 @@ const ProductDetails = ({ data }) => {
             averageRating={averageRating}
           />
           <br />
+          {data && <SuggestedProduct data={data} />}
           <Reviews id={data._id} ratings={data.ratings} reviews={data.reviews} isDetailsPage={true}/>
           <br />
         </div>
       ) : <div className="max-w-[1756px] mx-auto"><LoadingSkelenton/></div>}
+      
     </div>
+
+    
   );
 };
 
@@ -399,18 +428,18 @@ const ProductDetailsInfo = ({
   const [active, setActive] = useState(1);
 
   return (
-    <div className="bg-white py-2 rounded shadow-md">
-    <div className="w-full flex justify-center pt-5 pb-6">
+    <div className="bg-white py-2 rounded">
+    <div className="w-full flex pt-5 pb-6">
       {[1, 2, 3].map((index) => (
         <div key={index} className="relative mx-2">
           <h5
-            className={`text-[#000] text-center px-2 py-[0.75rem] leading-5 font-[500] cursor-pointer ${
+            className={`text-[#000] pb-1 px-2 leading-5 font-[500] text-sm sm:text-xl cursor-pointer ${
               active === index ? 'text-[#00b4d8]' : 'text-[#000]'
             }`}
             onClick={() => setActive(index)}
           >
-            {index === 1 && 'About This Product'}
-            {index === 2 && 'Product Specifications'}
+            {index === 1 && 'Product Specifications'}
+            {index === 2 && 'About This Product'} 
             {index === 3 && "What's in The Box"}
           </h5>
           {active === index && <div className={`${styles.active_indicator}`} />}
@@ -418,15 +447,15 @@ const ProductDetailsInfo = ({
       ))}
     </div>
     
-    {active === 1 && (
+    {active === 2 && (
       <p className="py-2 pl-4 pr-4 text-[1rem] leading-8 pb-10 text-[rgba(0,0,0,0.70)] text-justify">
         {data.aboutProduct}
       </p>
     )}
 
 
-      {active === 2 ? (
-         <div className="w-full min-h-[40vh] pl-4 pr-4 flex flex-col py-3 overflow-y-auto text-[1rem] font-bold text-[rgba(0,0,0,0.70)] text-justify">          {/* {data &&
+      {active === 1 ? (
+         <div className="w-full min-h-[40vh] pl-4 pr-4 flex flex-col py-3 overflow-y-auto text-lg font-bold text-[rgba(0,0,0,0.70)] text-justify">          {/* {data &&
             data.reviews.map((item, index) => (
               <div className="w-full flex my-2">
                 <img
@@ -444,18 +473,74 @@ const ProductDetailsInfo = ({
               </div>
             ))} */}
 
-            <p>Brand: {data.brand}</p>
-            <p>Model Name: {data.model}</p>
-            <p>Display Size: {data.displaySize}</p>
-            <p>Color: {data.color}</p>
-            <p>OS: {data.os}</p>
-            <p>Memory Storage Capacity(RAM): {data.memorySize}</p>
-            <p>Internal Storage Capacity(ROM): {data.internalMemory}</p>
-            <p>Cellular Technology: {data.cellularTechnology}</p>
-            <p>Connectivity Technology: {data.connectivityTechnology}</p>
-            <p>Sim Card: {data.simCard}</p>
-            <p>Dimensions: {data.dimensions}</p>
-            <p>Weight: {data.weight}</p>
+<ul className="list-disc px-10 space-y-4">
+  {data.brand && (
+    <li className="font-bold text-[#222]">
+      Brand: <span className="text-gray-500">{data.brand}</span>
+    </li>
+  )}
+  {data.model && (
+    <li className="font-bold text-[#222]">
+      Model Name: <span className="text-gray-500">{data.model}</span>
+    </li>
+  )}
+  {data.displaySize && (
+    <li className="font-bold text-[#222]">
+      Display Size: <span className="text-gray-500">{data.displaySize}</span>
+    </li>
+  )}
+  {data.color && (
+    <li className="font-bold text-[#222]">
+      Color: <span className="text-gray-500">{data.color}</span>
+    </li>
+  )}
+  {data.os && (
+    <li className="font-bold text-[#222]">
+      OS: <span className="text-gray-500">{data.os}</span>
+    </li>
+  )}
+  {data.memorySize && (
+    <li className="font-bold text-[#222]">
+      Memory Storage Capacity(RAM):{" "}
+      <span className="text-gray-500">{data.memorySize}</span>
+    </li>
+  )}
+  {data.internalMemory && (
+    <li className="font-bold text-[#222]">
+      Internal Storage Capacity(ROM):{" "}
+      <span className="text-gray-500">{data.internalMemory}</span>
+    </li>
+  )}
+  {data.cellularTechnology && (
+    <li className="font-bold text-[#222]">
+      Cellular Technology:{" "}
+      <span className="text-gray-500">{data.cellularTechnology}</span>
+    </li>
+  )}
+  {data.connectivityTechnology && (
+    <li className="font-bold text-[#222]">
+      Connectivity Technology:{" "}
+      <span className="text-gray-500">{data.connectivityTechnology}</span>
+    </li>
+  )}
+  {data.simCard && (
+    <li className="font-bold text-[#222]">
+      Sim Card: <span className="text-gray-500">{data.simCard}</span>
+    </li>
+  )}
+  {data.dimensions && (
+    <li className="font-bold text-[#222]">
+      Dimensions: <span className="text-gray-500">{data.dimensions}</span>
+    </li>
+  )}
+  {data.weight && (
+    <li className="font-bold text-[#222]">
+      Weight: <span className="text-gray-500">{data.weight}</span>
+    </li>
+  )}
+</ul>
+
+            
 
           {/* <div className="w-full flex justify-center">
             {data && data.reviews.length === 0 && (
