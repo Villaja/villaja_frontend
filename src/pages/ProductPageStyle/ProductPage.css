@@ -23,11 +23,17 @@
 }
 
 
+
 @media screen and (max-width:756px) {
 
     .cid-top-filter
     {
         display: flex;
+        /* position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%; */
     }
 
     .catalog-filter-section
@@ -37,13 +43,14 @@
 
     .catalog-filter-mobile {
         display: flex;
-        position: fixed;
-        top: 0;
+        position: absolute;
+        top: -14rem;
         left: 0;
         z-index: 100000;
         min-height: 125vh;
         width: 100%;
         background-color: #fff;
+        overflow-y: scroll;
     }
 }
 

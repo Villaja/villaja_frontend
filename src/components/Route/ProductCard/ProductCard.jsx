@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import {
   AiFillHeart,
@@ -21,7 +22,7 @@ import { toast } from "react-toastify";
 import Ratings from "../../Products/Ratings";
 import './ProductCard.css'
 
-const ProductCard = ({ data,isEvent,catIndex }) => {
+const ProductCard = ({ data,isEvent,catIndex}) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
   const [click, setClick] = useState(false);
@@ -63,7 +64,7 @@ const ProductCard = ({ data,isEvent,catIndex }) => {
 
   return (
     <>
-      <div className={`${catIndex?"pc-container-mobile":""} pc-container w-full h-[300px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]`}>
+      <div className={`${catIndex?"pc-container-mobile":""}  pc-container w-full h-[300px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]`}>
         {/* <div className="flex justify-end"></div> */}
         <div style={{width:"100%",maxWidth:"200px",height:"150px",position:"relative",flexShrink:"0"}}>
 

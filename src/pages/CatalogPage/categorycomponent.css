@@ -203,6 +203,7 @@ label
 .filter-container-mobile
 {
     display: none;
+    overflow-y: scroll;
 }
 
 .filter-container-action
@@ -232,6 +233,7 @@ label
         min-height: 125vh;
         height: 100%;
         background-color: #ffffff;
+        overflow: auto;
     }
 
     .filter-container-action

@@ -85,7 +85,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
         <div className="filter-cat">
             {category}
         </div>
-        {/* <div className="filter-sub filter-sub=cat">
+        <div className="filter-sub filter-sub=cat">
             
 
                 {catData[0]['subcat'].map((cat,id) => {
@@ -95,9 +95,9 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                     </div>
                 </div>
             })}
-        </div> */}
+        </div>
 
-        {/* <div className="filter-sub filter-sub-brand">
+        <div className="filter-sub filter-sub-brand">
             <div className="filter-sub-title">
                 Brand
             </div>
@@ -110,7 +110,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                 })}
             </div>
 
-        </div> */}
+        </div>
 
         <div className="filter-sub filter-sub-price">
             <div className="filter-sub-title">
@@ -147,7 +147,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                 
             </div>
         </div> */}
-        {/* <div className="filter-sub filter-sub-color">
+        <div className="filter-sub filter-sub-color">
             <div className="filter-sub-title">
                 Color
             </div>
@@ -159,8 +159,8 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                     </div>
                 })}
             </div>
-        </div> */}
-        {/* <div className="filter-sub filter-sub-condition">
+        </div>
+        <div className="filter-sub filter-sub-condition">
             <div className="filter-sub-title">
                 Condition
             </div>
@@ -172,7 +172,7 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setBrandFilter,setc
                     </div>
                 })}
             </div>
-        </div> */}
+        </div>
     </div>
   )
 }

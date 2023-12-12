@@ -10,6 +10,7 @@ import './ProductPageStyle/ProductPage.css'
 import VillajaFooter from "../components/VillajaFooter/VillajaFooter";
 import CategoryComponent from "./CatalogPage/CategoryComponent";
 import MobileCategpryIcon from '../assets/mobile_category_icon.svg'
+import { TbFilter } from "react-icons/tb";
 
 import SingleItemCard from "../components/SingleItemCard/SingleItemCard";
 
@@ -103,6 +104,12 @@ const ProductsPage = () => {
 
 
    useEffect(() => {
+      if(openFilter) document.body.style.height = "125vh";
+      else document.body.style.height = "125vh";
+  }, [openFilter]);
+
+
+   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -121,14 +128,20 @@ const ProductsPage = () => {
             <ItemCatSection itemCatTitle={"Best Selling Items"} allProducts={allProducts} items={items} catIndex={1} />
           </div>
       </div> */}
-      <br />
-      <br />
+      {/* <br /> */}
+      {/* <br /> */}
       <div className="cc-main-body min-h-[80vh]">
+
+        <div className=" p-6 mx-auto text-center text-[1.5rem]">
+                  <span className="min-[756px]:hidden font-medium">{searchData?searchData:categoryData}</span>
+        </div>
 
       <div className="catalog-page-body">
                 <div className={`catalog-filter-section ${openFilter?'catalog-filter-mobile':''}`}>
                   <CategoryComponent category={categoryData} setOpenFilter={setOpenFilter} setPriceFilter={setPriceFilter} setcolorFilter={setcolorFilter} setBrandFilter={setBrandFilter}/>
                 </div>
+
+                
 
                 <div className="cid-top-filter">
                       <div className="ctf-action ctf-action-1" onClick={() => setItemDisplay(false)}>
@@ -137,12 +150,14 @@ const ProductsPage = () => {
                       <div className="ctf-action ctf-action-2" onClick={() => setItemDisplay(true)}>
                         <img src={FilterTabs} alt="" />
                       </div>
-                      <div className="ctf-action ctf-action-3" onClick={() => setOpenFilter(true)}>Filter</div>
+                      <div className="ctf-action ctf-action-3 flex items-center gap-2" onClick={() => setOpenFilter(true)}>
+                        <TbFilter size={30} /> Filter
+                      </div>
                 </div>
-                { data && data.length > 0 ?<div className="catalog-item-display">
+                { data && data.length > 0 ?<div className={`catalog-item-display ${openFilter?'hidden':''}`}>
 
-                    <div className="cid-top-bar">
-                      <div className="cid-top-catname text-xl  sm:text-2xl font-bold">
+                    <div className="max-[756px]:hidden cid-top-bar">
+                      <div className="  cid-top-catname text-xl  sm:text-2xl font-semibold">
                          {searchData?searchData:categoryData}
                       </div>
                       
