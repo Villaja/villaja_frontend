@@ -6,7 +6,7 @@ import villajaLogo from '../../assets/villaja_footer_logo.svg'
 import VillajaHeaderDropdown from '../../components/VillajaHeader/VillajaHeaderDropdown'
 import ReactTextTransition from "react-text-transition";
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi';
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -37,6 +37,7 @@ import '../../components/VillajaHeader/villajaHeader.css'
 
 const Header = ({ activeHeading }) => {
 
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate()
   const [dropdownHoverState,setHoverState] = useState(0)
   // const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -53,6 +54,7 @@ const Header = ({ activeHeading }) => {
   const [open, setOpen] = useState(false);
   const [textIndex,setTextIndex] = useState(0)
   const [mobileSearch,setMobileSearch] = useState(false)
+  const reloadSearchData = searchParams.get("searchTerm");
 
   const texts = ['Phones','Gadgets','Tablets']
 
@@ -118,6 +120,10 @@ const Header = ({ activeHeading }) => {
       clearInterval(interval);
     };
   }, []);
+
+  useEffect(() => {
+    setSearchTerm(reloadSearchData)
+  },[reloadSearchData])
   return (
     <nav className='sticky top-0 z-[10000]'>
       <div className={`${styles.section}`}>
@@ -393,6 +399,8 @@ const Header = ({ activeHeading }) => {
           {openWishlist ? <Wishlist setOpenWishlist={setOpenWishlist} /> : null}
           </div>
           <div className=' pb-[0.8rem] px-[1rem] '>
+            <div className='relative'>
+
             <div className='relative rounded-[16px]  flex items-center overflow-hidden p-[0.2rem] px-[1rem] bg-[#00000014]'>
 
               
@@ -400,7 +408,8 @@ const Header = ({ activeHeading }) => {
                   type="text"
                   placeholder="Search Villaja... "
                   value={searchTerm}
-                  onClick={() => setMobileSearch(true)}
+                  onChange={handleSearchChange}
+                  // onClick={() => setMobileSearch(true)}
                   className="h-[40px] w-[100%] text-[1.05rem] border-none rounded-md mobile-search-wrapper bg-[transparent] Manrope"
                   onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
                   />
@@ -408,8 +417,34 @@ const Header = ({ activeHeading }) => {
                   <CiSearch
                   size={28}
                   className=" cursor-pointer"
+                  onClick={handleHeroSearch}
                   />
             </div>
+            {searchData && searchData.length !== 0 ? (
+                <div className="absolute w-full min-h-[30vh] bg-slate-50 z-[9] p-4 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+                  {searchData &&
+                    searchData.slice(0,7).map((i, index) => {
+                      return (
+                        <Link to={`/product/${i._id}`} key={index}>
+                          <div className="w-full flex items-center py-3 mb-2">
+                            <div className='relative mr-[20px]'>
+
+                            <CiSearch
+                              size={20}
+                              className=""
+                              />
+                            </div>
+                            <h1>{i.name.length > 40 ? i.name.slice(0, 40) + "..." : i.name}</h1>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
+              ) : null}
+            </div>
+
+
+            
           </div>
         </div>
         }

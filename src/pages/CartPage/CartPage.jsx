@@ -11,12 +11,14 @@ import { addTocart, removeFromCart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import './CartPage.css'
 import { useState, useEffect } from 'react';
+import EmptyCartImg from '../../assets/emptyCart.webp'
 
 const CartPage = () => {
 
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const removeFromCartHandler = (data) => {
     dispatch(removeFromCart(data));
@@ -41,27 +43,38 @@ const CartPage = () => {
       <Header/>
       <div className="cart-page-wrapper w-[91.67%] mx-auto max-w-[1665px] p-[1rem]">
         <div className="cart-page-container max-w-full py-1 py-3rem mx-auto my-0 flex justify-between gap-1rem flex-wrap">
-          <div className='w-full max-w-[65rem] mb-[3rem]'>
 
-          <h1 className='text-[1.7rem] font-[600] mb-[1.5rem]'>Your Cart</h1>
+          {
+            cart && cart.length === 0 ? 
+            <div className="w-full  flex flex-col items-center justify-center">
+                <div className='contain w-[300px] h-[300px] relative'><img src={EmptyCartImg} alt="" /></div>
+                <h2 className='text-[1.6rem] font-medium my-6'>Your Cart is Empty!</h2>
+                <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
+              </div>
+              :null
+          }
+          <div className='w-full min-[1386px]:max-w-[65rem] mb-[3rem]'>
+
           
             {cart && cart.length === 0 ? (
-             <div className="w-full h-screen flex items-center justify-center">
-                <h5>Cart Items is empty!</h5>
-              </div>
+             null
             ) : (
-              <div className="cart-page-items bg-white shadow-md transition duration-300 hover:shadow-lg">
-                <div className="w-full text-left py-2 ">
-                        {cart &&
-                      cart.map((i, index) => (
-                        <CartSingle
-                         key={index}
-                         data={i}
-                         quantityChangeHandler={quantityChangeHandler}
-                         removeFromCartHandler={removeFromCartHandler}
-                        />
-      ))}
-    </div>
+              <div>
+          <h1 className='text-[1.7rem] font-[600] mb-[1.5rem]'>Your Cart</h1>
+
+                <div className="cart-page-items bg-white shadow-md transition duration-300 hover:shadow-lg">
+                  <div className="w-full text-left py-2 ">
+                          {cart &&
+                        cart.map((i, index) => (
+                          <CartSingle
+                          key={index}
+                          data={i}
+                          quantityChangeHandler={quantityChangeHandler}
+                          removeFromCartHandler={removeFromCartHandler}
+                          />
+                  ))}
+                </div>
+              </div>
   
 
 </div>
@@ -69,7 +82,10 @@ const CartPage = () => {
 
           </div>
           
-          <div className="p-[1rem] mb-3 shadow-[0_8px_16px_8px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[20.5rem] rounded-[0.5rem] max-[1267px]:mx-[auto]">
+          {
+            cart?.length > 0?
+          
+          <div className="p-[1rem] mb-3 shadow-[0_8px_16px_8px_rgba(0,0,0,0.12)] w-full max-w-[31rem] max-h-[20.5rem] rounded-[0.5rem] max-[1386px]:mx-[auto]">
                   <h1 className='text-[1.7rem] font-[600] mb-[0.5rem]'>Cart Summary</h1>
                   <p className='text-[1.125rem] font-[500] mb-[2.7rem]'>Sub Total:</p>
                   <div className='text-[2.3rem] font-[600] mb-[2.5rem] flex justify-center'>
@@ -77,16 +93,21 @@ const CartPage = () => {
                   </div>
 
                   {/* checkout buttons */}
+                  <div className={`${cart.length<1?'pointer-events-none opacity-70':''}`}>
+
                   <Link to={`${user?.email?"/checkout":'/user/login'}`}>
                     <div
-                      className={`h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
-                    >
-                      <h1 className="text-[#fff] text-[18px] font-[600] ">
-                        {`${user?.email?"CHECK OUT":'LOGIN TO CONTINUE'}`}
+                      className={` h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
+                      >
+                      <h1 className={`text-[#fff] text-[18px] font-[600] `}>
+                        {`${user?.email?"CHECKOUT":'LOGIN TO CONTINUE'}`}
                       </h1>
                     </div>
                   </Link>
+                      </div>
           </div>
+          :null
+          }
         
         </div>
       </div>
