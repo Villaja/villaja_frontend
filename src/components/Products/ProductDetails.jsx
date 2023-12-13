@@ -196,10 +196,10 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full  800px:px-4 rounded-lg  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} sm:text-4xl text-2xl !font-semibold `}>{data.name}</h1>
-                <p className="mb-[2rem] 800px:mb-[2rem] text-blue-500 flex items-center gap-1 mt-3 font-semibold text-lg"><span>{data.condition}</span> <BiTag/></p>
-                <div className="mb-[1.2rem] mt-0 gap-[0.1rem] items-center">
+                <p className="mb-[1rem] 800px:mb-[2rem] text-blue-500 flex items-center gap-1 mt-3 font-semibold text-lg"><span>{data.condition}</span> <BiTag/></p>
+                <div className="mb-[1rem] mt-0 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
-                  <p className="text-[#0077B6] text-md mt-3 mb-1">{data.reviews.length} Reviews</p>
+                  <p className="text-[#0077B6] text-md mt-2 mb-1">{data.reviews.length} Reviews</p>
                 </div>
                 <p className="text-[1.125rem]" onClick={() => navigate(`/shop/preview/${data.shop._id}`)} >Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
@@ -290,8 +290,8 @@ const ProductDetails = ({ data }) => {
       className={`text-[#00B4D8] ${data.stock < 1 ? 'disabled' : ''}`}
       style={{ textDecoration: 'none' }}
     >
-      <div className={`text-[#00B4D8] text-lg ${data.stock < 1 ? 'disabled' : ''}`}>
-        LOGIN TO BUY NOW
+      <div className={`text-[#00B4D8] text-sm sm:text-lg ${data.stock < 1 ? 'disabled' : ''}`}>
+        LOGIN TO BUY 
       </div>
     </Link>
   )}
@@ -474,7 +474,7 @@ const ProductDetailsInfo = ({
               </div>
             ))} */}
 
-<ul className="list-disc px-10 space-y-4">
+<ul className="list-disc px-10 text-sm space-y-2 sm:text-md sm:space-y-4">
   {data.brand && (
     <li className="font-bold text-[#222]">
       Brand: <span className="text-gray-500">{data.brand}</span>
