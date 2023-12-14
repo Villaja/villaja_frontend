@@ -4,7 +4,7 @@
     display: none;
     align-items: center;
     height: 3.7rem;
-    padding: 2.2rem 0;
+    padding: 1.8rem 0;
 }
 
 .ctf-action
@@ -12,7 +12,7 @@
     padding: 1rem;
     cursor: pointer;
     color: #ffffff;
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     font-weight: 500;
 }
 
@@ -20,20 +20,39 @@
 {
     border-left: 2px solid rgba(255, 255, 255, 0.20);;
     border-right: 2px solid rgba(255, 255, 255, 0.20);;
+    padding:1rem 2rem;
 }
 
+.ctf-action-3
+{
+    text-align: center;
+    align-items: center;
+}
 
+#sortFilter
+{
+    background: transparent;
+    color: #ffffff;
+    outline: none;
+    border: none;
+}
+
+#sortFilter option
+{
+    color: #111;
+    font-weight: 500;
+}
 
 @media screen and (max-width:756px) {
 
     .cid-top-filter
     {
         display: flex;
-        /* position: fixed;
-        bottom: 0;
+        position: sticky;
+        top: 119px;
         left: 0;
         z-index: 100;
-        width: 100%; */
+        width: 100%;
     }
 
     .catalog-filter-section

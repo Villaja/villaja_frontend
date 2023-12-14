@@ -400,8 +400,9 @@ const Header = ({ activeHeading }) => {
           </div>
           <div className=' pb-[0.8rem] px-[1rem] '>
             <div className='relative'>
-
-            <div className='relative rounded-[16px]  flex items-center overflow-hidden p-[0.2rem] px-[1rem] bg-[#00000014]'>
+            
+            {/* <div className='z-[0] gradient-border rounded-[16px]  flex items-center overflow-hidden p-[0.2rem] px-[1rem] h-[52px] w-[102%] mx-auto'></div> */}
+            <div className={`relative rounded-[16px]  flex items-center overflow-hidden p-[0.2rem] px-[1rem] bg-[#00000014]`}>
 
               
               <input

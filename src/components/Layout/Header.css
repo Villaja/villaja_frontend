@@ -330,6 +330,13 @@ input:focus
     border-color: #00B4D8;
 }
 
+
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
 @media screen and (max-width:1286px) {
     .hero-search-section {
         padding-right: 2.3rem;

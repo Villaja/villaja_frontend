@@ -7,7 +7,7 @@
       /* Enable text truncation for overflow */
       overflow: hidden;
       text-overflow: ellipsis;
-      
+      transition: all 0.3s ease;
      
   
     

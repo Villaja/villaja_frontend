@@ -30,6 +30,7 @@ const ProductsPage = () => {
   const searchData = searchParams.get("searchTerm");
   const {allProducts,isLoading} = useSelector((state) => state.products);
   const [data, setData] = useState([]);
+  const [finalData, setFinalData] = useState([]);
   const [scategory,setCategory] = useState('')
   const [pageNumber,setPageNumber] = useState(24)
   const [catItemFiltered,setCatItemFiltered] = useState([])
@@ -41,6 +42,7 @@ const ProductsPage = () => {
   const headingNumber = {Phones:2,Computers:3,Tablets:4,Accessories:5}
   const [openFilter,setOpenFilter] = useState(false)
   const [itemDisplay,setItemDisplay] = useState(false)
+  const [sortValue,setSortValue] = useState('New Arrivals')
 
   const location = useLocation()
   const queryP = new useSearchParams(window.location.search)
@@ -113,6 +115,40 @@ const ProductsPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() =>{
+    let tempData = data?.slice(0)
+    if(sortValue === "New Arrivals")
+    {
+      console.log('new Arrivals!!!');
+      console.log((tempData));
+      setFinalData(tempData)
+    }
+    else if(sortValue === "Price: Low to High")
+    {
+      console.log('Price: Low to High');
+      console.log((tempData));
+      setFinalData(tempData.sort((a,b) => {
+                      return(a.originalPrice - b.originalPrice)
+                    }))
+    }
+    else if(sortValue === "Price: High to Low")
+    {
+      console.log('Price: Low to High');
+      console.log((tempData));
+      setFinalData(tempData.sort((a,b) => {
+                      return(b.originalPrice - a.originalPrice)
+                    }))
+    }
+    else if(sortValue === "Customer Rating")
+    {
+      console.log('Customer Rating');
+      console.log((tempData));
+      setFinalData(tempData.sort((a,b) => {
+                      return(b.ratings - a.ratings)
+                    }))
+    }
+  },[data,sortValue])
+
   return (
   <>
   {
@@ -144,14 +180,19 @@ const ProductsPage = () => {
                 
 
                 <div className="cid-top-filter">
-                      <div className="ctf-action ctf-action-1" onClick={() => setItemDisplay(false)}>
-                        <img src={FilterList} alt="" />
+                      <div className="ctf-action ctf-action-1" onClick={() => setItemDisplay(!itemDisplay)}>
+                        {!itemDisplay?<img src={FilterTabs} alt="" className="w-[40px] h-[40px]"/>:<img src={FilterList} alt="" className="w-[50px] h-[60px]"/>}
                       </div>
-                      <div className="ctf-action ctf-action-2" onClick={() => setItemDisplay(true)}>
-                        <img src={FilterTabs} alt="" />
+                      <div className="ctf-action ctf-action-2" >
+                        <select name="sortFilter" id="sortFilter" value={sortValue} onChange={(e) => setSortValue(e.target.value)}>
+                          <option value="New Arrivals">New Arrivals</option>
+                          <option value="Price: Low to High">Price: Low to High</option>
+                          <option value="Price: High to Low">Price: High to Low</option>
+                          <option value="Customer Rating">Customer Rating</option>
+                        </select>
                       </div>
-                      <div className="ctf-action ctf-action-3 flex items-center gap-2" onClick={() => setOpenFilter(true)}>
-                        <TbFilter size={30} /> Filter
+                      <div className="ctf-action ctf-action-3 flex justify-center w-full" onClick={() => setOpenFilter(true)}>
+                        <span> FILTER </span>
                       </div>
                 </div>
                 { data && data.length > 0 ?<div className={`catalog-item-display ${openFilter?'hidden':''}`}>
@@ -169,9 +210,9 @@ const ProductsPage = () => {
                       </div>
                       <div className={`cid-main ${itemDisplay?"cid-main-tab":''}`}>
                       {
-                        data.slice(pageNumber-24,pageNumber).map((item,id) => {
+                        finalData?.slice(pageNumber-24,pageNumber).map((item,id) => {
                           return <div className="cid-item" key={id}>
-                            <SingleItemCard data = {item} key={id} itemDisplay={itemDisplay}/>
+                            <ProductCard data = {item} key={id} itemDisplay={itemDisplay}/>
                           </div>
                         })
                       }
