@@ -98,6 +98,7 @@
     margin-bottom: 1rem;
     width: 100%;
     border-bottom: 2px solid rgb(0, 0, 0, 0.10);
+    overflow-x: auto;
 }
 
 .myOrder-tab

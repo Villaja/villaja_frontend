@@ -29,7 +29,7 @@ const ProfileSidebar = ({ setActive, active }) => {
 };
 
   return (
-    <div className="profile-sidebar 1100px:block w-full bg-transparent shadow-sm rounded-[10px] 1100px:p-4 1100px:pt-8">
+    <div className="profile-sidebar 1100px:block w-full bg-transparent shadow-sm rounded-[10px] 1100px:p-4 1100px:pt-8 gap-[1rem]">
       <div
         className={` ${active === 1?'profile-sidebar-active':'profile-sidebar-item'} flex items-center cursor-pointer  1100px:mb-[1.75rem] gap-[0.75rem]`}
         onClick={() => setActive(1)}

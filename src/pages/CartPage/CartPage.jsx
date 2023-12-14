@@ -48,7 +48,7 @@ const CartPage = () => {
             cart && cart.length === 0 ? 
             <div className="w-full  flex flex-col items-center justify-center">
                 <div className='contain w-[300px] h-[300px] relative'><img src={EmptyCartImg} alt="" /></div>
-                <h2 className='text-[1.6rem] font-medium my-6'>Your Cart is Empty!</h2>
+                <h2 className='text-[1.6rem] font-medium my-6'>Your Cart is Empty</h2>
                 <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
               </div>
               :null

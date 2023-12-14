@@ -31,7 +31,7 @@ const SuggestedProduct = ({ data}) => {
             <>
               {productData &&
                 productData.slice(0,5).map((i, index) => (
-                  <SingleItemCard className="shadow-lg" data={i} key={index} itemDisplay={true}/>
+                  <ProductCard className="shadow-lg" data={i} key={index} itemDisplay={true}/>
                 ))}
             </>
           }
