@@ -49,7 +49,7 @@ const CartPage = () => {
             <div className="w-full  flex flex-col items-center justify-center">
                 <div className='contain w-[300px] h-[300px] relative'><img src={EmptyCartImg} alt="" /></div>
                 <h2 className='text-[1.6rem] font-medium my-6'>Your Cart is Empty</h2>
-                <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
+                <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-gradient-to-b from-[#00B4D8] to-[#025492] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
               </div>
               :null
           }
@@ -171,7 +171,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
                 <span className="">{data.qty}</span>
                 
                 <div
-                  className={`border text-[#00B4D8] border-[#00B4D8] rounded-full w-[25px] h-[25px] ${styles.noramlFlex} items-center justify-center cursor-pointer`}
+                  className={`border text-[#025492] border-[#025492] rounded-full w-[25px] h-[25px] ${styles.noramlFlex} items-center justify-center cursor-pointer`}
                   onClick={() => increment(data)}
                 >
                   &#62;
@@ -179,7 +179,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
               </div>
 
               <div
-                className="text-[#0077B6] text-[0.75rem] font-normal underline cursor-pointer"
+                className="text-[#025492] text-[0.75rem] font-normal underline cursor-pointer"
                 onClick={() => removeFromCartHandler(data)} >
                   Delete
               </div>
@@ -196,7 +196,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
             {/* <h4 className="font-[400] text-[15px] text-[#00000082]">
             ₦{data.discountPrice.toLocaleString()} * {value}
             </h4> */}
-            <h4 className="font-[500] text-[0.8rem] min-[500px]:text-[1.125rem] text-[#111] font-Manrope min-w-[11ch] text-center">
+            <h4 className="font-[500] text-[0.8rem] min-[500px]:text-[1.125rem] text-[#111] font-DM Sans min-w-[11ch] text-center">
             ₦{totalPrice.toLocaleString()}
             </h4>
           </div>

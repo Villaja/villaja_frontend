@@ -119,30 +119,22 @@ const ProductsPage = () => {
     let tempData = data?.slice(0)
     if(sortValue === "New Arrivals")
     {
-      console.log('new Arrivals!!!');
-      console.log((tempData));
       setFinalData(tempData)
     }
     else if(sortValue === "Price: Low to High")
     {
-      console.log('Price: Low to High');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(a.originalPrice - b.originalPrice)
                     }))
     }
     else if(sortValue === "Price: High to Low")
     {
-      console.log('Price: Low to High');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(b.originalPrice - a.originalPrice)
                     }))
     }
     else if(sortValue === "Customer Rating")
     {
-      console.log('Customer Rating');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(b.ratings - a.ratings)
                     }))

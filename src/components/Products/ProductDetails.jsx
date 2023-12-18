@@ -196,10 +196,10 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full  800px:px-4 rounded-lg  800px:w-[50%] pt-5">
                 <h1 className={`${styles.productTitle} sm:text-4xl text-2xl !font-semibold `}>{data.name}</h1>
-                <p className="mb-[1rem] 800px:mb-[2rem] text-blue-500 flex items-center gap-1 mt-3 font-semibold text-lg"><span>{data.condition}</span> <BiTag/></p>
+                <p className="mb-[1rem] 800px:mb-[2rem] text-[#025492] flex items-center gap-1 mt-3 font-semibold text-lg"><span>{data.condition}</span> <BiTag/></p>
                 <div className="mb-[1rem] mt-0 gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
-                  <p className="text-[#0077B6] text-md mt-2 mb-1">{data.reviews.length} Reviews</p>
+                  <p className="text-[#025492] text-md mt-2 mb-1">{data.reviews.length} Reviews</p>
                 </div>
                 <p className="text-[1.125rem]" onClick={() => navigate(`/shop/preview/${data.shop._id}`)} >Sold by: <span className={`${styles.shop_name} pl-2`}>
                         {data.shop.name.toUpperCase()}
@@ -260,7 +260,7 @@ const ProductDetails = ({ data }) => {
                   <div className="w-[50%] text-center">
                   
                   <div
-  className="bg-[#00b4d8] text-center items-center cursor-pointer py-4 rounded-lg px-10 flex justify-center"
+  className="bg-[#025492] text-center items-center cursor-pointer py-4 rounded-lg px-10 flex justify-center"
   onClick={() => addToCartHandler(data._id)}
   disabled={data.stock < 1}
 >
@@ -276,21 +276,21 @@ const ProductDetails = ({ data }) => {
 
                   <div className="w-[50%]">
                   <div
-  className='bg-[transparent] text-center border-2 border-[#00b4d8] cursor-pointer py-4 rounded-lg px-10 flex justify-center'
+  className='bg-[transparent] text-center border-2 border-[#025492] cursor-pointer py-4 rounded-lg px-10 flex justify-center'
   disabled={data.stock < 1}
 >
   {localStorage.getItem('user-token') ? (
-    <span onClick={() => buyNowHandler(data._id)} className={`text-[#00B4D8] text-center flex gap-4 text-sm sm:text-xl ${data.stock < 1 ? 'hidden' : ''}`}>
+    <span onClick={() => buyNowHandler(data._id)} className={`text-[#025492] text-center flex gap-4 text-sm sm:text-xl ${data.stock < 1 ? 'hidden' : ''}`}>
       {data.stock < 1 ? 'Out Of Stock' : 'BUY NOW'}
       <BiCreditCard className="hidden sm:block" size='25px'/>
     </span>
   ) : (
     <Link
       to="/user/login"
-      className={`text-[#00B4D8] ${data.stock < 1 ? 'disabled' : ''}`}
+      className={`text-[#025492] ${data.stock < 1 ? 'disabled' : ''}`}
       style={{ textDecoration: 'none' }}
     >
-      <div className={`text-[#00B4D8] text-sm sm:text-lg ${data.stock < 1 ? 'disabled' : ''}`}>
+      <div className={`text-[#025492] text-sm sm:text-lg ${data.stock < 1 ? 'disabled' : ''}`}>
         LOGIN TO BUY 
       </div>
     </Link>
@@ -340,7 +340,7 @@ const ProductDetails = ({ data }) => {
         {displayedContent}
         {!showFullContent && descriptionWords.length > initialWords && (
           <span
-            className="text-blue-500 font-bold cursor-pointer"
+            className="text-[#025492] font-bold cursor-pointer"
             onClick={toggleReadMore}
           >
             {" "}
@@ -435,7 +435,7 @@ const ProductDetailsInfo = ({
         <div key={index} className="relative mx-2">
           <h5
             className={`text-[#000] pb-1 px-2 leading-5 font-[500] text-sm sm:text-xl cursor-pointer ${
-              active === index ? 'text-[#00b4d8]' : 'text-[#000]'
+              active === index ? 'text-[#025492]' : 'text-[#000]'
             }`}
             onClick={() => setActive(index)}
           >

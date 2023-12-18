@@ -210,14 +210,14 @@ const Header = ({ activeHeading }) => {
               <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
           </div>
 
-            <div className="flex" style={{gap:"2rem"}}>
+            <div className="flex" style={{gap:"1.5rem"}}>
               <div className={`${styles.noramlFlex}`}>
                 <div
-                  className="relative cursor-pointer mr-[15px]"
+                  className="relative cursor-pointer"
                   onClick={() => setOpenWishlist(true)}
                 >
                   <AiOutlineHeart size={30} />
-                  <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                  <span className="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                     {wishlist && wishlist.length}
                   </span>
                 </div>
@@ -225,14 +225,14 @@ const Header = ({ activeHeading }) => {
 
               <div className={`${styles.noramlFlex}`}>
                 <div
-                  className="relative cursor-pointer mr-[15px]"
+                  className="relative cursor-pointer"
                   onClick={() => navigate('/cart')}
                 >
                   <AiOutlineShoppingCart
                     size={30}
                     // color="rgb(255 255 255 / 83%)"
                   />
-                  <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                  <span className="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                     {cart && cart.length}
                   </span>
                 </div>
@@ -245,9 +245,9 @@ const Header = ({ activeHeading }) => {
                       <CgProfile size={30} />
                     </Link>
                   ) : (
-                    <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" style={{flexShrink:"0"}}>
+                    <div className="rounded-lg px-5 py-2 bg-[#025492] text-white" onClick={() => navigate("/user/login")}  style={{flexShrink:"0"}}>
                       Sign In
-                    </Link>
+                    </div>
                   )}
                 </div>
               </div>
@@ -372,7 +372,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => navigate('/cart')}
                 >
                 <AiOutlineShoppingCart size={30} />
-                <span className="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-[#fff] font-mono text-[12px]  leading-tight text-center">
                   {cart && cart.length}
                 </span>
               </div>
@@ -384,9 +384,12 @@ const Header = ({ activeHeading }) => {
                       <CgProfile size={30} />
                     </Link>
                   ) : (
-                    <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" style={{flexShrink:"0"}}>
+                    <div className='shrink-0' >
+
+                    <Link className="rounded-lg px-5 py-2 bg-[#025492] text-white shrink-0" to="/user/login" style={{flexShrink:"0"}}>
                       Sign In
                     </Link>
+                    </div>
                   )}
                 </div>
             </div>
@@ -411,7 +414,7 @@ const Header = ({ activeHeading }) => {
                   value={searchTerm}
                   onChange={handleSearchChange}
                   // onClick={() => setMobileSearch(true)}
-                  className="h-[40px] w-[100%] text-[1.05rem] border-none rounded-md mobile-search-wrapper bg-[transparent] Manrope"
+                  className="h-[40px] w-[100%] text-[1.05rem] border-none rounded-md mobile-search-wrapper bg-[transparent] DM Sans"
                   onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
                   />
 
@@ -463,7 +466,7 @@ const Header = ({ activeHeading }) => {
                     onClick={() => setOpenWishlist(true) || setOpen(false)}
                   >
                     <AiOutlineHeart size={30} className="mt-5 ml-3" />
-                    <span class="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                    <span class="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
                       {wishlist && wishlist.length}
                     </span>
                   </div>
@@ -484,7 +487,7 @@ const Header = ({ activeHeading }) => {
                           <CgProfile size={30} />
                         </Link>
                       ) : (
-                        <Link className="rounded-lg px-5 py-2 bg-[#00b4d8] text-white" to="/user/login" >
+                        <Link className="rounded-lg px-5 py-2 bg-[#025492] text-white" to="/user/login" >
                           Sign In
                         </Link>
                       )}
@@ -500,7 +503,7 @@ const Header = ({ activeHeading }) => {
                         onClick={() => setOpenWishlist(true) || setOpen(false)}
                       >
                         <AiOutlineHeart size={30} className="mt-5 ml-3" />
-                        <span class="absolute right-0 top-0 rounded-full bg-[#00b4d8] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
+                        <span class="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
                           {wishlist && wishlist.length}
                         </span>
                       </div>

@@ -246,7 +246,7 @@ const ReviewsDetails = ({ data }) => {
                   className={`buyNow-btn addToCart-btn  ${styles.button} 800px:!w-[40%] !mt-2  flex items-center`}
                   onClick={() => buyNowHandler(data._id)}
                 >
-                  <span className="text-[#00B4D8] flex items-center">
+                  <span className="text-[#025492] flex items-center">
                     BUY NOW 
                   </span>
                 </div>

@@ -28,12 +28,13 @@ import Slider5 from '../assets/sliderImages/SliderMedia/flipPhone.jpg'
 import Slider6 from '../assets/sliderImages/SliderMedia/alienwareHero.png'
 // import { useSelector } from 'react-redux';
 import ShopAccessories from '../components/ShopAccessories/ShopAccessories';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const HomePage = () => {
   // const { allProducts, bestProducts, myProducts } = useSelector((state) => state.products);
-
+  const navigate = useNavigate()
    useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -58,10 +59,10 @@ const HomePage = () => {
                         Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Smart Watches')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
-                <img src={AccessoriesImg} alt="" className='swiper-slide-video'/>
+                <img src={AccessoriesImg} alt="" className='swiper-slide-img'/>
               </div>
             
             </SwiperSlide>
@@ -75,7 +76,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Tablets')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <video src={Slider1} autoPlay muted playsInline className='swiper-slide-video'/>
@@ -91,7 +92,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Phones')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={Slider2} alt="" className='swiper-slide-img'/>
@@ -108,7 +109,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Tablets')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <video src={Slider3} autoPlay muted playsInline className='swiper-slide-video'/>
@@ -125,7 +126,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Earphones and Headphones')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={slider2} alt="" className='swiper-slide-img'/>
@@ -142,7 +143,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Phones')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={Slider5} alt="" className='swiper-slide-img'/>
@@ -157,7 +158,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Computers')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={Slider6} alt="" className='swiper-slide-img' style={{objectFit:"contain"}}/>
@@ -172,7 +173,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Computers')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={Slider4} alt="" className='swiper-slide-img'/>
@@ -187,7 +188,7 @@ const HomePage = () => {
                       Explore Trending Products
                       </p>
                     </div>
-                    <div className="hsinfo-btn">View Offers <span><img src={rightArrow} alt="" /></span></div>
+                    <div className="hsinfo-btn" onClick={() => navigate('/products?category=Phones')}>View Offers <span><img src={rightArrow} alt="" /></span></div>
                   </div>
                 </div>
                 <img src={ApplePhone} alt="" className='swiper-slide-img'/>
@@ -215,7 +216,7 @@ const HomePage = () => {
         {/* <VillajaHeader/> */}
         {/* <Hero /> */}
         <FeaturedProduct />
-        <BestDeals />
+        {/* <BestDeals /> */}
         {/* <Events /> */}
        
         <OfficialStoreDeals />

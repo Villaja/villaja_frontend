@@ -64,7 +64,7 @@ const Categories = ({ isSellerHomepage }) => {
                   />
                 </div>
                 <div className="cat-text">
-                  <p className=" text-md 800px:text-2xl font-semibold text-gray-800 mb-2">
+                  <p className=" text-md 800px:text-2xl font-medium text-gray-800 mb-2">
                     {i.title}
                   </p>
                   <p

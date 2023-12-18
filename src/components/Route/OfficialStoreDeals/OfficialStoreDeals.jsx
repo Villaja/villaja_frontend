@@ -34,7 +34,7 @@ const BestDeals = () => {
           <h1 className="mt-4 sm:mt-1">Best Selling Items</h1>
         </div> */}
         <div className="ic-header">
-            <div className="item-cat-title">Top Products</div>
+            <div className="item-cat-title">Trending Products</div>
             <Link to="/all" className="seemore-btn">See more &#8250; </Link>
         </div>
         <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-6 xl:gap-[30px] mb-12 border-0">

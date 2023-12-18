@@ -14,7 +14,7 @@ const FeaturedProduct = () => {
     if (allProducts && allProducts?.length > 0) {
       const allProductsData = [...allProducts];
       const sortedData = allProductsData?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      const firstFive = sortedData && sortedData.slice(0, 6);
+      const firstFive = sortedData && sortedData.slice(0, 12);
       setData(firstFive);
       setLoading(false);
     }

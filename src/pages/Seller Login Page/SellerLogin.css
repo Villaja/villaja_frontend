@@ -44,7 +44,7 @@ body {
   
   .input-field:focus {
     outline: none;
-    border-color: #00B4D8; /* Blue border on focus */
+    border-color: #025492; /* Blue border on focus */
   }
   
   /* Password Visibility Icon Styling */
