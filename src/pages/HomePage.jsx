@@ -46,11 +46,11 @@ const HomePage = () => {
   return (
     <div>
       
-        <div className='bg-[#f1f1f2] px-4 max-[799px]:hidden'>
+        {/* <div className='bg-[#f1f1f2] px-4 max-[799px]:hidden'>
           <div className='max-w-[1628px] mx-auto py-2 bg-[#f1f1f2] text-[#025492] font-medium flex justify-between items-center '> <Link to='/shop/home'><div className='flex items-center gap-1'> <img src={VillajaFavicon} className='rounded-[50%] h-[25px] w-auto' alt="" /> Sell on Villaja </div></Link>
           <Link to="https://www.instagram.com/villajatech/?utm_source=ig_web_button_share_sheet&igshid=YzAwZjE1ZTI0Zg==" target='_blank'><FaInstagram size={20}  className='text-gray-600 hover:text-[#025492]'/></Link>
           </div>
-        </div>
+        </div> */}
       
         <Header activeHeading={1} />
 

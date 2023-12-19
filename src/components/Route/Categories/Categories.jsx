@@ -18,7 +18,7 @@ const Categories = ({ isSellerHomepage }) => {
 
   return (
     <>
-      {/* <div className={`${styles.section} hidden sm:block`}>
+      <div className={`${styles.section} hidden sm:block`}>
         <div
           className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
         >
@@ -37,7 +37,7 @@ const Categories = ({ isSellerHomepage }) => {
               </div>
             ))}
         </div>
-      </div> */}
+      </div>
 
       <div className="item-cat-container">
         <div className="ic-header">
@@ -64,7 +64,7 @@ const Categories = ({ isSellerHomepage }) => {
                   />
                 </div>
                 <div className="cat-text">
-                  <p className=" text-md 800px:text-[1.4rem] font-semibold text-gray-800 mb-2 uppercase">
+                  <p className=" text-md 800px:text-[1.4rem] font-medium text-gray-800 mb-2 ">
                     {i.title}
                   </p>
                   <p

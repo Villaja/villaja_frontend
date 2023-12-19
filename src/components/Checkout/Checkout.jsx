@@ -354,7 +354,7 @@ const CartData = ({
       <br />
       {/* <br /> */}
       <div
-        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #025492)',margin:"0 auto",height:"40px"}}
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'#025492',margin:"0 auto",height:"40px"}}
         onClick={paymentSubmit}
       >
         <h5 className="text-white">CHECKOUT</h5>

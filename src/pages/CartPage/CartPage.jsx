@@ -49,7 +49,7 @@ const CartPage = () => {
             <div className="w-full  flex flex-col items-center justify-center">
                 <div className='contain w-[300px] h-[300px] relative'><img src={EmptyCartImg} alt="" /></div>
                 <h2 className='text-[1.6rem] font-medium my-6'>Your Cart is Empty</h2>
-                <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-gradient-to-b from-[#00B4D8] to-[#025492] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
+                <div className='w-[100%] max-w-[25rem] flex items-center justify-center px-10 py-[0.8rem] bg-[#025492] rounded-[30px] text-[#fff] font-medium text-[1.3rem] cursor-pointer' onClick={() => navigate('/')}>Explore Villaja</div>
               </div>
               :null
           }
@@ -97,7 +97,7 @@ const CartPage = () => {
 
                   <Link to={`${user?.email?"/checkout":'/user/login'}`}>
                     <div
-                      className={` h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-gradient-to-b from-[#00B4D8] to-[#0077B6] rounded-[0.5rem]`}
+                      className={` h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-[#025492] rounded-[0.5rem]`}
                       >
                       <h1 className={`text-[#fff] text-[18px] font-[600] `}>
                         {`${user?.email?"CHECKOUT":'LOGIN TO CONTINUE'}`}
