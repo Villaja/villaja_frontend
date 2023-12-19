@@ -12,7 +12,7 @@ const Reviews = ({ratings,reviews,id,isDetailsPage}) => {
     <div className="reviews-wrapper">
         <div className="reviews-container item-cat-container">
             <div className="reviews-top ic-header">
-                <div className="item-cat-title">Customer Reviews</div>
+                <div className="item-cat-title">CUSTOMER REVIEWS</div>
                 {/* <div className="seemore-btn" onClick={() => navigate(`/reviews/${id}`)}>See more &#8250; </div> */}
             </div>
             <div className="reviews-main">

@@ -161,7 +161,7 @@ const ProductsPage = () => {
       <div className="cc-main-body min-h-[80vh]">
 
         <div className=" p-6 mx-auto text-center text-[1.5rem]">
-                  <span className="min-[756px]:hidden font-medium">{searchData?searchData:categoryData}</span>
+                  <span className="min-[756px]:hidden font-medium ">{searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}</span>
         </div>
 
       <div className="catalog-page-body">
@@ -190,8 +190,8 @@ const ProductsPage = () => {
                 { data && data.length > 0 ?<div className={`catalog-item-display ${openFilter?'hidden':''}`}>
 
                     <div className="max-[756px]:hidden cid-top-bar">
-                      <div className="  cid-top-catname text-xl  sm:text-2xl font-semibold">
-                         {searchData?searchData:categoryData}
+                      <div className="  cid-top-catname text-xl  sm:text-2xl font-medium">
+                         {searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}
                       </div>
                       
                     </div>

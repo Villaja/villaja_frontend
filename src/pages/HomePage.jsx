@@ -1,11 +1,14 @@
 import {useEffect,} from 'react'
+import { Link } from 'react-router-dom';
 import Header from "../components/Layout/Header";
 import Categories from "../components/Route/Categories/Categories";
-import BestDeals from "../components/Route/BestDeals/BestDeals";
+// import BestDeals from "../components/Route/BestDeals/BestDeals";
 import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct";
 import OfficialStoreDeals from "../components/Route/OfficialStoreDeals/OfficialStoreDeals";
 
 import VillajaFooter from '../components/VillajaFooter/VillajaFooter';
+import { FaInstagram } from "react-icons/fa";
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
 
@@ -41,7 +44,13 @@ const HomePage = () => {
 
   return (
     <div>
-   
+      
+        <div className='bg-[#f1f1f2] px-4'>
+          <div className='max-w-[1628px] mx-auto py-2 bg-[#f1f1f2] text-[#025492] font-medium flex justify-between items-center '> <Link to='/shop/home'><div className='flex items-center gap-1'> <img src="public\favicon.ico" className='rounded-[50%] h-[25px] w-auto' alt="" /> Sell on Villaja </div></Link>
+          <Link to="https://www.instagram.com/villajatech/?utm_source=ig_web_button_share_sheet&igshid=YzAwZjE1ZTI0Zg==" target='_blank'><FaInstagram size={20}  className='text-gray-600 hover:text-[#025492]'/></Link>
+          </div>
+        </div>
+      
         <Header activeHeading={1} />
 
         <div className="homepage-slider">

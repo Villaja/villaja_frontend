@@ -159,7 +159,7 @@ const ProductDetails = ({ data }) => {
     
     <div className="min-h-[100vh] mt-2 rounded-lg">
       {data ? (
-      <div className={`${styles.section} w-[95%] mt-5 sm:mt-10 mx-auto bg-white rounded-lg px-5 sm:px-10 `}>
+      <div className={`${styles.section} w-[95%] mt-5 sm:mt-10 mx-auto bg-white rounded-lg px-2 sm:px-10 `}>
           <div className="w-full pt-10 ">
             <div className="block w-full 800px:flex" style={{flexDirection:"row-reverse"}}>
             <div className="w-full 800px:w-[50%] h-[400px] sm:h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>

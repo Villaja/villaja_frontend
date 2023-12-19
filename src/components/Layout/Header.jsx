@@ -30,7 +30,7 @@ import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
-// import logo from '../../assets/villaja.png'
+import VillajaLogoNew from '../../assets/villaja_logo_new.png'
 import './Header.css'
 import '../../components/VillajaHeader/villajaHeader.css'
 // import { Swiper, SwiperSlide } from 'swiper/react'
@@ -148,8 +148,8 @@ const Header = ({ activeHeading }) => {
           </div> */}
 
         <div className="vh-item vh-logo">
-          <Link to={'/'}>
-              <img src={villajaLogoHeader} alt="" />
+          <Link to={'/'} className=' '>
+              <img src={VillajaLogoNew} className="h-[30px] w-auto contain" alt="" />
           </Link>
 
           <div className="vh-item-header-search ">
@@ -162,7 +162,7 @@ const Header = ({ activeHeading }) => {
                 placeholder="Search Villaja..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="h-[44px] w-full px-2  pl-8 text-base border-[2px] rounded-lg"
+                className="h-[44px] w-full px-2  pl-8  border-[2px] rounded-lg"
                 onKeyDown={(e) => {if(e.key === "Enter") handleHeroSearch()} }
               />
               
@@ -172,13 +172,12 @@ const Header = ({ activeHeading }) => {
                     searchData.slice(0,7).map((i, index) => {
                       return (
                         <Link to={`/product/${i._id}`} key={index}>
-                          <div className="w-full flex items-start-py-3 mb-2">
-                            <div className='w-[40px] min-w-[40px] h-[40px] relative mr-[20px]'>
+                          <div className="w-full flex items-center py-3 mb-2">
+                            <div className='relative mr-[20px]'>
 
-                            <img
-                              src={`${i.images[0]?.url}`}
-                              alt=""
-                              className="w-full h-full object-contain "
+                            <CiSearch
+                              size={20}
+                              className=""
                               />
                             </div>
                             <h1>{i.name.length > 40 ? i.name.slice(0, 40) + "..." : i.name}</h1>
@@ -198,16 +197,16 @@ const Header = ({ activeHeading }) => {
 
 
           <div className="vh-menu h-[100%] items-center">
-              <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)}> <Link to='/products?category=Phones'> Phones </Link> &nbsp;
+              <div className="vh-item vh-menu-item" onMouseEnter={() => setHoverState(1)} onMouseLeave={() => setHoverState(0)}> <Link to='/products?category=Phones'> PHONES </Link> &nbsp;
               {(dropdownHoverState === 1) && <VillajaHeaderDropdown categoryNames={["Basic Phones","Smart Phones"]}/>}
               </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Tablets'>Tablets</Link> &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(2)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Tablets'>TABLETS</Link> &nbsp;
               {(dropdownHoverState === 2) && <VillajaHeaderDropdown categoryNames={["Professional Tablets","Educational Tablets"]}/>} </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Computers'>Computers</Link>  &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(3)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Computers'>COMPUTERS</Link>  &nbsp;
               {(dropdownHoverState === 3) &&<VillajaHeaderDropdown categoryNames={["Laptops","Desktops"]}/>} </div>
-              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Accessories'>Accessories</Link> &nbsp;
+              <div className="vh-item vh-menu-item" onMouseOver={() => setHoverState(4)} onMouseLeave={() => setHoverState(0)}><Link to='/products?category=Accessories'>ACCESSORIES</Link> &nbsp;
               {(dropdownHoverState === 4) && <VillajaHeaderDropdown categoryNames={["Earphones and Headphones","Smart Watches","Speakers","Microphones","Chargers and More","Cases and Covers","Storage","Gaming Accessories","Keyboards & Mice","Laptop Bags","Stands & Lights","Sytlus & Tablets"]}/> }</div>
-              <Link to="/faq" className="vh-item vh-menu-item">Support</Link>
+              <Link to="/faq" className="vh-item vh-menu-item">SUPPORT</Link>
           </div>
 
             <div className="flex" style={{gap:"1.5rem"}}>
@@ -245,8 +244,8 @@ const Header = ({ activeHeading }) => {
                       <CgProfile size={30} />
                     </Link>
                   ) : (
-                    <div className="rounded-lg px-5 py-2 bg-[#025492] text-white" onClick={() => navigate("/user/login")}  style={{flexShrink:"0"}}>
-                      Sign In
+                    <div className="rounded-lg px-5 py-2 border border-2 text-[#025492] border-[#025492] font-medium" onClick={() => navigate("/user/login")}  style={{flexShrink:"0"}}>
+                      SIGN IN
                     </div>
                   )}
                 </div>
@@ -354,7 +353,7 @@ const Header = ({ activeHeading }) => {
             <div className=''>
               <Link to="/">
                 <p className="text-xl font-bold ">
-                  <img src={villajaLogoHeader} alt="" />
+                  <img src={VillajaLogoNew} alt="" className='h-[30px] w-auto contain'/>
                 </p>
               </Link>
             </div>
@@ -386,8 +385,8 @@ const Header = ({ activeHeading }) => {
                   ) : (
                     <div className='shrink-0' >
 
-                    <Link className="rounded-lg px-5 py-2 bg-[#025492] text-white shrink-0" to="/user/login" style={{flexShrink:"0"}}>
-                      Sign In
+                    <Link className="rounded-lg px-5 py-2 border border-2 text-[#025492] border-[#025492] font-medium shrink-0" to="/user/login" style={{flexShrink:"0"}}>
+                      SIGN IN
                     </Link>
                     </div>
                   )}
@@ -486,10 +485,10 @@ const Header = ({ activeHeading }) => {
                         <Link to="/profile">
                           <CgProfile size={30} />
                         </Link>
-                      ) : (
-                        <Link className="rounded-lg px-5 py-2 bg-[#025492] text-white" to="/user/login" >
-                          Sign In
-                        </Link>
+                      ) : ( null
+                        // <Link className="rounded-lg px-5 py-2 border border-2 text-[#025492] border-[#025492] font-medium" to="/user/login" >
+                        //   Sign In
+                        // </Link>
                       )}
                     
                   </div>
@@ -502,7 +501,7 @@ const Header = ({ activeHeading }) => {
                         className="relative mr-[15px]"
                         onClick={() => setOpenWishlist(true) || setOpen(false)}
                       >
-                        <AiOutlineHeart size={30} className="mt-5 ml-3" />
+                        <AiOutlineHeart size={30} className="mt-1 ml-3" />
                         <span class="absolute right-0 top-0 rounded-full bg-[#025492] w-4 h-4 top right p-0 m-0 text-gray-900 font-mono text-[12px]  leading-tight text-center">
                           {wishlist && wishlist.length}
                         </span>

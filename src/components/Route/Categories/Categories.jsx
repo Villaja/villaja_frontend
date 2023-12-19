@@ -44,7 +44,7 @@ const Categories = ({ isSellerHomepage }) => {
           <div className="item-cat-title">
             {isSellerHomepage
               ? "Categories to Sell Under"
-              : "Shop By Category"}
+              : "SHOP BY CATEGORY"}
           </div>
           {/* <div className="seemore-btn">See more &#8250; </div> */}
         </div>
@@ -64,7 +64,7 @@ const Categories = ({ isSellerHomepage }) => {
                   />
                 </div>
                 <div className="cat-text">
-                  <p className=" text-md 800px:text-2xl font-medium text-gray-800 mb-2">
+                  <p className=" text-md 800px:text-[1.4rem] font-semibold text-gray-800 mb-2 uppercase">
                     {i.title}
                   </p>
                   <p
