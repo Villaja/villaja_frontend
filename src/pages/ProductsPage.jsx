@@ -43,6 +43,9 @@ const ProductsPage = () => {
   const [openFilter,setOpenFilter] = useState(false)
   const [itemDisplay,setItemDisplay] = useState(false)
   const [sortValue,setSortValue] = useState('New Arrivals')
+  const [ratingFilter,setRatingFilter] = useState()
+  const [osFilter,setOsFilter] = useState()
+  const [conditionFilter,setConditionFilter] = useState()
 
   const location = useLocation()
   const queryP = new useSearchParams(window.location.search)
@@ -87,6 +90,13 @@ const ProductsPage = () => {
     }
   },[queryP[0].get('category'),queryP[0].get('searchTerm')])
 
+  useEffect(() => 
+  {
+    setRatingFilter(searchParams.get('ratings'))
+    setOsFilter(searchParams.get('os')?.split(','))
+    setConditionFilter(searchParams.get('condition'))
+  },[searchParams])
+
   useEffect(() => {
     if(allProducts){
       if(searchData)
@@ -98,16 +108,16 @@ const ProductsPage = () => {
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
+        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max) && (ratingFilter?i.ratings >= ratingFilter:true) && (conditionFilter?i.condition === conditionFilter:true) && (osFilter?osFilter.includes(i.os):true)))
       }
     }
     console.log(allProducts);
-  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter])
+  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter,ratingFilter,conditionFilter,osFilter])
 
 
    useEffect(() => {
-      if(openFilter) document.body.style.height = "125vh";
-      else document.body.style.height = "125vh";
+      if(openFilter) {document.body.style.height = "125vh"; window.scrollTo(0,0)}
+      else {document.body.style.height = "125vh";}
   }, [openFilter]);
 
 
@@ -162,6 +172,7 @@ const ProductsPage = () => {
 
         <div className=" p-6 mx-auto text-center text-[1.5rem]">
                   <span className="min-[756px]:hidden font-medium ">{searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}</span>
+                  
         </div>
 
       <div className="catalog-page-body">
@@ -192,6 +203,15 @@ const ProductsPage = () => {
                     <div className="max-[756px]:hidden cid-top-bar">
                       <div className="  cid-top-catname text-xl  sm:text-2xl font-medium">
                          {searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}
+                      </div>
+
+                      <div className="ctf-action ctf-action-2" >
+                        <select name="sortFilter" id="sortFilter2" value={sortValue} onChange={(e) => setSortValue(e.target.value)}>
+                          <option value="New Arrivals">New Arrivals</option>
+                          <option value="Price: Low to High">Price: Low to High</option>
+                          <option value="Price: High to Low">Price: High to Low</option>
+                          <option value="Customer Rating">Customer Rating</option>
+                        </select>
                       </div>
                       
                     </div>
