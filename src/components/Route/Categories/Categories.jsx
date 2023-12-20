@@ -20,11 +20,11 @@ const Categories = ({ isSellerHomepage }) => {
     <>
       <div className={`mx-auto`}>
         <div
-          className={`flex justify-between branding my-12  w-full shadow-sm bg-white p-5 rounded-md mx-auto`}
+          className={`flex justify-between branding my-12  w-full shadow-sm bg-white p-5 max-[676px]:px-0  rounded-md mx-auto`}
         >
           {brandingData &&
             brandingData.map((i, index) => (
-              <div className={`flex items-start max-[676px]:mx-auto ${index>0?"max-[676px]:hidden ":""}`} key={index}>
+              <div className={`flex items-start max-[676px]:mx-auto cursor-pointer ${index>0 && index < 3?"max-[676px]:hidden ":""}`} onClick={() => {if(index===3) navigate('/shop/home') }} key={index}>
                 {i.icon}
                 <div className="px-3">
                   <h3 className="font-bold text-gray-600 text-sm md:text-base">
