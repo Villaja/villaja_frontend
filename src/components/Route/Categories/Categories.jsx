@@ -18,13 +18,13 @@ const Categories = ({ isSellerHomepage }) => {
 
   return (
     <>
-      <div className={`${styles.section} hidden sm:block`}>
+      <div className={`mx-auto`}>
         <div
-          className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
+          className={`flex justify-between branding my-12  w-full shadow-sm bg-white p-5 rounded-md mx-auto`}
         >
           {brandingData &&
             brandingData.map((i, index) => (
-              <div className="flex items-start" key={index}>
+              <div className={`flex items-start max-[676px]:mx-auto ${index>0?"max-[676px]:hidden ":""}`} key={index}>
                 {i.icon}
                 <div className="px-3">
                   <h3 className="font-bold text-gray-600 text-sm md:text-base">
