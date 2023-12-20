@@ -26,6 +26,8 @@
     gap: 4rem;
 }
 
+
+
 @media screen and (max-width:1277px) {
     .seller-footer-wrapper {
         padding: 2.2rem 1rem;

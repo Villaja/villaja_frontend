@@ -1,5 +1,5 @@
 import './villajaFooter.css'
-import villajaLogo from '../../assets/villaja_footer_logo.svg'
+import villajaLogo from '../../assets/Seller SignUp Asset/logo1.png'
 import { Link } from 'react-router-dom'
 
 

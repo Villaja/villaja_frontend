@@ -1,5 +1,5 @@
 import './sellerFooter.css'
-import VillajaLogoLight from '../../assets/villaja_logo_light.svg'
+import VillajaLogoLight from '../../assets/Seller SignUp Asset/logo.png'
 import { Link } from 'react-router-dom'
 
 const SellerFooter = () => {
@@ -9,7 +9,7 @@ const SellerFooter = () => {
         <div className="seller-footer-container">
           <Link to="/">
             <div className="sfc-logo" onC>
-                <img src={VillajaLogoLight} alt="" />
+                <img src={VillajaLogoLight} className="h-[50px] w-[100px]" alt="" />
             </div>
           </Link>
             <div className="sfc-menu">

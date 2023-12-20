@@ -28,7 +28,7 @@ const SellerHomePage = () => {
                     <img src={MainImg} alt="" />
                     <div className="shc-heroes-text">
                         <div className="sht-top-text">
-                            Start selling with &nbsp; <img src={VillajaLogoLight} alt="" />
+                            Start selling with &nbsp; <img src={VillajaLogoLight}   alt="" />
                         </div>
                         <div className="sht-sell-btn" onClick={() => navigate('/shop/login')}>
                             START SELLING
