@@ -6,6 +6,14 @@
         grid-gap: 2rem;
         /* place-items: center; */
 }
+.branding-ic-body
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+        /* see notes below */
+        grid-gap: 2rem;
+        /* place-items: center; */
+}
 
 
 @media screen and (max-width:500px) {
@@ -13,4 +21,12 @@
                 grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
                 grid-gap: 1em;
             }
+
+                        .branding-ic-body {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+                            /* see notes below */
+                            grid-gap: 2rem;
+                            /* place-items: center; */
+                        }
 }

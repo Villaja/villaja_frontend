@@ -301,7 +301,7 @@ const ShippingInfo = ({
         <div></div>
       </form>
       <h5
-        className="text-[18px] cursor-pointer text-blue-500 font-bold inline-block"
+        className="text-[18px] cursor-pointer text-[#025492] font-bold inline-block font-medium"
         onClick={() => setUserInfo(!userInfo)}
       >
         Choose From saved address
@@ -354,7 +354,7 @@ const CartData = ({
       <br />
       {/* <br /> */}
       <div
-        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #0077B6)',margin:"0 auto",height:"40px"}}
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'#025492',margin:"0 auto",height:"40px"}}
         onClick={paymentSubmit}
       >
         <h5 className="text-white">CHECKOUT</h5>

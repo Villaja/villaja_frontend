@@ -1,9 +1,16 @@
 .filter-container
 {
-    background-color: #f2f2f5;
+    position: sticky;
+    top: 8.8rem;
+    left: 0;
+    /* background-color: #f2f2f5; */
     padding: 1rem;
-    width: 288px;
+    width: 300px;
+    height: 110vh;
+    overflow-y: auto;
 }
+
+
 
 .filter-cat,.filter-top-bar
 {
@@ -14,7 +21,7 @@
 
 .filter-sub
 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .filter-sub-title
@@ -80,7 +87,7 @@ label
 
 .brand-check:hover
 {
-    border: 1px solid #00b4d8;
+    border: 1px solid #025492;
 }
 
 .brand-check:active,
@@ -89,7 +96,7 @@ label
 }
 
 .brand-check:checked {
-    background-color: #00b4d8;
+    background-color: #025492;
     border: 1px solid #0162758f;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -124,12 +131,12 @@ label
     position: absolute;
     top: -32.3289px;
     left: -8.4px;
-    color: #00b4d8;
+    color: #025492;
     padding: 0;
 }
 
 .brand-check:hover {
-    border: 1px solid #00b4d8;
+    border: 1px solid #025492;
 }
 
 .brand-check:active,
@@ -138,9 +145,9 @@ label
 }
 
 .discount-radio:checked {
-    border: 1.5px solid #00b4d8;;
+    border: 1.5px solid #025492;;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
-    color: #00b4d8;
+    color: #025492;
 }
 
 
@@ -153,8 +160,8 @@ label
 #price-range
 {
     width: 100%;
-    accent-color: #00b4d8 ;
-    background: #00b4d8;
+    accent-color: #025492 ;
+    background: #025492;
     outline: none;
 }
 
@@ -231,7 +238,8 @@ label
     {
         width: 100%;
         min-height: 125vh;
-        height: 100%;
+        z-index: 100000;
+        /* height: 100%; */
         background-color: #ffffff;
         overflow: auto;
     }

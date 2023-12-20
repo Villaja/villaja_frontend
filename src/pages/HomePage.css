@@ -1,14 +1,14 @@
 
 .homepage-slider {
     position: relative;
-    width: 95%;
+    width: 100%;
     /*max-width: 1628px; */
     margin: 0 auto; 
     height: 600px;
     max-height: 600px;
     overflow: hidden;
-    margin-top: 1rem;
-    border-radius: 15px;
+    /* margin-top: 1rem; */
+    /* border-radius: 15px; */
     background-color: #070707; 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Apply a subtle shadow for depth */
 }
@@ -86,8 +86,8 @@
 .hsinfo-top
 {
     display: flex;
-    font-size: 3rem;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .hsinfo-top p
@@ -111,6 +111,7 @@
     height: 2.6rem;
     color: #111111;
     cursor: pointer;
+    font-weight: 500;
 }
 
 
@@ -121,7 +122,7 @@
         height: 280px;
     }
         .hsinfo-top {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
         }
 }

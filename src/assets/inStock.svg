@@ -6,15 +6,15 @@
 <rect x="1" y="1" width="115" height="24" rx="12" stroke="url(#paint2_linear_1_15)" stroke-width="2"/>
 <defs>
 <linearGradient id="paint0_linear_1_15" x1="13" y1="5" x2="13" y2="21" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00B4D8"/>
+<stop stop-color="#025492"/>
 <stop offset="1" stop-color="#0077B6"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1_15" x1="13" y1="9" x2="13" y2="17" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00B4D8"/>
+<stop stop-color="#025492"/>
 <stop offset="1" stop-color="#0077B6"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1_15" x1="58.5" y1="1" x2="58.5" y2="25" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00B4D8"/>
+<stop stop-color="#025492"/>
 <stop offset="1" stop-color="#0077B6"/>
 </linearGradient>
 </defs>

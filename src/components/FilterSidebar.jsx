@@ -58,7 +58,7 @@ const FilterSidebar = ({ filters, setFilters, applyFilters, resetFilters }) => {
           </div>
         </label>
         <div className="mt-4">
-        <button onClick={applyFilters} className="w-full md:w-full lg:full xl:w-auto bg-[#00B4D8] text-white px-4 py-2 rounded mr-2 md:mr-4 lg:px-6 lg:py-3">
+        <button onClick={applyFilters} className="w-full md:w-full lg:full xl:w-auto bg-[#025492] text-white px-4 py-2 rounded mr-2 md:mr-4 lg:px-6 lg:py-3">
             Apply Filters
           </button>
           <button onClick={resetFilters} className="w-full md:w-full lg:full xl:w-auto text-gray-500  md:ml-8 md:py-2 rounded md:mr-4 lg:mr-8">

@@ -64,7 +64,7 @@ const ProductCard = ({ data,isEvent,catIndex,itemDisplay=true}) => {
 
   return (
     <>
-      <div className={`${catIndex?"pc-container-mobile":""} ${itemDisplay?"":"single-item-container-mobile"} pc-container w-full h-[300px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer hover:shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]`}>
+      <div className={`${catIndex?"pc-container-mobile":""} ${itemDisplay?"":"single-item-container-mobile"} pc-container w-full h-[300px] sm:h-[330px] bg-white rounded-lg sm:shadow-sm pt-3 relative cursor-pointer !shadow-[0_24px_36px_0px_rgba(52,87,140,0.12)]`}>
         {/* <div className="flex justify-end"></div> */}
         <div style={{width:"100%",maxWidth:"200px",height:"150px",position:"relative",flexShrink:"0"}}>
 

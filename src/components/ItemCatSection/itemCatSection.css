@@ -15,8 +15,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
-    font-size: 1.6rem;
+    font-weight:600;
+    font-size: 1.4rem;
    
     padding: 0.4rem;
     margin-bottom: 1.5rem;
@@ -68,7 +68,7 @@
 @media screen and (max-width:1200px) {
     .ic-body
     {
-        overflow-x: auto;
+        /* overflow-x: auto; */
     }
 }
 @media screen and (max-width:800px) {
@@ -76,7 +76,7 @@
     {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1rem;
-        padding: 0.5rem;
+        /* padding: 0.5rem; */
     }
 
     .special-ic-body-two
@@ -90,6 +90,13 @@
             gap: 1rem;
     }
 
+}
+
+@media screen and (max-width:640px) {
+    .ic-header
+    {
+        font-size: 1.25rem;
+    }
 }
 
 

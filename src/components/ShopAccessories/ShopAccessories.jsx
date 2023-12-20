@@ -25,7 +25,7 @@ const ShopAccessories = () => {
   return (
     <div className="item-cat-container w-[91.67%] mx-auto">
       <div className="ic-header">
-        <div className="item-cat-title">Shop Accessories</div>
+        <div className="item-cat-title">SHOP ACCESSORIES</div>
       </div>
       <div className="accessories-ic-body grid ">
         
@@ -52,7 +52,7 @@ const ShopAccessories = () => {
             <div className="mb-4">
               <img src={item.image} alt="" />
             </div>
-            <p className="max-w-[12ch] font-semibold text text-center">{item.category}</p>
+            <p className="max-w-[12ch] font-semibold text text-center uppercase">{item.category}</p>
           </div>
         ))}
       </div>

@@ -18,13 +18,13 @@ const Categories = ({ isSellerHomepage }) => {
 
   return (
     <>
-      {/* <div className={`${styles.section} hidden sm:block`}>
+      <div className={`mx-auto`}>
         <div
-          className={`branding my-12 flex justify-between w-full shadow-sm bg-white p-5 rounded-md`}
+          className={`flex justify-between branding my-12  w-full shadow-sm bg-white p-5 rounded-md mx-auto`}
         >
           {brandingData &&
             brandingData.map((i, index) => (
-              <div className="flex items-start" key={index}>
+              <div className={`flex items-start max-[676px]:mx-auto ${index>0?"max-[676px]:hidden ":""}`} key={index}>
                 {i.icon}
                 <div className="px-3">
                   <h3 className="font-bold text-gray-600 text-sm md:text-base">
@@ -37,14 +37,14 @@ const Categories = ({ isSellerHomepage }) => {
               </div>
             ))}
         </div>
-      </div> */}
+      </div>
 
       <div className="item-cat-container">
         <div className="ic-header">
           <div className="item-cat-title">
             {isSellerHomepage
               ? "Categories to Sell Under"
-              : "Shop By Category"}
+              : "SHOP BY CATEGORY"}
           </div>
           {/* <div className="seemore-btn">See more &#8250; </div> */}
         </div>
@@ -64,7 +64,7 @@ const Categories = ({ isSellerHomepage }) => {
                   />
                 </div>
                 <div className="cat-text">
-                  <p className=" text-md 800px:text-2xl font-semibold text-gray-800 mb-2">
+                  <p className=" text-md 800px:text-[1.4rem] font-medium text-gray-800 mb-2 ">
                     {i.title}
                   </p>
                   <p

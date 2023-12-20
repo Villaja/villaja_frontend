@@ -1,8 +1,4 @@
-/* Body Styling */
-body {
-    background: #f0f4f8; /* Soft background color */
-    font-family: 'Helvetica Neue', sans-serif;
-  }
+
   
   /* Container Styling */
   .container {
@@ -44,7 +40,7 @@ body {
   
   .input-field:focus {
     outline: none;
-    border-color: #00B4D8; /* Blue border on focus */
+    border-color: #025492; /* Blue border on focus */
   }
   
   /* Password Visibility Icon Styling */

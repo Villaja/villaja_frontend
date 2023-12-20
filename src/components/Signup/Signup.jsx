@@ -97,7 +97,7 @@ const Singup = () => {
                   value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
                   placeholder="Enter your first name"
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
               </div>
             </div>
@@ -117,7 +117,7 @@ const Singup = () => {
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
                   placeholder="Enter your last name"
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
               </div>
             </div>
@@ -138,7 +138,7 @@ const Singup = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="jaysmith@example.com"
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ const Singup = () => {
                   value={phoneNumber}
                   placeholder="0909090909"
                   onChange={(e) => setPhonenumber(e.target.value)}
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
               </div>
             </div>
@@ -180,7 +180,7 @@ const Singup = () => {
                   value={password}
                   placeholder="Enter your Password"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye

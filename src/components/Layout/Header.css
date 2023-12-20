@@ -1,4 +1,4 @@
-.vh-header-wrapper {
+.vh-header-wrapper,.vh-login-header-wrapper{
     /* position: sticky; */
     /* top: 0; */
     /* left: 0; */
@@ -118,19 +118,20 @@ Link {
 .vh-logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 .vh-logo
 {
     gap: 1.5rem;
+
 }
 
 .vh-item {
     cursor: pointer;
     padding: 0.97rem 0;
     height: 100%;
-    z-index: 1000;
+    z-index: 1;
     display: flex;
     align-items: center;
 }
@@ -146,7 +147,8 @@ Link {
 
 .vh-menu-item {
     gap: 0;
-    padding: 0.97rem 2rem;
+    padding: 0.97rem 1.5rem;
+    font-weight: 500;
 }
 
 
@@ -167,7 +169,6 @@ Link {
 }
 
 .vh-header-container:has(div:hover) {
-    /* background-color: black; */
     color: #77777aec;
 }
 .vh-header-wrapper:has(div:hover) {
@@ -327,7 +328,7 @@ input
 
 input:focus
 {
-    border-color: #00B4D8;
+    border-color: #025492;
 }
 
 

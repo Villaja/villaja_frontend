@@ -43,6 +43,9 @@ const ProductsPage = () => {
   const [openFilter,setOpenFilter] = useState(false)
   const [itemDisplay,setItemDisplay] = useState(false)
   const [sortValue,setSortValue] = useState('New Arrivals')
+  const [ratingFilter,setRatingFilter] = useState()
+  const [osFilter,setOsFilter] = useState()
+  const [conditionFilter,setConditionFilter] = useState()
 
   const location = useLocation()
   const queryP = new useSearchParams(window.location.search)
@@ -87,27 +90,34 @@ const ProductsPage = () => {
     }
   },[queryP[0].get('category'),queryP[0].get('searchTerm')])
 
+  useEffect(() => 
+  {
+    setRatingFilter(searchParams.get('ratings'))
+    setOsFilter(searchParams.get('os')?.split(','))
+    setConditionFilter(searchParams.get('condition'))
+  },[searchParams])
+
   useEffect(() => {
     if(allProducts){
       if(searchData)
       {
-        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max) && (ratingFilter?i.ratings >= ratingFilter:true) && (conditionFilter?i.condition === conditionFilter:true) && (osFilter?osFilter.includes(i.os):true)))
 
       }
       else
       {
 
         console.log(allProducts[0])
-        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
+        setData(allProducts.filter((i) => i.category === categoryData && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max) && (ratingFilter?i.ratings >= ratingFilter:true) && (conditionFilter?i.condition === conditionFilter:true) && (osFilter?osFilter.includes(i.os):true)))
       }
     }
     console.log(allProducts);
-  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter])
+  },[pageNumber,allProducts,priceFilter,brandFilter,colorFilter,ratingFilter,conditionFilter,osFilter])
 
 
    useEffect(() => {
-      if(openFilter) document.body.style.height = "125vh";
-      else document.body.style.height = "125vh";
+      if(openFilter) {document.body.style.height = "125vh"; window.scrollTo(0,0)}
+      else {document.body.style.height = "125vh";}
   }, [openFilter]);
 
 
@@ -119,30 +129,22 @@ const ProductsPage = () => {
     let tempData = data?.slice(0)
     if(sortValue === "New Arrivals")
     {
-      console.log('new Arrivals!!!');
-      console.log((tempData));
       setFinalData(tempData)
     }
     else if(sortValue === "Price: Low to High")
     {
-      console.log('Price: Low to High');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(a.originalPrice - b.originalPrice)
                     }))
     }
     else if(sortValue === "Price: High to Low")
     {
-      console.log('Price: Low to High');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(b.originalPrice - a.originalPrice)
                     }))
     }
     else if(sortValue === "Customer Rating")
     {
-      console.log('Customer Rating');
-      console.log((tempData));
       setFinalData(tempData.sort((a,b) => {
                       return(b.ratings - a.ratings)
                     }))
@@ -169,7 +171,8 @@ const ProductsPage = () => {
       <div className="cc-main-body min-h-[80vh]">
 
         <div className=" p-6 mx-auto text-center text-[1.5rem]">
-                  <span className="min-[756px]:hidden font-medium">{searchData?searchData:categoryData}</span>
+                  <span className="min-[756px]:hidden font-medium ">{searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}</span>
+                  
         </div>
 
       <div className="catalog-page-body">
@@ -198,8 +201,17 @@ const ProductsPage = () => {
                 { data && data.length > 0 ?<div className={`catalog-item-display ${openFilter?'hidden':''}`}>
 
                     <div className="max-[756px]:hidden cid-top-bar">
-                      <div className="  cid-top-catname text-xl  sm:text-2xl font-semibold">
-                         {searchData?searchData:categoryData}
+                      <div className="  cid-top-catname text-xl  sm:text-2xl font-medium">
+                         {searchData?<>{`Results for `}<span className="text-[#025492]">{"'"+searchData+"'"}</span></>:categoryData}
+                      </div>
+
+                      <div className="ctf-action ctf-action-2" >
+                        <select name="sortFilter" id="sortFilter2" value={sortValue} onChange={(e) => setSortValue(e.target.value)}>
+                          <option value="New Arrivals">New Arrivals</option>
+                          <option value="Price: Low to High">Price: Low to High</option>
+                          <option value="Price: High to Low">Price: High to Low</option>
+                          <option value="Customer Rating">Customer Rating</option>
+                        </select>
                       </div>
                       
                     </div>

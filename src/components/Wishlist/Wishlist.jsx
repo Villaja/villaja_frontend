@@ -25,7 +25,7 @@ const Wishlist = ({ setOpenWishlist }) => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-[125vh] z-10">
+    <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-[125vh] !z-1000000">
       <div className="fixed top-0 right-0 h-full w-[80%] overflow-y-scroll 800px:w-[25%] bg-white flex flex-col justify-between shadow-sm">
         {wishlist && wishlist.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
@@ -90,7 +90,7 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
 
         <div className="pl-[5px]">
           <h1>{data.name}</h1>
-          <h4 className="font-[600] pt-3 800px:pt-[3px] text-[17px] text-[#d02222] font-Manrope">
+          <h4 className="font-[600] pt-3 800px:pt-[3px] text-[17px] text-[#d02222] font-DM Sans">
             ₦{totalPrice}
           </h4>
         </div>

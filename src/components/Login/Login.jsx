@@ -91,7 +91,7 @@ const Login = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
               </div>
             </div>
@@ -110,7 +110,7 @@ const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#ABABB5] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#00B4D8] sm:text-sm"
+                  className="appearance-none block w-full border dark:border-[#ABABB5] text-[#111111] p-3 rounded-[8px] shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-[#025492] sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -143,7 +143,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="text-sm">
-                <Link to="/user/forgot-password" className="text-right mb-3 text-[#0077B6] cursor-pointer">
+                <Link to="/user/forgot-password" className="text-right mb-3 text-[#025492] cursor-pointer">
                   Forgot your password?
                 </Link>
               </div>
@@ -167,7 +167,7 @@ const Login = () => {
               <span></span>
             </div>
 
-              <Link to="/user/signup" className={` text-[#0077B6] pl-2 w-full`} style={{textDecoration:'none'}}>
+              <Link to="/user/signup" className={` text-[#025492] pl-2 w-full`} style={{textDecoration:'none'}}>
                 <div className="login-signup-btn h-[45px] flex justify-center items-center py-2 px-4 text-[1.05rem] font-light rounded-md">
                   Sign Up
                 </div>

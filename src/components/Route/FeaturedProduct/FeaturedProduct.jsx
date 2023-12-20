@@ -14,7 +14,7 @@ const FeaturedProduct = () => {
     if (allProducts && allProducts?.length > 0) {
       const allProductsData = [...allProducts];
       const sortedData = allProductsData?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      const firstFive = sortedData && sortedData.slice(0, 6);
+      const firstFive = sortedData && sortedData.slice(0, 12);
       setData(firstFive);
       setLoading(false);
     }
@@ -28,10 +28,10 @@ const FeaturedProduct = () => {
           <h1>Featured Products</h1>
         </div> */}
         <div className="ic-header">
-            <div className="item-cat-title">New Arrivals</div>
+            <div className="item-cat-title">NEW ARRIVALS</div>
             <Link to="/all" className="seemore-btn">See more &#8250; </Link>
         </div>
-        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-6 xl:gap-[30px] mb-12 border-0">
+        <div className="grid grid-cols-2 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[20px] xl:grid-cols-6 xl:gap-[20px] mb-12 border-0">
           {loading ? (
             <p className="text-center"><ProductLoading/></p>
           ) : (

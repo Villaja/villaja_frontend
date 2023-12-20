@@ -1,5 +1,5 @@
 import './villajaHeader.css'
-import villajaLogo from '../../assets/villaja_logo.svg'
+import villajaLogo from '../../assets/villaja_logo_new.png'
 import searchIcon from '../../assets/search_icon.svg'
 import profileIcon from '../../assets/profile_icon.svg'
 import cartIcon from '../../assets/cart_icon.svg'
@@ -16,12 +16,12 @@ const VillajaHeader = () => {
     const location = useLocation()
 
   return (
-    <div className="vh-header-wrapper" style={location.pathname.split('/')[1]=='seller' || location.pathname.split('/')[1]=='login' || location.pathname.split('/')[1]=='signup' ?{display:"none"}:null}>
+    <div className="vh-login-header-wrapper" style={location.pathname.split('/')[1]=='seller' || location.pathname.split('/')[1]=='login' || location.pathname.split('/')[1]=='signup' ?{display:"none"}:null}>
 
     <div className="vh-header-container">
-        <div className="vh-item vh-logo">
+        <div className="vh-item vh-logo mx-auto">
            <Link to={'/'}>
-                <img src={villajaLogo} alt="" />
+                <img src={villajaLogo} className='h-[30px] w-auto' alt="" />
             </Link>
         </div>
 
@@ -42,9 +42,9 @@ const VillajaHeader = () => {
       }
         
 
-        <div className="mobile-menu">
+        {/* <div className="mobile-menu">
             <img src={menuBtn} alt="menu button" className='aux-img'/>
-        </div>
+        </div> */}
     </div>
     </div>
 
