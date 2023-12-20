@@ -95,15 +95,17 @@ const CartPage = () => {
                   {/* checkout buttons */}
                   <div className={`${cart.length<1?'pointer-events-none opacity-70':''}`}>
 
-                  <Link to={`${user?.email?"/checkout":'/user/login'}`}>
-                    <div
+                  {/* <Link to={`${user?.email?"/checkout":'/user/login'}`}> */}
+                    <div 
                       className={` h-[2.75rem] my-0 mx-[auto] flex items-center justify-center w-[100%] max-w-[16.5rem] bg-[#025492] rounded-[0.5rem]`}
+
+                      onClick={() => { localStorage.removeItem('buy-now');  navigate(`${user?.email?"/checkout":'/user/login'}`);}}
                       >
                       <h1 className={`text-[#fff] text-[18px] font-[600] `}>
                         {`${user?.email?"CHECKOUT":'LOGIN TO CONTINUE'}`}
                       </h1>
                     </div>
-                  </Link>
+                  {/* </Link> */}
                       </div>
           </div>
           :null
