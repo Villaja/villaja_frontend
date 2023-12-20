@@ -56,14 +56,15 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setRatingFilter,set
     }
 
     const HandleRatingChange = (val) => {
+        const searchTerm = searchParams.get('searchTerm')
             const category = searchParams.get('category')
             // const rating = searchParams.get('ratings')
        const os = searchParams.get('os')?.split(',')
         const condition = searchParams.get('condition')
 
         // searchParams.delete('ratings')
-        if (val === 'clear') navigate(`/products?category=${category}${os?'&os='+os:''}${condition?'&condition='+condition:''}`)
-        else navigate(`/products?category=${category}&ratings=${val}${os?'&os='+os:''}${condition?'&condition='+condition:''}`)
+        if (val === 'clear') navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}${os?'&os='+os:''}${condition?'&condition='+condition:''}`)
+        else navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}&ratings=${val}${os?'&os='+os:''}${condition?'&condition='+condition:''}`)
 
     }
 
@@ -85,25 +86,27 @@ const CategoryComponent = ({category,isMobile,setPriceFilter,setRatingFilter,set
 
     const HandleOsChange = (val) => {
             const category = searchParams.get('category')
+            const searchTerm = searchParams.get('searchTerm')
             const rating = searchParams.get('ratings')
     //    const os = searchParams.get('os')?.split(',')
         const condition = searchParams.get('condition')
 
         // searchParams.delete('ratings')
-        if (val === 'clear' || val.length < 1) navigate(`/products?category=${category}${condition?'&condition='+condition:''}${rating?'&ratings='+rating:''}`)
-        else if(val.length >= 1) navigate(`/products?category=${category}&os=${val}${condition?'&condition='+condition:''}${rating?'&ratings='+rating:''}`)
+        if (val === 'clear' || val.length < 1) navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}${condition?'&condition='+condition:''}${rating?'&ratings='+rating:''}`)
+        else if(val.length >= 1) navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}&os=${val}${condition?'&condition='+condition:''}${rating?'&ratings='+rating:''}`)
         
 
     }
     const HandleConditionChange = (val) => {
+        const searchTerm = searchParams.get('searchTerm')
             const category = searchParams.get('category')
             const rating = searchParams.get('ratings')
        const os = searchParams.get('os')?.split(',')
         // const condition = searchParams.get('condition')
 
         // searchParams.delete('ratings')
-        if (val === 'clear') navigate(`/products?category=${category}${os?'&os='+os:''}${rating?'&ratings='+rating:''}`)
-        else navigate(`/products?category=${category}&condition=${val}${os?'&os='+os:''}${rating?'&ratings='+rating:''}`)
+        if (val === 'clear') navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}${os?'&os='+os:''}${rating?'&ratings='+rating:''}`)
+        else navigate(`/products?${category?'category='+category:'searchTerm='+searchTerm}&condition=${val}${os?'&os='+os:''}${rating?'&ratings='+rating:''}`)
 
     }
 

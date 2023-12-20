@@ -101,7 +101,7 @@ const ProductsPage = () => {
     if(allProducts){
       if(searchData)
       {
-        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max)))
+        setData(allProducts.filter((i) => i.name.toLowerCase().includes(searchData.toLowerCase()) && (i.originalPrice >= priceFilter.min && i.originalPrice <= priceFilter.max) && (ratingFilter?i.ratings >= ratingFilter:true) && (conditionFilter?i.condition === conditionFilter:true) && (osFilter?osFilter.includes(i.os):true)))
 
       }
       else
