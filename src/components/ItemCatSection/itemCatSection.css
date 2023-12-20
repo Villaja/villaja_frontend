@@ -92,4 +92,11 @@
 
 }
 
+@media screen and (max-width:640px) {
+    .ic-header
+    {
+        font-size: 1.25rem;
+    }
+}
+
 

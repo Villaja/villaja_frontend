@@ -30,7 +30,7 @@ import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
-import VillajaLogoNew from '../../assets/villaja_logo_new.png'
+import VillajaLogoNew from '../../assets/villaja_logo_new.svg'
 import './Header.css'
 import '../../components/VillajaHeader/villajaHeader.css'
 // import { Swiper, SwiperSlide } from 'swiper/react'
@@ -149,7 +149,7 @@ const Header = ({ activeHeading }) => {
 
         <div className="vh-item vh-logo">
           <Link to={'/'} className=' '>
-              <img src={VillajaLogoNew} className="h-[30px] w-auto contain" alt="" />
+              <img src={VillajaLogoNew} className="h-[29px] w-auto contain" alt="" />
           </Link>
 
           <div className="vh-item-header-search ">
