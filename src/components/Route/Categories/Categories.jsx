@@ -20,7 +20,7 @@ const Categories = ({ isSellerHomepage }) => {
     <>
       <div className={`mx-auto`}>
         <div
-          className={`flex justify-between branding my-12  w-full shadow-sm bg-white p-5 max-[676px]:px-0  rounded-md mx-auto`}
+          className={`flex justify-between branding my-12  w-full shadow-md bg-white p-5 max-[676px]:px-0  rounded-md mx-auto`}
         >
           {brandingData &&
             brandingData.map((i, index) => (
