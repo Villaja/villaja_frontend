@@ -149,7 +149,7 @@ const Header = ({ activeHeading }) => {
 
         <div className="vh-item vh-logo">
           <Link to={'/'} className=' '>
-              <img src={VillajaLogoNew} className="h-[90px] w-[120px] contain" alt="" />
+              <img src={VillajaLogoNew} className="h-[90px] w-[90px] contain" alt="" />
           </Link>
 
           <div className="vh-item-header-search ">
