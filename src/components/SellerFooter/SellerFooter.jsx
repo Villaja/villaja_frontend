@@ -16,7 +16,7 @@ const SellerFooter = () => {
                 <div className="sfc-menu-item">Help</div>
                 <div className="sfc-menu-item">Terms of Use</div>
                 <div className="sfc-menu-item">Privacy Policy</div>
-                <div className="sfc-menu-item">Contact</div>
+                <div className="sfc-menu-item-4">Contact</div>
             </div>
         </div>
     </div>

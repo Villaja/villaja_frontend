@@ -17,8 +17,8 @@ const VillajaFooter = () => {
             <div className="vf-menu-item">Help</div>
             <div className="vf-menu-item"><Link to="/terms-conditions">Terms Of Use</Link></div>
             <div className="vf-menu-item">Privacy Policy</div>
-            <div className="vf-menu-item">About</div>
-            <div className="vf-menu-item">Contact</div>
+            <div className="vf-menu-item-1">About</div>
+            <div className="vf-menu-item-2">Contact</div>
             <div className="vf-menu-item">Careers</div>
         </div>
     </div>
