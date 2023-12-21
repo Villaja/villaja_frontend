@@ -172,7 +172,7 @@ const AllSellers = () => {
               <div className="w-full flex justify-end cursor-pointer">
                 <RxCross1 size={25} onClick={() => setOpen(false)} />
               </div>
-              <h3 className="text-[25px] text-center py-5 font-Poppins text-[#000000cb]">
+              <h3 className="text-[25px] text-center py-5 font-DM Sans text-[#000000cb]">
                 Are you sure you wanna delete this user?
               </h3>
               <div className="w-full flex items-center justify-center">
@@ -194,7 +194,7 @@ const AllSellers = () => {
         )}
             </div>
       {/* <div className="w-[97%]">
-        <h3 className="text-[22px] font-Poppins pb-2">All Users</h3>
+        <h3 className="text-[22px] font-DM Sans pb-2">All Users</h3>
         <div className="w-full min-h-[45vh] bg-white rounded">
           <DataGrid
             rows={row}
@@ -210,7 +210,7 @@ const AllSellers = () => {
               <div className="w-full flex justify-end cursor-pointer">
                 <RxCross1 size={25} onClick={() => setOpen(false)} />
               </div>
-              <h3 className="text-[25px] text-center py-5 font-Poppins text-[#000000cb]">
+              <h3 className="text-[25px] text-center py-5 font-DM Sans text-[#000000cb]">
                 Are you sure you wanna delete this user?
               </h3>
               <div className="w-full flex items-center justify-center">

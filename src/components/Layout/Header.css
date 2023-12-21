@@ -19,7 +19,7 @@ Link {
 .vh-header-container {
     width: 100%;
     /* background-color: #ffffff; */
-    /* background-color: #0077B6; */
+    /* background-color: #025492; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -236,7 +236,7 @@ Link {
 .hs-text span:nth-child(1) {
     font-size: 2rem;
     font-weight: 600;
-    background: -webkit-linear-gradient(-90deg, #00B4D8, #0077B6);
+    background: -webkit-linear-gradient(-90deg, #00B4D8, #025492);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -279,7 +279,7 @@ Link {
 }
 
 .search-btn {
-    background: linear-gradient(180deg, #00B4D8, #0077B6);
+    background: linear-gradient(180deg, #00B4D8, #025492);
     display: grid;
     place-items: center;
     padding: 0.5rem 2rem;

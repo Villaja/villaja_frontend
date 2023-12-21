@@ -242,7 +242,7 @@ const UpdateProductDetails = () => {
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white mt-16 rounded-[4px] p-3 ">
-  <h5 className="text-[30px] font-Poppins text-gray-700 mb-5">Update Product - Details</h5>
+  <h5 className="text-[30px] font-DM Sans text-gray-700 mb-5">Update Product - Details</h5>
   <Link to="/dashboard-products" className="bg-gray-300 text-black px-6 py-2 rounded mt-10">Back</Link>
   {/* create product form */}
   <form onSubmit={handleSubmit}>
@@ -668,7 +668,7 @@ const UpdateProductDetails = () => {
     type="submit"
     value={loading ? "Loading..." : "Update Product"}
     disabled={loading}
-    className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+    className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#025492] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
   />
 </div>
     </div>

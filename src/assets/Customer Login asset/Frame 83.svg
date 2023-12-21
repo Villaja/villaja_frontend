@@ -31,15 +31,15 @@
 </filter>
 <linearGradient id="paint0_linear_1126_9092" x1="154.504" y1="250" x2="154.504" y2="294" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1126_9092" x1="154.504" y1="376" x2="154.504" y2="400" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1126_9092" x1="154.504" y1="366" x2="154.504" y2="410" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 </defs>
 </svg>

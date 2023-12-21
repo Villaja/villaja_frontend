@@ -164,7 +164,7 @@ const AllUsers = () => {
               <div className="w-full flex justify-end cursor-pointer">
                 <RxCross1 size={25} onClick={() => setOpen(false)} />
               </div>
-              <h3 className="text-[25px] text-center py-5 font-Poppins text-[#000000cb]">
+              <h3 className="text-[25px] text-center py-5 font-DM Sans text-[#000000cb]">
                 Are you sure you wanna delete this user?
               </h3>
               <div className="w-full flex items-center justify-center">

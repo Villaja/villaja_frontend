@@ -211,7 +211,7 @@ const OrderDetails = () => {
       <div className="mt-5">
       {data?.status !== "Processing refund" && data?.status !== "Refund Success" && data?.status !== "Ready To Ship" && (
         <button
-          className={`${styles.button} bg- [#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
+          className={`${styles.button} bg- [#025492] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]`}
           onClick={
             data?.status !== "Processing refund"
               ? updateOrderStatus
@@ -236,7 +236,7 @@ const OrderDetails = () => {
           
         )} <Link to="/dashboard-orders">
         <div
-          className={`${styles.button} bg-[#0077B6] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]  ml-0`}
+          className={`${styles.button} bg-[#025492] !rounded-[4px] text-white font-[600] !h-[45px] text-[18px]  ml-0`}
         >
           Back To Orders
         </div>

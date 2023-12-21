@@ -158,7 +158,7 @@ const Checkout = () => {
         </div>
       </div>
       {/* <div
-        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #0077B6)'}}
+        className={`${styles.button} w-[150px] 800px:w-[280px] mt-10`} style={{background:'linear-gradient(180deg, #00B4D8, #025492)'}}
         onClick={paymentSubmit}
       >
         <h5 className="text-white">CHECKOUT</h5>

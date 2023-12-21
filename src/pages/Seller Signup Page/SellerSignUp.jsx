@@ -360,7 +360,7 @@ const ShopCreate = () => {
         <span></span>
       </div>
 
-  <Link to="/shop/login" className={` text-[#0077B6] pl-2 w-full`} style={{textDecoration:'none'}}>
+  <Link to="/shop/login" className={` text-[#025492] pl-2 w-full`} style={{textDecoration:'none'}}>
     <div className="login-signup-btn h-[45px] flex justify-center items-center py-2 px-4 text-[1.05rem] font-light rounded-md">
       Sign In
     </div>

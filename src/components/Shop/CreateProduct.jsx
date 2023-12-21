@@ -41,8 +41,18 @@ const CreateProduct = () => {
   const [connectivityDropdownVisible, setConnectivityDropdownVisible] = useState(false);
   const [selectedConnectivity, setSelectedConnectivity] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  /* First Attemp ColorList state */
+
+  const [currentColor,setCurrentColor] = useState("000000")
+  const [colorList,setColorList] = useState([])
+  const [colorIndex,setColorIndex] = useState(0)
+  const [imageDisplay,setImageDisplay] = useState([])
   
 
+  useEffect(() => {
+    console.log(colorList);
+  },[colorList])
 
 
   useEffect(() => {
@@ -56,6 +66,12 @@ const CreateProduct = () => {
     }
   }, [dispatch, error, success]);
 
+  const handleImageColorSubmit = () => {
+      setColorList([...colorList,{color:currentColor,index:colorIndex+','+(colorIndex+imageDisplay.length)}])
+      setColorIndex(colorIndex+imageDisplay.length)
+      setImageDisplay([])
+  }
+
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
@@ -67,11 +83,14 @@ const CreateProduct = () => {
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImages((old) => [...old, reader.result]);
+          setImageDisplay((old) => [...old, reader.result])
         }
       };
       reader.readAsDataURL(file);
     });
   };
+
+  
   
 
   const handleSubmit = async (e) => {
@@ -128,6 +147,7 @@ const CreateProduct = () => {
           discountPrice:(discountPrice == ""?0:discountPrice),
           stock,
           shopId: seller._id,
+          colorList,
           images,
           condition,
           aboutProduct,
@@ -179,7 +199,7 @@ const CreateProduct = () => {
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white mt-16 rounded-[4px] p-3 ">
-  <h5 className="text-[30px] font-Poppins text-gray-700">Add A Product - Details</h5>
+  <h5 className="text-[30px] font-DM Sans text-gray-700">Add A Product - Details</h5>
   {/* create product form */}
   <form onSubmit={handleSubmit}>
     <br />
@@ -597,7 +617,14 @@ const CreateProduct = () => {
     </div>
     <div>
 
-      <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product if listing used products, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
+      <label className="pb-2 text-[#025492]">Upload downloaded clear 1080p Images and a live picture proof of the product if listing used products, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
+      
+      <div className="mt-2">
+        <p>Select The Color of your Product (Upload Pictures Depending on the Selected Color) </p>
+        <label htmlFor="imageColor">Color: </label>
+        <input type="color" name='imageColor' id='imageColor' onChange={(e) => setCurrentColor(e.target.value)}/>
+      </div>
+      
       <input
         type="file"
         name=""
@@ -610,8 +637,8 @@ const CreateProduct = () => {
         <label htmlFor="upload">
           <AiOutlinePlusCircle size={30} className="mt-3" color="#555" />
         </label>
-        {images &&
-          images.map((i) => (
+        {imageDisplay &&
+          imageDisplay.map((i) => (
             <img
               src={i}
               key={i}
@@ -620,15 +647,33 @@ const CreateProduct = () => {
             />
           ))}
       </div>
+      <div className="mt-2 text-center max-w-[100px] rounded-[4px] cursor-pointer p-2 text-[#ffffff] bg-[#025492] " onClick={handleImageColorSubmit}>Save</div>
+      <div className="mt-1 flex items-center gap-2">
+        <p>Uploaded Colors: </p>
+
+        {
+          colorList && colorList.length > 0 ? 
+          colorList.map((cl,index) => {
+            return (
+              <div key={index} className="p-1 border border-[#e8e8e8]"><div className={`w-[40px] h-[40px]`} style={{background:`${cl.color}`}} ></div></div>
+              
+            )
+          })
+
+          :
+          null
+        }
+        {/* <div className="p-1 border border-[#e8e8e8]"><div className={`w-[40px] h-[40px]`} style={{background:`${colorList[0]?.color}`}} ></div></div> */}
+      </div>
       <br />
       <div>
-  <input
-    type="submit"
-    value={loading ? "Loading..." : "Add Product"}
-    disabled={loading}
-    className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#0077B6] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-  />
-</div>
+        <input
+          type="submit"
+          value={loading ? "Loading..." : "Add Product"}
+          disabled={loading}
+          className="mt-2 cursor-pointer appearance-none text-center block w-full bg-[#025492] text-white px-3 py-4 border border-gray-300 rounded-[6px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
     </div>
   </form>
 </div>

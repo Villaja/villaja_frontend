@@ -27,7 +27,7 @@ body {
 {
     width: 100% !important;
     /* width: 400px !important; */
-    background: linear-gradient(180deg, #00B4D8, #0077B6);
+    background: linear-gradient(180deg, #00B4D8, #025492);
     padding-top: 1.8rem !important;
     padding-bottom: 1.8rem !important;
     font-size: 1.5rem;
@@ -55,7 +55,7 @@ body {
 }
 .delivers-within
 {
-    background: linear-gradient(180deg, #0077B6 0%, #03045E 100%);
+    background: linear-gradient(180deg, #025492 0%, #03045E 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

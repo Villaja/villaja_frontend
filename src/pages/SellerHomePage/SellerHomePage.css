@@ -46,7 +46,7 @@
 .shhw-signup
 {
     color: #FFFFFF;
-    background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+    background: linear-gradient(180deg, #00B4D8 0%, #025492 100%);
 }
 
 .seller-homepage-container
@@ -126,7 +126,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 0.45vw;
-        background: linear-gradient(180deg, #025492 0%, #0077B6 100%);
+        background: linear-gradient(180deg, #025492 0%, #025492 100%);
         font-weight: 500;
         font-size: 1.5vw;
         color: #FFFFFF;
@@ -141,7 +141,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 8px;
-        background: linear-gradient(180deg, #025492 0%, #0077B6 100%);
+        background: linear-gradient(180deg, #025492 0%, #025492 100%);
         font-weight: 500;
         font-size: 22px;
         color: #FFFFFF;
@@ -188,7 +188,7 @@
         font-style: normal;
         font-weight: 600;
         line-height: 42px;
-    background: linear-gradient(180deg, #00B4D8 0%, #0077B6 100%);
+    background: linear-gradient(180deg, #00B4D8 0%, #025492 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

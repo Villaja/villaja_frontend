@@ -7,15 +7,15 @@
 <defs>
 <linearGradient id="paint0_linear_1_15" x1="13" y1="5" x2="13" y2="21" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1_15" x1="13" y1="9" x2="13" y2="17" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1_15" x1="58.5" y1="1" x2="58.5" y2="25" gradientUnits="userSpaceOnUse">
 <stop stop-color="#025492"/>
-<stop offset="1" stop-color="#0077B6"/>
+<stop offset="1" stop-color="#025492"/>
 </linearGradient>
 </defs>
 </svg>

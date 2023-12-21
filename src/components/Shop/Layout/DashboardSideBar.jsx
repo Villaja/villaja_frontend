@@ -49,7 +49,7 @@ const DashboardSideBar = ({ active }) => {
     to="/dashboard"
     className={`w-full flex items-center ${
       active === 1
-        ? "bg-[#0077B6] text-white"
+        ? "bg-[#025492] text-white"
         : "bg-white text-[#555]"
     } p-2 rounded-lg transition-all`}
   >
@@ -70,7 +70,7 @@ const DashboardSideBar = ({ active }) => {
 <div className="w-full flex items-center p-4">
   <Link to="/dashboard-orders" className={`w-full flex items-center ${
     active === 2
-      ? "bg-[#0077B6] text-white"
+      ? "bg-[#025492] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
     <BiSolidShoppingBags
@@ -90,7 +90,7 @@ const DashboardSideBar = ({ active }) => {
 <div className="w-full flex items-center p-4">
   <Link to="/dashboard-products" className={`w-full flex items-center ${
     active === 3
-      ? "bg-[#0077B6] text-white"
+      ? "bg-[#025492] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
     <HiClipboardDocumentList
@@ -110,7 +110,7 @@ const DashboardSideBar = ({ active }) => {
 <div className="w-full flex items-center p-4">
   <Link to="/dashboard-create-product" className={`w-full flex items-center ${
     active === 4
-      ? "bg-[#0077B6] text-white"
+      ? "bg-[#025492] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
     <MdForklift
@@ -131,7 +131,7 @@ const DashboardSideBar = ({ active }) => {
 <div className="w-full flex items-center p-4">
   <Link to="/dashboard-withdraw-money" className={`w-full flex items-center ${
     active === 7
-      ? "bg-[#0077B6] text-white"
+      ? "bg-[#025492] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
     <FaCircleDollarToSlot
@@ -151,7 +151,7 @@ const DashboardSideBar = ({ active }) => {
 <div className="w-full flex items-center p-4">
   <Link to="/settings" className={`w-full flex items-center ${
     active === 11
-      ? "bg-[#0077B6] text-white"
+      ? "bg-[#025492] text-white"
       : "bg-white text-[#555]"
   } p-2 rounded-lg transition-all`}>
     <RiUserSettingsFill

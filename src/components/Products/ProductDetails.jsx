@@ -42,6 +42,8 @@ const ProductDetails = ({ data }) => {
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
   const [select, setSelect] = useState(0);
+  const [activeImageRange,setActiveImageRange] = useState()
+  const [activeImageColor,setActiveImageColor] = useState(0)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -62,7 +64,13 @@ const ProductDetails = ({ data }) => {
 
   const firstRender = useRef(true)
 
-  
+  useEffect(()=>{
+    if (data?.colorList.length > 0) 
+    {
+      setActiveImageRange(data.colorList[0].index.split(','))
+
+    }
+  },[data])
   
   useEffect(() => {
     const fetchData = async () => {
@@ -168,10 +176,37 @@ const ProductDetails = ({ data }) => {
                alt=""
                className="w-full h-[250px] sm:h-[600px] object-contain lg:w-[70%] bg-white p-4 mb-5 rounded-md"
              />
-             
+             {
+              activeImageRange ?
              <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
                                {data &&
-                                 data.images.slice(0, 5).map((i, index) => (
+                                 data.images.slice(activeImageRange[0], activeImageRange[1]).map((i, index) => (
+                                   <div
+                                     key={index}
+                                     className={`${
+                                      select === index ? "null" : "null"
+                                    } cursor-pointer bg-white  product-images-small w-[70px] h-[70px] relative flex items-center justify-center`}
+                                   >
+                                     <img
+                                       src={`${i?.url}`}
+                                       alt=""
+                                       className="h-[90%] w-[90%] overflow-hidden object-contain"
+                                       onClick={() => setSelect( parseInt(index) + parseInt(activeImageRange[0]))}
+                                     />
+                                   </div>
+                                 ))}
+                               <div
+                                 className={`${
+                                   select === 1 ? "border" : "null"
+                                 } cursor-pointer`}
+                               ></div>
+                             </div>
+
+                             : 
+
+                             <div className="flex mt-7 mb-5 gap-2 sm:gap-4">
+                               {data  &&
+                                 data.images.slice(0,5).map((i, index) => (
                                    <div
                                      key={index}
                                      className={`${
@@ -192,6 +227,8 @@ const ProductDetails = ({ data }) => {
                                  } cursor-pointer`}
                                ></div>
                              </div>
+
+      }
 
               </div>
               <div className="w-full  800px:px-4 rounded-lg  800px:w-[50%] pt-5">
@@ -255,8 +292,27 @@ const ProductDetails = ({ data }) => {
                 <div className="availability-icon">
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<p className="text-red-500 font-bold text-lg">Out Of Stock<span className="text-xl"> X </span></p>}
                 </div>
+                
+                
+                <div className="flex items-center gap-2 mt-8">
+                  <span className="font-medium text-[1.1rem]">Color :</span> 
+                  {data && data.colorList?.length > 0 ?
+                  
+                  data.colorList.map((cl,index) => {
+                    return(
+              <div key={index} onClick={() => {setActiveImageRange(cl.index.split(','));setSelect(cl.index.split(',')[0]);setActiveImageColor(index)}} className={`p-1 border border-[#e8e8e8] ${activeImageColor==index?'!border-[#000000] border-2':''} cursor-pointer`}><div className={`w-[40px] h-[40px]`} style={{background:`${cl.color}`}} ></div></div>
 
-                <div className="flex gap-6 w-full mt-16 sm:mt-32">
+                    )
+                  })
+                    
+                :
+                
+                
+                <div className="p-1 border border-[#000000] border-2"><div className={`w-[40px] h-[40px]`} style={{background:`${data?.color.toLowerCase()}`}} ></div></div>
+                }
+                </div>
+
+                <div className="flex gap-6 w-full mt-10 sm:mt-8">
                   <div className="w-[50%] text-center">
                   
                   <div

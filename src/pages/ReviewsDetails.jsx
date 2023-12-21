@@ -182,7 +182,7 @@ const ReviewsDetails = ({ data }) => {
                 <p className="mb-[2rem] 800px:mb-[4rem]"></p>
                 <div className="mb-[1.2rem] flex gap-[0.1rem] items-center">
                   <Ratings rating={data.ratings}/>
-                  <p className="text-[#0077B6] text-[0.6rem] underline mb-1">{data.reviews.length}</p>
+                  <p className="text-[#025492] text-[0.6rem] underline mb-1">{data.reviews.length}</p>
                 </div>
                 <p className="text-[1.125rem]">Sold by: <span className={`${styles.shop_name} underline pl-2`}>
                         {data.shop.name.toUpperCase()}
