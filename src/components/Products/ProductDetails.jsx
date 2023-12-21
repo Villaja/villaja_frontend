@@ -110,14 +110,14 @@ const ProductDetails = ({ data }) => {
   };
 
   const addToCartHandler = (id) => {
-    const isItemExists = cart && cart.find((i) => i._id === id);
+    const isItemExists = cart && cart.find((i) => i._id === id && i.color == data.color);
     if (isItemExists) {
       toast.error("Item already in cart!");
     } else {
       if (data.stock < 1) {
         toast.error("Product stock limited!");
       } else {
-        const cartData = { ...data, qty: count };
+        const cartData = { ...data, qty: count, color: data.colorList[activeImageColor]?data.colorList[activeImageColor].color:data.color };
         dispatch(addTocart(cartData));
         toast.success("Item added to cart successfully!");
       }
