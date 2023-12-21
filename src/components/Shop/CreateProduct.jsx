@@ -59,7 +59,7 @@ const CreateProduct = () => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
-    setImages([]);
+    // setImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
