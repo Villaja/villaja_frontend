@@ -123,7 +123,7 @@ const OrderDetails = () => {
             <div className="w-full pl-3">
               <h5 className="text-xl font-semibold  pl-4">{item.name}</h5>
               <h5 className="pl-3 text-sm text-[#00000091] pl-6">
-                ₦{item.discountPrice} x {item.qty}
+                ₦{item.discountPrice != 0 ?item.discountPrice:item.originalPrice} x {item.qty}
               </h5>
             </div>
           </div>
@@ -169,6 +169,7 @@ const OrderDetails = () => {
             "Processing",
             "recieved",
             "Ready To Ship",
+            
           ]
             .slice(
               [
@@ -219,7 +220,7 @@ const OrderDetails = () => {
           }
           disabled={loading}
         >
-          {loading ? "Loading..." : "Upadate Order"}
+          {loading ? "Loading..." : "Update Order"}
         </button>
       )}
         {data?.status === "Ready To Ship" && (
