@@ -1,7 +1,7 @@
 import './SellerHomePage.css'
 import SellerFooter from '../../components/SellerFooter/SellerFooter'
 import SellerHomeHeader from './SellerHomeHeader'
-import MainImg from './assets/mainImg.svg'
+import MainImg from './assets/mainImg.webp'
 import VillajaLogoLight from './assets/heroImgs.svg'
 import StepOne from './assets/hit1.svg'
 import StepTwo from './assets/hit2.svg'
