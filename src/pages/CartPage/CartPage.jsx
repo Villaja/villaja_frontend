@@ -124,6 +124,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const navigate = useNavigate()
 
   const [value, setValue] = useState(data.qty);
+  const [displayImage,setDisplayImage] = useState()
   const totalPrice = (data.discountPrice?data.discountPrice:data.originalPrice) * value;
 
   const increment = (data) => {
@@ -142,6 +143,19 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
     quantityChangeHandler(updateCartData);
   };
 
+
+  useEffect(() => {
+    if(data && data?.colorList.length > 0 )
+      {
+        const tempImg = data?.colorList.filter((cl) => cl.color === data.color)
+        setDisplayImage(tempImg[0]?.images[0]) 
+      }
+    else
+    {
+      setDisplayImage(data?.images[0])
+    }
+  },[data])
+
   return (
 
     <div className="p-[1.2rem]">
@@ -150,7 +164,8 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
         <div className='flex gap-[1rem] min-[400px]:gap-[2.25rem] min-500px:pl-[1rem]'>
           <div className='max-[385px]:w-[4rem] w-[6rem] h-[6rem] relative shrink-0 '>
             <img
-              src={`${data?.images[0]?.url}`}
+              // src={`${data?.images[0]?.url}`}
+              src={`${displayImage?.url}`}
               alt=""
               className="w-[100%] h-[100%] object-contain"
               

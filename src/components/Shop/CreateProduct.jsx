@@ -45,6 +45,7 @@ const CreateProduct = () => {
   /* First Attemp ColorList state */
 
   const [currentColor,setCurrentColor] = useState("000000")
+  const [currentColorStock,setCurrentColorStock] = useState(1)
   const [colorList,setColorList] = useState([])
   const [colorIndex,setColorIndex] = useState(0)
   const [imageDisplay,setImageDisplay] = useState([])
@@ -67,7 +68,7 @@ const CreateProduct = () => {
   }, [dispatch, error, success]);
 
   const handleImageColorSubmit = () => {
-      setColorList([...colorList,{color:currentColor,index:colorIndex+','+(colorIndex+imageDisplay.length)}])
+      setColorList([...colorList,{color:currentColor,stock:currentColorStock,images:imageDisplay,index:colorIndex+','+(colorIndex+imageDisplay.length)}])
       setColorIndex(colorIndex+imageDisplay.length)
       setImageDisplay([])
   }
@@ -646,6 +647,11 @@ const CreateProduct = () => {
               className="h-[120px] w-[120px] object-cover m-2"
             />
           ))}
+      </div>
+      <div className="w-[48%]">
+        <label className="pb-2">Product Stock <span className="text-red-500">*</span></label>
+        <input type="text" className="border border-2 p-2" name="colorStock" id="colorStock" placeholder="Select Stock Value" value={currentColorStock} onChange={(e) => setCurrentColorStock(e.target.value)} />
+        
       </div>
       <div className="mt-2 text-center max-w-[100px] rounded-[4px] cursor-pointer p-2 text-[#ffffff] bg-[#025492] " onClick={handleImageColorSubmit}>Save</div>
       <div className="mt-1 flex items-center gap-2">

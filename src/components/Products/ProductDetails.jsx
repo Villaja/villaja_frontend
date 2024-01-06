@@ -44,6 +44,7 @@ const ProductDetails = ({ data }) => {
   const [select, setSelect] = useState(0);
   const [activeImageRange,setActiveImageRange] = useState()
   const [activeImageColor,setActiveImageColor] = useState(0)
+  const [activeImage,setActiveImage] = useState()
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -63,6 +64,29 @@ const ProductDetails = ({ data }) => {
   const queryP = new useSearchParams(window.location.search)
 
   const firstRender = useRef(true)
+
+  useEffect(() => {
+    if(data?.images.length > 0)
+    {
+      setActiveImage(data.images[select].url)
+    }
+    else
+    {
+      setActiveImage(data?.colorList[activeImageColor].images[0].url)
+    }
+
+  },[select,activeImageColor])
+
+  useEffect(() => {
+    if(data?.images.length > 0)
+    {
+      setActiveImage(data.images[select].url)
+    }
+    else
+    {
+      setActiveImage(data?.colorList[activeImageColor].images[0].url)
+    }
+  },[])
 
   useEffect(()=>{
     if (data?.colorList.length > 0) 
@@ -110,7 +134,7 @@ const ProductDetails = ({ data }) => {
   };
 
   const addToCartHandler = (id) => {
-    const isItemExists = cart && cart.find((i) => i._id === id && i.color == data.color);
+    const isItemExists = cart && cart.find((i) => i._id === id && i.color == data.colorList[activeImageColor].color);
     if (isItemExists) {
       toast.error("Item already in cart!");
     } else {
@@ -173,6 +197,7 @@ const ProductDetails = ({ data }) => {
             <div className="w-full 800px:w-[50%] h-[400px] sm:h-[700px]" style={{display:"flex",flexDirection:"column",alignItems:"flex-end"}}>
               <img
                src={`${data && data.images[select]?.url}`}
+              //  src={activeImage?activeImage:""}
                alt=""
                className="w-full h-[250px] sm:h-[600px] object-contain lg:w-[70%] bg-white p-4 mb-5 rounded-md"
              />
@@ -300,7 +325,16 @@ const ProductDetails = ({ data }) => {
                   
                   data.colorList.map((cl,index) => {
                     return(
-              <div key={index} onClick={() => {setActiveImageRange(cl.index.split(','));setSelect(cl.index.split(',')[0]);setActiveImageColor(index)}} className={`p-1 border border-[#e8e8e8] ${activeImageColor==index?'!border-[#000000] border-2':''} cursor-pointer`}><div className={`w-[40px] h-[40px]`} style={{background:`${cl.color}`}} ></div></div>
+                      <>
+                      {/* <div>{cl.stock}</div> */}
+                      {
+                        cl.stock < 1?
+              <div key={index}  className={`p-1 border border-[#e8e8e8] ${activeImageColor==index?'!border-[#000000] border-2':''} ${cl.stock < 1?' opacity-20 cursor-not-allowed':'cursor-pointer '} `}><div className={`w-[40px] h-[40px]`} style={{background:`${cl.color}`}} ></div></div>
+              :
+              <div key={index} onClick={() => {setActiveImageRange(cl.index.split(','));setSelect(cl.index.split(',')[0]);setActiveImageColor(index)}} className={`p-1 border border-[#e8e8e8] ${activeImageColor==index?'!border-[#000000] border-2':''} ${cl.stock < 1?' opacity-20 cursor-not-allowed ':'cursor-pointer '} `}><div className={`w-[40px] h-[40px]`} style={{background:`${cl.color}`}} ></div></div>
+
+                      }
+                      </>
 
                     )
                   })

@@ -9,7 +9,7 @@ const initialState = {
 export const cartReducer = createReducer(initialState, {
   addToCart: (state, action) => {
     const item = action.payload;
-    const isItemExist = state.cart.find((i) => i._id === item._id);
+    const isItemExist = state.cart.find((i) => i._id === item._id && i.color === item.color);
     if (isItemExist) {
       return {
         ...state,
@@ -26,7 +26,7 @@ export const cartReducer = createReducer(initialState, {
   removeFromCart: (state, action) => {
     return {
       ...state,
-      cart: state.cart.filter((i) => i._id !== action.payload),
+      cart: state.cart.filter((i) => ( i.color !== action.payload.color || i._id !== action.payload._id ) ),
     };
   },
 });

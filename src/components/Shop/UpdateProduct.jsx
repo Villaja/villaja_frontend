@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -40,9 +41,52 @@ const UpdateProductDetails = () => {
   const [inTheBox, setInTheBox] = useState(""); // Add inTheBox state
   const [minDelivery, setMinDelivery] = useState(""); // Add minDelivery state
   const [maxDelivery, setMaxDelivery] = useState(""); // Add maxDelivery state
+  const [colorList,setColorList] = useState([])
   const { id: productId } = useParams(); 
   const [selectedCategory, setSelectedCategory] = useState("");
+
+  const handleColorStockChange =  (val,color) => {
+    const tempColorList = colorList.filter((cl) => cl.color === color)
+    const tempColorListExclusive = colorList.filter((cl) => cl.color != color)
+
+    const newColorListItem = {...tempColorList[0],stock:val}
+
+    setColorList([...tempColorListExclusive,newColorListItem].sort((a,b) => {return a.images.length - b.images.length}))
+    console.log(tempColorList);
+  }
   
+  // const columns = [
+  //   { field: "id", headerName: "Color ID", minWidth: 150, flex: 0.7 },
+
+  //   { field: "color", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+
+  //   {
+  //     field: "stock",
+  //     headerName: "stock",
+  //     headerAlign: 'center',
+  //     minWidth: 130,
+  //     flex: 0.7,
+  //     editable:true,
+  //     renderCell: (params) => {
+  //       return(
+
+        
+  //       <input type="text" value={params.getValue(params.id,'stock')} onChange={(e) => {handleColorStockChange(e.target.value,params.getValue(params.id,'color'))}} />
+  //       )
+        
+  //     },
+  //   },
+  // ]
+
+  // const row = [];
+  // colorList &&
+  // colorList.forEach((item,index) => {
+  //     row.push({
+  //       id:index,
+  //       color: item.color,
+  //       stock: item.stock,
+  //     });
+  //   });
  
   useEffect(() => {
     if (error) {
@@ -108,6 +152,7 @@ const UpdateProductDetails = () => {
         minDelivery,
         maxDelivery,
         images,
+        colorList
       } = product;
 
       setName(name || "");
@@ -136,6 +181,7 @@ const UpdateProductDetails = () => {
       setMinDelivery(minDelivery || "");
       setMaxDelivery(maxDelivery || "");
       setImages(images || []);
+      setColorList(colorList || [])
     }
   }, [product]);
 
@@ -187,6 +233,7 @@ const UpdateProductDetails = () => {
           discountPrice:(discountPrice == ""?0:discountPrice),
           stock,
           images,
+          colorList,
           condition,
           aboutProduct,
           brand,
@@ -638,6 +685,36 @@ const UpdateProductDetails = () => {
       </div>
     </div>
     <div>
+
+      {/* <div>
+        <DataGrid
+              rows={row}
+              columns={columns}
+              pageSize={4}
+              disableSelectionOnClick
+              autoHeight
+            />
+      </div> */}
+
+      <div className="mt-8">
+        {/* <div className="grid"></div> */}
+        {
+          colorList && colorList.length > 0 ?
+
+            colorList.map((cl,index) => {
+              return(
+                <div key={index} className="flex gap-2 items-center mb-2">
+                  <div><input type="color" name="color" id="color" value={cl.color} readOnly={true} /></div>
+                  <div>Stock: <input className="border border-1 p-2 rounder-[4px]" type="text" name="colorStock" id="colorStock" value={cl.stock} onChange={(e) => {handleColorStockChange(e.target.value,cl.color)}}/></div>
+                  {/* <div>Update</div> */}
+                </div>
+              )
+            })
+          :
+
+          null
+        }
+      </div>
 
       {/* <label className="pb-2">Upload downloaded clear 1080p Images and a live picture proof of the product, Ensure the first image on the list is the downloaded 1080p picture. Limit of 5 pictures <span className="text-red-500">*</span></label>
       <input

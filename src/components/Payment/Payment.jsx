@@ -273,7 +273,7 @@ const PaymentInfo = ({
         ) : null}
       </div>
      
-      {/* <div>
+      <div>
         <div className="flex w-full pb-5 border-b mb-2">
           <div
             className="w-[25px] h-[25px] rounded-full bg-transparent border-[3px] border-[#1d1a1ab4] relative flex items-center justify-center"
@@ -300,7 +300,7 @@ const PaymentInfo = ({
             </form>
           </div>
         ) : null}
-      </div> */}
+      </div>
       {/* <p className="mt-4 font-bold text-sm text-gray-500">More Payment Methods Soon</p> */}
     </div>
   );

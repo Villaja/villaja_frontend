@@ -18,6 +18,8 @@ const OrderDetails = () => {
 
   const { id } = useParams();
 
+  
+
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
   }, [dispatch]);
@@ -116,7 +118,7 @@ const OrderDetails = () => {
         data?.cart.map((item, index) => (
           <div className="w-full flex items-start mb-5 shadow-md bg-white p-4 hover:shadow-lg transition duration-300" key={index}>
             <img
-              src={`${item.images[0]?.url}`}
+              src={`${item?.colorList?.length > 0? item.colorList.find((it) => it.color === item.color).images[0].url : item?.images[0].url}`}
               alt=""
               className="w-[80x] h-[80px]"
             />
