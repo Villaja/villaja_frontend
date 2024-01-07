@@ -56,7 +56,7 @@ const CartPage = () => {
           <div className='w-full min-[1386px]:max-w-[65rem] mb-[3rem]'>
 
           
-            {cart && cart.length === 0 ? (
+            {cart && cart?.length === 0 ? (
              null
             ) : (
               <div>
@@ -145,7 +145,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
 
 
   useEffect(() => {
-    if(data && data?.colorList.length > 0 )
+    if(data && data?.colorList?.length > 0 )
       {
         const tempImg = data?.colorList.filter((cl) => cl.color === data.color)
         setDisplayImage(tempImg[0]?.images[0]) 
