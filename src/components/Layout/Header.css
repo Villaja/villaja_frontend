@@ -361,6 +361,12 @@ input:focus
     }
 }
 
+@media screen and (max-width:1238px) {
+    .vh-item-header-search {
+        max-width: 350px;
+    }
+}
+
 @media screen and (max-width:623px) {
     .hs-text {
         display: none;
