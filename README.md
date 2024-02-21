@@ -1,4 +1,4 @@
-# React + Vite
+# Frontend Repository for the Villaja E-Commerce marketplace Project
 
 This webapp was developed using Javascript using react.js as the framework for its frontend and node.js as the framework for its backend and mongo DB for its database management.
 Currently, two official plugins are available:
