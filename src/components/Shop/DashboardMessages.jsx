@@ -44,21 +44,26 @@ const DashboardMessages = () => {
 
   useEffect(() => {
     const getConversation = async () => {
-      try {
-        const resonse = await axios.get(
-          `${server}/conversation/get-all-conversation-seller/${seller?._id}`,
-          {
-            withCredentials: true,
-          }
-        );
+        try {
+            const token = localStorage.getItem('seller-token'); // Get the token from local storage
+            const response = await axios.get(
+                `${server}/conversation/get-all-conversation-seller/${seller?._id}`,
+                {
+                    headers: {
+                        Authorization: token // Set the authorization header with the token
+                    },
+                    withCredentials: true // Send cookies along with the request
+                }
+            );
 
-        setConversations(resonse.data.conversations);
-      } catch (error) {
-        // console.log(error);
-      }
+            setConversations(response.data.conversations);
+        } catch (error) {
+            // Handle error
+            console.log(error);
+        }
     };
     getConversation();
-  }, [seller, messages]);
+}, [seller, messages]);
 
   useEffect(() => {
     if (seller) {
@@ -311,13 +316,13 @@ const MessageList = ({
         )}
       </div>
       <div className="pl-3">
-        <h1 className="text-[18px]">{user?.name}</h1>
-        <p className="text-[16px] text-[#000c]">
+        <h1 className="text-[18px]">{user?.firstname}</h1>
+        {/* <p className="text-[16px] text-[#000c]">
           {!isLoading && data?.lastMessageId !== user?._id
             ? "You:"
-            : user?.name.split(" ")[0] + ": "}{" "}
+            : user?.name?.split(" ")[0] + ": "}{" "}
           {data?.lastMessage}
-        </p>
+        </p> */}
       </div>
     </div>
   );
@@ -346,7 +351,7 @@ const SellerInbox = ({
             className="w-[60px] h-[60px] rounded-full"
           />
           <div className="pl-3">
-            <h1 className="text-[18px] font-[600]">{userData?.name}</h1>
+            <h1 className="text-[18px] font-[600]">{userData?.firstname} {userData?.lastname}</h1>
             <h1>{activeStatus ? "Active Now" : ""}</h1>
           </div>
         </div>
