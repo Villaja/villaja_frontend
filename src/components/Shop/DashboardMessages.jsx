@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
@@ -367,7 +368,7 @@ const SellerInbox = ({
         {messages &&
           messages.map((item, index) => {
             return (
-              <div
+              <div key={index}
                 className={`flex w-full my-2 ${
                   item.sender === sellerId ? "justify-end" : "justify-start"
                 }`}

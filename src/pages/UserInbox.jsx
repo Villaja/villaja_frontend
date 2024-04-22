@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Layout/Header";
 import { Link } from "react-router-dom";
@@ -392,7 +393,7 @@ const SellerInbox = ({
             <div className="px-3 h-[75vh] py-3 overflow-y-scroll">
                 {messages &&
                     messages.map((item, index) => (
-                        <div
+                        <div key={index}
                             className={`flex w-full my-2 ${
                                 item.sender === sellerId ? "justify-end" : "justify-start"
                             }`}
