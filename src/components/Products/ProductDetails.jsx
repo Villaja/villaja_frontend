@@ -280,14 +280,14 @@ const ProductDetails = ({ data }) => {
                   {data.stock > 0?<img src={InStockIcon} alt="" />:<p className="text-red-500 font-bold text-lg">Out Of Stock<span className="text-xl"> X </span></p>}
                 </div>
 
-                <div
+               {/* suspended feature <div
                     className={`${styles.button} bg-[#6443d1] mt-4 !rounded !h-11`}
                     onClick={handleMessageSubmit}
                   >
                     <span className="text-white flex items-center">
                       Send Message <AiOutlineMessage className="ml-1" />
-                    </span>
-                  </div>
+                    </span> 
+                  </div> */}
 
                 <div className="flex gap-6 w-full mt-16 sm:mt-32">
                   <div className="w-[50%] text-center">
