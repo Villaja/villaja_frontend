@@ -14,7 +14,7 @@ const ENDPOINT = "https://socket-ecommerce-tu68.onrender.com/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
-  const { seller,isLoading } = useSelector((state) => state.seller);
+  const { seller, isLoading } = useSelector((state) => state.seller);
   const [conversations, setConversations] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [currentChat, setCurrentChat] = useState();
@@ -35,6 +35,10 @@ const DashboardMessages = () => {
         createdAt: Date.now(),
       });
     });
+
+    return () => {
+      socketId.off("getMessage");
+    };
   }, []);
 
   useEffect(() => {
@@ -45,26 +49,26 @@ const DashboardMessages = () => {
 
   useEffect(() => {
     const getConversation = async () => {
-        try {
-            const token = localStorage.getItem('seller-token'); // Get the token from local storage
-            const response = await axios.get(
-                `${server}/conversation/get-all-conversation-seller/${seller?._id}`,
-                {
-                    headers: {
-                        Authorization: token // Set the authorization header with the token
-                    },
-                    withCredentials: true // Send cookies along with the request
-                }
-            );
+      try {
+        const token = localStorage.getItem('seller-token'); // Get the token from local storage
+        const response = await axios.get(
+          `${server}/conversation/get-all-conversation-seller/${seller?._id}`,
+          {
+            headers: {
+              Authorization: token // Set the authorization header with the token
+            },
+            withCredentials: true // Send cookies along with the request
+          }
+        );
 
-            setConversations(response.data.conversations);
-        } catch (error) {
-            // Handle error
-            console.log(error);
-        }
+        setConversations(response.data.conversations);
+      } catch (error) {
+        // Handle error
+        console.log(error);
+      }
     };
     getConversation();
-}, [seller, messages]);
+  }, [seller, messages]);
 
   useEffect(() => {
     if (seller) {
@@ -73,6 +77,10 @@ const DashboardMessages = () => {
       socketId.on("getUsers", (data) => {
         setOnlineUsers(data);
       });
+    }
+
+    return () => {
+      socketId.off("getUsers");
     }
   }, [seller]);
 
@@ -293,9 +301,8 @@ const MessageList = ({
 
   return (
     <div
-      className={`w-full flex p-3 px-3 ${
-        active === index ? "bg-[#00000010]" : "bg-transparent"
-      }  cursor-pointer`}
+      className={`w-full flex p-3 px-3 ${active === index ? "bg-[#00000010]" : "bg-transparent"
+        }  cursor-pointer`}
       onClick={(e) =>
         setActive(index) ||
         handleClick(data._id) ||
@@ -369,9 +376,8 @@ const SellerInbox = ({
           messages.map((item, index) => {
             return (
               <div key={index}
-                className={`flex w-full my-2 ${
-                  item.sender === sellerId ? "justify-end" : "justify-start"
-                }`}
+                className={`flex w-full my-2 ${item.sender === sellerId ? "justify-end" : "justify-start"
+                  }`}
                 ref={scrollRef}
               >
                 {item.sender !== sellerId && (
@@ -390,9 +396,8 @@ const SellerInbox = ({
                 {item.text !== "" && (
                   <div>
                     <div
-                      className={`w-max p-2 rounded ${
-                        item.sender === sellerId ? "bg-[#000]" : "bg-[#38c776]"
-                      } text-[#fff] h-min`}
+                      className={`w-max p-2 rounded ${item.sender === sellerId ? "bg-[#000]" : "bg-[#38c776]"
+                        } text-[#fff] h-min`}
                     >
                       <p>{item.text}</p>
                     </div>
