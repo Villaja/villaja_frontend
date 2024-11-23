@@ -146,7 +146,7 @@ const  AdminOrderDetails = () => {
     <div>
       <h5 className="text-xl font-semibold  pl-4">{item.name}</h5>
       <h5 className="pl-3 text-sm text-[#00000091] pl-6">
-        ₦{item.discountPrice != 0 ? item.discountPrice:item.originalPrice} x {item.qty}
+        ₦{item.discountPrice != 0 ? item.discountPrice:item.originalPrice} x {item.stock}
       </h5>
     </div>
     <Link to={`/product/${item._id}`}>
