@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import {AiOutlineEye } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
@@ -9,8 +9,9 @@ import axios from "axios";
 import { server } from "../../server";
 import { useState } from "react";
 
-const AllProducts = () => {
-  const [data, setData] = useState([]);
+
+const RefundsList = () => {
+const [data, setData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
@@ -21,57 +22,55 @@ const AllProducts = () => {
       return;
     }
   
-    axios.get(`${server}/product/admin-all-products`, {
+    axios.get(`${server}/refund/get-all-refunds`, {
       withCredentials: true,
       headers: {
         Authorization: token,
       },
     }).then((res) => {
-      setData(res.data.products);
+      setData(res.data.data);
     });
   }, []);
   
 
   const columns = [
-    { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Product Id", width: 250, },
     {
-      field: "name",
-      headerName: "Name",
-      minWidth: 180,
-      flex: 1.4,
+      field: "orderId",
+      headerName: "orderId",
+      width: 250,
+      editable:true
     },
     {
-      field: "price",
-      headerName: "Price",
-      minWidth: 100,
-      flex: 0.6,
+      field: "customerId",
+      headerName: "customerId",
+      width: 250,
     },
     {
-      field: "Stock",
-      headerName: "Stock",
-      type: "number",
-      minWidth: 80,
-      flex: 0.5,
+      field: "status",
+      headerName: "status",
+      width: 100,
     },
 
     {
-      field: "sold",
-      headerName: "Sold out",
-      type: "number",
-      minWidth: 130,
-      flex: 0.6,
+      field: "transactionRef",
+      headerName: "transactionRef",
+      width: 250,
+    },
+    {
+      field: "updatedAt",
+      headerName: "updatedAt",
+      width: 200,
     },
     {
       field: "Preview",
-      flex: 0.8,
-      minWidth: 100,
+      width: 150,
       headerName: "",
-      type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/product/${params.id}`}>
+            <Link to={`/admin-order/${params.row.orderId}`} onClick={() => {console.log(params)}}>
               <Button>
                 <AiOutlineEye size={20} />
               </Button>
@@ -89,10 +88,12 @@ const AllProducts = () => {
     setRowState(data.filter((od) => od._id.includes(e.target.value)).map((item) => {
         return ({
           id: item._id,
-        name: item.name,
-        price: "₦ " + item.discountPrice,
-        Stock: item.stock,
-        sold: item?.sold_out,
+        orderId: item.orderId,
+        customerId: item.customerId,
+        status: item.status,
+        transactionRef: item?.transactionRef,
+        updatedAt:item.updatedAt
+
           
         })
     }))
@@ -102,10 +103,11 @@ const AllProducts = () => {
     data && setRowState(data.map((item) => {
       return ({
           id: item._id,
-        name: item.name,
-        price: "₦ " + item.discountPrice,
-        Stock: item.stock,
-        sold: item?.sold_out,
+        orderId: item.orderId,
+        customerId: item.customerId,
+        status: item.status,
+        transactionRef: item?.transactionRef,
+        updatedAt:item.updatedAt
       })
     }))
   },[data])
@@ -116,10 +118,12 @@ const AllProducts = () => {
   data.forEach((item) => {
       row.push({
         id: item._id,
-        name: item.name,
-        price: "₦ " + item.discountPrice,
-        Stock: item.stock,
-        sold: item?.sold_out,
+        orderId: item.orderId,
+        customerId: item.customerId,
+        status: item.status,
+        transactionRef: item?.transactionRef,
+        updatedAt:item.updatedAt
+
       });
     });
 
@@ -127,7 +131,7 @@ const AllProducts = () => {
     <>
         <div className="w-full min-h-[120vh] pt-5 rounded flex justify-center bg-[#F4F4F4] p-6">
             <div className="w-full 500px:pl-8 800px:pt-1 bg-white rounded-[0.3125rem]">
-              <h1 className="font-semibold text-[2rem] p-4 mb-4 border-b-[0.1rem] border-[#000000/25]">Products</h1>
+              <h1 className="font-semibold text-[2rem] p-4 mb-4 border-b-[0.1rem] border-[#000000/25]">Refund Requests</h1>
 
 
               <div className={`myOrders-search ${mobileSearch?'myOrders-search-mobile':''} mb-6 ml-4`}>
@@ -139,14 +143,20 @@ const AllProducts = () => {
               <DataGrid
                 rows={rowState}
                 columns={columns}
-                pageSize={10}
-                disableSelectionOnClick
-                autoHeight
+                initialState={{
+                pagination: {
+                    paginationModel: {
+                    pageSize: 10,
+                    },
+                },
+                }}
+                pageSizeOptions={[10]}
+                disableRowSelectionOnClick
               />
             </div>
         </div>
     </>
   );
-};
+}
 
-export default AllProducts;
+export default RefundsList

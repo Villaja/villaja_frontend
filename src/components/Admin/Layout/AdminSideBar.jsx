@@ -3,11 +3,13 @@ import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import {GrWorkshop} from "react-icons/gr";
 import { RxDashboard } from "react-icons/rx";
-import { CiMoneyBill, CiSettings } from "react-icons/ci";
+import { CiMoneyBill } from "react-icons/ci";
+import { MdOutlineSettingsBackupRestore } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { BsHandbag } from "react-icons/bs";
-import { MdOutlineLocalOffer } from "react-icons/md";
+import { CiMoneyCheck1 } from "react-icons/ci";
+// import { MdOutlineLocalOffer } from "react-icons/md";
 import { AiOutlineSetting } from "react-icons/ai";
 import './AdminSideBar.css'
 
@@ -140,6 +142,48 @@ const AdminSideBar = ({ active,sidebarActive}) => {
             }`}
           >
             All Withdraws
+          </h5>
+        </Link>
+      </div>
+
+      <div 
+      className={` ${active === 9?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
+        <Link
+          to="/admin-refund-request"
+          className="w-full flex items-center"
+        >
+          <MdOutlineSettingsBackupRestore
+            size={30}
+            color={`${active === 9 ? "white" : "#555"}`}
+          />
+          <h5
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 9 ? "text-[white]" : "text-[#555]"
+            }`}
+          >
+            Request Refund
+          </h5>
+        </Link>
+      </div>
+
+      <div 
+      className={` ${active === 10?'admin-sidebar-active':'admin-sidebar-item'} flex items-center cursor-pointer !font-[600] mb-[0.8rem]`}
+      >
+        <Link
+          to="/admin-refunds"
+          className="w-full flex items-center"
+        >
+          <CiMoneyCheck1
+            size={30}
+            color={`${active === 10 ? "white" : "#555"}`}
+          />
+          <h5
+            className={`block pl-2 text-[18px] font-[600] ${
+              active === 10 ? "text-[white]" : "text-[#555]"
+            }`}
+          >
+            Refunds
           </h5>
         </Link>
       </div>

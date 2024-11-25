@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // user routes
 import {
-  LoginPage,
-  SignupPage,
   ActivationPage,
   HomePage,
   ProductsPage,
@@ -17,9 +15,7 @@ import {
   OrderSuccessPage,
   ProductDetailsPage,
   ProfilePage,
-  ShopCreatePage,
   SellerActivationPage,
-  ShopLoginPage,
   OrderDetailsPage,
   TrackOrderPage,
   UserInbox,
@@ -81,10 +77,12 @@ import CatalogPage from './pages/CatalogPage/CatalogPage';
 import VillajaHeader from './components/VillajaHeader/VillajaHeader';
 import VillajaFooter from './components/VillajaFooter/VillajaFooter';
 import {CustomerLogin, CustomerSignUp, SellerLogin, SellerSignUp} from './components';
-import CategoryComponent from './pages/CatalogPage/CategoryComponent';
+// import CategoryComponent from './pages/CatalogPage/CategoryComponent';
 import ProductReviews from "./pages/ProductReviews";
 import SellerHomePage from "./pages/SellerHomePage/SellerHomePage";
 import CartPage from "./pages/CartPage/CartPage";
+import AdminRefundPage from "./pages/AdminRefundPage.jsx";
+import AdminRefundsListPage from "./pages/AdminRefundsListPage.jsx";
 // import { Amplify } from "aws-amplify";
 // import { awsmobile } from "../aws-exports";
 
@@ -92,7 +90,6 @@ import CartPage from "./pages/CartPage/CartPage";
 const App = () => {
   // Amplify.configure(awsmobile);
 
-  const [Apikey, setApiKey] = useState("");
 
   useEffect(() => {
     Store.dispatch(loadUser());
@@ -356,6 +353,22 @@ const App = () => {
           element={
             <ProtectedAdminRoute>
               <AdminDashboardEvents />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-refund-request"
+          element={
+            <ProtectedAdminRoute>
+              <AdminRefundPage />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-refunds"
+          element={
+            <ProtectedAdminRoute>
+              <AdminRefundsListPage />
             </ProtectedAdminRoute>
           }
         />
