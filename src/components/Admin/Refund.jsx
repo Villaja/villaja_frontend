@@ -7,6 +7,7 @@ import Rolling from '../../assets/animations/Rolling.svg'
 
 const Refund = () => {
     const [orderId,setOrderId] = useState('')
+    const [productId,setProductId] = useState('')
     const [amount,setAmount] = useState()
     const [loading,setLoading] = useState(false)
 
@@ -24,6 +25,7 @@ const Refund = () => {
         `${server}/refund/create-refund`,
         {
           orderId,
+          productId,
           amount,
         },
         {
@@ -51,6 +53,51 @@ const Refund = () => {
         }
     }
 
+    // const handleProductPriceRetrieval = async() => {
+    //    const token = localStorage.getItem('user-token'); // Retrieve the user token from localStorage
+    //     if (!token) {
+    //         // Handle the case where the user is not authenticated
+    //         toast.error('User is not authenticated.');
+    //         return;
+    //     }
+    //     try
+    //     {
+    //         const response = await axios.post(
+    //     `${server}/refund/get-product-price`,
+    //     {
+    //       orderId,
+    //       productId,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization:token
+    //       },
+    //     }
+    //   );
+
+    //         console.log(response.data);
+    //         if(response.data.success)
+    //         {
+    //           setAmount(response.data.data.price)
+    //         }
+    //     }   
+    //     catch(e)
+    //     {
+    //         console.log('error proceessing refund: ', e.message);
+            
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     console.log(productId.length);
+    //   if(productId.length == '24')
+    //   {
+        
+    //     handleProductPriceRetrieval()
+    //   }
+    // },[productId])
+
+
   return (
     <div className="w-full min-h-[120vh] pt-5 rounded flex justify-center bg-[#F4F4F4] p-6">
         <div className="w-full 500px:pl-8 800px:pt-1 bg-white rounded-[0.3125rem]">
@@ -67,15 +114,24 @@ const Refund = () => {
                     onChange={(e) => setOrderId(e.target.value)}
                     />
                 </div>
-                <div className="w-full mb-2 800px:w-[50%] max-w-[400px]">
+                <div className="w-full mb-2 800px:w-[50%] max-w-[400px] ">
+                    <label className="block pb-2">ProductId</label>
+                    <input
+                    type="text"
+                    value={productId}
+                    required
+                    className={`${styles.input}`}
+                    onChange={(e) => setProductId(e.target.value)}
+                    />
+                </div>
+                <div className="w-full mb-2 800px:w-[50%] max-w-[400px] ">
                     <label className="block pb-2">Amount</label>
                     <input
                     type="number"
                     value={amount}
                     required
-                    className={`${styles.input}`}
+                    className={` ${styles.input}`}
                     onChange={(e) => setAmount(e.target.value)}
-
                     />
                 </div>
 
